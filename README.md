@@ -9,7 +9,8 @@ Clone the repository to your local machine and navigate into the project directo
 
 ```bash
 git clone https://github.com/Tipheyy18/HostelFinder.git
-
+```
+```bash
 cd HostelFinder
 ```
 
@@ -53,11 +54,13 @@ Stage all your modified files, commit them with a descriptive commit message, an
 ```bash
 # Stage all modified files
 git add .
-
+```
 # Commit with a clear message
+```bash
 git commit -m "feat: implement user login component"
-
+```
 # Push your feature branch to the remote repository
+```bash
 git push origin <your-branch-name>
 ```
 
