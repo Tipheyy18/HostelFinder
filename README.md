@@ -51,15 +51,15 @@ git pull origin dev
 ### 6. Stage, Commit, and Push Your Changes
 Stage all your modified files, commit them with a descriptive commit message, and push your new branch to the remote repository:
 
+### Stage all modified files
 ```bash
-# Stage all modified files
 git add .
 ```
-# Commit with a clear message
+### Commit with a clear message
 ```bash
 git commit -m "feat: implement user login component"
 ```
-# Push your feature branch to the remote repository
+### Push your feature branch to the remote repository
 ```bash
 git push origin <your-branch-name>
 ```
