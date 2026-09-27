@@ -34,16 +34,46 @@
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
             </nav>
 
-            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-[6px] hover:bg-[#4a2f82] cursor-pointer">create account</button>
+            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
         </header>
-        <section class="bg-[#F7F3FD] mt-20 h-64 pt-6">
-            <div class="bg-[#F0E9FB] w-[640px] p-8 mx-auto">
+        <section class="bg-[#F7F3FD] mt-20 pt-6">
+            <div class="bg-[#F0E9FB] w-160 p-8 mx-auto">
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
                 <p class="font-dm capitalize text-center text-base font-normal mt-1">join & find your ideal hostel</p>
 
                 <form action="#">
-                    
+                    <div class="w-full">
+                        <label for="fullName" class="text-">Full Name</label>
+                        <input type="text" placeholder="Chinedu Okafor">
+                    </div>
+                    <div class="w-full">
+                        <label for="email">Email Address</label>
+                        <input type="email" placeholder="name@gmail.com">
+                    </div>
+                    <div class="w-full">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" placeholder="+234 8162 772 324">
+                    </div>
+                    <div class="w-full">
+                        <label for="password">Password</label>
+                        <input type="password" placeholder="At least 8 characters">
+                    </div>
+                    <div class="w-full">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" placeholder="Repeat your pasword">
+                    </div>
+                    <div class="w-full">
+                        <input type="checkbox">
+                        <p>I agree to the <span>terms and conditions</span> and <span>privacy policy</span></p>
+                    </div>
+                    <button>create account</button>
                 </form>
+                <p>or sign up with</p>
+                <div>
+                    <div>apple icon</div>
+                    <div>google icon</div>
+                </div>
+                <p>Already have an account? <a href="/pages/login.html">Log in</a></p>
             </div>
         </section>
     </main>
