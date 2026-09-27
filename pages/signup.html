@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Surfer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,7 @@
     <title>Login | HostelFinder</title>
 </head>
 <body>
-    <main class="w-full bg-[#E6D8FC] px-15">
+    <main class="w-full bg-[#E6D8FC] px-15 pb-28">
         <header class="w-full flex items-center justify-between p-4">
             <a href="/">
                 <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
@@ -34,16 +35,93 @@
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
             </nav>
 
-            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-[6px] hover:bg-[#4a2f82] cursor-pointer">create account</button>
+            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
         </header>
-        <section class="bg-[#F7F3FD] mt-20 h-64 pt-6">
-            <div class="bg-[#F0E9FB] w-[640px] p-8 mx-auto">
+        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30">
+            <div class="bg-[#F0E9FB] w-160 pt-8 px-8 pb-20 mx-auto">
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
                 <p class="font-dm capitalize text-center text-base font-normal mt-1">join & find your ideal hostel</p>
 
                 <form action="#">
-                    
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="fullName" class="font-semibold text-sm mb-2 text-[#0f172a]">Full Name</label>
+                        <input 
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            type="text" 
+                            placeholder="Chinedu Okafor"
+                        >
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="email" class="font-semibold text-sm mb-2 text-[#0f172a]">Email Address</label>
+                        <input 
+                            type="email"
+                            placeholder="name@gmail.com"
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                        >
+                    </div>  
+                     <div class="w-full flex flex-col mb-2">
+                        <label for="phoneNumber" class="font-semibold text-sm mb-2 text-[#0f172a]">Phone Number</label>
+                        <input 
+                            type="text" 
+                            placeholder="+234 8162 772 324"
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                        >
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="password" class="font-semibold text-sm mb-2 text-[#0f172a]">Password</label>
+                        <div class="relative w-full">
+                            <input 
+                                type="password" 
+                                placeholder="At least 8 characters"
+                                class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            >
+                            <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
+                        </div>
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="confirmPassword" class="font-semibold text-sm mb-2 text-[#0f172a]">Confirm Password</label>
+                        <div class="relative w-full">
+                            <input 
+                                type="password" 
+                                placeholder="Repeat your pasword"
+                                class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            >
+                            <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
+                        </div>
+                    </div>
+                    <div class="w-full flex gap-2">
+                        <input type="checkbox">
+                        <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
+                    </div>
+                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149)]">
+                        create account
+                    </button>
                 </form>
+                <div class="mt-10 mb-7 flex items-center justify-center gap-4">
+                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
+                    <p class="uppercase text-sm text-[#2d2340]">or sign up with</p>
+                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
+                </div>
+                <div class="flex gap-6 w-fit mx-auto">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                        <img 
+                            src="/images/apple-icon.png" 
+                            alt="apple logo"
+                            class="w-10 h-10"
+                        >
+                    </div>
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                        <img 
+                            src="/images/google-icon.png" 
+                            alt="google logo"
+                            class="w-10 h-10"
+                        >
+                    </div>
+                </div>
+                <p 
+                    class="text-base text-[#2d2340] mt-6 text-center">Already have an account? 
+                    <a href="/pages/login.html" class="text-[#7956C8]">Log in</a>
+                </p>
             </div>
         </section>
     </main>
