@@ -4,14 +4,14 @@ const mobileMenu = document.getElementById("mobile-menu");
 const mobileOverlay = document.getElementById("mobile-overlay");
 
 menuBtn.addEventListener("click", () => {
-    mobileOverlay.classList.remove("hidden");
-    setTimeout(() => {
-        mobileOverlay.classList.remove("opacity-0");
-    }, 10);
+    // mobileOverlay.classList.remove("hidden");
+    // setTimeout(() => {
+    //     mobileOverlay.classList.remove("opacity-0");
+    // }, 10);
 
-    mobileMenu.classList.remove("-translate-x-full");
+    // mobileMenu.classList.remove("-translate-x-full");
 
-    document.body.classList.add("overflow-hidden");
+    // document.body.classList.add("overflow-hidden");
 
     console.log("Menu Opened");
 })
