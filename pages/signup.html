@@ -19,31 +19,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>SignUp | HostelFinder</title>
+    <title>Login | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC]">
-    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
-        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
+<body>
+    <main class="w-full bg-[#E6D8FC] px-15 pb-28">
+        <header class="w-full flex items-center justify-between p-4">
             <a href="/">
                 <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
             </a>
 
-            <nav class="xl:flex gap-8 hidden">
+            <nav class="flex gap-8">
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
-                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
             </nav>
 
-            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
-            <div class="block xl:hidden">
-                <i class="bx bx-menu-close text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer"></i>
-            </div>
+            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
         </header>
-        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30 px-4">
-            <div class="bg-[#F0E9FB] lg:w-160 w-full pt-8 lg:px-8 px-4 pb-20 mx-auto">
+        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30">
+            <div class="bg-[#F0E9FB] w-160 pt-8 px-8 pb-20 mx-auto">
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
-                <p class="font-dm capitalize text-center text-base font-normal mt-1 mb-3">join & find your ideal hostel</p>
+                <p class="font-dm capitalize text-center text-base font-normal mt-1">join & find your ideal hostel</p>
 
                 <form action="#">
                     <div class="w-full flex flex-col mb-2">
@@ -96,24 +93,24 @@
                         <input type="checkbox">
                         <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
                     </div>
-                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
+                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149)]">
                         create account
                     </button>
                 </form>
                 <div class="mt-10 mb-7 flex items-center justify-center gap-4">
-                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
-                    <p class="uppercase sm:text-sm text-xs text-[#94A3B8]">or sign up with</p>
-                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
+                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
+                    <p class="uppercase text-sm text-[#2d2340]">or sign up with</p>
+                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
                 </div>
                 <div class="flex gap-6 w-fit mx-auto">
-                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
                         <img 
                             src="/images/apple-icon.png" 
                             alt="apple logo"
                             class="w-10 h-10"
                         >
                     </div>
-                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
                         <img 
                             src="/images/google-icon.png" 
                             alt="google logo"
@@ -123,7 +120,7 @@
                 </div>
                 <p 
                     class="text-base text-[#2d2340] mt-6 text-center">Already have an account? 
-                    <a href="/pages/login.html" class="text-[#7956C8] hover:underline hover:text-[#4a2f82]">Log In</a>
+                    <a href="/pages/login.html" class="text-[#7956C8]">Log in</a>
                 </p>
             </div>
         </section>
