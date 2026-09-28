@@ -42,12 +42,6 @@ mobileOverlay.addEventListener("click", () => {
     console.log("Menu Closed");
 })
 
-  // Event Listeners
-//   menuBtn.addEventListener("click", openMenu);
-//   mobileMenu.addEventListener("click", console.log("Hamburger clicked"));
-//   closeMenuBtn.addEventListener("click", closeMenu);
-//   mobileOverlay.addEventListener("click", closeMenu);
-
 // Close menu when pressing Escape key
 // document.addEventListener("keydown", (e) => {
 //     if (e.key === "Escape" && !mobileMenu.classList.contains("-translate-x-full")) {
