@@ -22,7 +22,7 @@
     <title>Login | HostelFinder</title>
 </head>
 <body class="bg-[#E6D8FC]">
-    <main class="container w-full px-15 pb-28 mx-auto">
+    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
         <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
             <a href="/">
                 <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
@@ -40,10 +40,10 @@
                 <i class="bx bx-menu-close text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer"></i>
             </div>
         </header>
-        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30">
-            <div class="bg-[#F0E9FB] w-160 pt-8 px-8 pb-20 mx-auto">
+        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30 px-4">
+            <div class="bg-[#F0E9FB] lg:w-160 w-full pt-8 lg:px-8 px-4 pb-20 mx-auto">
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
-                <p class="font-dm capitalize text-center text-base font-normal mt-1">join & find your ideal hostel</p>
+                <p class="font-dm capitalize text-center text-base font-normal mt-1 mb-3">join & find your ideal hostel</p>
 
                 <form action="#">
                     <div class="w-full flex flex-col mb-2">
@@ -96,24 +96,24 @@
                         <input type="checkbox">
                         <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
                     </div>
-                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149)]">
+                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
                         create account
                     </button>
                 </form>
                 <div class="mt-10 mb-7 flex items-center justify-center gap-4">
-                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
-                    <p class="uppercase text-sm text-[#2d2340]">or sign up with</p>
-                    <div class="bg-[#d3cae1] h-px w-[35%]"></div>
+                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
+                    <p class="uppercase sm:text-sm text-xs text-[#2d2340]">or sign up with</p>
+                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
                 </div>
                 <div class="flex gap-6 w-fit mx-auto">
-                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
                         <img 
                             src="/images/apple-icon.png" 
                             alt="apple logo"
                             class="w-10 h-10"
                         >
                     </div>
-                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
                         <img 
                             src="/images/google-icon.png" 
                             alt="google logo"
@@ -123,7 +123,7 @@
                 </div>
                 <p 
                     class="text-base text-[#2d2340] mt-6 text-center">Already have an account? 
-                    <a href="/pages/login.html" class="text-[#7956C8]">Log in</a>
+                    <a href="/pages/login.html" class="text-[#7956C8] hover:underline hover:text-[#4a2f82]">Log in</a>
                 </p>
             </div>
         </section>
