@@ -3,7 +3,7 @@ const closeMenuBtn = document.getElementById("close-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileOverlay = document.getElementById("mobile-overlay");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click", function menuOpen(){
     // mobileOverlay.classList.remove("hidden");
     // setTimeout(() => {
     //     mobileOverlay.classList.remove("opacity-0");
