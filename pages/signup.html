@@ -21,21 +21,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Login | HostelFinder</title>
 </head>
-<body>
-    <main class="w-full bg-[#E6D8FC] px-15 pb-28">
-        <header class="w-full flex items-center justify-between p-4">
+<body class="bg-[#E6D8FC]">
+    <main class="container w-full px-15 pb-28 mx-auto">
+        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
             <a href="/">
                 <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
             </a>
 
-            <nav class="flex gap-8">
+            <nav class="xl:flex gap-8 hidden">
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
             </nav>
 
-            <button class="capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
+            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
+            <div class="block xl:hidden">
+                <i class="bx bx-menu-close text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer"></i>
+            </div>
         </header>
         <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30">
             <div class="bg-[#F0E9FB] w-160 pt-8 px-8 pb-20 mx-auto">
