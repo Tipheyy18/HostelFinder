@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menu-btn");
     const closeMenuBtn = document.getElementById("close-menu-btn");
@@ -36,3 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     closeMenuBtn.addEventListener("click", closeMenu);
     mobileOverlay.addEventListener("click", closeMenu);
 });
+=======
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+      },
+    },
+  },
+}
+>>>>>>> 746c4dcc6bdd0eec78bd1b1b56d256a814932f06

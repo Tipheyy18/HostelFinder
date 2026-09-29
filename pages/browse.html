@@ -4,14 +4,467 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Browse Hostel | HostelFinder</title>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Browse Properties | HostelFinder</title>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .range-purple::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #7956C8;
+                cursor: pointer;
+                box-shadow: 0 0 0 3px #ede8f8;
+            }
+            .range-purple::-webkit-slider-runnable-track {
+                background: #e5e7eb;
+                border-radius: 9999px;
+                height: 4px;
+            }
+            .range-purple {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 4px;
+                background: #e5e7eb;
+                border-radius: 9999px;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    </style>
 </head>
-<body>
-    <h2 id="title" class="text-red-600 text-3xl">This is the browse page of HostelFinder.</h2>
-    <p>
-        Here you can find a list of available hostels, read reviews,
-        and book your stay. Enjoy your stay
-    </p> 
+<body class="bg-[#E6D8FC] font-[Manrope]">
+
+    <!-- HEADER -->
+    <header class="w-full flex items-center justify-between px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
+        <a href="/"><img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo"></a>
+        <nav class="xl:flex gap-8 hidden">
+            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
+            <a href="/pages/browse.html" class="text-sm font-semibold text-[#7956C8] underline">Browse Properties</a>
+            <a href="/pages/listProperty.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">List Your Property</a>
+            <a href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Log In</a>
+        </nav>
+        <a href="/pages/signup.html" class="xl:block hidden">
+            <button class="capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+        </a>
+        <div class="block xl:hidden">
+            <i class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer px-1"></i>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="text-center pt-10 pb-6 px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Find Your <span class="text-[#7956C8]">Dream</span><br>
+            <span class="text-[#7956C8]">Space</span> Off Campus
+        </h1>
+        <p class="mt-3 text-gray-500 text-sm">Browse various spaces with costs, distance and<br class="hidden sm:block"> availability in view</p>
+    </section>
+
+    <!-- SEARCH + FILTER PILLS -->
+    <div class="max-w-6xl mx-auto px-4 mb-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-sm w-full sm:w-72 flex-shrink-0">
+            <i class="bx bx-search text-[#7956C8]
+
+ text-lg flex-shrink-0"></i>
+            <input type="text" placeholder="Search by location or hostel name..." class="bg-transparent outline-none text-xs text-gray-500 w-full placeholder-[#7956C8]
+
+">
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+            <button class="flex items-center gap-1 bg-[#7956C8] text-white text-xs px-3 py-1.5 rounded-full font-semibold shadow"><i class="bx bx-filter text-sm"></i> Clear ↑</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">All</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Verified</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Location</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Property Type</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Distance</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Price</button>
+            <button class="border border-gray-300 bg-white text-gray-500 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Amenities</button>
+        </div>
+    </div>
+
+    <!-- MAIN: SIDEBAR + CARDS -->
+    <div class="max-w-6xl mx-auto px-4 pb-16 flex flex-col md:flex-row gap-6 items-start">
+
+        <!-- FILTER SIDEBAR — matches Figma exactly -->
+        <aside class="w-full md:w-72 flex-shrink-0">
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+
+                <!-- Big bold title -->
+                <div class="px-6 pt-6 pb-3">
+                    <h2 class="text-2xl font-black text-gray-900">Filter Your Search</h2>
+                </div>
+
+                <!-- "Basic filters" — full-width gray strip -->
+                <div class="bg-gray-100 px-6 py-2 mb-1">
+                    <p class="text-xs font-bold text-gray-500">Basic filters</p>
+                </div>
+
+                <div class="px-6 py-5 flex flex-col gap-5">
+
+                    <!-- Verification -->
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-800">Verification</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-[#7956C8]
+
+">Verified</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer">
+                                <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow peer-checked:after:translate-x-4"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <p class="text-sm font-semibold text-gray-800 mb-2">Location</p>
+                        <input type="text" placeholder="Search by location or hostel name"
+                            class="w-full bg-gray-100 rounded-xl px-4 py-2.5 text-xs text-gray-500 outline-none focus:ring-2 focus:ring-[#7956C8] placeholder-[#7956C8]
+
+ transition">
+                    </div>
+
+                    <!-- Property Type -->
+                    <div>
+                        <p class="text-sm font-semibold text-gray-800 mb-2">Property Type</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="bg-[#7956C8] text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Self Contain
+                            </button>
+                            <button class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">Single Room</button>
+                            <button class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">1-Bedroom</button>
+                            <button class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8] hover:text-[#7956C8] transition">2-Bedroom</button>
+                        </div>
+                    </div>
+
+                    <!-- Distance from School -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-800">Distance from School</p>
+                            <span class="text-xs font-semibold text-[#7956C8]">0.5km</span>
+                        </div>
+                        <input type="range" min="0" max="5" value="0.5" step="0.1" class="range-purple">
+                        <div class="flex justify-between text-[11px] text-[#7956C8]
+
+ mt-1.5"><span>0.5km</span><span>5km</span></div>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="text-sm font-semibold text-gray-800">Price range</p>
+                            <span class="text-xs font-semibold text-[#7956C8]">100k</span>
+                        </div>
+                        <input type="range" min="100000" max="500000" value="100000" class="range-purple">
+                        <div class="flex justify-between text-[11px] text-[#7956C8]
+
+ mt-1.5"><span>₦100k</span><span>500k</span></div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div>
+                        <p class="text-sm font-semibold text-gray-800 mb-3">Amenities</p>
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2">
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Water
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Security
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Wifi
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Power/Generator
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Laundry service
+                            </label>
+                            <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Light
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex gap-3 pt-1">
+                        <button class="flex-1 border-2 border-gray-300 text-gray-700 text-sm font-semibold py-2.5 rounded-xl hover:bg-gray-50 transition">Reset</button>
+                        <button class="flex-1 bg-[#7956C8] hover:bg-[#4a2f82] text-white text-sm font-semibold py-2.5 rounded-xl transition">Apply filters</button>
+                    </div>
+
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT: RESULTS -->
+        <div class="flex-1 min-w-0">
+            <p class="text-xs text-[#7956C8]
+
+ mb-4">14 results found &bull; Sorted by Recommended</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>1st Gate, 7 mins from LASU</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.8 · 120 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Shared Apartment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 250k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>1st Gate, 7 mins from LASU</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.8 · 120 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Shared Apartment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 250k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>PCL, 15 mins from UNILAG</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.6 · 78 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Self Contain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 500k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>PCL, 15 mins from UNILAG</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.6 · 78 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Self Contain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 500k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>1st Gate, 7 mins from LASU</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.8 · 120 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Shared Apartment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 250k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>1st Gate, 7 mins from LASU</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.8 · 120 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Shared Apartment</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 250k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>PCL, 15 mins from UNILAG</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.6 · 78 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Self Contain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 500k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200">
+                    <div class="flex">
+                        <div class="relative w-[140px] flex-shrink-0">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png" alt="Greenfields Court" class="w-full h-full object-cover min-h-[130px]">
+                            <span class="absolute bottom-2 left-2 bg-[#6FCF97] text-white text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">Available</span>
+                        </div>
+                        <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
+                            <div class="flex justify-end mb-1">
+                                <span class="text-[#7956C8] text-[9px] font-semibold flex items-center gap-0.5">
+                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Verified
+                                </span>
+                            </div>
+                            <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1">Greenfields Court</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-map text-[11px]"></i>PCL, 15 mins from UNILAG</p>
+                            <p class="text-[10px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5"><i class="bx bx-star text-[11px] text-yellow-400"></i>4.6 · 78 Reviews</p>
+                            <p class="text-[9px] font-bold text-[#7956C8]
+
+ uppercase tracking-wider mt-auto">Self Contain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                        <span class="text-[#7956C8] font-bold text-sm">₦ 500k/year</span>
+                        <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition">View details →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
-   
