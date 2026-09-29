@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>SignUp | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC]">
+<body class="bg-[#E6D8FC] font-[manrope]">
     <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
         <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)] relative">
             <a href="/">
@@ -121,6 +121,19 @@
                             <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
                         </div>
                     </div>
+                    <fieldset class="w-full flex flex-col mb-2">
+                        <legend class="font-semibold text-sm mb-2 text-[#0f172a]">I am a</legend>
+                        <div class="flex gap-3">
+                            <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
+                                <input type="radio" name="accountType" value="student" required class="accent-[#7956C8]">
+                                <span class="text-sm text-[#2d2340]">Student</span>
+                            </label>
+                            <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
+                                <input type="radio" name="accountType" value="landlord" required class="accent-[#7956C8]">
+                                <span class="text-sm text-[#2d2340]">Landlord</span>
+                            </label>
+                        </div>
+                    </fieldset>
                     <div class="w-full flex gap-2">
                         <input type="checkbox">
                         <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
