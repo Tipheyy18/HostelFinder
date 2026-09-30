@@ -74,13 +74,16 @@
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">welcome back</h3>
                 <p class="font-dm capitalize text-center text-base font-normal mt-1 mb-3">start your hostel search</p>
 
-                <form action="#">
+                <form id="login-form" action="#">
                     <div class="w-full flex flex-col mb-2">
                         <label for="email" class="font-semibold text-sm mb-2 text-[#0f172a]">Email Address</label>
                         <input 
+                            id="email"
+                            name="email"
                             type="email"
                             placeholder="name@gmail.com"
                             class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            required
                         >
                     </div>  
                      
@@ -88,17 +91,24 @@
                         <label for="password" class="font-semibold text-sm mb-2 text-[#0f172a]">Password</label>
                         <div class="relative w-full">
                             <input 
+                                id="password"
+                                name="password"
                                 type="password" 
                                 placeholder="At least 8 characters"
                                 class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                                minlength="8"
+                                required
                             >
-                            <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
+                            <button type="button" class="absolute right-3 top-3 text-[30px] text-[#7c7188]" data-password-toggle="password" aria-label="Show password" aria-pressed="false">
+                                <i class="bx bx-eye" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="mt-5 mb-8 flex justify-end">
                         <p class="text-[#7956C8] text-sm font-normal">Forgot password?</p>
                     </div>
-                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
+                    <p id="login-message" class="mb-3 text-center text-sm" role="status" aria-live="polite"></p>
+                    <button type="submit" class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
                         log in
                     </button>
                 </form>
