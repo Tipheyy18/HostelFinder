@@ -4,6 +4,18 @@ const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
 
 document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("hostelFinderLoggedIn") === "true";
+    document.querySelectorAll("[data-auth-login], [data-auth-signup]").forEach((element) => {
+        element.hidden = isLoggedIn;
+    });
+    document.querySelectorAll("[data-auth-logout]").forEach((element) => {
+        element.hidden = !isLoggedIn;
+        element.addEventListener("click", () => {
+            localStorage.removeItem("hostelFinderLoggedIn");
+            window.location.href = "/";
+        });
+    });
+
     const menuBtn = document.getElementById("menu-btn");
     const closeMenuBtn = document.getElementById("close-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -94,6 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 message.textContent = result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
+                localStorage.setItem("hostelFinderLoggedIn", "true");
+                window.location.href = "/pages/browse.html";
             } catch (error) {
                 message.textContent = error.message || "Unable to log in. Please try again.";
                 message.classList.add("text-red-700");
@@ -153,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             message.textContent = result.message || "Account created successfully.";
             message.classList.add("text-green-700");
-            signupForm.reset();
+            window.location.href = "/pages/student-verification.html";
         } catch (error) {
             message.textContent = error.message || "Unable to sign up. Please try again.";
             message.classList.add("text-red-700");
