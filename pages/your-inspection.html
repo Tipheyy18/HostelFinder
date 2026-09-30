@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Surfer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <!-- DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Login | HostelFinder</title>
+</head>
+<body class="bg-[#E6D8FC]">
+    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
+        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
+            <a href="/">
+                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Properties</a>
+                <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] cursor-pointer underline">View Your Inspection</a>
+                <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Settings</a>
+            </nav>
+
+            <a href="/pages/signup.html">
+                <button class="xl:block hidden capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create account</button>
+            </a>
+            <div class="block xl:hidden">
+                <i class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer px-1"></i>
+            </div>
+        </header>
+
+    <div class="max-w-3xl mx-auto px-4 pt-6 pb-2 flex items-center gap-3">
+        <a href="/pages/book-inspection.html" class="text-gray-700 hover:text-[#7956C8] transition">
+            <i class="bx bx-arrow-back text-2xl"></i>
+        </a>
+        <h1 class="text-2xl font-extrabold text-gray-900">Your Inspection</h1>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="max-w-3xl mx-auto px-4 pb-16 pt-4">
+
+        <!-- Outer light-purple container — matches the Figma background card -->
+        <div class="bg-[#f0ebfc] rounded-3xl p-6 md:p-10">
+
+            <!-- Inner white card — centered, matches Figma -->
+            <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-sm mx-auto overflow-hidden">
+
+                <!-- Property image -->
+                <div class="w-full p-2">
+                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                         alt="Greenfields Court" class="w-full h-48 object-cover rounded-xl">
+                </div>
+
+                <div class="px-5 py-4 flex flex-col gap-3">
+
+                    <!-- Available badge + property name -->
+                    <div>
+                        <span class="bg-green-500 text-[#FFFFFF] text-[9px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block">Available</span>
+                        <h2 class="text-lg font-extrabold text-gray-900">Greenfields Court</h2>
+                    </div>
+
+                    <!-- Inspection confirmation row -->
+                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
+                                <i class="bx bx-check-shield text-[#7956C8] text-sm"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">Inspection confirmation</span>
+                        </div>
+                        <!-- Toggle switch -->
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="confirmation-toggle" class="sr-only peer">
+                            <div class="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4 after:shadow"></div>
+                        </label>
+                    </div>
+
+                    <!-- Date and time -->
+                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
+                                <i class="bx bx-calendar text-[#7956C8] text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Date and time</p>
+                                <p class="text-xs font-semibold text-gray-700">Sat, 27 Sep – 3:30PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property type -->
+                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
+                                <i class="bx bx-home text-[#7956C8] text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Property</p>
+                                <p class="text-xs font-semibold text-gray-700">2-Bedroom Flat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
+                        <div class="flex items-start gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="bx bx-map text-[#7956C8] text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Location</p>
+                                <p class="text-xs font-semibold text-gray-700">14 Maple Court, off Accord</p>
+                                <p class="text-[10px] text-[#7956C8] mt-0.5">2.9km from your hostel · direction below</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reminder notice -->
+                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
+                        <div class="flex items-start gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="bx bx-bell text-[#7956C8] text-sm"></i>
+                            </div>
+                            <p class="text-[10px] text-gray-500 leading-relaxed">
+                                You'll get a reminder 1day and 1hour before this inspection
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Action buttons — below card -->
+            <div class="flex items-center justify-center gap-4 mt-6">
+                <button id="main-action-btn" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white font-semibold text-sm px-6 py-3 rounded-xl transition cursor-pointer shadow-md">
+                    Confirm Inspection
+                </button>
+                <a href="/pages/book-inspection.html">
+                    <button class="bg-white border-2 border-[#7956C8] text-[#7956C8] hover:bg-[#ede8f8] font-semibold text-sm px-6 py-3 rounded-xl transition cursor-pointer">
+                        Reschedule
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const toggle = document.getElementById('confirmation-toggle');
+        const mainBtn = document.getElementById('main-action-btn');
+
+        function updateState() {
+            if (toggle.checked) {
+                mainBtn.textContent = 'Mark As Complete';
+                mainBtn.onclick = function() {
+                    window.location.href = '/pages/inspection-completed.html';
+                };
+            } else {
+                mainBtn.textContent = 'Confirm Inspection';
+                mainBtn.onclick = function() {
+                    toggle.checked = true;
+                    updateState();
+                };
+            }
+        }
+
+        if (toggle && mainBtn) {
+            toggle.addEventListener('change', updateState);
+            updateState();
+        }
+    </script>
+
+</body>
+</html>

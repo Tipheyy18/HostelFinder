@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Book  Inspection | HostelFinder</title>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .range-purple::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #7956C8;
+                cursor: pointer;
+                box-shadow: 0 0 0 3px #ede8f8;
+            }
+            .range-purple::-webkit-slider-runnable-track {
+                background: #e5e7eb;
+                border-radius: 9999px;
+                height: 4px;
+            }
+            .range-purple {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 4px;
+                background: #e5e7eb;
+                border-radius: 9999px;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope]">
+
+    <!-- HEADER -->
+    <header class="w-full flex items-center justify-between px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
+        <a href="/"><img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo"></a>
+        <nav class="xl:flex gap-8 hidden">
+            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
+            <a href="/pages/browse.html" class="text-sm font-semibold text-[#7956C8] underline">Browse Properties</a>
+            <a href="/pages/book-inspection.html"  class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">View  Your Inspection</a>
+            <a href="/pages/settings.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Settings</a>
+        </nav>
+        <a href="/pages/signup.html" class="xl:block hidden">
+            <button class="capitalize bg-[#7956C8] text-[#FFFFFF]
+ text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+        </a>
+        <div class="block xl:hidden">
+            <i class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer px-1"></i>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="max-w-xl mx-auto px-4 py-8 pb-16  bg-[#F7F3D]">
+
+        <!-- Page Title -->
+        <h1 class="text-2xl font-extrabold text-gray-900 text-center mb-1">Book Inspection</h1>
+        <p class="text-xs text-[#7956C8]
+
+ text-center mb-6">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
+
+        <!-- Property summary card -->
+        <div class="bg-[#FFFFFF]
+ rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.15)] p-4 mb-4">
+            <div class="flex gap-3 items-start mb-3">
+                <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                     alt="Greenfields Court" class="w-20 h-16 object-cover rounded-xl flex-shrink-0">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between mb-1">
+                        <h2 class="text-sm font-extrabold text-gray-900">Greenfields Court</h2>
+                        <span class="bg-[#FFFFFF]
+ border border-[#7956C8] text-[#7956C8] text-[10px] px-2 py-0.5 rounded-full font-semibold flex items-center gap-1 ml-2 flex-shrink-0">
+                            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Verified
+                        </span>
+                    </div>
+                    <p class="text-[11px]  
+
+ flex items-center gap-1 ">
+                        <svg class="w-3 h-3  flex-shrink-0 " fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                       
+                        <span>Choba, Under G Road.</span>
+                      <div>5 mins away from LASU</div>
+
+
+                    </p>
+
+                    
+                    <p class="text-[11px] text-[#7956C8]
+
+ flex items-center gap-1 mb-0.5">
+                        <svg class="w-3 h-3 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        4.8 · 120 Reviews
+                    </p>
+                    <p class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Shared Apartment</p>
+                </div>
+            </div>
+            <!-- Available badge -->
+            <div class="inline-block bg-green-500 text-[#FFFFFF]
+ text-[10px] px-3 py-0.5 rounded-full font-semibold mb-3">Available
+            </div>
+               <div class="bg-[#7956C8] rounded-full flex items-center justify-around px-4 py-2.5">
+                <span class="text-[#FFFFFF]
+ text-[11px] font-medium flex items-center gap-1.5">
+                    <i class="bx bx-droplet text-sm"></i> Water
+                </span>
+                <span class="text-[#FFFFFF]
+ opacity-40 text-sm">|</span>
+                <span class="text-[#FFFFFF]
+ text-[11px] font-medium flex items-center gap-1.5">
+                    <i class="bx bx-bulb text-sm"></i> Light
+                </span>
+                <span class="text-[#FFFFFF]
+ opacity-40 text-sm">|</span>
+                <span class="text-[#FFFFFF]
+ text-[11px] font-medium flex items-center gap-1.5">
+                    <i class="bx bx-wifi text-sm"></i> Wifi
+                </span>
+                <span class="text-[#FFFFFF]
+ opacity-40 text-sm">|</span>
+                <span class="text-[#FFFFFF]
+ text-[11px] font-medium flex items-center gap-1.5">
+                    <i class="bx bx-shield text-sm"></i> Security
+                </span>
+            </div>
+            <!-- Price + View Details row -->
+            <div class="flex items-center justify-between">
+                <span class="text-lg font-extrabold text-[#7956C8]">₦ 250k/year</span>
+                <a href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF]
+ text-xs px-3 py-1.5 rounded-lg transition font-medium">
+                    View details →
+                </a>
+            </div>
+        </div>
+
+        
+        <div class="bg-[#FFFFFF]
+ rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] p-4 mb-4">
+            <div class="flex items-center gap-2 mb-1">
+                <div class="w-7 h-7 bg-[#EDE5F9] rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-[#7956C8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-gray-800">Select Date</p>
+                    <p class="text-[10px] text-[#7956C8]
+
+">Available dates from landlord</p>
+                </div>
+            </div>
+            <!-- Date pills -->
+            <div class="flex gap-2 flex-wrap mt-3" id="date-picker">
+                <button onclick="selectDate(this)" class="date-btn flex flex-col items-center px-3 py-2 rounded-xl border border-gray-200 text-xs text-gray-500 hover:border-[#7956C8] hover:text-[#7956C8] transition min-w-[52px]">
+                    <span class="font-semibold">Mon</span><span>20 sep</span><span class="dot w-1 h-1 rounded-full bg-gray-300 mt-1 inline-block"></span>
+                </button>
+                <button onclick="selectDate(this)" class="date-btn flex flex-col items-center px-3 py-2 rounded-xl border border-gray-200 text-xs text-gray-500 hover:border-[#7956C8] hover:text-[#7956C8] transition min-w-[52px]">
+                    <span class="font-semibold">Tue</span><span>22 sep</span><span class="dot w-1 h-1 rounded-full bg-gray-300 mt-1 inline-block"></span>
+                </button>
+                <button onclick="selectDate(this)" class="date-btn flex flex-col items-center px-3 py-2 rounded-xl border border-gray-200 text-xs transition min-w-[52px] selected">
+                    <span class="font-semibold">Wed</span><span>23 sep</span><span class="dot w-1 h-1 rounded-full bg-gray-300 mt-1 inline-block"></span>
+                </button>
+                <button onclick="selectDate(this)" class="date-btn flex flex-col items-center px-3 py-2 rounded-xl border border-gray-200 text-xs text-gray-500 hover:border-[#7956C8] hover:text-[#7956C8] transition min-w-[52px]">
+                    <span class="font-semibold">Thurs</span><span>24 sep</span><span class="dot w-1 h-1 rounded-full bg-gray-300 mt-1 inline-block"></span>
+                </button>
+                <button onclick="selectDate(this)" class="date-btn flex flex-col items-center px-3 py-2 rounded-xl border border-gray-200 text-xs text-gray-500 hover:border-[#7956C8] hover:text-[#7956C8] transition min-w-[52px]">
+                    <span class="font-semibold">Fri</span><span>25 sep</span><span class="dot w-1 h-1 rounded-full bg-gray-300 mt-1 inline-block"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Select Time Card -->
+        <div class="bg-[#FFFFFF]
+ rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] p-4 mb-6">
+            <div class="flex items-center gap-2 mb-1">
+                <div class="w-7 h-7 bg-[#EDE5F9] rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-[#7956C8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-gray-800">Select Time</p>
+                    <p class="text-[10px] text-[#7956C8]
+
+">Available time slot from landlord</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-3" id="time-picker">
+                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+                    2:00 PM – 3:00 PM
+                </button>
+                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+                    4:00 PM – 5:00 PM
+                </button>
+                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+                    5:00 PM – 6:00 PM
+                </button>
+                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center flex items-center justify-center gap-1 selected">
+                    6:00 PM – 7:00 PM
+                </button>
+            </div>
+        </div>
+
+        <!-- Confirm button — goes to Your Inspection -->
+        <a href="/pages/your-inspection.html">
+            <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] font-bold text-base py-4 rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.35)] transition cursor-pointer">
+                Confirm Inspection
+            </button>
+        </a>
+
+    </main>
+
+    <script>
+        // ── DATE PICKER ─────────────────────────────────────────
+        function selectDate(el) {
+            // Reset all date buttons
+            document.querySelectorAll('.date-btn').forEach(btn => {
+                btn.style.backgroundColor = '';
+                btn.style.color = '';
+                btn.style.borderColor = '#e5e7eb';
+                // reset the dot
+                const dot = btn.querySelector('.dot');
+                if (dot) dot.style.backgroundColor = '#d1d5db';
+            });
+
+            // Activate clicked button
+            el.style.backgroundColor = '#7956C8';
+            el.style.color = '#FFFFFF';
+            el.style.borderColor = '#7956C8';
+            const dot = el.querySelector('.dot');
+            if (dot) dot.style.backgroundColor = '#FFFFFF';
+        }
+
+        // ── TIME PICKER ──────────────────────────────────────────
+        function selectTime(el) {
+            // Reset all time buttons
+            document.querySelectorAll('.time-btn').forEach(btn => {
+                btn.style.backgroundColor = '';
+                btn.style.color = '#6b7280';
+                btn.style.borderColor = '#e5e7eb';
+                // remove checkmark if present
+                const chk = btn.querySelector('.chk-icon');
+                if (chk) chk.remove();
+            });
+
+            // Activate clicked button
+            el.style.backgroundColor = '#7956C8';
+            el.style.color = '#FFFFFF';
+            el.style.borderColor = '#7956C8';
+
+            // Add checkmark if not already there
+            if (!el.querySelector('.chk-icon')) {
+                const icon = document.createElement('svg');
+                icon.setAttribute('class', 'chk-icon w-3.5 h-3.5 inline-block ml-1 flex-shrink-0');
+                icon.setAttribute('fill', 'currentColor');
+                icon.setAttribute('viewBox', '0 0 20 20');
+                icon.innerHTML = '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>';
+                el.appendChild(icon);
+            }
+        }
+
+        // Set initial state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pre-select Wed date
+            const wedBtn = document.querySelector('.date-btn.selected');
+            if (wedBtn) {
+                wedBtn.style.backgroundColor = '#7956C8';
+                wedBtn.style.color = '#FFFFFF';
+                wedBtn.style.borderColor = '#7956C8';
+                const dot = wedBtn.querySelector('.dot');
+                if (dot) dot.style.backgroundColor = '#FFFFFF';
+            }
+            // Pre-select 6:00 PM time
+            const timeBtn = document.querySelector('.time-btn.selected');
+            if (timeBtn) {
+                timeBtn.style.backgroundColor = '#7956C8';
+                timeBtn.style.color = '#FFFFFF';
+                timeBtn.style.borderColor = '#7956C8';
+            }
+        });
+    </script>
+
+</body>
+</html>

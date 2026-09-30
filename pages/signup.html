@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Surfer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <!-- DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>SignUp | HostelFinder</title>
+</head>
+<body class="bg-[#E6D8FC] font-[manrope]">
+    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
+        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)] relative">
+            <a href="/">
+                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
+                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
+                <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Login</a>
+            </nav>
+
+            <a href="/pages/signup.html">
+                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            </a>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
+                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                        <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/signup.html" class="w-full">
+                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                </a>
+            </aside>
+        </header>
+        <section class="bg-[#F7F3FD] mt-20 pt-6 pb-30 px-4">
+            <div class="bg-[#F0E9FB] lg:w-160 w-full pt-8 lg:px-8 px-4 pb-20 mx-auto">
+                <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
+                <p class="font-dm capitalize text-center text-base font-normal mt-1 mb-3">join & find your ideal hostel</p>
+
+                <form id="signup-form" action="#">
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="fullName" class="font-semibold text-sm mb-2 text-[#0f172a]">Full Name</label>
+                        <input 
+                            id="fullName"
+                            name="fullName"
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            type="text" 
+                            placeholder="Chinedu Okafor"
+                            required
+                        >
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="email" class="font-semibold text-sm mb-2 text-[#0f172a]">Email Address</label>
+                        <input 
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="name@gmail.com"
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            required
+                        >
+                    </div>  
+                     <div class="w-full flex flex-col mb-2">
+                        <label for="phoneNumber" class="font-semibold text-sm mb-2 text-[#0f172a]">Phone Number</label>
+                        <input 
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            placeholder="+234 8162 772 324"
+                            class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            required
+                        >
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="password" class="font-semibold text-sm mb-2 text-[#0f172a]">Password</label>
+                        <div class="relative w-full">
+                            <input 
+                                id="password"
+                                name="password"
+                                type="password" 
+                                placeholder="At least 8 characters"
+                                class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                                minlength="8"
+                                required
+                            >
+                            <button type="button" class="absolute right-3 top-3 text-[30px] text-[#7c7188]" data-password-toggle="password" aria-label="Show password" aria-pressed="false">
+                                <i class="bx bx-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full flex flex-col mb-2">
+                        <label for="confirmPassword" class="font-semibold text-sm mb-2 text-[#0f172a]">Confirm Password</label>
+                        <div class="relative w-full">
+                            <input 
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                type="password" 
+                                placeholder="Repeat your pasword"
+                                class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                                required
+                            >
+                            <button type="button" class="absolute right-3 top-3 text-[30px] text-[#7c7188]" data-password-toggle="confirmPassword" aria-label="Show confirm password" aria-pressed="false">
+                                <i class="bx bx-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <fieldset class="w-full flex flex-col mb-2">
+                        <legend class="font-semibold text-sm mb-2 text-[#0f172a]">I am a</legend>
+                        <div class="flex gap-3">
+                            <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
+                                <input type="radio" name="role" value="student" required class="accent-[#7956C8]">
+                                <span class="text-sm text-[#2d2340]">Student</span>
+                            </label>
+                            <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
+                                <input type="radio" name="role" value="landlord" required class="accent-[#7956C8]">
+                                <span class="text-sm text-[#2d2340]">Landlord</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <div class="w-full flex gap-2">
+                        <input id="termsAccepted" name="termsAccepted" type="checkbox" value="true" required>
+                        <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
+                    </div>
+                    <p id="signup-message" text-center class="mb-3 text-sm" role="status" aria-live="polite"></p>
+                    <button type="submit" class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
+                        create account
+                    </button>
+                </form>
+                <div class="mt-10 mb-7 flex items-center justify-center gap-4">
+                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
+                    <p class="uppercase sm:text-sm text-xs text-[#94A3B8]">or sign up with</p>
+                    <div class="bg-[#d3cae1] h-px md:w-[35%] w-[20%]"></div>
+                </div>
+                <div class="flex gap-6 w-fit mx-auto">
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
+                        <img 
+                            src="/images/apple-icon.png" 
+                            alt="apple logo"
+                            class="w-10 h-10"
+                        >
+                    </div>
+                    <div class="w-20 h-20 bg-white flex items-center justify-center rounded-full hover:scale-105 cursor-pointer">
+                        <img 
+                            src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/google-icon.png" 
+                            alt="google logo"
+                            class="w-10 h-10"
+                        >
+                    </div>
+                </div>
+                <p 
+                    class="text-base text-[#2d2340] mt-6 text-center">Already have an account? 
+                    <a href="/pages/login.html" class="text-[#7956C8] hover:underline hover:text-[#4a2f82]">Log In</a>
+                </p>
+            </div>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

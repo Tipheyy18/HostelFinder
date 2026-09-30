@@ -4,18 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Surfer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+    <!-- DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Home | HostelFinder</title>
 </head>
-<body>
-    <main class="p-[20px]">
-        <h2 id="title" class="text-red-600 text-3xl">This is the home page of HostelFinder.</h2>
-        <p class="mt-4 bg-black text-white">
-            Here you can find a list of available hostels, read reviews,
-            and book your stay. Use the navigation menu to explore 
-            different sections of the website, including hostel listings, 
-            user reviews, and contact information. Enjoy your stay!
-        </p> 
+<body class="bg-[#E6D8FC] font-[Manrope]">
+    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
+        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)] relative">
+            <a href="/">
+                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
+                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+            </nav>
+
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
+                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                    </nav>
+                </div>
+
+                <a data-auth-signup href="/pages/signup.html" class="w-full">
+                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                </a>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            </aside>
+        </header>
+        <section class="mt-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class=" lg:w-[50%] w-full lg:text-left text-center">
+                    <h1 class="md:text-[64px] text-[40px] font-bold md:leading-20 leading-12 text-black">
+                        Find a hostel you can <span class="text-[#7956C8]">feel confident</span> about.
+                    </h1>
+                    <p class="text-lg font-normal mt-2">
+                        Discover verified off-campus accommodation,
+                        compare properties by price and location, and book
+                        inspections without an agent.
+                    </p>
+                </div>
+                <div class="lg:w-[40%] w-[80%]">
+                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628259/hero-img.png" alt="hero-img">
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row xl:gap-[200px] gap-10 mt-10 justify-between">
+                <div class="border-2 border-[#7956C8] rounded-xl p-5 text-center">
+                    <h2 class="text-[24px] font-semibold">
+                        Everything you need <span class="text-[#4B287D]">to find the right hostel.</span>
+                    </h2>
+                    <p class="mt-3 text-[18px]">
+                         Discover verified properties,
+                          see how long it takes to get to campus, 
+                          and book an inspection with ease.
+                    </p>
+                </div>
+                <div class="border-2 border-[#7956C8] rounded-xl p-5 text-center">
+                    <h2 class="text-[24px] font-semibold">
+                        Everything you need <span class="text-[#4B287D]">to manage your properties.</span>
+                    </h2>
+                    <p class="mt-3 text-[18px]">
+                        List your properties for students to discover, 
+                        manage your listings,
+                        and keep track of inspectionswith ease. 
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-between mt-10">
+                <div class="border-2 border-[#7956C8] rounded-xl p-5 text-center bg-white w-full md:w-[350px]">
+                    <h3 class="text-[20px] font-semibold">
+                        Looking for a hostel?
+                    </h3>
+                    <p class="text-sm text-[#7956CB] my-2">
+                         Browse verified off-campus hostels
+                    </p>
+                    <a href="/pages/browse.html">
+                        <button 
+                            class="bg-[#7956C8] px-5 py-2.5 w-full rounded-[10px] text-white flex 
+                            items-center justify-center gap-2 hover:bg-[#4a2f82] cursor-pointer"
+                            >
+                            Browse Properties
+                              <i class="bx bx-arrow-right-stroke text-3xl"></i>
+                        </button>
+                    </a>
+                </div>
+                <div class="border-2 border-[#7956C8] rounded-xl p-5 text-center bg-white w-full md:w-[350px]">
+                    <h3 class="text-[20px] font-semibold">
+                        Are you a hostel owner?
+                    </h3>
+                    <p class="my-2 text-sm text-[#7956CB]">
+                         List your property for students to discover
+                    </p>
+                    <a href="/pages/listProperty.html">
+                        <button
+                            class="bg-[#7956C8] px-5 py-2.5 w-full rounded-[10px] text-white flex 
+                            items-center justify-center gap-2 hover:bg-[#4a2f82] cursor-pointer"
+                        >
+                            List your properties
+                            <i class="bx bx-arrow-right-stroke text-3xl"></i>
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+        </section>
     </main>
+    <script src="./script.js" defer></script>
 </body>
 </html>
    
