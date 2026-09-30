@@ -1,5 +1,7 @@
-const SIGNUP_ENDPOINT = "/api/auth/signup";
-const LOGIN_ENDPOINT = "/api/auth/login";
+const base_url = "https://capstone-project-be-oeov.onrender.com"
+const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
+const LOGIN_ENDPOINT = `${base_url}/auth/login`;
+const GET_ALL_HOSTEL = `${base_url}/properties`;
 
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menu-btn");
@@ -48,6 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
             icon.classList.toggle("bx-eye-slash", isVisible);
         });
     });
+
+    if (document.body.dataset.page === "browse") {
+        fetch(GET_ALL_HOSTEL)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Hostel request failed with status ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((hostels) => console.log("Hostel data:", hostels))
+            .catch((error) => console.error("Failed to fetch hostels:", error));
+    }
 
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
@@ -114,10 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const payload = {
             fullName: signupForm.elements.fullName.value.trim(),
             email: signupForm.elements.email.value.trim(),
-            phoneNumber: signupForm.elements.phoneNumber.value.trim(),
+            phone: signupForm.elements.phone.value.trim(),
             password: passwordInput.value,
             confirmPassword: confirmPasswordInput.value,
-            accountType: signupForm.elements.accountType.value,
+            role: signupForm.elements.role.value,
             termsAccepted: signupForm.elements.termsAccepted.checked,
         };
 
