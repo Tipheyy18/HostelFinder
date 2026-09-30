@@ -74,71 +74,92 @@
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>
                 <p class="font-dm capitalize text-center text-base font-normal mt-1 mb-3">join & find your ideal hostel</p>
 
-                <form action="#">
+                <form id="signup-form" action="#">
                     <div class="w-full flex flex-col mb-2">
                         <label for="fullName" class="font-semibold text-sm mb-2 text-[#0f172a]">Full Name</label>
                         <input 
+                            id="fullName"
+                            name="fullName"
                             class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
                             type="text" 
                             placeholder="Chinedu Okafor"
+                            required
                         >
                     </div>
                     <div class="w-full flex flex-col mb-2">
                         <label for="email" class="font-semibold text-sm mb-2 text-[#0f172a]">Email Address</label>
                         <input 
+                            id="email"
+                            name="email"
                             type="email"
                             placeholder="name@gmail.com"
                             class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            required
                         >
                     </div>  
                      <div class="w-full flex flex-col mb-2">
                         <label for="phoneNumber" class="font-semibold text-sm mb-2 text-[#0f172a]">Phone Number</label>
                         <input 
-                            type="text" 
+                            id="phone"
+                            name="phone"
+                            type="tel"
                             placeholder="+234 8162 772 324"
                             class="p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                            required
                         >
                     </div>
                     <div class="w-full flex flex-col mb-2">
                         <label for="password" class="font-semibold text-sm mb-2 text-[#0f172a]">Password</label>
                         <div class="relative w-full">
                             <input 
+                                id="password"
+                                name="password"
                                 type="password" 
                                 placeholder="At least 8 characters"
                                 class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                                minlength="8"
+                                required
                             >
-                            <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
+                            <button type="button" class="absolute right-3 top-3 text-[30px] text-[#7c7188]" data-password-toggle="password" aria-label="Show password" aria-pressed="false">
+                                <i class="bx bx-eye" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="w-full flex flex-col mb-2">
                         <label for="confirmPassword" class="font-semibold text-sm mb-2 text-[#0f172a]">Confirm Password</label>
                         <div class="relative w-full">
                             <input 
+                                id="confirmPassword"
+                                name="confirmPassword"
                                 type="password" 
                                 placeholder="Repeat your pasword"
                                 class="w-full p-4 bg-white rounded-[14px] border border-transparent outline-none focus:outline-none focus:border-[#7956C8] focus:ring-1" 
+                                required
                             >
-                            <i class="absolute right-3 top-3 text-[30px] text-[#7c7188] bx bx-eye"></i>
+                            <button type="button" class="absolute right-3 top-3 text-[30px] text-[#7c7188]" data-password-toggle="confirmPassword" aria-label="Show confirm password" aria-pressed="false">
+                                <i class="bx bx-eye" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                     <fieldset class="w-full flex flex-col mb-2">
                         <legend class="font-semibold text-sm mb-2 text-[#0f172a]">I am a</legend>
                         <div class="flex gap-3">
                             <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
-                                <input type="radio" name="accountType" value="student" required class="accent-[#7956C8]">
+                                <input type="radio" name="role" value="student" required class="accent-[#7956C8]">
                                 <span class="text-sm text-[#2d2340]">Student</span>
                             </label>
                             <label class="flex flex-1 items-center gap-3 p-4 bg-white rounded-[14px] border border-transparent has-[:checked]:border-[#7956C8] cursor-pointer">
-                                <input type="radio" name="accountType" value="landlord" required class="accent-[#7956C8]">
+                                <input type="radio" name="role" value="landlord" required class="accent-[#7956C8]">
                                 <span class="text-sm text-[#2d2340]">Landlord</span>
                             </label>
                         </div>
                     </fieldset>
                     <div class="w-full flex gap-2">
-                        <input type="checkbox">
+                        <input id="termsAccepted" name="termsAccepted" type="checkbox" value="true" required>
                         <p class="text-sm font-normal my-5 text-[#2d2340]">I agree to the <span class="capitalize text-[#7956C8]">terms and conditions</span> and <span class="capitalize text-[#7956C8]">privacy policy</span></p>
                     </div>
-                    <button class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
+                    <p id="signup-message" text-center class="mb-3 text-sm" role="status" aria-live="polite"></p>
+                    <button type="submit" class="capitalize bg-[#7956C8] text-white text-base font-semibold w-full py-4 rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.149) hover:bg-[#4a2f82] cursor-pointer">
                         create account
                     </button>
                 </form>
