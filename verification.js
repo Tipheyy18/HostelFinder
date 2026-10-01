@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: storedUser.id,
                 email: storedUser.email,
                 role: storedUser.role,
+                token: storedUser.token,
             };
         }
     } catch (error) {
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function postJson(url, payload) {
         const response = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${signupUser.token}` },
             body: JSON.stringify(payload),
         });
         const result = await response.json().catch(() => ({}));

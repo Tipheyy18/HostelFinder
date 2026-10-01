@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             confirmPassword: confirmPasswordInput.value,
             role: signupForm.elements.role.value,
             schoolId: "6abd1e667434ce241906fe2b",
-            termsAccepted: signupForm.elements.termsAccepted.checked,
+            // termsAccepted: signupForm.elements.termsAccepted.checked,
         };
 
         submitButton.disabled = true;
