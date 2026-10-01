@@ -32,12 +32,13 @@
                 <a href="/" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Home</a>
                 <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
                 <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
             </nav>
 
-            <a href="/pages/signup.html">
+            <a data-auth-signup href="/pages/signup.html">
                 <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
             </a>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
                 <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
@@ -60,13 +61,14 @@
                         <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
                         <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
                         <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
                     </nav>
                 </div>
 
-                <a href="/pages/signup.html" class="w-full">
+                <a data-auth-signup href="/pages/signup.html" class="w-full">
                     <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
                 </a>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
             </aside>
         </header>
         <section class="mt-10">

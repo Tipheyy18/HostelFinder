@@ -4,19 +4,35 @@ const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
 
 document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("hostelFinderLoggedIn") === "true";
+    document.querySelectorAll("[data-auth-login], [data-auth-signup]").forEach((element) => {
+        element.hidden = isLoggedIn;
+    });
+    document.querySelectorAll("[data-auth-logout]").forEach((element) => {
+        element.hidden = !isLoggedIn;
+        element.addEventListener("click", () => {
+            localStorage.removeItem("hostelFinderLoggedIn");
+            window.location.href = "/";
+        });
+    });
+
     const menuBtn = document.getElementById("menu-btn");
     const closeMenuBtn = document.getElementById("close-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
     const mobileOverlay = document.getElementById("mobile-overlay");
 
     if (menuBtn && closeMenuBtn && mobileMenu && mobileOverlay) {
+        let closeMenuTimeout;
+
         function openMenu() {
+            window.clearTimeout(closeMenuTimeout);
             mobileOverlay.classList.remove("hidden");
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 mobileOverlay.classList.remove("opacity-0");
-            }, 10);
+            });
 
             mobileMenu.classList.remove("-translate-x-full");
+            menuBtn.setAttribute("aria-expanded", "true");
             document.body.classList.add("overflow-hidden");
         }
 
@@ -24,10 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileMenu.classList.add("-translate-x-full");
 
             mobileOverlay.classList.add("opacity-0");
-            setTimeout(() => {
+            closeMenuTimeout = window.setTimeout(() => {
                 mobileOverlay.classList.add("hidden");
             }, 300);
 
+            menuBtn.setAttribute("aria-expanded", "false");
             document.body.classList.remove("overflow-hidden");
         }
 
@@ -94,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 message.textContent = result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
+                localStorage.setItem("hostelFinderLoggedIn", "true");
+                window.location.href = "/pages/browse.html";
             } catch (error) {
                 message.textContent = error.message || "Unable to log in. Please try again.";
                 message.classList.add("text-red-700");
@@ -153,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             message.textContent = result.message || "Account created successfully.";
             message.classList.add("text-green-700");
-            signupForm.reset();
+            window.location.href = "/pages/student-verification.html";
         } catch (error) {
             message.textContent = error.message || "Unable to sign up. Please try again.";
             message.classList.add("text-red-700");
