@@ -21,9 +21,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Login | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC]">
+<body class="bg-[#E6D8FC] font-[manrope]">
     <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
-        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
+        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)] relative">
             <a href="/">
                 <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
             </a>
@@ -31,35 +31,58 @@
             <nav class="xl:flex gap-8 hidden">
                 <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
                 <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Properties</a>
-                <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] cursor-pointer underline">View Your Inspection</a>
-                <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Settings</a>
+                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
+                <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Login</a>
             </nav>
 
             <a href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create account</button>
+                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
             </a>
-            <div class="block xl:hidden">
-                <i class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer px-1"></i>
-            </div>
-        </header>
 
-    <div class="max-w-3xl mx-auto px-4 pt-6 pb-2 flex items-center gap-3">
-        <a href="/pages/book-inspection.html" class="text-gray-700 hover:text-[#7956C8] transition">
-            <i class="bx bx-arrow-back text-2xl"></i>
-        </a>
-        <h1 class="text-2xl font-extrabold text-gray-900">Your Inspection</h1>
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
+                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                        <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/signup.html" class="w-full">
+                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                </a>
+            </aside>
+        </header>
+         <main class="max-w-5xl mx-auto px-4 py-8"></main>
+    <section class="text-align pt-10 pb-6 px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+         Your  Inspection </h1>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="max-w-3xl mx-auto px-4 pb-16 pt-4">
 
-        <!-- Outer light-purple container — matches the Figma background card -->
-        <div class="bg-[#f0ebfc] rounded-3xl p-6 md:p-10">
 
-            <!-- Inner white card — centered, matches Figma -->
+        <div class="bg-[#F7F3FD]  p-12 md:p-6">
+
+           
             <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-sm mx-auto overflow-hidden">
 
-                <!-- Property image -->
+              
                 <div class="w-full p-2">
                     <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
                          alt="Greenfields Court" class="w-full h-48 object-cover rounded-xl">
@@ -67,7 +90,7 @@
 
                 <div class="px-5 py-4 flex flex-col gap-3">
 
-                    <!-- Available badge + property name -->
+                    
                     <div>
                         <span class="bg-green-500 text-[#FFFFFF] text-[9px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block">Available</span>
                         <h2 class="text-lg font-extrabold text-gray-900">Greenfields Court</h2>
