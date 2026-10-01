@@ -1,1 +1,10 @@
 /* HostelFinder Global Stylesheet */
+
+/* Hide scrollbar utility for clean horizontal scrolling */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
