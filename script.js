@@ -22,13 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileOverlay = document.getElementById("mobile-overlay");
 
     if (menuBtn && closeMenuBtn && mobileMenu && mobileOverlay) {
+        let closeMenuTimeout;
+
         function openMenu() {
+            window.clearTimeout(closeMenuTimeout);
             mobileOverlay.classList.remove("hidden");
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 mobileOverlay.classList.remove("opacity-0");
-            }, 10);
+            });
 
             mobileMenu.classList.remove("-translate-x-full");
+            menuBtn.setAttribute("aria-expanded", "true");
             document.body.classList.add("overflow-hidden");
         }
 
@@ -36,10 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileMenu.classList.add("-translate-x-full");
 
             mobileOverlay.classList.add("opacity-0");
-            setTimeout(() => {
+            closeMenuTimeout = window.setTimeout(() => {
                 mobileOverlay.classList.add("hidden");
             }, 300);
 
+            menuBtn.setAttribute("aria-expanded", "false");
             document.body.classList.remove("overflow-hidden");
         }
 

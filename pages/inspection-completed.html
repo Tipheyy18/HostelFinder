@@ -89,12 +89,12 @@
                 </div>
 
                 <!-- Proceed with Property — solid purple -->
-                <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-semibold text-sm py-3 rounded-xl transition mb-3">
+                <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-semibold text-sm py-3 rounded-xl transition mb-3 cursor-pointer">
                     Proceed with Property
                 </button>
 
                 <!-- Reject Property — red outline -->
-                <button class="w-full border-2 border-red-400 text-red-500 hover:bg-red-50 font-semibold text-sm py-3 rounded-xl transition mb-4">
+                <button id="reject-property" class="w-full border-2 border-red-400 text-red-500 hover:bg-red-50 font-semibold text-sm py-3 rounded-xl transition mb-4 cursor-pointer">
                     Reject Property
                 </button>
 
@@ -121,14 +121,14 @@
                             class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-600 placeholder-gray-300 outline-none focus:border-[#7956C8] resize-none transition pr-8"
                         ></textarea>
                         <!-- Send icon inside textarea -->
-                        <button class="absolute bottom-3 right-2 text-[#7956C8] hover:text-[#4a2f82] transition">
+                        <button class="absolute bottom-3 right-2 text-[#7956C8] hover:text-[#4a2f82] transition cursor-pointer">
                             <i class="bx bx-send text-base"></i>
                         </button>
                     </div>
 
                     <!-- Report link -->
                     <div class="flex justify-center mt-3">
-                        <button class="text-[10px] text-[#7956C8] hover:underline flex items-center gap-1">
+                        <button class="text-[10px] text-[#7956C8] hover:underline flex items-center gap-1 cursor-pointer">
                             <i class="bx bx-flag text-xs"></i> Report Property if necessary
                         </button>
                     </div>
@@ -177,6 +177,10 @@
             star.addEventListener('mouseout', function () {
                 stars.forEach(s => { s.style.color = ''; });
             });
+        });
+
+        document.getElementById('reject-property').addEventListener('click', () => {
+            window.location.href = '/pages/browse.html';
         });
     </script>
 
