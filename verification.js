@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://capstone-project-be-oeov.onrender.com";
+const API_BASE_URL = "https://group16-be-capstone-project-ochf.onrender.com";
 const OTP_ENDPOINTS = {
     send: `${API_BASE_URL}/auth/otp/send`,
     resend: `${API_BASE_URL}/auth/otp/resend`,
@@ -7,13 +7,10 @@ const OTP_ENDPOINTS = {
 
 document.addEventListener("DOMContentLoaded", () => {
     const statePanels = {
-        form: document.getElementById("state-form"),
         otp: document.getElementById("state-otp"),
         loading: document.getElementById("state-loading"),
         success: document.getElementById("state-success"),
     };
-    const studentForm = document.getElementById("student-form");
-    const formError = document.getElementById("form-error");
     const otpForm = document.getElementById("otp-form");
     const otpInputs = [...document.querySelectorAll(".otp-digit")];
     const otpError = document.getElementById("otp-error");
@@ -22,9 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const attemptsRemaining = document.getElementById("attempts-remaining");
     const otpRecipient = document.getElementById("otp-recipient");
     const otpSubmitButton = otpForm.querySelector("button[type='submit']");
-    let remainingSeconds = 60;
+    let signupUser = null;
+    let remainingSeconds = 0;
     let timerId;
-    let studentDetails;
+
+    try {
+        const storedUser = JSON.parse(sessionStorage.getItem("hostelFinderOtpUser") || "null");
+        if (storedUser?.id && storedUser?.email && storedUser?.role) {
+            signupUser = {
+                id: storedUser.id,
+                email: storedUser.email,
+                role: storedUser.role,
+            };
+        }
+    } catch (error) {
+        console.error("Unable to read signup verification details:", error);
+    }
 
     async function postJson(url, payload) {
         const response = await fetch(url, {
@@ -33,6 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(payload),
         });
         const result = await response.json().catch(() => ({}));
+        console.log("OTP API response:", {
+            endpoint: url,
+            status: response.status,
+            body: result,
+        });
 
         if (!response.ok || result.success === false) {
             throw new Error(result.message || `Request failed with status ${response.status}.`);
@@ -73,36 +88,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    studentForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        if (!studentForm.reportValidity()) return;
+    async function requestOtp(endpoint, fallbackMessage) {
+        if (!signupUser) {
+            otpRecipient.textContent = "Signup details were not found. Please sign up again.";
+            otpError.textContent = "Unable to send the verification code.";
+            otpError.classList.remove("hidden");
+            resendButton.disabled = true;
+            return;
+        }
 
-        studentDetails = {
-            school: studentForm.elements.school.value.trim(),
-            matricNumber: studentForm.elements["matric-number"].value.trim(),
-            email: studentForm.elements.email.value.trim(),
-        };
-        formError.classList.add("hidden");
-        const submitButton = studentForm.querySelector("button[type='submit']");
-        submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-
+        resendButton.disabled = true;
+        otpRecipient.textContent = `Sending a verification code to ${signupUser.email}...`;
+        otpError.classList.add("hidden");
         try {
-            await postJson(OTP_ENDPOINTS.send, studentDetails);
-            otpRecipient.textContent = `We sent a 6-digit code to ${studentDetails.email}.`;
-            otpError.classList.add("hidden");
+            await postJson(endpoint, signupUser);
+            otpRecipient.textContent = `We sent a 6-digit code to ${signupUser.email}.`;
             attemptsRemaining.classList.add("hidden");
-            showState("otp");
             startCountdown();
             otpInputs[0].focus();
         } catch (error) {
-            formError.textContent = error.message || "Unable to send the verification code. Please try again.";
-            formError.classList.remove("hidden");
-        } finally {
-            submitButton.disabled = false;
-            submitButton.textContent = "Send Verification Email";
+            otpRecipient.textContent = "We couldn't send a verification code.";
+            otpError.textContent = error.message || fallbackMessage;
+            otpError.classList.remove("hidden");
+            remainingSeconds = 0;
+            renderCountdown();
         }
-    });
+    }
 
     otpInputs.forEach((input, index) => {
         input.addEventListener("input", () => {
@@ -145,8 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
         showState("loading");
 
         try {
-            await postJson(OTP_ENDPOINTS.verify, { email: studentDetails.email, otp });
+            if (!signupUser) throw new Error("Signup details were not found. Please sign up again.");
+            await postJson(OTP_ENDPOINTS.verify, { ...signupUser, otp });
             window.clearInterval(timerId);
+            sessionStorage.removeItem("hostelFinderOtpUser");
             showState("success");
             window.setTimeout(() => {
                 window.location.href = "/pages/login.html";
@@ -164,26 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     resendButton.addEventListener("click", async () => {
-        if (remainingSeconds > 0 || !studentDetails) return;
-
-        resendButton.disabled = true;
-        otpError.classList.add("hidden");
-
-        try {
-            await postJson(OTP_ENDPOINTS.resend, { email: studentDetails.email });
-            clearOtpInputs();
-            startCountdown();
-            otpInputs[0].focus();
-        } catch (error) {
-            otpError.textContent = error.message || "Unable to resend the code. Please try again.";
-            otpError.classList.remove("hidden");
-            resendButton.disabled = false;
-        }
+        if (remainingSeconds > 0) return;
+        clearOtpInputs();
+        await requestOtp(OTP_ENDPOINTS.resend, "Unable to resend the code. Please try again.");
     });
 
-    document.querySelectorAll("[data-state]").forEach((button) => {
-        button.addEventListener("click", () => showState(button.dataset.state));
-    });
     document.querySelectorAll("[data-back]").forEach((button) => {
         button.addEventListener("click", () => {
             window.location.href = button.dataset.back;
@@ -214,4 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeMenuButton.addEventListener("click", closeMenu);
         mobileOverlay.addEventListener("click", closeMenu);
     }
+
+    requestOtp(OTP_ENDPOINTS.send, "Unable to send the verification code. Please try again.");
 });

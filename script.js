@@ -1,4 +1,4 @@
-const base_url = "https://capstone-project-be-oeov.onrender.com"
+const base_url = "https://group16-be-capstone-project-ochf.onrender.com"
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
@@ -70,13 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.body.dataset.page === "browse") {
         fetch(GET_ALL_HOSTEL)
-            .then((response) => {
+            .then(async (response) => {
+                const hostels = await response.json().catch(() => ({}));
+                console.log("GET_ALL_HOSTEL response:", {
+                    endpoint: GET_ALL_HOSTEL,
+                    status: response.status,
+                    body: hostels,
+                });
+
                 if (!response.ok) {
                     throw new Error(`Hostel request failed with status ${response.status}`);
                 }
-                return response.json();
+                return hostels;
             })
-            .then((hostels) => console.log("Hostel data:", hostels))
             .catch((error) => console.error("Failed to fetch hostels:", error));
     }
 
@@ -104,6 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify(payload),
                 });
                 const result = await response.json().catch(() => ({}));
+                console.log("LOGIN response:", {
+                    endpoint: LOGIN_ENDPOINT,
+                    status: response.status,
+                    body: result,
+                });
 
                 if (!response.ok) {
                     throw new Error(result.message || "Login failed. Check your details and try again.");
@@ -151,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
             password: passwordInput.value,
             confirmPassword: confirmPasswordInput.value,
             role: signupForm.elements.role.value,
+            schoolId: "6abd1e667434ce241906fe2b",
             termsAccepted: signupForm.elements.termsAccepted.checked,
         };
 
@@ -165,11 +177,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(payload),
             });
             const result = await response.json().catch(() => ({}));
+            console.log("SIGNUP response:", {
+                endpoint: SIGNUP_ENDPOINT,
+                status: response.status,
+                body: result,
+            });
 
             if (!response.ok) {
                 throw new Error(result.message || "Sign up failed. Please try again.");
             }
 
+            if (!result.user?.id || !result.user?.email || !result.user?.role) {
+                throw new Error("Signup response did not include the user details needed for verification.");
+            }
+
+            sessionStorage.setItem("hostelFinderOtpUser", JSON.stringify({
+                id: result.user.id,
+                email: result.user.email,
+                role: result.user.role,
+            }));
             message.textContent = result.message || "Account created successfully.";
             message.classList.add("text-green-700");
             window.location.href = "/pages/student-verification.html";
