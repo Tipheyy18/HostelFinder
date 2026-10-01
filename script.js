@@ -1,13 +1,15 @@
-const base_url = "https://group16-be-capstone-project-ochf.onrender.com"
+const base_url = "https://group16-be-capstone-project-ochf.onrender.com";
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
 
 document.addEventListener("DOMContentLoaded", () => {
     const isLoggedIn = localStorage.getItem("hostelFinderLoggedIn") === "true";
-    document.querySelectorAll("[data-auth-login], [data-auth-signup]").forEach((element) => {
-        element.hidden = isLoggedIn;
-    });
+    document
+        .querySelectorAll("[data-auth-login], [data-auth-signup]")
+        .forEach((element) => {
+            element.hidden = isLoggedIn;
+        });
     document.querySelectorAll("[data-auth-logout]").forEach((element) => {
         element.hidden = !isLoggedIn;
         element.addEventListener("click", () => {
@@ -54,7 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.querySelectorAll("[data-password-toggle]").forEach((toggle) => {
-        const passwordField = document.getElementById(toggle.dataset.passwordToggle);
+        const passwordField = document.getElementById(
+            toggle.dataset.passwordToggle,
+        );
         const icon = toggle.querySelector("i");
         if (!passwordField || !icon) return;
 
@@ -62,7 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const isVisible = passwordField.type === "password";
             passwordField.type = isVisible ? "text" : "password";
             toggle.setAttribute("aria-pressed", String(isVisible));
-            toggle.setAttribute("aria-label", `${isVisible ? "Hide" : "Show"} ${passwordField.labels[0]?.textContent.toLowerCase() || "password"}`);
+            toggle.setAttribute(
+                "aria-label",
+                `${isVisible ? "Hide" : "Show"} ${passwordField.labels[0]?.textContent.toLowerCase() || "password"}`,
+            );
             icon.classList.toggle("bx-eye", !isVisible);
             icon.classList.toggle("bx-eye-slash", isVisible);
         });
@@ -79,7 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Hostel request failed with status ${response.status}`);
+                    throw new Error(
+                        `Hostel request failed with status ${response.status}`,
+                    );
                 }
                 return hostels;
             })
@@ -117,15 +126,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error(result.message || "Login failed. Check your details and try again.");
+                    throw new Error(
+                        result.message ||
+                            "Login failed. Check your details and try again.",
+                    );
                 }
 
-                message.textContent = result.message || "Logged in successfully.";
+                message.textContent =
+                    result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
                 localStorage.setItem("hostelFinderLoggedIn", "true");
                 window.location.href = "/pages/browse.html";
             } catch (error) {
-                message.textContent = error.message || "Unable to log in. Please try again.";
+                message.textContent =
+                    error.message || "Unable to log in. Please try again.";
                 message.classList.add("text-red-700");
             } finally {
                 submitButton.disabled = false;
@@ -184,23 +198,33 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
-                throw new Error(result.message || "Sign up failed. Please try again.");
+                throw new Error(
+                    result.message || "Sign up failed. Please try again.",
+                );
             }
 
             if (!result.user?.id || !result.user?.email || !result.user?.role) {
-                throw new Error("Signup response did not include the user details needed for verification.");
+                throw new Error(
+                    "Signup response did not include the user details needed for verification.",
+                );
             }
 
-            sessionStorage.setItem("hostelFinderOtpUser", JSON.stringify({
-                id: result.user.id,
-                email: result.user.email,
-                role: result.user.role,
-            }));
-            message.textContent = result.message || "Account created successfully.";
+            sessionStorage.setItem(
+                "hostelFinderOtpUser",
+                JSON.stringify({
+                    id: result.user.id,
+                    email: result.user.email,
+                    role: result.user.role,
+                    token: result.token,
+                }),
+            );
+            message.textContent =
+                result.message || "Account created successfully.";
             message.classList.add("text-green-700");
             window.location.href = "/pages/student-verification.html";
         } catch (error) {
-            message.textContent = error.message || "Unable to sign up. Please try again.";
+            message.textContent =
+                error.message || "Unable to sign up. Please try again.";
             message.classList.add("text-red-700");
         } finally {
             submitButton.disabled = false;

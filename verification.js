@@ -24,13 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let timerId;
 
     try {
-        const storedUser = JSON.parse(sessionStorage.getItem("hostelFinderOtpUser") || "null");
+        const storedUser = JSON.parse(
+            sessionStorage.getItem("hostelFinderOtpUser") || "null",
+        );
         if (storedUser?.id && storedUser?.email && storedUser?.role) {
             signupUser = {
                 id: storedUser.id,
                 email: storedUser.email,
                 role: storedUser.role,
-                token: storedUser.token,
             };
         }
     } catch (error) {
@@ -38,9 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function postJson(url, payload) {
+        const storedUser = JSON.parse(
+            sessionStorage.getItem("hostelFinderOtpUser") || "null",
+        );
         const response = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${signupUser.token}` },
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${storedUser?.token}`,
+            },
             body: JSON.stringify(payload),
         });
         const result = await response.json().catch(() => ({}));
@@ -51,7 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (!response.ok || result.success === false) {
-            throw new Error(result.message || `Request failed with status ${response.status}.`);
+            throw new Error(
+                result.message ||
+                    `Request failed with status ${response.status}.`,
+            );
         }
 
         return result;
@@ -60,12 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function showState(name) {
         Object.entries(statePanels).forEach(([stateName, panel]) => {
             panel.classList.toggle("hidden", stateName !== name);
-            if (stateName === "loading") panel.classList.toggle("flex", stateName === name);
+            if (stateName === "loading")
+                panel.classList.toggle("flex", stateName === name);
         });
     }
 
     function renderCountdown() {
-        const minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0");
+        const minutes = String(Math.floor(remainingSeconds / 60)).padStart(
+            2,
+            "0",
+        );
         const seconds = String(remainingSeconds % 60).padStart(2, "0");
         countdown.textContent = `${minutes}:${seconds}`;
         resendButton.disabled = remainingSeconds > 0;
@@ -91,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function requestOtp(endpoint, fallbackMessage) {
         if (!signupUser) {
-            otpRecipient.textContent = "Signup details were not found. Please sign up again.";
+            otpRecipient.textContent =
+                "Signup details were not found. Please sign up again.";
             otpError.textContent = "Unable to send the verification code.";
             otpError.classList.remove("hidden");
             resendButton.disabled = true;
@@ -121,23 +136,32 @@ document.addEventListener("DOMContentLoaded", () => {
             input.value = input.value.replace(/\D/g, "").slice(-1);
             otpError.classList.add("hidden");
             input.classList.remove("border-red-600");
-            if (input.value && index < otpInputs.length - 1) otpInputs[index + 1].focus();
+            if (input.value && index < otpInputs.length - 1)
+                otpInputs[index + 1].focus();
         });
 
         input.addEventListener("keydown", (event) => {
-            if (event.key === "Backspace" && !input.value && index > 0) otpInputs[index - 1].focus();
-            if (event.key === "ArrowLeft" && index > 0) otpInputs[index - 1].focus();
-            if (event.key === "ArrowRight" && index < otpInputs.length - 1) otpInputs[index + 1].focus();
+            if (event.key === "Backspace" && !input.value && index > 0)
+                otpInputs[index - 1].focus();
+            if (event.key === "ArrowLeft" && index > 0)
+                otpInputs[index - 1].focus();
+            if (event.key === "ArrowRight" && index < otpInputs.length - 1)
+                otpInputs[index + 1].focus();
         });
 
         input.addEventListener("paste", (event) => {
-            const pastedCode = event.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+            const pastedCode = event.clipboardData
+                .getData("text")
+                .replace(/\D/g, "")
+                .slice(0, 6);
             if (!pastedCode) return;
             event.preventDefault();
             pastedCode.split("").forEach((digit, digitIndex) => {
                 otpInputs[digitIndex].value = digit;
             });
-            otpInputs[Math.min(pastedCode.length, otpInputs.length - 1)].focus();
+            otpInputs[
+                Math.min(pastedCode.length, otpInputs.length - 1)
+            ].focus();
         });
     });
 
@@ -157,7 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
         showState("loading");
 
         try {
-            if (!signupUser) throw new Error("Signup details were not found. Please sign up again.");
+            if (!signupUser)
+                throw new Error(
+                    "Signup details were not found. Please sign up again.",
+                );
             await postJson(OTP_ENDPOINTS.verify, { ...signupUser, otp });
             window.clearInterval(timerId);
             sessionStorage.removeItem("hostelFinderOtpUser");
@@ -167,7 +194,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 1500);
         } catch (error) {
             showState("otp");
-            otpError.textContent = error.message || "Invalid code. Please try again.";
+            otpError.textContent =
+                error.message || "Invalid code. Please try again.";
             otpError.classList.remove("hidden");
             clearOtpInputs();
             otpInputs.forEach((input) => input.classList.add("border-red-600"));
@@ -180,7 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
     resendButton.addEventListener("click", async () => {
         if (remainingSeconds > 0) return;
         clearOtpInputs();
-        await requestOtp(OTP_ENDPOINTS.resend, "Unable to resend the code. Please try again.");
+        await requestOtp(
+            OTP_ENDPOINTS.resend,
+            "Unable to resend the code. Please try again.",
+        );
     });
 
     document.querySelectorAll("[data-back]").forEach((button) => {
@@ -205,7 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuButton.addEventListener("click", () => {
             mobileOverlay.classList.remove("hidden");
-            requestAnimationFrame(() => mobileOverlay.classList.remove("opacity-0"));
+            requestAnimationFrame(() =>
+                mobileOverlay.classList.remove("opacity-0"),
+            );
             mobileMenu.classList.remove("-translate-x-full");
             menuButton.setAttribute("aria-expanded", "true");
             document.body.classList.add("overflow-hidden");
@@ -214,5 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileOverlay.addEventListener("click", closeMenu);
     }
 
-    requestOtp(OTP_ENDPOINTS.send, "Unable to send the verification code. Please try again.");
+    requestOtp(
+        OTP_ENDPOINTS.send,
+        "Unable to send the verification code. Please try again.",
+    );
 });
