@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Mobile menu functionality
     const menuBtn = document.getElementById("menu-btn");
     const closeMenuBtn = document.getElementById("close-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileOverlay.addEventListener("click", closeMenu);
     }
 
+    // Password toggle functionality
     document.querySelectorAll("[data-password-toggle]").forEach((toggle) => {
         const passwordField = document.getElementById(
             toggle.dataset.passwordToggle,
@@ -75,26 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    if (document.body.dataset.page === "browse") {
-        fetch(GET_ALL_HOSTEL)
-            .then(async (response) => {
-                const hostels = await response.json().catch(() => ({}));
-                console.log("GET_ALL_HOSTEL response:", {
-                    endpoint: GET_ALL_HOSTEL,
-                    status: response.status,
-                    body: hostels,
-                });
-
-                if (!response.ok) {
-                    throw new Error(
-                        `Hostel request failed with status ${response.status}`,
-                    );
-                }
-                return hostels;
-            })
-            .catch((error) => console.error("Failed to fetch hostels:", error));
-    }
-
+    // Browse page data fetching and rendering is handled by js/browseProperties.js
+    // Login form submission handler
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
         const message = document.getElementById("login-message");
@@ -147,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Sign-up form submission handler
     const signupForm = document.getElementById("signup-form");
     if (!signupForm) return;
 
@@ -159,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmPasswordInput.setCustomValidity("");
     });
 
+    // Sign-up form submission handler
     signupForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         confirmPasswordInput.setCustomValidity("");
