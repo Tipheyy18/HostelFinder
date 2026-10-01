@@ -62,7 +62,9 @@
     </header>
 
     <!-- ===== MAIN ===== -->
-    <main class="max-w-xl mx-auto px-4 py-8 pb-16  bg-[#F7F3D]">
+    <main class="max-w-6xl w-full px-3 sm:px-4 md:px-10 pb-16 mx-auto">
+        <section class="mt-4 bg-[#F8F5FE] rounded-2xl p-3 sm:p-6 md:p-12 shadow-sm">
+            <div class="max-w-xl mx-auto px-2 sm:px-4 py-6 sm:py-8 pb-12 sm:pb-16">
 
         <!-- Page Title -->
         <h1 class="text-2xl font-extrabold text-gray-900 text-center mb-1">Book Inspection</h1>
@@ -77,7 +79,7 @@
                 <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
                      alt="Greenfields Court" class="w-20 h-16 object-cover rounded-xl flex-shrink-0">
                 <div class="flex-1 min-w-0">
-                    <div class="flex items-start justify-between mb-1">
+                    <div class="flex flex-wrap items-center justify-between gap-y-1 mb-1">
                         <h2 class="text-sm font-extrabold text-gray-900">Greenfields Court</h2>
                         <span class="bg-[#FFFFFF]
  border border-[#7956C8] text-[#7956C8] text-[10px] px-2 py-0.5 rounded-full font-semibold flex items-center gap-1 ml-2 flex-shrink-0">
@@ -85,27 +87,20 @@
                             Verified
                         </span>
                     </div>
-                    <p class="text-[11px]  
+                                        <div class="flex items-center gap-1 text-[11px] text-[#7956C8]">
+                        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                            <circle cx="12" cy="10" r="2.5" />
+                        </svg>
+                                                <span>Choba, Under G Road.</span>
+                                        </div>
+                                        <p class="ml-4 mt-0.5 text-xs font-medium text-[#7956C8]">5 mins away from LASU</p>
 
- flex items-center gap-1 ">
- <img src="images/Group.png" alt="Group icon" class="w-4 h-4 inline-block" />
- <span class=  "text-[#7956C8]"
-                        
-                        
-Chobu, Under G Road.</span>
-                      <div  class="text-xs text-[#7956C8] font-medium mt-0.5">5 mins away from LASU</div>
-
-
-                    </p>
-
-                    
-                    <p class="text-[11px] text-[#7956C8]
-
- flex items-center gap-1 mb-0.5">
-
- 
-                      <img src="images/akar-icons_star.png" alt="Star icon" class="w-4 h-4 inline-block" />
-                        4.8 · 120 Reviews
+                                        <p class="mb-0.5 flex items-center gap-1 text-[11px] text-[#7956C8]">
+                        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3-4.6-4.5 6.3-.9L12 2.8Z" />
+                        </svg>
+                                                <span>4.8 · 120 Reviews</span>
                     </p>
                     <p class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Shared Apartment</p>
                 </div>
@@ -114,24 +109,24 @@ Chobu, Under G Road.</span>
             <div class="inline-block bg-green-500 text-[#FFFFFF]
  text-[10px] px-3 py-0.5 rounded-full font-semibold mb-3">Available
             </div>
-               <div class="bg-[#7956C8] rounded-full flex items-center justify-around px-4 py-2.5">
+               <div class="bg-[#7956C8] rounded-full flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-3 py-2.5 sm:justify-around sm:px-4">
                 <span class="text-[#FFFFFF]
  text-[11px] font-medium flex items-center gap-1.5">
                     <i class="bx bx-droplet text-sm"></i> Water
                 </span>
-                <span class="text-[#FFFFFF]
+                <span class="hidden sm:inline text-[#FFFFFF]
  opacity-40 text-sm">|</span>
                 <span class="text-[#FFFFFF]
  text-[11px] font-medium flex items-center gap-1.5">
                     <i class="bx bx-bulb text-sm"></i> Light
                 </span>
-                <span class="text-[#FFFFFF]
+                <span class="hidden sm:inline text-[#FFFFFF]
  opacity-40 text-sm">|</span>
                 <span class="text-[#FFFFFF]
  text-[11px] font-medium flex items-center gap-1.5">
                     <i class="bx bx-wifi text-sm"></i> Wifi
                 </span>
-                <span class="text-[#FFFFFF]
+                <span class="hidden sm:inline text-[#FFFFFF]
  opacity-40 text-sm">|</span>
                 <span class="text-[#FFFFFF]
  text-[11px] font-medium flex items-center gap-1.5">
@@ -149,11 +144,10 @@ Chobu, Under G Road.</span>
         </div>
 
         
- <div class="border border-purple-100 rounded-2xl p-5 shadow-sm bg-white text-center">
+ <div class="border border-purple-100 rounded-2xl p-5 shadow-sm bg-white text-center mb-4">
   <!-- Card Header -->
-  <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl 
-text-purple-600 mb-2">
-  <svg class="w-4 h-4 text-[#7956C8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    <div class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#7956C8] mb-2">
+    <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
   </div>
   <h4 class="font-semibold text-gray-800 text-sm">Select Date</h4>
   <p class="text-xs text-gray-400 mb-4">Available dates from landlord</p>
@@ -174,7 +168,7 @@ text-purple-600 mb-2">
     </button>
 
     <!-- Active Selected Date State -->
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-[#7c4dff] text-white text-xs shadow-md shadow-purple-200 transition selected">
+    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition selected">
       <span class="text-[11px] text-purple-200">Wed</span>
       <span class="font-bold mt-0.5">23 Sep</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
@@ -199,8 +193,8 @@ text-purple-600 mb-2">
         <div class="bg-[#FFFFFF]
  rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] p-4 mb-6">
             <div class="flex items-center gap-2 mb-1">
-                <div class="w-7 h-7 bg-[#EDE5F9] rounded-lg flex items-center justify-center">
-                    <svg class="w-4 h-4 text-[#7956C8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="w-7 h-7 bg-[#7956C8] rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <div>
                     <p class="text-xs font-bold text-gray-800">Select Time</p>
@@ -232,27 +226,33 @@ text-purple-600 mb-2">
             </button>
         </a>
 
+            </div>
+        </section>
     </main>
 
     <script>
         // ── DATE PICKER ─────────────────────────────────────────
         function selectDate(el) {
-            // Reset all date buttons
             document.querySelectorAll('.date-btn').forEach(btn => {
                 btn.style.backgroundColor = '';
                 btn.style.color = '';
-                btn.style.borderColor = '#e5e7eb';
-                // reset the dot
-                const dot = btn.querySelector('.dot');
-                if (dot) dot.style.backgroundColor = '#d1d5db';
+                btn.style.borderColor = '';
+                btn.classList.remove('selected');
+                btn.classList.add('bg-purple-50', 'text-gray-500');
+                btn.children[0].className = 'text-[11px] font-medium text-gray-400';
+                btn.children[1].className = 'font-bold text-gray-800 mt-0.5';
+                btn.children[2].className = 'dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1';
+                btn.children[2].style.backgroundColor = '';
             });
 
-            // Activate clicked button
+            el.classList.remove('bg-purple-50', 'text-gray-500');
+            el.classList.add('selected');
             el.style.backgroundColor = '#7956C8';
             el.style.color = '#FFFFFF';
             el.style.borderColor = '#7956C8';
-            const dot = el.querySelector('.dot');
-            if (dot) dot.style.backgroundColor = '#FFFFFF';
+            el.children[0].className = 'text-[11px] text-purple-200';
+            el.children[1].className = 'font-bold mt-0.5';
+            el.children[2].className = 'dot w-1.5 h-1.5 rounded-full bg-white mt-1';
         }
 
         // ── TIME PICKER ──────────────────────────────────────────
