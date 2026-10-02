@@ -4,45 +4,292 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Surfer -->
+    <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
-    <!-- DM Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <!-- Manrope -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>listProperty | HostelFinder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Property Information | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC]">
-    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
-        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)]">
-            <a href="/">
-                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png">
-            </a>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen text-[#2D2340]">
 
-            <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
-                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
-                <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Login</a>
-            </nav>
-
-            <a href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-2 pb-3 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">create account</button>
+    <!-- HEADER -->
+    <header class="relative z-20 w-full flex items-center justify-between gap-4 px-4 sm:px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
+        <a href="/">
+            <img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+        </a>
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
+            <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#7956C8] underline">List Your Property</a>
+            <a href="/pages/property-management.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Property Management</a>
+            <a href="/pages/your-inspection.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Manage Inspections</a>
+            <a href="#" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Settings</a>
+        </nav>
+        <div class="hidden xl:flex items-center gap-3">
+            <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8]">Log In</a>
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
             </a>
-            <div class="block xl:hidden">
-                <i class="bx bx-menu-close text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer"></i>
+            <button data-auth-logout type="button" hidden class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Logout</button>
+        </div>
+        <button id="menu-btn" type="button" class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#7956C8] xl:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
+        </button>
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+        <aside id="mobile-menu" class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden" aria-label="Mobile navigation">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <a href="/" aria-label="HostelFinder home">
+                        <img class="w-36" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+                    </a>
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-500 hover:text-gray-800" aria-label="Close navigation menu">
+                        <i class="bx bx-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col gap-5" aria-label="Mobile main navigation">
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                    <a href="/pages/listProperty.html" class="font-semibold text-[#7956C8] underline">List Your Property</a>
+                    <a href="/pages/property-management.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Property Management</a>
+                    <a href="/pages/your-inspection.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Manage Inspections</a>
+                    <a href="#" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Settings</a>
+                </nav>
             </div>
-        </header>
-        
+            <a data-auth-signup href="/pages/signup.html" class="rounded-md bg-[#7956C8] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
+        </aside>
+    </header>
+
+    <!-- MAIN FORM CONTAINER -->
+    <main class="max-w-4xl w-full px-4 sm:px-6 py-8 sm:py-12 mx-auto">
+        <section class="bg-[#F8F5FE] rounded-3xl p-6 sm:p-10 shadow-sm border border-[#E9DFFA]">
+            
+            <!-- Page Title Header -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <a href="/" class="text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center" aria-label="Go back">
+                            <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+                        </a>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">List Your Property</h1>
+                    </div>
+                    <a href="/pages/property-management.html" class="text-xs sm:text-sm font-semibold text-[#7956C8] hover:underline flex items-center gap-1 bg-[#F0EAFB] px-3 py-1.5 rounded-xl border border-[#DCD0F8]">
+                        <i class="bx bx-building-house text-base"></i> Property Management
+                    </a>
+                </div>
+                <p class="text-xs sm:text-sm text-[#7D7589] font-medium ml-9 sm:ml-10 mt-0.5">Provide detailed information of your property</p>
+            </div>
+
+            <!-- Form -->
+            <form id="property-form" class="space-y-5">
+                
+                <!-- Property/Hostel Name -->
+                <div>
+                    <label for="propertyName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property/Hostel Name</label>
+                    <input type="text" id="propertyName" name="propertyName" placeholder="Royal Haven Lodge" value="Royal Haven Lodge" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <label for="location" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Surulere" value="Surulere" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- School/College nearby -->
+                <div>
+                    <label for="nearbySchool" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">School/College nearby</label>
+                    <input type="text" id="nearbySchool" name="nearbySchool" placeholder="Lagos State University" value="Lagos State University" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Distance from school -->
+                <div>
+                    <label for="distance" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Distance from school</label>
+                    <input type="text" id="distance" name="distance" placeholder="1.2km" value="1.2km" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Estimated driving time -->
+                <div>
+                    <label for="drivingTime" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Estimated driving time</label>
+                    <input type="text" id="drivingTime" name="drivingTime" placeholder="7 mins" value="7 mins" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Monthly rent ₦ -->
+                <div>
+                    <label for="monthlyRent" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Monthly rent ₦</label>
+                    <input type="text" id="monthlyRent" name="monthlyRent" placeholder="70,000" value="70,000" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Property Description -->
+                <div>
+                    <label for="description" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property Description</label>
+                    <input type="text" id="description" name="description" placeholder="3-storey hostel located near LASU" value="3-storey hostel located near LASU" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Availability Toggle -->
+                <div class="flex items-center justify-between py-2">
+                    <span class="text-xs sm:text-sm font-semibold text-[#2D2340]">Availability</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="availability" name="availability" class="sr-only peer" checked>
+                        <div class="w-12 h-6 bg.gray-300 bg-[#D8CEE6] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7956C8]"></div>
+                    </label>
+                </div>
+
+                <!-- Property facilities/amenities -->
+                <div class="pt-2">
+                    <label class="block text-xs sm:text-sm font-semibold text-[#2D2340]">Property facilities/amenities</label>
+                    <p class="text-[11px] sm:text-xs text-[#8E869B] mb-3.5">(Select amenities available (multiple))</p>
+
+                    <div class="grid grid-cols-2 gap-y-3.5 gap-x-6">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="Water" checked class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            Water
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="Security" checked class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            Security
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="WiFi" checked class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            WiFi
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="Kitchen/Gas cooker" class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            Kitchen/Gas cooker
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="Laundry service" class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            Laundry service
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
+                            <input type="checkbox" name="amenities" value="CCTV" class="w-4 h-4 rounded border-[#7956C8] text-[#7956C8] focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            CCTV
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Property Media -->
+                <div class="pt-4 border-t border-[#E8E2F2]">
+                    <label class="block text-xs sm:text-sm font-semibold text-[#2D2340]">Property media</label>
+                    <p class="text-[11px] sm:text-xs text-[#8E869B] mb-3.5">(Upload clear high quality photos)</p>
+
+                    <!-- Preview Thumbnails -->
+                    <div id="media-preview-container" class="grid grid-cols-3 gap-3 mb-4">
+                        <!-- Image 1 -->
+                        <div class="relative group aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-[#E2DBF0] bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80" alt="Hostel Room" class="w-full h-full object-cover">
+                            <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 bg-black/60 hover:bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-sm transition cursor-pointer" aria-label="Remove image">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <!-- Image 2 -->
+                        <div class="relative group aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-[#E2DBF0] bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=500&q=80" alt="Hostel Exterior" class="w-full h-full object-cover">
+                            <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 bg-black/60 hover:bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-sm transition cursor-pointer" aria-label="Remove image">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <!-- Image 3 -->
+                        <div class="relative group aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-[#E2DBF0] bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="Hostel Bedroom" class="w-full h-full object-cover">
+                            <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 bg-black/60 hover:bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-sm transition cursor-pointer" aria-label="Remove image">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drag and Drop Upload Zone -->
+                    <div id="drop-zone" class="border-2 border-dashed border-[#B89CF5] bg-[#F5EEFF] hover:bg-[#EFE5FD] transition rounded-2xl py-6 px-4 flex flex-col items-center justify-center cursor-pointer text-center group">
+                        <input type="file" id="media-input" multiple accept="image/*" class="hidden">
+                        <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#7956C8] flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                            <i class="bx bx-upload text-lg"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm font-medium text-[#7956C8]">
+                            Drag & drop file here, or <span class="underline font-semibold">upload</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" id="submit-btn" class="w-full bg-[#7956C8] hover:bg-[#633DB3] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.99]">
+                        Continue to Verification
+                    </button>
+                </div>
+            </form>
+
+        </section>
     </main>
+
+    <!-- Script for mobile navbar and interactive image uploads -->
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropZone = document.getElementById('drop-zone');
+            const mediaInput = document.getElementById('media-input');
+            const previewContainer = document.getElementById('media-preview-container');
+
+            if (dropZone && mediaInput && previewContainer) {
+                dropZone.addEventListener('click', () => mediaInput.click());
+
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('bg-[#EFE5FD]', 'border-[#7956C8]');
+                });
+
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('bg-[#EFE5FD]', 'border-[#7956C8]');
+                });
+
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('bg-[#EFE5FD]', 'border-[#7956C8]');
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                        handleFiles(e.dataTransfer.files);
+                    }
+                });
+
+                mediaInput.addEventListener('change', () => {
+                    if (mediaInput.files && mediaInput.files.length > 0) {
+                        handleFiles(mediaInput.files);
+                    }
+                });
+
+                function handleFiles(files) {
+                    Array.from(files).forEach(file => {
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                const card = document.createElement('div');
+                                card.className = 'relative group aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-[#E2DBF0] bg-gray-100';
+                                card.innerHTML = `
+                                    <img src="${e.target.result}" alt="Uploaded photo" class="w-full h-full object-cover">
+                                    <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 bg-black/60 hover:bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-sm transition cursor-pointer" aria-label="Remove image">
+                                        <i class="bx bx-x"></i>
+                                    </button>
+                                `;
+                                previewContainer.appendChild(card);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                }
+            }
+
+            const form = document.getElementById('property-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    window.location.href = '/pages/landlord-details.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Landlord Details | HostelFinder</title>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen text-[#2D2340]">
+
+    <!-- HEADER -->
+    <header class="relative z-20 w-full flex items-center justify-between gap-4 px-4 sm:px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
+        <a href="/">
+            <img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+        </a>
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
+            <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#7956C8] underline">List Your Property</a>
+            <a href="/pages/property-management.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Property Management</a>
+            <a href="/pages/your-inspection.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Manage Inspections</a>
+            <a href="#" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Settings</a>
+        </nav>
+        <div class="hidden xl:flex items-center gap-3">
+            <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8]">Log In</a>
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Logout</button>
+        </div>
+        <button id="menu-btn" type="button" class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#7956C8] xl:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
+        </button>
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+        <aside id="mobile-menu" class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden" aria-label="Mobile navigation">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <a href="/" aria-label="HostelFinder home">
+                        <img class="w-36" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+                    </a>
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-500 hover:text-gray-800" aria-label="Close navigation menu">
+                        <i class="bx bx-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col gap-5" aria-label="Mobile main navigation">
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                    <a href="/pages/listProperty.html" class="font-semibold text-[#7956C8] underline">List Your Property</a>
+                    <a href="/pages/property-management.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Property Management</a>
+                    <a href="/pages/your-inspection.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Manage Inspections</a>
+                    <a href="#" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Settings</a>
+                </nav>
+            </div>
+            <a data-auth-signup href="/pages/signup.html" class="rounded-md bg-[#7956C8] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
+        </aside>
+    </header>
+
+    <!-- MAIN FORM CONTAINER -->
+    <main class="max-w-4xl w-full px-4 sm:px-6 py-8 sm:py-12 mx-auto">
+        <section class="bg-[#F8F5FE] rounded-3xl p-6 sm:p-10 shadow-sm border border-[#E9DFFA]">
+            
+            <!-- Header with Back Button -->
+            <div class="mb-8 flex items-center justify-center relative">
+                <a href="/pages/listProperty.html" class="absolute left-0 text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center p-1" aria-label="Go back to property details">
+                    <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+                </a>
+                <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight text-center">Landlord Details</h1>
+            </div>
+
+           
+            <form id="landlord-form" class="space-y-5">
+                
+                
+                <div>
+                    <label for="propertyName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property/Hostel Name</label>
+                    <input type="text" id="propertyName" name="propertyName" placeholder="Royal Haven Lodge" value="Royal Haven Lodge" readonly
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                
+                <div>
+                    <label for="fullName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Full Name*</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Chinedu Okafor" value="Chinedu Okafor" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Email Address* -->
+                <div>
+                    <label for="email" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Email Address*</label>
+                    <input type="email" id="email" name="email" placeholder="name@gmail.com" value="name@gmail.com" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                
+                <div>
+                    <label for="phone" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Phone Number*</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+2348162772314" value="+2348162772314" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <div>
+                    <label for="idType" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Means of Identification*</label>
+                    <div class="relative">
+                        <select id="idType" name="idType" required
+                            class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs appearance-none cursor-pointer">
+                            <option value="" disabled selected class="text-gray-400">Select Document Type</option>
+                            <option value="NIN">National Identity Card (NIN)</option>
+                            <option value="Passport">International Passport</option>
+                            <option value="DriversLicense">Driver's License</option>
+                            <option value="VotersCard">Voter's Card</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7956C8]">
+                            <i class="bx bx-chevron-down text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ID Number* -->
+                <div>
+                    <label for="idNumber" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">ID Number*</label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="12345678901" value="12345678901" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                </div>
+
+                <!-- Required Documents Section -->
+                <div class="pt-6 border-t border-[#E8E2F2] space-y-4">
+                    <h2 class="text-base sm:text-lg font-bold text-[#2D2340]">Required Documents</h2>
+
+                    <!-- Card 1: Government ID -->
+                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#7956C8] flex items-center justify-center text-2xl flex-shrink-0">
+                                <i class="bx bx-id-card"></i>
+                            </div>
+                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Government ID</span>
+                        </div>
+                        <div id="drop-govid" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
+                            <input type="file" id="govid-file" class="hidden" accept="image/*,.pdf">
+                            <i class="bx bx-upload text-[#7956C8] text-base group-hover:scale-110 transition-transform"></i>
+                            <span id="govid-label" class="text-xs font-medium text-[#7956C8]">
+                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Proof of Ownership -->
+                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#7956C8] flex items-center justify-center text-2xl flex-shrink-0">
+                                <i class="bx bx-home-alt"></i>
+                            </div>
+                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Proof of Ownership</span>
+                        </div>
+                        <div id="drop-ownership" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
+                            <input type="file" id="ownership-file" class="hidden" accept="image/*,.pdf">
+                            <i class="bx bx-upload text-[#7956C8] text-base group-hover:scale-110 transition-transform"></i>
+                            <span id="ownership-label" class="text-xs font-medium text-[#7956C8]">
+                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Property Photo -->
+                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#7956C8] flex items-center justify-center text-2xl flex-shrink-0">
+                                <i class="bx bx-camera"></i>
+                            </div>
+                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Property Photo</span>
+                        </div>
+                        <div id="drop-photo" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
+                            <input type="file" id="photo-file" class="hidden" accept="image/*">
+                            <i class="bx bx-upload text-[#7956C8] text-base group-hover:scale-110 transition-transform"></i>
+                            <span id="photo-label" class="text-xs font-medium text-[#7956C8]">
+                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button type="submit" id="submit-verification-btn" class="w-full bg-[#7956C8] hover:bg-[#633DB3] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.99]">
+                        Submit for Verification
+                    </button>
+                </div>
+            </form>
+
+        </section>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-4 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            <div class="w-16 h-16 bg-[#F4EEFE] text-[#7956C8] rounded-full flex items-center justify-center mx-auto text-3xl">
+                <i class="bx bx-check-circle"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#2D2340]">Verification Submitted!</h3>
+            <p class="text-xs sm:text-sm text-[#7D7589]">Your landlord verification documents have been submitted successfully. Our team will review your details shortly.</p>
+            <div class="flex flex-col gap-2.5 pt-2">
+                <a href="/pages/property-management.html" class="inline-block w-full bg-[#7956C8] hover:bg-[#633DB3] text-white font-bold py-3 px-6 rounded-xl transition text-sm">
+                    Go to Property Management
+                </a>
+                <a href="/pages/your-inspection.html" class="inline-block w-full border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] font-bold py-3 px-6 rounded-xl transition text-sm">
+                    Go to Manage Inspections
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Document dropzones setup
+            const setupDropzone = (zoneId, inputId, labelId) => {
+                const zone = document.getElementById(zoneId);
+                const input = document.getElementById(inputId);
+                const label = document.getElementById(labelId);
+
+                if (!zone || !input || !label) return;
+
+                zone.addEventListener('click', () => input.click());
+
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('bg-[#EFE5FD]');
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('bg-[#EFE5FD]');
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('bg-[#EFE5FD]');
+                    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                        input.files = e.dataTransfer.files;
+                        updateLabel(e.dataTransfer.files[0].name);
+                    }
+                });
+
+                input.addEventListener('change', () => {
+                    if (input.files && input.files[0]) {
+                        updateLabel(input.files[0].name);
+                    }
+                });
+
+                function updateLabel(fileName) {
+                    label.innerHTML = `<span class="font-semibold text-green-700"><i class="bx bx-check-circle align-middle mr-1 text-sm"></i> ${fileName}</span>`;
+                }
+            };
+
+            setupDropzone('drop-govid', 'govid-file', 'govid-label');
+            setupDropzone('drop-ownership', 'ownership-file', 'ownership-label');
+            setupDropzone('drop-photo', 'photo-file', 'photo-label');
+
+            // Form Submit Modal
+            const form = document.getElementById('landlord-form');
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            if (form && modal) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalContent.classList.remove('scale-95');
+                        modalContent.classList.add('scale-100');
+                    }, 10);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

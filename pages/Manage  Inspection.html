@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Inspection Management | HostelFinder</title>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen text-[#2D2340]">
+
+    <!-- HEADER -->
+    <header class="relative z-20 w-full flex items-center justify-between gap-4 px-4 sm:px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
+        <a href="/">
+            <img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+        </a>
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
+            <a href="/pages/listProperty.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">List Your Property</a>
+            <a href="/pages/property-management.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Property Management</a>
+            <a href="/pages/your-inspection.html" class="text-sm font-semibold text-[#7956C8] underline">Manage Inspections</a>
+            <a href="#" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Settings</a>
+        </nav>
+        <div class="hidden xl:flex items-center gap-3">
+            <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8]">Log In</a>
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="capitalize bg-[#7956C8] text-[#FFFFFF] text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Logout</button>
+        </div>
+        <button id="menu-btn" type="button" class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#7956C8] xl:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
+        </button>
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+        <aside id="mobile-menu" class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden" aria-label="Mobile navigation">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <a href="/" aria-label="HostelFinder home">
+                        <img class="w-36" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo">
+                    </a>
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-500 hover:text-gray-800" aria-label="Close navigation menu">
+                        <i class="bx bx-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col gap-5" aria-label="Mobile main navigation">
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                    <a href="/pages/listProperty.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">List Your Property</a>
+                    <a href="/pages/property-management.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Property Management</a>
+                    <a href="/pages/your-inspection.html" class="font-semibold text-[#7956C8] underline">Manage Inspections</a>
+                    <a href="#" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Settings</a>
+                </nav>
+            </div>
+            <a data-auth-signup href="/pages/signup.html" class="rounded-md bg-[#7956C8] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
+        </aside>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-4xl w-full px-4 sm:px-6 py-8 sm:py-12 mx-auto">
+        <section class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 shadow-sm border border-[#E9DFFA]">
+            
+            <!-- Page Title Header -->
+            <div class="mb-6 flex items-start gap-3">
+                <a href="/pages/property-information.html" class="text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center mt-1" aria-label="Go back to Property Information">
+                    <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+                </a>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">Inspection Management</h1>
+                    <p class="text-xs sm:text-sm text-[#7D7589] font-medium mt-0.5">Search by location or hostel name</p>
+                </div>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-4 text-xs font-semibold scrollbar-none">
+                <button class="px-5 py-2 rounded-xl bg-[#7956C8] text-white shadow-xs cursor-pointer">All</button>
+                <button class="px-5 py-2 rounded-xl bg-white border border-[#E2DBF0] text-[#2D2340] hover:border-[#7956C8] cursor-pointer">Confirmed</button>
+                <button class="px-5 py-2 rounded-xl bg-white border border-[#E2DBF0] text-[#2D2340] hover:border-[#7956C8] cursor-pointer">Rescheduled</button>
+                <button class="px-5 py-2 rounded-xl bg-white border border-[#E2DBF0] text-[#2D2340] hover:border-[#7956C8] cursor-pointer">Completed</button>
+                <button class="px-5 py-2 rounded-xl bg-white border border-[#E2DBF0] text-[#2D2340] hover:border-[#7956C8] cursor-pointer">Cancelled</button>
+            </div>
+
+            <!-- INSPECTION CARDS -->
+            <div class="space-y-5">
+
+                <!-- CARD 1: Nicklaus Michaelson -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-[#E8E2F2] relative">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=500&q=80" alt="Greenfields Court" class="w-full sm:w-44 h-36 object-cover rounded-xl flex-shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h2 class="text-base font-bold text-[#2D2340] flex items-center gap-2">
+                                    <i class="bx bx-user-circle text-lg text-[#7956C8]"></i> Nicklaus Michaelson
+                                </h2>
+                                <span class="bg-[#6FCF97] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">CONFIRMED</span>
+                            </div>
+                            <p class="text-xs text-[#7D7589] mb-2 font-medium">Student - Lagos State University</p>
+                            
+                            <div class="space-y-1 text-xs text-[#2D2340] font-medium">
+                                <p><strong class="text-[#7956C8]">Property:</strong> Greenfields Court</p>
+                                <p><strong class="text-[#7956C8]">Inspection Date:</strong> Sat, 27 Nov. 2025</p>
+                                <p><strong class="text-[#7956C8]">Time:</strong> 02:30 PM</p>
+                                <p><strong class="text-[#7956C8]">Location:</strong> Popo Ajao Street, Ojo (15 mins away from LASU)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-[#F0EAFB] flex flex-wrap gap-2">
+                        <a href="/pages/inspection-completed.html" class="flex-1 text-center bg-[#7956C8] hover:bg-[#633DB3] text-white text-xs font-semibold py-2.5 px-4 rounded-xl shadow-xs transition cursor-pointer">
+                            View Inspection
+                        </a>
+                        <a href="/pages/book-inspection.html" class="border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            Reschedule
+                        </a>
+                        <button type="button" class="border border-gray-300 text-gray-600 hover:bg-gray-50 text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Katherine Pierce -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-[#E8E2F2] relative">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80" alt="Maple Court" class="w-full sm:w-44 h-36 object-cover rounded-xl flex-shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h2 class="text-base font-bold text-[#2D2340] flex items-center gap-2">
+                                    <i class="bx bx-user-circle text-lg text-[#7956C8]"></i> Katherine Pierce
+                                </h2>
+                                <span class="bg-[#6FCF97] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">CONFIRMED</span>
+                            </div>
+                            <p class="text-xs text-[#7D7589] mb-2 font-medium">Student - Lagos State University</p>
+                            
+                            <div class="space-y-1 text-xs text-[#2D2340] font-medium">
+                                <p><strong class="text-[#7956C8]">Property:</strong> Maple Court</p>
+                                <p><strong class="text-[#7956C8]">Inspection Date:</strong> Mon, 29 Nov. 2025</p>
+                                <p><strong class="text-[#7956C8]">Time:</strong> 10:00 AM</p>
+                                <p><strong class="text-[#7956C8]">Location:</strong> Ola-Iya, Iyano-School</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-[#F0EAFB] flex flex-wrap gap-2">
+                        <a href="/pages/inspection-completed.html" class="flex-1 text-center bg-[#7956C8] hover:bg-[#633DB3] text-white text-xs font-semibold py-2.5 px-4 rounded-xl shadow-xs transition cursor-pointer">
+                            View Inspection
+                        </a>
+                        <a href="/pages/book-inspection.html" class="border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            Reschedule
+                        </a>
+                        <button type="button" class="border border-gray-300 text-gray-600 hover:bg-gray-50 text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Stefan Salvatore -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-[#E8E2F2] relative">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="Eziyemi Hall" class="w-full sm:w-44 h-36 object-cover rounded-xl flex-shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h2 class="text-base font-bold text-[#2D2340] flex items-center gap-2">
+                                    <i class="bx bx-user-circle text-lg text-[#7956C8]"></i> Stefan Salvatore
+                                </h2>
+                                <span class="bg-[#EB5757] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">CANCELLED</span>
+                            </div>
+                            <p class="text-xs text-[#7D7589] mb-2 font-medium">Student - Lagos State University</p>
+                            
+                            <div class="space-y-1 text-xs text-[#2D2340] font-medium">
+                                <p><strong class="text-[#7956C8]">Property:</strong> Eziyemi Hall</p>
+                                <p><strong class="text-[#7956C8]">Inspection Date:</strong> Wed, 1 Dec. 2025</p>
+                                <p><strong class="text-[#7956C8]">Time:</strong> 10:00 AM</p>
+                                <p><strong class="text-[#7956C8]">Location:</strong> Afromedis, Okokomaiko</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-[#F0EAFB]">
+                        <a href="/pages/inspection-completed.html" class="block w-full text-center border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            View Inspection
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 4: Aminash Mohamad -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-[#E8E2F2] relative">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=500&q=80" alt="Juliana Complex" class="w-full sm:w-44 h-36 object-cover rounded-xl flex-shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h2 class="text-base font-bold text-[#2D2340] flex items-center gap-2">
+                                    <i class="bx bx-user-circle text-lg text-[#7956C8]"></i> Aminash Mohamad
+                                </h2>
+                                <span class="bg-[#9B51E0] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">RESCHEDULED</span>
+                            </div>
+                            <p class="text-xs text-[#7D7589] mb-2 font-medium">Student - Lagos State University</p>
+                            
+                            <div class="space-y-1 text-xs text-[#2D2340] font-medium">
+                                <p><strong class="text-[#7956C8]">Property:</strong> Juliana Complex</p>
+                                <p><strong class="text-[#7956C8]">Inspection Date:</strong> Fri, 3 Dec. 2025</p>
+                                <p><strong class="text-[#7956C8]">Time:</strong> 11:15 AM</p>
+                                <p><strong class="text-[#7956C8]">Location:</strong> Afromedis, Okokomaiko</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-[#F0EAFB] flex flex-wrap gap-2">
+                        <a href="/pages/inspection-completed.html" class="flex-1 text-center border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            View Inspection
+                        </a>
+                        <a href="/pages/book-inspection.html" class="flex-1 text-center bg-[#7956C8] hover:bg-[#633DB3] text-white text-xs font-semibold py-2.5 px-4 rounded-xl shadow-xs transition cursor-pointer">
+                            Reschedule
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 5: Mustafa Ally -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-[#E8E2F2] relative">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80" alt="Olisey Complex" class="w-full sm:w-44 h-36 object-cover rounded-xl flex-shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between mb-1">
+                                <h2 class="text-base font-bold text-[#2D2340] flex items-center gap-2">
+                                    <i class="bx bx-user-circle text-lg text-[#7956C8]"></i> Mustafa Ally
+                                </h2>
+                                <span class="bg-[#828282] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">NEED TO UPDATE</span>
+                            </div>
+                            <p class="text-xs text-[#7D7589] mb-2 font-medium">Student - Lagos State University</p>
+                            
+                            <div class="space-y-1 text-xs text-[#2D2340] font-medium">
+                                <p><strong class="text-[#7956C8]">Property:</strong> Olisey Complex</p>
+                                <p><strong class="text-[#7956C8]">Inspection Date:</strong> Sat, 4 Dec. 2025</p>
+                                <p><strong class="text-[#7956C8]">Time:</strong> 11:30 AM</p>
+                                <p><strong class="text-[#7956C8]">Location:</strong> Isimley, Estate Gate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-[#F0EAFB] flex flex-wrap gap-2">
+                        <a href="/pages/inspection-completed.html" class="flex-1 text-center bg-[#7956C8] hover:bg-[#633DB3] text-white text-xs font-semibold py-2.5 px-4 rounded-xl shadow-xs transition cursor-pointer">
+                            View Updated Info
+                        </a>
+                        <a href="/pages/book-inspection.html" class="flex-1 text-center border border-[#7956C8] text-[#7956C8] hover:bg-[#F4EEFE] text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-pointer">
+                            Reschedule
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>
