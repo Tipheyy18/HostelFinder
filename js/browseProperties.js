@@ -738,7 +738,6 @@
                     btn.classList.add(
                         "bg-[#7956C8]",
                         "text-white",
-                        "hover:text-white",
                     );
                     btn.classList.remove("border-gray-300", "text-gray-600");
                 }
