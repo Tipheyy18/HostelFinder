@@ -282,22 +282,24 @@
         }
 
         // 2. Amenities
-        document.querySelectorAll("[data-filter-amenity]:checked").forEach((cb) => {
-            const val = cb.dataset.filterAmenity;
-            const labels = {
-                wifi: "Wifi",
-                water: "Water",
-                security: "Security",
-                generator: "Power/Generator",
-                laundry: "Laundry",
-                light: "Light",
-            };
-            activeItems.push({
-                type: "amenity",
-                label: labels[val.toLowerCase()] || val,
-                value: val,
+        document
+            .querySelectorAll("[data-filter-amenity]:checked")
+            .forEach((cb) => {
+                const val = cb.dataset.filterAmenity;
+                const labels = {
+                    wifi: "Wifi",
+                    water: "Water",
+                    security: "Security",
+                    generator: "Power/Generator",
+                    laundry: "Laundry",
+                    light: "Light",
+                };
+                activeItems.push({
+                    type: "amenity",
+                    label: labels[val.toLowerCase()] || val,
+                    value: val,
+                });
             });
-        });
 
         // 3. Availability
         const availToggle = document.getElementById("filter-availability");
@@ -381,11 +383,19 @@
             container.querySelectorAll("[data-category]").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const sidebar = document.getElementById("filter-sidebar");
-                    const filterToggleBtn = document.getElementById("filter-toggle-btn");
+                    const filterToggleBtn =
+                        document.getElementById("filter-toggle-btn");
                     if (sidebar) {
                         sidebar.classList.remove("hidden");
-                        if (filterToggleBtn) filterToggleBtn.setAttribute("aria-expanded", "true");
-                        sidebar.scrollIntoView({ behavior: "smooth", block: "start" });
+                        if (filterToggleBtn)
+                            filterToggleBtn.setAttribute(
+                                "aria-expanded",
+                                "true",
+                            );
+                        sidebar.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
                     }
                 });
             });
@@ -414,13 +424,15 @@
                 }
             `;
 
-            container.querySelectorAll(".applied-filter-chip").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const type = btn.dataset.removeType;
-                    const value = btn.dataset.removeValue;
-                    removeFilter(type, value);
+            container
+                .querySelectorAll(".applied-filter-chip")
+                .forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        const type = btn.dataset.removeType;
+                        const value = btn.dataset.removeValue;
+                        removeFilter(type, value);
+                    });
                 });
-            });
 
             const clearAllBtn = document.getElementById("pill-clear-all");
             if (clearAllBtn) {
@@ -440,7 +452,9 @@
                 btn.classList.add("border-gray-300", "text-gray-600");
             });
         } else if (type === "amenity") {
-            const cb = document.querySelector(`[data-filter-amenity="${value}"]`);
+            const cb = document.querySelector(
+                `[data-filter-amenity="${value}"]`,
+            );
             if (cb) cb.checked = false;
         } else if (type === "availability") {
             const toggle = document.getElementById("filter-availability");
@@ -535,9 +549,11 @@
         // Close sidebar on mobile after applying filters
         if (window.innerWidth < 1024) {
             const sidebar = document.getElementById("filter-sidebar");
-            const filterToggleBtn = document.getElementById("filter-toggle-btn");
+            const filterToggleBtn =
+                document.getElementById("filter-toggle-btn");
             if (sidebar) sidebar.classList.add("hidden");
-            if (filterToggleBtn) filterToggleBtn.setAttribute("aria-expanded", "false");
+            if (filterToggleBtn)
+                filterToggleBtn.setAttribute("aria-expanded", "false");
         }
 
         // Update active filter pills
@@ -591,9 +607,11 @@
         // Close sidebar on mobile
         if (window.innerWidth < 1024) {
             const sidebar = document.getElementById("filter-sidebar");
-            const filterToggleBtn = document.getElementById("filter-toggle-btn");
+            const filterToggleBtn =
+                document.getElementById("filter-toggle-btn");
             if (sidebar) sidebar.classList.add("hidden");
-            if (filterToggleBtn) filterToggleBtn.setAttribute("aria-expanded", "false");
+            if (filterToggleBtn)
+                filterToggleBtn.setAttribute("aria-expanded", "false");
         }
 
         // Update filter pills back to default categories
@@ -638,9 +656,15 @@
         if (filterToggleBtn && filterSidebar) {
             filterToggleBtn.addEventListener("click", () => {
                 const isHidden = filterSidebar.classList.toggle("hidden");
-                filterToggleBtn.setAttribute("aria-expanded", String(!isHidden));
+                filterToggleBtn.setAttribute(
+                    "aria-expanded",
+                    String(!isHidden),
+                );
                 if (!isHidden && window.innerWidth < 1024) {
-                    filterSidebar.scrollIntoView({ behavior: "smooth", block: "start" });
+                    filterSidebar.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
                 }
             });
         }
@@ -648,7 +672,8 @@
         if (closeSidebarBtn && filterSidebar) {
             closeSidebarBtn.addEventListener("click", () => {
                 filterSidebar.classList.add("hidden");
-                if (filterToggleBtn) filterToggleBtn.setAttribute("aria-expanded", "false");
+                if (filterToggleBtn)
+                    filterToggleBtn.setAttribute("aria-expanded", "false");
             });
         }
 
@@ -710,7 +735,11 @@
                             b.classList.add("border-gray-300", "text-gray-600");
                         });
                     selectedPropertyType = type;
-                    btn.classList.add("bg-[#7956C8]", "text-white");
+                    btn.classList.add(
+                        "bg-[#7956C8]",
+                        "text-white",
+                        "hover:text-white",
+                    );
                     btn.classList.remove("border-gray-300", "text-gray-600");
                 }
             });
