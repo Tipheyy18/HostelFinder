@@ -1,13 +1,15 @@
-const base_url = "https://capstone-project-be-oeov.onrender.com"
+const base_url = "https://group16-be-capstone-project-ochf.onrender.com";
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
 
 document.addEventListener("DOMContentLoaded", () => {
     const isLoggedIn = localStorage.getItem("hostelFinderLoggedIn") === "true";
-    document.querySelectorAll("[data-auth-login], [data-auth-signup]").forEach((element) => {
-        element.hidden = isLoggedIn;
-    });
+    document
+        .querySelectorAll("[data-auth-login], [data-auth-signup]")
+        .forEach((element) => {
+            element.hidden = isLoggedIn;
+        });
     document.querySelectorAll("[data-auth-logout]").forEach((element) => {
         element.hidden = !isLoggedIn;
         element.addEventListener("click", () => {
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Mobile menu functionality
     const menuBtn = document.getElementById("menu-btn");
     const closeMenuBtn = document.getElementById("close-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -53,8 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileOverlay.addEventListener("click", closeMenu);
     }
 
+    // Password toggle functionality
     document.querySelectorAll("[data-password-toggle]").forEach((toggle) => {
-        const passwordField = document.getElementById(toggle.dataset.passwordToggle);
+        const passwordField = document.getElementById(
+            toggle.dataset.passwordToggle,
+        );
         const icon = toggle.querySelector("i");
         if (!passwordField || !icon) return;
 
@@ -62,24 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const isVisible = passwordField.type === "password";
             passwordField.type = isVisible ? "text" : "password";
             toggle.setAttribute("aria-pressed", String(isVisible));
-            toggle.setAttribute("aria-label", `${isVisible ? "Hide" : "Show"} ${passwordField.labels[0]?.textContent.toLowerCase() || "password"}`);
+            toggle.setAttribute(
+                "aria-label",
+                `${isVisible ? "Hide" : "Show"} ${passwordField.labels[0]?.textContent.toLowerCase() || "password"}`,
+            );
             icon.classList.toggle("bx-eye", !isVisible);
             icon.classList.toggle("bx-eye-slash", isVisible);
         });
     });
 
-    if (document.body.dataset.page === "browse") {
-        fetch(GET_ALL_HOSTEL)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Hostel request failed with status ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((hostels) => console.log("Hostel data:", hostels))
-            .catch((error) => console.error("Failed to fetch hostels:", error));
-    }
-
+    // Browse page data fetching and rendering is handled by js/browseProperties.js
+    // Login form submission handler
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
         const message = document.getElementById("login-message");
@@ -104,17 +103,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify(payload),
                 });
                 const result = await response.json().catch(() => ({}));
+                console.log("LOGIN response:", {
+                    endpoint: LOGIN_ENDPOINT,
+                    status: response.status,
+                    body: result,
+                });
 
                 if (!response.ok) {
-                    throw new Error(result.message || "Login failed. Check your details and try again.");
+                    throw new Error(
+                        result.message ||
+                            "Login failed. Check your details and try again.",
+                    );
                 }
 
-                message.textContent = result.message || "Logged in successfully.";
+                message.textContent =
+                    result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
                 localStorage.setItem("hostelFinderLoggedIn", "true");
                 window.location.href = "/pages/browse.html";
             } catch (error) {
-                message.textContent = error.message || "Unable to log in. Please try again.";
+                message.textContent =
+                    error.message || "Unable to log in. Please try again.";
                 message.classList.add("text-red-700");
             } finally {
                 submitButton.disabled = false;
@@ -122,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Sign-up form submission handler
     const signupForm = document.getElementById("signup-form");
     if (!signupForm) return;
 
@@ -134,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmPasswordInput.setCustomValidity("");
     });
 
+    // Sign-up form submission handler
     signupForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         confirmPasswordInput.setCustomValidity("");
@@ -151,7 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
             password: passwordInput.value,
             confirmPassword: confirmPasswordInput.value,
             role: signupForm.elements.role.value,
-            termsAccepted: signupForm.elements.termsAccepted.checked,
+            schoolId: "6abd1e667434ce241906fe2b",
+            // termsAccepted: signupForm.elements.termsAccepted.checked,
         };
 
         submitButton.disabled = true;
@@ -165,16 +177,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(payload),
             });
             const result = await response.json().catch(() => ({}));
+            console.log("SIGNUP response:", {
+                endpoint: SIGNUP_ENDPOINT,
+                status: response.status,
+                body: result,
+            });
 
             if (!response.ok) {
-                throw new Error(result.message || "Sign up failed. Please try again.");
+                throw new Error(
+                    result.message || "Sign up failed. Please try again.",
+                );
             }
 
-            message.textContent = result.message || "Account created successfully.";
+            if (!result.user?.id || !result.user?.email || !result.user?.role) {
+                throw new Error(
+                    "Signup response did not include the user details needed for verification.",
+                );
+            }
+
+            sessionStorage.setItem(
+                "hostelFinderOtpUser",
+                JSON.stringify({
+                    id: result.user.id,
+                    email: result.user.email,
+                    role: result.user.role,
+                    token: result.token,
+                }),
+            );
+            message.textContent =
+                result.message || "Account created successfully.";
             message.classList.add("text-green-700");
             window.location.href = "/pages/student-verification.html";
         } catch (error) {
-            message.textContent = error.message || "Unable to sign up. Please try again.";
+            message.textContent =
+                error.message || "Unable to sign up. Please try again.";
             message.classList.add("text-red-700");
         } finally {
             submitButton.disabled = false;

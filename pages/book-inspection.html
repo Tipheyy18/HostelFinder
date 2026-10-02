@@ -44,22 +44,54 @@
 <body class="bg-[#E6D8FC] font-[Manrope]">
 
     <!-- HEADER -->
-    <header class="w-full flex items-center justify-between px-6 md:px-10 py-4 shadow-[0_4px_4px_rgba(37,99,235,0.15)] bg-[#E6D8FC]">
-        <a href="/"><img class="w-44" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo"></a>
-        <nav class="xl:flex gap-8 hidden">
-            <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Home</a>
-            <a href="/pages/browse.html" class="text-sm font-semibold text-[#7956C8] underline">Browse Properties</a>
-            <a href="/pages/book-inspection.html"  class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">View  Your Inspection</a>
-            <a href="/pages/settings.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline">Settings</a>
-        </nav>
-        <a href="/pages/signup.html" class="xl:block hidden">
-            <button class="capitalize bg-[#7956C8] text-[#FFFFFF]
- text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
-        </a>
-        <div class="block xl:hidden">
-            <i class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md cursor-pointer px-1"></i>
-        </div>
-    </header>
+    <header class="w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Browse Hostel</a>
+                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+            </nav>
+
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
+                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                    </nav>
+                </div>
+
+                <a data-auth-signup href="/pages/signup.html" class="w-full">
+                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                </a>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            </aside>
+        </header>
 
     <!-- ===== MAIN ===== -->
     <main class="max-w-6xl w-full px-3 sm:px-4 md:px-10 pb-16 mx-auto">

@@ -1,9 +1,10 @@
-@import "tailwindcss";
+/* HostelFinder Global Stylesheet */
 
-@theme {
-  --font-manrope: 'Manrope', sans-serif;
-
-  --font-dm: 'DM Sans', sans-serif;
-
-  --font-surf: 'Original Surfer', sans-serif;
+/* Hide scrollbar utility for clean horizontal scrolling */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
