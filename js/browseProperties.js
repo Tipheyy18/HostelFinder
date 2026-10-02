@@ -168,7 +168,7 @@
                 <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
                     <span class="text-[#7956C8] font-bold text-sm">${priceFormatted}</span>
                     <a 
-                        href="/pages/property-detail.html?id=${encodeURIComponent(propId)}" 
+                        href="/pages/property-detail.html?id=${encodeURIComponent(propId)}${prop.schoolId ? `&schoolId=${encodeURIComponent(prop.schoolId)}` : ""}" 
                         data-action="view-details" 
                         data-id="${escapeHtml(propId)}"
                         class="bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer"
