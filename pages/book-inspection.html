@@ -94,15 +94,21 @@
         </header>
 
     <!-- ===== MAIN ===== -->
+     
     <main class="max-w-6xl w-full px-3 sm:px-4 md:px-10 pb-16 mx-auto">
-        <section class="mt-4 bg-[#F8F5FE] rounded-2xl p-3 sm:p-6 md:p-12 shadow-sm">
+        <section class="mt-4 bg-[#F8F5FE] p-3 sm:p-6 md:p-12 shadow-sm">
             <div class="max-w-xl mx-auto px-2 sm:px-4 py-6 sm:py-8 pb-12 sm:pb-16">
 
-        <!-- Page Title -->
-        <h1 class="text-2xl font-extrabold text-gray-900 text-center mb-1">Book Inspection</h1>
-        <p class="text-xs text-[#7956C8]
-
- text-center mb-6">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
+        <!-- Page Title Header with Back Arrow -->
+        <div class="mb-6 relative flex items-center justify-center">
+            <a href="/pages/property-detail.html" onclick="if (document.referrer) { history.back(); return false; }" class="absolute left-0 text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center p-1" aria-label="Go back to previous page">
+                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+            </a>
+            <div class="text-center px-8 sm:px-10">
+                <h1 class="text-2xl font-extrabold text-gray-900 mb-1">Book Inspection</h1>
+                <p class="text-xs text-[#7956C8]">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
+            </div>
+        </div>
 
         <!-- Property summary card -->
         <div class="bg-[#FFFFFF]

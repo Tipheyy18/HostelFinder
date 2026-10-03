@@ -9,212 +9,204 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>Inspection Completed | HostelFinder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Your Inspection | HostelFinder</title>
 </head>
 <body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
 
     <!-- ===== HEADER ===== -->
-    <header class=" container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-            <a href="/">
-                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
-            </a>
+    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <a href="/">
+            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+        </a>
 
-            <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
-                <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a> -->
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
-            </nav>
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
+            <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Properties</a>
+            <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">View Your Inspection</a>
+            <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Settings</a>
+        </nav>
 
-            <a data-auth-signup href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
-            </a>
-            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+        <a data-auth-signup href="/pages/signup.html">
+            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+        </a>
+        <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
 
-            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
-            </div>
+        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+            <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+        </div>
 
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
 
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                        <a href="/">
-                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-                        </a>
-                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
-                            <i class="bx bx-x"></i>
-                        </button>
-                    </div>
-
-                    <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
-                        <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a> -->
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
-                    </nav>
+        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                    <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                    </a>
+                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                    </button>
                 </div>
 
-                <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
-                </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
-            </aside>
-        </header>
+                <nav class="flex flex-col gap-4 mt-6">
+                    <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
+                    <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Properties</a>
+                    <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline">View Your Inspection</a>
+                    <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Settings</a>
+                </nav>
+            </div>
 
-    <!-- ===== PAGE TITLE ===== -->
-    <div class="max-w-3xl mx-auto px-4 pt-6 pb-2 flex items-center gap-3">
-        <a href="/pages/your-inspection.html" class="text-gray-700 hover:text-[#7956C8] transition">
-            <i class="bx bx-arrow-back text-2xl"></i>
-        </a>
-        <h1 class="text-2xl font-extrabold text-gray-900">Your Inspection</h1>
+            <a data-auth-signup href="/pages/signup.html" class="w-full">
+                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+        </aside>
+    </header>
+
+    <!-- ===== PAGE TITLE WITH BACK ARROW ===== -->
+    <div class="container mx-auto px-4 md:px-10 pt-6 pb-2">
+        <div class="flex items-center gap-3">
+            <a href="/pages/your-inspection.html" onclick="if (document.referrer) { history.back(); return false; }" class="text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center">
+                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+            </a>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340] tracking-tight">Your Inspection</h1>
+        </div>
     </div>
 
-    <!-- ===== MAIN ===== -->
-    <main class="max-w-3xl mx-auto px-4 pb-16 pt-2">
-
-        <!-- Outer light-purple wrapper -->
-        <div class="bg-[#f0ebfc] rounded-3xl p-6 md:p-10">
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container mx-auto px-4 md:px-10 pb-16 pt-4">
+        
+        <!-- Outer light purple container card -->
+        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-12 shadow-sm">
 
             <!-- White inner card -->
-            <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-sm mx-auto overflow-hidden px-5 pt-6 pb-5">
+            <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
 
-                <!-- Back arrow inside card (top-left) -->
-                <div class="mb-3">
-                    <a href="/pages/your-inspection.html" class="text-gray-500 hover:text-[#7956C8] transition">
-                        <i class="bx bx-arrow-back text-lg"></i>
+                <!-- Back arrow inside top left of card -->
+                <div class="absolute top-6 left-6">
+                    <a href="/pages/your-inspection.html" onclick="if (document.referrer) { history.back(); return false; }" class="text-gray-400 hover:text-[#7956C8] transition flex items-center justify-center">
+                        <img src="/images/eva_arrow-back-fill.png" alt="Back" class="w-4 h-4 object-contain">
                     </a>
                 </div>
 
-                <!-- Purple verified badge icon -->
-                <div class="flex justify-center mb-2">
-                    <div class="w-14 h-14 bg-[#7956C8] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(121,86,200,0.40)]">
-                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
+                <!-- Purple verified checkmark badge icon -->
+                <div class="flex justify-center mb-3">
+                    <img src="/images/Vector.png" alt="Inspection Completed" class="w-12 h-12 object-contain">
                 </div>
 
-                <!-- Inspection Completed title -->
-                <div class="text-center mb-4">
-                    <h2 class="text-base font-extrabold text-gray-900 mb-0.5">Inspection Completed!</h2>
-                    <p class="text-xs text-gray-400">Your inspection for Greenfields Court is done.</p>
+                <!-- Title & Subtitle -->
+                <div class="text-center mb-5">
+                    <h2 class="text-xl font-extrabold text-gray-900 mb-1">Inspection Completed!</h2>
+                    <p class="text-xs text-gray-500">Your inspection for Greenfields court is done.</p>
                 </div>
 
-                <!-- Property image -->
-                <div class="rounded-xl overflow-hidden mb-4">
+                <!-- Property Image -->
+                <div class="rounded-2xl overflow-hidden mb-5 border border-gray-100 shadow-xs">
                     <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                         alt="Greenfields Court" class="w-full h-40 object-cover">
+                         alt="Greenfields Court" class="w-full h-48 sm:h-52 object-cover">
                 </div>
 
-                <!-- Inspection confirmation row with toggle ON -->
-                <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5 flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-2">
-                        <div class="w-5 h-5 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
-                            <i class="bx bx-check-shield text-[#7956C8] text-xs"></i>
-                        </div>
-                        <span class="text-xs text-gray-500">Inspection confirmation</span>
-                    </div>
-                    <!-- Toggle ON -->
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" class="sr-only peer" checked>
-                        <div class="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4 after:shadow"></div>
+                <!-- Status pill & toggle switch row -->
+                <div class="flex items-center justify-between gap-2 mb-5">
+                    <span class="bg-[#7956C8] text-white text-[11px] font-semibold px-4 py-1.5 rounded-full tracking-tight">
+                        Completed • 01 Sept, 2025 • 12:45 PM
+                    </span>
+                    <!-- Green toggle switch -->
+                    <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+                        <input type="checkbox" class="sr-only peer" checked disabled>
+                        <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-4 after:shadow-sm"></div>
                     </label>
                 </div>
 
-                <!-- Proceed with Property — solid purple -->
-                <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-semibold text-sm py-3 rounded-xl transition mb-3">
-                    Proceed with Property
-                </button>
+                <!-- Action buttons -->
+                <div class="space-y-3 mb-5">
+                    <!-- Proceed with Property -->
+                    <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl transition cursor-pointer shadow-sm">
+                        Proceed with Property
+                    </button>
+                    <!-- Reject Property -->
+                    <button id="reject-btn" class="w-full bg-white border border-red-400 text-red-500 hover:bg-red-50 font-bold text-sm py-3.5 rounded-xl transition cursor-pointer">
+                        Reject Property
+                    </button>
+                </div>
 
-                <!-- Reject Property — red outline -->
-                <button class="w-full border-2 border-red-400 text-red-500 hover:bg-red-50 font-semibold text-sm py-3 rounded-xl transition mb-4">
-                    Reject Property
-                </button>
-
-                <!-- Review Property section -->
-                <div class="border border-[#ede8f8] rounded-xl px-4 py-3">
-                    <!-- Star rating row -->
+                <!-- Review Property Card -->
+                <div class="border border-gray-200 rounded-2xl p-4 bg-white shadow-2xs mb-5">
+                    <!-- Rating Header Row -->
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-semibold text-gray-700">Review Property</span>
+                        <span class="text-xs font-bold text-gray-900">Review Property</span>
                         <div class="flex items-center gap-1" id="stars">
-                            <!-- 4 filled, 1 empty by default -->
-                            <i class="bx bxs-star text-[#7956C8] text-base cursor-pointer star" data-val="1"></i>
-                            <i class="bx bxs-star text-[#7956C8] text-base cursor-pointer star" data-val="2"></i>
-                            <i class="bx bxs-star text-[#7956C8] text-base cursor-pointer star" data-val="3"></i>
-                            <i class="bx bxs-star text-[#7956C8] text-base cursor-pointer star" data-val="4"></i>
-                            <i class="bx bx-star text-gray-300 text-base cursor-pointer star" data-val="5"></i>
+                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="1">
+                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="2">
+                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="3">
+                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="4">
+                            <i class="bx bx-star text-gray-300 text-base cursor-pointer star-icon" data-val="5"></i>
                         </div>
                     </div>
 
-                    <!-- Review text area -->
-                    <div class="relative">
+                    <!-- Review Textarea Container -->
+                    <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-start justify-between gap-2 focus-within:border-[#7956C8] transition">
                         <textarea
                             placeholder="Add your review..."
-                            rows="3"
-                            class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-600 placeholder-gray-300 outline-none focus:border-[#7956C8] resize-none transition pr-8"
+                            rows="2"
+                            class="w-full bg-transparent text-xs text-gray-700 placeholder-gray-400 outline-none resize-none"
                         ></textarea>
-                        <!-- Send icon inside textarea -->
-                        <button class="absolute bottom-3 right-2 text-[#7956C8] hover:text-[#4a2f82] transition">
-                            <i class="bx bx-send text-base"></i>
-                        </button>
+                        <img src="/images/akar-icons_edit.png" alt="Edit" class="w-4 h-4 object-contain text-gray-400 flex-shrink-0 mt-0.5">
                     </div>
 
-                    <!-- Report link -->
+                    <!-- Report Property Link -->
                     <div class="flex justify-center mt-3">
-                        <button class="text-[10px] text-[#7956C8] hover:underline flex items-center gap-1">
-                            <i class="bx bx-flag text-xs"></i> Report Property if necessary
+                        <button class="text-xs text-[#7956C8] hover:underline flex items-center gap-1.5 font-medium cursor-pointer">
+                            <img src="/images/ant-design_flag-outlined.png" alt="Flag" class="w-3.5 h-3.5 object-contain">
+                            Report Property if necessary
                         </button>
                     </div>
                 </div>
 
-            </div>
-
-           
-            <div class="mt-5 max-w-sm mx-auto">
-                <a href="/">
-                    <button class="w-full text-[#ede5f9] border border-[#d5c7f7] bg-[#7956C8]  font-bold  text-[#00000] text-sm py-3.5 rounded-2xl transition cursor-pointer">
+                <!-- Back to Home Button -->
+                <a href="/" class="block w-full">
+                    <button class="w-full bg-[#EDE9FE] hover:bg-[#e2d8f9] border border-[#d5c7f7] text-[#7956C8] font-bold text-sm py-3.5 rounded-xl transition cursor-pointer">
                         Back to Home
                     </button>
                 </a>
+
             </div>
 
         </div>
     </main>
 
+    <script src="../script.js"></script>
     <script>
         // Star rating interaction
-        const stars = document.querySelectorAll('.star');
+        const stars = document.querySelectorAll('.star-icon');
         stars.forEach(star => {
             star.addEventListener('click', function () {
                 const val = parseInt(this.getAttribute('data-val'));
                 stars.forEach((s, i) => {
                     if (i < val) {
-                        s.className = 'bx bxs-star text-[#7956C8] text-base cursor-pointer star';
+                        if (s.tagName.toLowerCase() === 'img') {
+                            s.style.opacity = '1';
+                        } else {
+                            s.className = 'bx bxs-star text-[#7956C8] text-base cursor-pointer star-icon';
+                        }
                     } else {
-                        s.className = 'bx bx-star text-gray-300 text-base cursor-pointer star';
+                        if (s.tagName.toLowerCase() === 'img') {
+                            s.style.opacity = '0.3';
+                        } else {
+                            s.className = 'bx bx-star text-gray-300 text-base cursor-pointer star-icon';
+                        }
                     }
                 });
-            });
-
-            star.addEventListener('mouseover', function () {
-                const val = parseInt(this.getAttribute('data-val'));
-                stars.forEach((s, i) => {
-                    if (i < val) {
-                        s.style.color = '#7956C8';
-                    } else {
-                        s.style.color = '#d1d5db';
-                    }
-                });
-            });
-
-            star.addEventListener('mouseout', function () {
-                stars.forEach(s => { s.style.color = ''; });
             });
         });
-    </script>
 
+        const rejectBtn = document.getElementById('reject-btn');
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', () => {
+                window.location.href = '/pages/browse.html';
+            });
+        }
+    </script>
 </body>
 </html>
