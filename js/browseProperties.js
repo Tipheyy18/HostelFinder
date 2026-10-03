@@ -10,7 +10,7 @@
     const API_BASE_URL =
         typeof base_url !== "undefined"
             ? base_url
-            : "https://group16-be-capstone-project-ochf.onrender.com";
+            : "https://hostelfinderbe.onrender.com";
     const PROPERTIES_ENDPOINT = `${API_BASE_URL}/properties`;
     const FALLBACK_IMAGE =
         "https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png";

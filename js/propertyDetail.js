@@ -7,7 +7,7 @@
     const API_BASE_URL =
         typeof base_url !== "undefined"
             ? base_url
-            : "https://group16-be-capstone-project-ochf.onrender.com";
+            : "https://hostelfinderbe.onrender.com";
     const FALLBACK_IMAGE =
         "https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png";
 
@@ -72,6 +72,20 @@
     function formatPrice(price) {
         if (typeof price !== "number" || isNaN(price)) return "₦ --";
         return `₦ ${price.toLocaleString()}/year`;
+    }
+
+    function setupBookInspectionAuthGuard() {
+        const bookLink = document.getElementById("book-inspection-link");
+        if (!bookLink) return;
+
+        bookLink.addEventListener("click", (event) => {
+            if (localStorage.getItem("hostelFinderLoggedIn") === "true") {
+                return;
+            }
+
+            event.preventDefault();
+            window.location.href = "/pages/login.html";
+        });
     }
 
     function getSchoolName(schoolId) {
@@ -376,8 +390,12 @@
 
     // Initialize on DOM load
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", loadPropertyDetails);
+        document.addEventListener("DOMContentLoaded", () => {
+            setupBookInspectionAuthGuard();
+            loadPropertyDetails();
+        });
     } else {
+        setupBookInspectionAuthGuard();
         loadPropertyDetails();
     }
 })();

@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://group16-be-capstone-project-ochf.onrender.com";
+const API_BASE_URL = "https://hostelfinderbe.onrender.com";
 const OTP_ENDPOINTS = {
     send: `${API_BASE_URL}/auth/otp/send`,
     resend: `${API_BASE_URL}/auth/otp/resend`,
@@ -185,9 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(
                     "Signup details were not found. Please sign up again.",
                 );
-            await postJson(OTP_ENDPOINTS.verify, { ...signupUser, otp });
+            await postJson(OTP_ENDPOINTS.verify, { ...signupUser, code:otp });
             window.clearInterval(timerId);
             sessionStorage.removeItem("hostelFinderOtpUser");
+            if (signupUser.role === "landlord") {
+                document.getElementById("success-title").textContent =
+                    "Landlord Account Verified";
+                document.getElementById("success-message").textContent =
+                    "Your landlord account is verified. You can now log in and manage your properties.";
+            }
             showState("success");
             window.setTimeout(() => {
                 window.location.href = "/pages/login.html";
