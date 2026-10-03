@@ -1,4 +1,4 @@
-const base_url = "https://group16-be-capstone-project-ochf.onrender.com";
+const base_url = "https://group16-capstone-project-ochf.onrender.com";
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;

@@ -203,7 +203,7 @@
                 <div class="col-span-full py-16 bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
                     <i class="bx bx-building-house text-5xl text-[#7956C8] mb-3"></i>
                     <h3 class="text-base font-bold text-gray-800">No hostels found</h3>
-                    <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto">We couldn't find any accommodation matching your filter criteria. Try resetting or relaxing your filters.</p>
+                    <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto">The property matching your filters was not found or may not exist. Try adjusting or resetting your filters.</p>
                     <button id="empty-reset-btn" class="mt-4 bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#4a2f82] transition cursor-pointer">
                         Reset Filters
                     </button>
@@ -632,9 +632,12 @@
 
             const response = await fetch(url);
             if (!response.ok) {
-                throw new Error(
-                    `Failed to load hostels from server (HTTP ${response.status})`,
-                );
+                if (response.status === 404) {
+                    allProperties = [];
+                    renderProperties(allProperties, 0);
+                    return;
+                }
+                throw new Error("Failed to load hostels from server.");
             }
             const data = await response.json();
             allProperties = Array.isArray(data.properties)
