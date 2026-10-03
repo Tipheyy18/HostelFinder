@@ -1,4 +1,4 @@
-const base_url = "https://group16-capstone-project-ochf.onrender.com";
+const base_url = "https://hostelfinderbe.onrender.com";
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
@@ -120,7 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
                 localStorage.setItem("hostelFinderLoggedIn", "true");
-                window.location.href = "/pages/browse.html";
+                const role = result.user?.role?.toLowerCase();
+                window.location.href =
+                    role === "provider" || role === "landlord"
+                        ? "/pages/listProperty.html"
+                        : "/pages/browse.html";
             } catch (error) {
                 message.textContent =
                     error.message || "Unable to log in. Please try again.";
@@ -207,7 +211,10 @@ document.addEventListener("DOMContentLoaded", () => {
             message.textContent =
                 result.message || "Account created successfully.";
             message.classList.add("text-green-700");
-            window.location.href = "/pages/student-verification.html";
+            window.location.href =
+                result.user.role === "landlord"
+                    ? "/pages/landlord-verification.html"
+                    : "/pages/student-verification.html";
         } catch (error) {
             message.textContent =
                 error.message || "Unable to sign up. Please try again.";
