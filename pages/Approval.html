@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Property Listings & Approval | HostelFinder Admin</title>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+
+    <!-- ===== HEADER ===== -->
+    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <a href="/">
+            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+        </a>
+
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Dashboard</a>
+            <a href="/pages/Approval.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">Properties</a>
+            <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Inspections</a>
+            <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Reviews</a>
+        </nav>
+
+        <a href="/pages/Admin-login.html">
+            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Admin Logout</button>
+        </a>
+
+        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+            <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+        </div>
+
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                    <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                    </a>
+                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                    </button>
+                </div>
+
+                <nav class="flex flex-col gap-4 mt-6">
+                    <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Dashboard</a>
+                    <a href="/pages/Approval.html" class="text-base font-semibold text-[#7956C8] underline">Properties</a>
+                    <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Inspections</a>
+                    <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Reviews</a>
+                </nav>
+            </div>
+
+            <a href="/pages/Admin-login.html" class="w-full">
+                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            </a>
+        </aside>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
+        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-10 shadow-sm">
+
+            <!-- Title & Subtitle -->
+            <div class="text-center mb-6">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340]">Landlord Property Listings & Approvals</h1>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1">Review and approve landlord submitted properties before they go live to students.</p>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Total Properties</p>
+                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">124</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Pending Approval</p>
+                    <h4 class="text-xl font-extrabold text-amber-500 mt-1" id="pending-count">18</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Approved Properties</p>
+                    <h4 class="text-xl font-extrabold text-green-600 mt-1" id="approved-count">78</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Active Landlords</p>
+                    <h4 class="text-xl font-extrabold text-[#7956C8] mt-1">78</h4>
+                </div>
+            </div>
+
+            <!-- Filter Pills & Search Bar -->
+            <div class="max-w-5xl mx-auto mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Filter Pills -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <button class="filter-pill active bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition" data-filter="all">All (124)</button>
+                    <button class="filter-pill bg-white text-gray-600 hover:text-[#7956C8] text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="pending">Pending (18)</button>
+                    <button class="filter-pill bg-white text-gray-600 hover:text-[#7956C8] text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="approved">Approved (78)</button>
+                    <button class="filter-pill bg-white text-gray-600 hover:text-[#7956C8] text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="rejected">Rejected (8)</button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="w-full md:w-72 bg-white rounded-xl border border-gray-200 px-3 py-2 flex items-center gap-2 shadow-xs">
+                    <i class="bx bx-search text-[#7956C8]"></i>
+                    <input type="text" id="prop-search" placeholder="Search by property or landlord..." class="bg-transparent text-xs text-gray-700 outline-none w-full">
+                </div>
+            </div>
+
+            <!-- Property Listings Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" id="property-grid">
+                <!-- Populated dynamically -->
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        const initialProperties = [
+            {
+                id: 'prop_1',
+                title: 'Greenfields Court',
+                landlord: 'Mr. Tunde Adeyemi',
+                location: 'Choba, Under G Road',
+                price: '₦ 250,000/year',
+                type: 'Shared Apartment',
+                image: 'https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png',
+                status: 'pending'
+            },
+            {
+                id: 'prop_2',
+                title: 'Royal Haven Lodge',
+                landlord: 'Chief Okonjo',
+                location: 'Main Gate Road, LASU Area',
+                price: '₦ 350,000/year',
+                type: 'Self Contain',
+                image: 'https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/20c7d02924ad19121bcb3b92b2a5cbb1deaf3a28.png',
+                status: 'approved'
+            },
+            {
+                id: 'prop_3',
+                title: 'Golden Heaven Hostel',
+                landlord: 'Mrs. Folake Akindele',
+                location: 'Ikeja, Lagos',
+                price: '₦ 500,000/year',
+                type: '2-Bedroom Flat',
+                image: 'https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/f5bf926c8d41265ccf2aea4a3b9cc41fc2e0c2f1.png',
+                status: 'pending'
+            },
+            {
+                id: 'prop_4',
+                title: 'Oasis Lodge',
+                landlord: 'Dr. Ibrahim Musa',
+                location: 'Under G, Akure',
+                price: '₦ 200,000/year',
+                type: 'Single Room',
+                image: 'https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png',
+                status: 'rejected'
+            }
+        ];
+
+        let properties = JSON.parse(localStorage.getItem('hostelfinder_admin_properties') || 'null');
+        if (!properties) {
+            properties = initialProperties;
+            localStorage.setItem('hostelfinder_admin_properties', JSON.stringify(properties));
+        }
+
+        let currentFilter = 'all';
+
+        function renderProperties() {
+            const grid = document.getElementById('property-grid');
+            const searchVal = document.getElementById('prop-search').value.toLowerCase();
+            if (!grid) return;
+
+            const filtered = properties.filter(p => {
+                const matchesFilter = currentFilter === 'all' || p.status === currentFilter;
+                const matchesSearch = p.title.toLowerCase().includes(searchVal) || p.landlord.toLowerCase().includes(searchVal) || p.location.toLowerCase().includes(searchVal);
+                return matchesFilter && matchesSearch;
+            });
+
+            grid.innerHTML = filtered.map(p => {
+                let badgeClass = 'bg-amber-100 text-amber-700';
+                let statusLabel = 'Pending';
+                if (p.status === 'approved') {
+                    badgeClass = 'bg-green-100 text-green-700';
+                    statusLabel = 'Approved';
+                } else if (p.status === 'rejected') {
+                    badgeClass = 'bg-red-100 text-red-700';
+                    statusLabel = 'Rejected';
+                }
+
+                return `
+                    <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] overflow-hidden border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-44 bg-gray-100">
+                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+                                <span class="absolute top-3 right-3 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${badgeClass}">
+                                    ${statusLabel}
+                                </span>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-extrabold text-base text-gray-900">${p.title}</h3>
+                                <p class="text-xs text-[#7956C8] font-semibold mt-0.5"><i class="bx bx-user"></i> Landlord: ${p.landlord}</p>
+                                <p class="text-xs text-gray-500 mt-1 flex items-center gap-1"><i class="bx bx-map"></i> ${p.location}</p>
+                                <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                                    <span class="text-xs font-extrabold text-[#7956C8]">${p.price}</span>
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase">${p.type}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 pt-0 grid grid-cols-2 gap-2">
+                            <button onclick="updatePropertyStatus('${p.id}', 'approved')" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-xs py-2.5 rounded-xl transition cursor-pointer">
+                                Approve
+                            </button>
+                            <button onclick="updatePropertyStatus('${p.id}', 'rejected')" class="w-full border border-red-400 text-red-500 hover:bg-red-50 font-bold text-xs py-2.5 rounded-xl transition cursor-pointer">
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updateCounts();
+        }
+
+        function updatePropertyStatus(id, newStatus) {
+            const prop = properties.find(p => p.id === id);
+            if (prop) {
+                prop.status = newStatus;
+                localStorage.setItem('hostelfinder_admin_properties', JSON.stringify(properties));
+                renderProperties();
+            }
+        }
+
+        function updateCounts() {
+            const pending = properties.filter(p => p.status === 'pending').length;
+            const approved = properties.filter(p => p.status === 'approved').length;
+            document.getElementById('pending-count').textContent = pending;
+            document.getElementById('approved-count').textContent = approved;
+        }
+
+        // Filter pills event listeners
+        document.querySelectorAll('.filter-pill').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-pill').forEach(b => {
+                    b.className = 'filter-pill bg-white text-gray-600 hover:text-[#7956C8] text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition';
+                });
+                this.className = 'filter-pill active bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition';
+                currentFilter = this.getAttribute('data-filter');
+                renderProperties();
+            });
+        });
+
+        document.getElementById('prop-search').addEventListener('input', renderProperties);
+
+        document.addEventListener('DOMContentLoaded', renderProperties);
+    </script>
+</body>
+</html>

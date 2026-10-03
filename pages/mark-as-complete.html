@@ -24,7 +24,6 @@
             <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
             <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Properties</a>
             <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">View Your Inspection</a>
-            <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Settings</a>
         </nav>
 
         <a data-auth-signup href="/pages/signup.html">
@@ -53,7 +52,6 @@
                     <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
                     <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Properties</a>
                     <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline">View Your Inspection</a>
-                    <a href="#" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Settings</a>
                 </nav>
             </div>
 
@@ -122,7 +120,7 @@
                 <!-- Action buttons -->
                 <div class="space-y-3 mb-5">
                     <!-- Proceed with Property -->
-                    <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl transition cursor-pointer shadow-sm">
+                    <button id="proceed-btn" class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl transition cursor-pointer shadow-sm">
                         Proceed with Property
                     </button>
                     <!-- Reject Property -->
@@ -148,16 +146,21 @@
                     <!-- Review Textarea Container -->
                     <div class="border border-gray-200 rounded-xl p-3 bg-white flex items-start justify-between gap-2 focus-within:border-[#7956C8] transition">
                         <textarea
+                            id="review-textarea"
                             placeholder="Add your review..."
                             rows="2"
                             class="w-full bg-transparent text-xs text-gray-700 placeholder-gray-400 outline-none resize-none"
                         ></textarea>
-                        <img src="/images/akar-icons_edit.png" alt="Edit" class="w-4 h-4 object-contain text-gray-400 flex-shrink-0 mt-0.5">
+                        <button id="send-review-btn" class="text-[#7956C8] hover:text-[#4a2f82] transition p-1 cursor-pointer flex-shrink-0" title="Submit Review">
+                            <img src="/images/akar-icons_edit.png" alt="Send Review" class="w-4 h-4 object-contain">
+                        </button>
                     </div>
+
+                    <p id="review-feedback-msg" class="hidden mt-2 text-xs font-semibold text-green-600 text-center"></p>
 
                     <!-- Report Property Link -->
                     <div class="flex justify-center mt-3">
-                        <button class="text-xs text-[#7956C8] hover:underline flex items-center gap-1.5 font-medium cursor-pointer">
+                        <button id="report-property-btn" class="text-xs text-[#7956C8] hover:underline flex items-center gap-1.5 font-medium cursor-pointer">
                             <img src="/images/ant-design_flag-outlined.png" alt="Flag" class="w-3.5 h-3.5 object-contain">
                             Report Property if necessary
                         </button>
@@ -178,13 +181,15 @@
 
     <script src="../script.js"></script>
     <script>
+        let selectedRating = 4;
+
         // Star rating interaction
         const stars = document.querySelectorAll('.star-icon');
         stars.forEach(star => {
             star.addEventListener('click', function () {
-                const val = parseInt(this.getAttribute('data-val'));
+                selectedRating = parseInt(this.getAttribute('data-val'));
                 stars.forEach((s, i) => {
-                    if (i < val) {
+                    if (i < selectedRating) {
                         if (s.tagName.toLowerCase() === 'img') {
                             s.style.opacity = '1';
                         } else {
@@ -201,12 +206,65 @@
             });
         });
 
-        const rejectBtn = document.getElementById('reject-btn');
-        if (rejectBtn) {
-            rejectBtn.addEventListener('click', () => {
-                window.location.href = '/pages/browse.html';
-            });
+        function submitReviewToAdmin() {
+            const textarea = document.getElementById('review-textarea');
+            const commentText = textarea ? textarea.value.trim() : '';
+            const msgEl = document.getElementById('review-feedback-msg');
+            
+            const reviewComment = commentText || 'Great hostel, very close to campus and well secured!';
+
+            const newReview = {
+                id: 'rev_' + Date.now(),
+                studentName: 'Student User',
+                propertyTitle: 'Greenfields Court',
+                rating: selectedRating,
+                comment: reviewComment,
+                date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                status: 'Approved'
+            };
+
+            const existingReviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
+            existingReviews.unshift(newReview);
+            localStorage.setItem('hostelfinder_reviews', JSON.stringify(existingReviews));
+
+            if (msgEl) {
+                msgEl.textContent = '✓ Review sent to Admin Dashboard!';
+                msgEl.classList.remove('hidden');
+            }
         }
+
+        document.getElementById('send-review-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            submitReviewToAdmin();
+        });
+
+        document.getElementById('proceed-btn')?.addEventListener('click', () => {
+            submitReviewToAdmin();
+            alert('Property accepted! Review sent to Admin.');
+            window.location.href = '/pages/browse.html';
+        });
+
+        document.getElementById('reject-btn')?.addEventListener('click', () => {
+            alert('Property rejected. Returning to browse.');
+            window.location.href = '/pages/browse.html';
+        });
+
+        document.getElementById('report-property-btn')?.addEventListener('click', () => {
+            const reason = prompt('Please describe why you are reporting this property:');
+            if (reason) {
+                const existingReports = JSON.parse(localStorage.getItem('hostelfinder_reports') || '[]');
+                existingReports.unshift({
+                    id: 'rep_' + Date.now(),
+                    type: 'Property Issue',
+                    details: 'Greenfields Court: ' + reason,
+                    reportedBy: 'Student User',
+                    date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+                    status: 'Pending'
+                });
+                localStorage.setItem('hostelfinder_reports', JSON.stringify(existingReports));
+                alert('Report submitted to Admin moderation queue.');
+            }
+        });
     </script>
 </body>
 </html>

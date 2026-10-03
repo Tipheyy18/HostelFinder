@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Admin Login | HostelFinder</title>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+    <!-- ===== HEADER ===== -->
+    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <a href="/">
+            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+        </a>
+
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Dashboard</a>
+            <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Properties</a>
+            <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Inspections</a>
+            <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Reviews</a>
+            <a href="/pages/login.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">Login</a>
+        </nav>
+
+        <a href="/pages/signup.html">
+            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+        </a>
+
+        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+            <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+        </div>
+
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                    <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                    </a>
+                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                    </button>
+                </div>
+
+                <nav class="flex flex-col gap-4 mt-6">
+                    <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Dashboard</a>
+                    <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Properties</a>
+                    <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Inspections</a>
+                    <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Reviews</a>
+                    <a href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                </nav>
+            </div>
+
+            <a href="/pages/signup.html" class="w-full">
+                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            </a>
+        </aside>
+    </header>
+
+    <!-- ===== LOGIN FORM SECTION ===== -->
+    <main class="container mx-auto px-4 md:px-10 pb-16 pt-8">
+        <section class="bg-[#F8F5FE] rounded-3xl p-6 md:p-12 shadow-sm max-w-lg mx-auto">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(121,86,200,0.12)]">
+                <h3 class="font-bold text-2xl text-center text-[#2D2340] mb-2">Welcome Back, Admin</h3>
+                <p class="text-xs text-gray-500 text-center mb-6">Sign in to manage properties, inspect bookings & reviews.</p>
+
+                <form id="admin-login-form" class="space-y-4">
+                    <div>
+                        <label for="email" class="block font-semibold text-xs text-[#2D2340] mb-1.5">Admin Email</label>
+                        <input 
+                            type="email"
+                            id="email"
+                            placeholder="admin@hostelfinder.com"
+                            value="admin@hostelfinder.com"
+                            class="w-full p-3.5 bg-gray-50 rounded-xl border border-gray-200 outline-none text-xs text-gray-800 focus:border-[#7956C8] focus:ring-1 focus:ring-[#7956C8]" 
+                            required
+                        >
+                    </div>  
+                     
+                    <div>
+                        <label for="password" class="block font-semibold text-xs text-[#2D2340] mb-1.5">Password</label>
+                        <div class="relative w-full">
+                            <input 
+                                type="password"
+                                id="password"
+                                placeholder="••••••••"
+                                value="admin123"
+                                class="w-full p-3.5 bg-gray-50 rounded-xl border border-gray-200 outline-none text-xs text-gray-800 focus:border-[#7956C8] focus:ring-1 focus:ring-[#7956C8]" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <a href="#" class="text-[#7956C8] text-xs hover:underline">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl shadow-md transition cursor-pointer">
+                        Log In as Admin
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        document.getElementById('admin-login-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            localStorage.setItem('isAdminLoggedIn', 'true');
+            window.location.href = '/pages/Dashboard.html';
+        });
+    </script>
+</body>
+</html>

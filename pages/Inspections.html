@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <title>Inspection Bookings | HostelFinder Admin</title>
+</head>
+<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+
+    <!-- ===== HEADER ===== -->
+    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <a href="/">
+            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+        </a>
+
+        <nav class="xl:flex gap-8 hidden items-center">
+            <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Dashboard</a>
+            <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Properties</a>
+            <a href="/pages/Inspections.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">Inspections</a>
+            <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Reviews</a>
+        </nav>
+
+        <a href="/pages/Admin-login.html">
+            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Admin Logout</button>
+        </a>
+
+        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+            <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+        </div>
+
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                    <a href="/">
+                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                    </a>
+                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                        <i class="bx bx-x"></i>
+                    </button>
+                </div>
+
+                <nav class="flex flex-col gap-4 mt-6">
+                    <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Dashboard</a>
+                    <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Properties</a>
+                    <a href="/pages/Inspections.html" class="text-base font-semibold text-[#7956C8] underline">Inspections</a>
+                    <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Reviews</a>
+                </nav>
+            </div>
+
+            <a href="/pages/Admin-login.html" class="w-full">
+                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            </a>
+        </aside>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
+        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-10 shadow-sm">
+
+            <!-- Title Header -->
+            <div class="mb-6 text-center">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340]">Student Inspection Bookings</h1>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1">Confirm, monitor and confirm inspection bookings requested by students.</p>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Total Bookings</p>
+                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">86</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Confirmed</p>
+                    <h4 class="text-xl font-extrabold text-green-600 mt-1" id="count-confirmed">54</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Pending Confirmation</p>
+                    <h4 class="text-xl font-extrabold text-amber-500 mt-1" id="count-pending">22</h4>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                    <p class="text-xs font-semibold text-gray-500">Completed</p>
+                    <h4 class="text-xl font-extrabold text-[#7956C8] mt-1">10</h4>
+                </div>
+            </div>
+
+            <!-- Inspections Table Section -->
+            <div class="bg-white rounded-2xl p-6 shadow-xs border border-gray-100 max-w-5xl mx-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-base font-bold text-gray-900">Inspection Bookings Queue</h2>
+                    <span class="text-xs text-[#7956C8] font-bold bg-purple-50 px-3 py-1 rounded-full">Real-time Bookings</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#ede8f8] text-gray-800 text-xs font-bold">
+                                <th class="p-3.5 rounded-l-xl">Student Name</th>
+                                <th class="p-3.5">Property</th>
+                                <th class="p-3.5">Date & Time</th>
+                                <th class="p-3.5">Landlord</th>
+                                <th class="p-3.5">Status</th>
+                                <th class="p-3.5 rounded-r-xl">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inspections-table-body" class="text-xs text-gray-700 divide-y divide-gray-100">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        const initialBookings = [
+            {
+                id: 'insp_1',
+                studentName: 'Chidi Okafor',
+                propertyTitle: 'Greenfields Court',
+                dateTime: 'Wed 03 Oct 2025 • 10:00 AM',
+                landlord: 'Mr. Tunde Adeyemi',
+                status: 'Pending'
+            },
+            {
+                id: 'insp_2',
+                studentName: 'Amina Bello',
+                propertyTitle: 'Royal Haven Lodge',
+                dateTime: 'Thu 04 Oct 2025 • 02:30 PM',
+                landlord: 'Chief Okonjo',
+                status: 'Confirmed'
+            },
+            {
+                id: 'insp_3',
+                studentName: 'Emeka John',
+                propertyTitle: 'Golden Heaven Hostel',
+                dateTime: 'Fri 05 Oct 2025 • 11:15 AM',
+                landlord: 'Mrs. Folake Akindele',
+                status: 'Confirmed'
+            },
+            {
+                id: 'insp_4',
+                studentName: 'Blessing Adebayo',
+                propertyTitle: 'Oasis Lodge',
+                dateTime: 'Sat 06 Oct 2025 • 04:00 PM',
+                landlord: 'Dr. Ibrahim Musa',
+                status: 'Pending'
+            }
+        ];
+
+        let bookings = JSON.parse(localStorage.getItem('hostelfinder_admin_inspections') || 'null');
+        if (!bookings) {
+            bookings = initialBookings;
+            localStorage.setItem('hostelfinder_admin_inspections', JSON.stringify(bookings));
+        }
+
+        function renderBookings() {
+            const tbody = document.getElementById('inspections-table-body');
+            if (!tbody) return;
+
+            tbody.innerHTML = bookings.map(b => {
+                let badgeClass = 'bg-amber-100 text-amber-700';
+                if (b.status === 'Confirmed') badgeClass = 'bg-green-100 text-green-700';
+                if (b.status === 'Cancelled') badgeClass = 'bg-red-100 text-red-700';
+
+                return `
+                    <tr class="hover:bg-purple-50/30 transition">
+                        <td class="p-3.5 font-bold text-gray-900">${escapeHtml(b.studentName)}</td>
+                        <td class="p-3.5 font-semibold text-[#7956C8]">${escapeHtml(b.propertyTitle)}</td>
+                        <td class="p-3.5 text-gray-600 font-medium">${escapeHtml(b.dateTime)}</td>
+                        <td class="p-3.5 text-gray-500">${escapeHtml(b.landlord)}</td>
+                        <td class="p-3.5">
+                            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase ${badgeClass}">
+                                ${b.status}
+                            </span>
+                        </td>
+                        <td class="p-3.5">
+                            <div class="flex items-center gap-1">
+                                <button onclick="updateBookingStatus('${b.id}', 'Confirmed')" class="bg-green-600 hover:bg-green-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
+                                    Confirm
+                                </button>
+                                <button onclick="updateBookingStatus('${b.id}', 'Cancelled')" class="border border-red-400 text-red-500 hover:bg-red-50 text-[11px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
+                                    Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            updateBookingCounts();
+        }
+
+        function updateBookingStatus(id, newStatus) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = newStatus;
+                localStorage.setItem('hostelfinder_admin_inspections', JSON.stringify(bookings));
+                renderBookings();
+            }
+        }
+
+        function updateBookingCounts() {
+            const confirmed = bookings.filter(b => b.status === 'Confirmed').length + 52;
+            const pending = bookings.filter(b => b.status === 'Pending').length + 20;
+            document.getElementById('count-confirmed').textContent = confirmed;
+            document.getElementById('count-pending').textContent = pending;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderBookings);
+    </script>
+</body>
+</html>
