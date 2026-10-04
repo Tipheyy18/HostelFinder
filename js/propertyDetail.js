@@ -349,6 +349,7 @@
         // Fetch fresh details from backend
         try {
             let endpointUrl = `${API_BASE_URL}/properties/${encodeURIComponent(propertyId)}`;
+            console.log("property Id: ", propertyId);
             if (schoolId) {
                 endpointUrl += `?schoolId=${encodeURIComponent(schoolId)}`;
             }
