@@ -116,15 +116,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
                 }
 
+                const redirectByRole = {
+                    student: "/pages/browse.html",
+                    landlord: "/pages/listProperty.html",
+                    provider: "/pages/listProperty.html",
+                    admin: "/pages/dashboard.html",
+                };
+                const redirectPath =
+                    redirectByRole[result.user?.role?.toLowerCase()];
+                if (!redirectPath) {
+                    throw new Error(
+                        "Login response did not include a supported user role.",
+                    );
+                }
+
                 message.textContent =
                     result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
                 localStorage.setItem("hostelFinderLoggedIn", "true");
-                const role = result.user?.role?.toLowerCase();
-                window.location.href =
-                    role === "provider" || role === "landlord"
-                        ? "/pages/listProperty.html"
-                        : "/pages/browse.html";
+                window.location.href = redirectPath;
             } catch (error) {
                 message.textContent =
                     error.message || "Unable to log in. Please try again.";
@@ -211,10 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
             message.textContent =
                 result.message || "Account created successfully.";
             message.classList.add("text-green-700");
-            window.location.href =
-                result.user.role === "landlord"
-                    ? "/pages/landlord-verification.html"
-                    : "/pages/student-verification.html";
+            window.location.href = "/pages/verification.html"
+                // result.user.role === "landlord"
+                //     ? "/pages/landlord-verification.html"
+                //     : "/pages/student-verification.html";
         } catch (error) {
             message.textContent =
                 error.message || "Unable to sign up. Please try again.";

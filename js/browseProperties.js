@@ -81,21 +81,22 @@
             .fill(0)
             .map(
                 () => `
-            <div class="bg-white rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden animate-pulse flex flex-col justify-between">
-                <div class="flex">
-                    <div class="w-[140px] h-[130px] bg-purple-100 flex-shrink-0"></div>
-                    <div class="flex-1 p-3 flex flex-col justify-between">
-                        <div class="space-y-2">
-                            <div class="h-4 bg-purple-100 rounded w-3/4"></div>
-                            <div class="h-3 bg-purple-50 rounded w-1/2"></div>
-                            <div class="h-3 bg-purple-50 rounded w-2/3"></div>
-                        </div>
-                        <div class="h-3 bg-purple-100 rounded w-1/3 mt-2"></div>
-                    </div>
+            <div class="rounded-lg relative flex h-full flex-col overflow-hidden bg-white animate-pulse">
+                <div class="relative h-60 w-full flex-shrink-0 rounded-tr-lg rounded-tl-lg bg-purple-100">
+                    <div class="absolute top-6 right-6 flex h-10 w-32 items-center gap-3 rounded-md bg-purple-200 px-5"></div>
                 </div>
-                <div class="flex justify-between items-center px-4 py-3 border-t border-gray-100">
-                    <div class="h-4 bg-purple-100 rounded w-1/4"></div>
-                    <div class="h-7 bg-purple-200 rounded w-1/3"></div>
+                <div class="flex flex-1 flex-col bg-white p-4">
+                    <div class="mb-2 h-[84px] w-3/4 rounded bg-purple-100"></div>
+                    <div class="mb-2 h-12 w-full rounded bg-purple-50"></div>
+                    <div class="my-2 flex min-h-6 items-center gap-2">
+                        <div class="h-5 w-1/3 rounded bg-purple-100"></div>
+                        <div class="h-5 w-1/2 rounded bg-purple-50"></div>
+                    </div>
+                    <div class="mt-auto flex min-h-[42px] items-center justify-between">
+                        <div class="h-8 w-1/2 rounded bg-purple-100"></div>
+                        <div class="h-8 w-1/3 rounded bg-purple-50"></div>
+                    </div>
+                    <div class="mt-4 h-10 w-full rounded-md bg-purple-200"></div>
                 </div>
             </div>
         `,
@@ -122,58 +123,47 @@
         const propId = prop._id || "";
 
         return `
-            <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_2px_16px_rgba(121,86,200,0.10)] border border-[#ede8f8] overflow-hidden hover:shadow-[0_6px_28px_rgba(121,86,200,0.20)] transition-shadow duration-200 flex flex-col justify-between" data-property-id="${escapeHtml(propId)}">
-                <div class="flex">
-                    <div class="relative w-[140px] flex-shrink-0 bg-purple-50">
-                        <img 
-                            src="${coverPhoto}" 
-                            alt="${title}" 
-                            class="w-full h-full object-cover min-h-[130px]"
-                            onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'"
-                        >
-                        <span class="absolute bottom-2 left-2 ${isAvailable ? "bg-[#6FCF97]" : "bg-gray-400"} text-[#FFFFFF] text-[9px] font-semibold px-2 py-0.5 rounded-full leading-tight">
-                            ${isAvailable ? "Available" : "Unavailable"}
-                        </span>
-                    </div>
-                    <div class="flex-1 px-3 pt-2 pb-1 flex flex-col min-w-0">
-                        <div class="flex justify-end mb-1 min-h-[16px]">
-                            ${
-                                isVerified
-                                    ? `
-                                <span class="bg-[#ede8f8] text-[#7956C8] text-[9px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
-                                    <svg class="w-3 h-3 text-[#7956C8]" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg> Verified
-                                </span>
-                            `
-                                    : ""
-                            }
-                        </div>
-                        <p class="font-bold text-[13px] text-gray-900 leading-snug mb-1 truncate" title="${title}">
-                            ${title}
-                        </p>
-                        <p class="text-[10px] text-[#7956C8] flex items-center gap-1 mb-0.5 truncate" title="${address}">
-                            <i class="bx bx-map text-[11px] shrink-0"></i>
-                            <span class="truncate">${address}</span>
-                        </p>
-                        <p class="text-[10px] text-[#7956C8] flex items-center gap-1 mb-0.5">
-                            <i class="bx bx-time text-[11px] shrink-0"></i>
-                            <span>${distInfo}</span>
-                        </p>
-                        <p class="text-[9px] font-bold text-[#7956C8] uppercase tracking-wider mt-auto pt-1">
-                            ${propType}
-                        </p>
-                    </div>
+            <div class="rounded-lg relative flex h-full flex-col overflow-hidden bg-white">
+                <img
+                    src="${coverPhoto}"
+                    alt="${title}"
+                    onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'"
+                    class="h-60 w-full flex-shrink-0 rounded-tr-lg rounded-tl-lg object-cover"
+                >
+                <div class="absolute top-6 right-6 flex items-center gap-3 rounded-md bg-[#E8EEFF] px-5 py-1">
+                    <i class="bx bx-seal-check text-[30px] text-[#3157D5]"></i>
+                    <p class="text-sm text-[#1F2937]">Verified</p>
                 </div>
-                <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
-                    <span class="text-[#7956C8] font-bold text-sm">${priceFormatted}</span>
+                <div class="flex flex-1 flex-col bg-white p-4">
+                    <h2 class="mb-2 h-[84px] line-clamp-2 break-words text-[24px] text-[#1F2937]">${title}</h2>
+                    <div class="mb-2 flex items-start">
+                        <i class="bx bx-location mr-2 shrink-0 text-[18px]"></i>
+                        <p class="line-clamp-2 text-sm text-[#1F2937]">${address}</p>
+                    </div>
+                    <div class="my-2 flex items-center gap-2">
+                        <div class="flex shrink-0 items-center gap-2">
+                            <i class="bx bx-star text-[18px]"></i>
+                            <p class="text-sm text-[#1F2937]">4.6 78 Reviews</p>
+                        </div>
+                        <div class="flex  items-center gap-2">
+                            <i class="bx bx-bed shrink-0 text-[18px]"></i>
+                            <p class="truncate text-sm text-[#1F2937]">${propType}</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto flex items-center justify-between gap-2">
+                        <h3 class="min-w-0 truncate text-[28px] text-[#1F2937]">${priceFormatted}</h3>
+                        <div class="shrink-0 rounded-md bg-[#DCFCE7] px-2 py-1">
+                            <p class="text-base text-[#1F2937]">${isAvailable ? "Available" : "Unavailable"}</p>
+                        </div>
+                    </div>
                     <a 
                         href="/pages/property-detail.html?id=${encodeURIComponent(propId)}${prop.schoolId ? `&schoolId=${encodeURIComponent(prop.schoolId)}` : ""}" 
                         data-action="view-details" 
                         data-id="${escapeHtml(propId)}"
-                        class="bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer"
+                        class="mt-4 flex h-10 w-full flex-shrink-0 items-center justify-center gap-2 rounded-md bg-[#3157D5] text-white"
                     >
-                        View details →
+                        View details
+                        <i class="bx bx-arrow-up-right-stroke text-[18px]"></i>
                     </a>
                 </div>
             </div>
@@ -363,7 +353,7 @@
         if (pillAll) {
             if (activeItems.length === 0) {
                 pillAll.className =
-                    "border border-[#7956C8] bg-purple-50 text-[#7956C8] text-xs px-3.5 py-1.5 rounded-xl font-semibold transition flex-shrink-0 cursor-pointer";
+                    "border border-[#3157D5] bg-transparent text-[#1F2937] text-xs px-3.5 py-1.5 rounded-md font-semibold transition flex-shrink-0 cursor-pointer";
             } else {
                 pillAll.className =
                     "border border-gray-300 bg-white text-gray-500 text-xs px-3.5 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition flex-shrink-0 cursor-pointer font-normal";
@@ -373,12 +363,12 @@
         // Render chips or default categories
         if (activeItems.length === 0) {
             container.innerHTML = `
-                <button data-category="verified" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Verified</button>
-                <button data-category="location" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Location</button>
-                <button data-category="propertyType" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Property Type</button>
-                <button data-category="distance" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Distance</button>
-                <button data-category="price" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Price</button>
-                <button data-category="amenities" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Amenities</button>
+                <button data-category="verified" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Verified</button>
+                <button data-category="location" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Location</button>
+                <button data-category="propertyType" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Property Type</button>
+                <button data-category="distance" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Distance</button>
+                <button data-category="price" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Price</button>
+                <button data-category="amenities" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-md hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Amenities</button>
             `;
             container.querySelectorAll("[data-category]").forEach((btn) => {
                 btn.addEventListener("click", () => {

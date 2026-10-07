@@ -12,29 +12,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Home | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
     <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
         <!-- Header / Navbar -->
-        <header class="w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
-                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
-                <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a>
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+                <a href="/" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Browse Properties</a>
+                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">List your property</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
             </a>
-            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -43,7 +43,7 @@
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                         <a href="/">
-                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
                         </a>
                         <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
                             <i class="bx bx-x"></i>
@@ -53,33 +53,33 @@
                     <nav class="flex flex-col gap-4 mt-6">
                         <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
                         <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
-                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                        <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
                         <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
         
        
-        <section class="mt-4 bg-[#F8F5FE]  p-6 md:p-12 shadow-sm">
+        <section class="mt-4 p-6 md:p-12 shadow-sm">
             
             <!-- Hero Top Row -->
             <div class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-12">
                 <div class="lg:w-[55%] w-full text-left">
                     <h1 class="md:text-[56px] text-[36px] font-bold md:leading-[64px] leading-[44px] text-black">
-                        Find a hostel you can <span class="text-[#7956C8]">feel confident</span> about.
+                        Find a hostel you can <span class="text-[#3157D5]">feel confident</span> about.
                     </h1>
                     <p class="text-base md:text-lg text-gray-600 font-normal mt-4 max-w-lg">
                         Discover verified off-campus accommodation, compare properties by price, location, and book inspections without an agent.
                     </p>
                 </div>
                 <div class="lg:w-[45%] w-full flex justify-center lg:justify-end">
-                    <img class="max-w-[380px] w-full object-contain" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628259/hero-img.png" alt="hero-img">
+                    <img class="max-w-[380px] w-full object-contain" src="/images/hero-img-img.png" alt="hero-img">
                 </div>
             </div>
 
@@ -89,9 +89,9 @@
                 <!-- Left Column (Student Section) -->
                 <div class="flex flex-col gap-6">
                     <!-- Description Box -->
-                    <div class="border-2 border-[#7956C8] rounded-2xl p-6 text-center bg-white/60">
+                    <div class="border-2 border-[#3157D5] rounded-2xl p-6 text-center bg-white/60">
                         <h2 class="text-xl font-bold text-gray-900">
-                            Everything you need <span class="text-[#7956C8]">to find the right hostel.</span>
+                            Everything you need <span class="text-[#3157D5]">to find the right hostel.</span>
                         </h2>
                         <p class="mt-2 text-sm text-gray-600">
                             Discover verified properties, see how long it takes to get to campus, and book an inspection with ease.
@@ -99,7 +99,7 @@
                     </div>
 
                     <!-- Action Box -->
-                    <div class="border-2 border-[#7956C8] rounded-2xl p-5 text-center bg-white shadow-sm">
+                    <div class="border-2 border-[#3157D5] rounded-2xl p-5 text-center bg-white shadow-sm">
                         <h3 class="text-lg font-bold text-gray-900">
                             Looking for a hostel?
                         </h3>
@@ -107,7 +107,7 @@
                             Browse verified off-campus hostels
                         </p>
                         <a href="/pages/browse.html" class="block mt-3">
-                            <button class="bg-[#7956C8] px-5 py-3 w-full rounded-xl text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#4a2f82] transition cursor-pointer">
+                            <button class="bg-[#3157D5] px-5 py-3 w-full rounded-xl text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#2646b5] transition cursor-pointer">
                                 Browse Properties
                                 <i class="bx bx-arrow-right text-xl"></i>
                             </button>
@@ -118,9 +118,9 @@
                 <!-- Right Column (Hostel Owner Section) -->
                 <div class="flex flex-col gap-6">
                     <!-- Description Box -->
-                    <div class="border-2 border-[#7956C8] rounded-2xl p-6 text-center bg-white/60">
+                    <div class="border-2 border-[#3157D5] rounded-2xl p-6 text-center bg-white/60">
                         <h2 class="text-xl font-bold text-gray-900">
-                            Everything you need <span class="text-[#7956C8]">to manage your properties.</span>
+                            Everything you need <span class="text-[#3157D5]">to manage your properties.</span>
                         </h2>
                         <p class="mt-2 text-sm text-gray-600">
                             List your properties for students to discover, manage your listings, and keep track of inspections with ease.
@@ -128,7 +128,7 @@
                     </div>
 
                     <!-- Action Box -->
-                    <div class="border-2 border-[#7956C8] rounded-2xl p-5 text-center bg-white shadow-sm">
+                    <div class="border-2 border-[#3157D5] rounded-2xl p-5 text-center bg-white shadow-sm">
                         <h3 class="text-lg font-bold text-gray-900">
                             Are you a hostel owner?
                         </h3>
@@ -136,7 +136,7 @@
                             List your property for students to discover
                         </p>
                         <a href="/pages/listProperty.html" class="block mt-3">
-                            <button class="bg-[#7956C8] px-5 py-3 w-full rounded-xl text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#4a2f82] transition cursor-pointer">
+                            <button class="bg-[#3157D5] px-5 py-3 w-full rounded-xl text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#2646b5] transition cursor-pointer">
                                 List your properties
                                 <i class="bx bx-arrow-right text-xl"></i>
                             </button>

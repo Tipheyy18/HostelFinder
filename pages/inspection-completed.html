@@ -10,26 +10,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>Your Inspection | HostelFinder</title>
+    <title>inspection-completed | HostelFinder</title>
 </head>
 <body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
 
     <!-- ===== HEADER ===== -->
-    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+    <div class="container w-full md:px-10 px-4 mx-auto">
+    <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
         <a href="/">
-            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+            <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
         </a>
 
-        <nav class="xl:flex gap-8 hidden items-center">
-            <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Home</a>
-            <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Properties</a>
-            <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline cursor-pointer">View Your Inspection</a>
+        <nav class="xl:flex gap-8 hidden">
+            <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
+            <a href="/pages/browse.html" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
+            <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
         </nav>
 
         <a data-auth-signup href="/pages/signup.html">
-            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+            <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
         </a>
-        <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+        <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
         <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
             <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
@@ -50,17 +51,19 @@
 
                 <nav class="flex flex-col gap-4 mt-6">
                     <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                    <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Properties</a>
-                    <a href="/pages/your-inspection.html" class="text-base font-semibold text-[#7956C8] underline">View Your Inspection</a>
+                    <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] underline">Browse Hostel</a>
+                    <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
+                    <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Login</a>
                 </nav>
             </div>
 
             <a data-auth-signup href="/pages/signup.html" class="w-full">
-                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
             </a>
             <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
         </aside>
     </header>
+    </div>
 
     <!-- ===== PAGE TITLE WITH BACK ARROW ===== -->
     <div class="container mx-auto px-4 md:px-10 pt-6 pb-2">
