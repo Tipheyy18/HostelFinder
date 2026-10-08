@@ -16,7 +16,7 @@
 
     <!-- ===== HEADER ===== -->
     <div class="container w-full md:px-10 px-4 mx-auto">
-    <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+    <header class="w-full flex items-center justify-between p-4 bg-[#FFFFFF] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
         <a href="/">
             <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
         </a>
@@ -65,33 +65,23 @@
     </header>
     </div>
 
-    <!-- ===== PAGE TITLE WITH BACK ARROW ===== -->
-    <div class="container mx-auto px-4 md:px-10 pt-6 pb-2">
-        <div class="flex items-center gap-3">
-            <a href="/pages/your-inspection.html" onclick="if (document.referrer) { history.back(); return false; }" class="text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center">
-                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
-            </a>
+    
+    <div class="container mx-auto px-4 md:px-10 pt-6 pb-2   ">
+        
             <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340] tracking-tight">Your Inspection</h1>
         </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="container mx-auto px-4 md:px-10 pb-16 pt-4">
+    <main class="container mx-auto px-4 md:px-10 pb-16 pt-4 bg-[#FFFFFF] ">
         
-        <!-- Outer light purple container card -->
-        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-12 shadow-sm">
+    
+        <div class="bg-[#FFFFFF]  p-4 sm:p-8 md:p-12 ">
 
-            <!-- White inner card -->
-            <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
+         
+            <div class="bg-[#FFFFFF]   max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
 
-                <!-- Back arrow inside top left of card -->
-                <div class="absolute top-6 left-6">
-                    <a href="/pages/your-inspection.html" onclick="if (document.referrer) { history.back(); return false; }" class="text-gray-400 hover:text-[#7956C8] transition flex items-center justify-center">
-                        <img src="/images/eva_arrow-back-fill.png" alt="Back" class="w-4 h-4 object-contain">
-                    </a>
-                </div>
-
-                <!-- Purple verified checkmark badge icon -->
+              
+                
                 <div class="flex justify-center mb-3">
                     <img src="/images/Vector.png" alt="Inspection Completed" class="w-12 h-12 object-contain">
                 </div>
@@ -101,17 +91,18 @@
                     <h2 class="text-xl font-extrabold text-gray-900 mb-1">Inspection Completed!</h2>
                     <p class="text-xs text-gray-500">Your inspection for Greenfields court is done.</p>
                 </div>
+                 
 
-                <!-- Property Image -->
-                <div class="rounded-2xl overflow-hidden mb-5 border border-gray-100 shadow-xs">
-                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                         alt="Greenfields Court" class="w-full h-48 sm:h-52 object-cover">
+             
+                <div class="  rounded-2xl overflow-hidden max-w mb-5 mx-auto  ">
+                    <img src="\images\image 21.png"
+                         alt="Hostel side view" class="w-full h-48 sm:h-52 object-cover">
                 </div>
 
                 <!-- Status pill & toggle switch row -->
                 <div class="flex items-center justify-between gap-2 mb-5">
-                    <span class="bg-[#7956C8] text-white text-[11px] font-semibold px-4 py-1.5 rounded-full tracking-tight">
-                        Completed • 01 Sept, 2025 • 12:45 PM
+                    <span class="text-[#042297] text-[11px] font-semibold px-4 py-1.5 tracking-tight">
+                        Completed • 30 Sept, 2026 • 12:45 PM
                     </span>
                     <!-- Green toggle switch -->
                     <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
@@ -123,7 +114,7 @@
                 <!-- Action buttons -->
                 <div class="space-y-3 mb-5">
                     <!-- Proceed with Property -->
-                    <button id="proceed-btn" class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl transition cursor-pointer shadow-sm">
+                    <button id="proceed-btn" class="w-full bg-[#3157D5] hover:bg-[#4a2f82] text-white font-bold text-sm py-3.5 rounded-xl transition cursor-pointer shadow-sm">
                         Proceed with Property
                     </button>
                     <!-- Reject Property -->
@@ -132,16 +123,16 @@
                     </button>
                 </div>
 
-                <!-- Review Property Card -->
-                <div class="border border-gray-200 rounded-2xl p-4 bg-white shadow-2xs mb-5">
+                
+                <div class="border border-gray-200 rounded-2xl p-4 bg-[#FFFFF]shadow-2xs mb-5">
                     <!-- Rating Header Row -->
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs font-bold text-gray-900">Review Property</span>
                         <div class="flex items-center gap-1" id="stars">
-                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="1">
-                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="2">
-                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="3">
-                            <img src="/images/akar-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="4">
+                            <img src="/images/at-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="1">
+                            <img src="/images/at-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="2">
+                            <img src="/images/at-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="3">
+                            <img src="/images/at-icons_star.png" alt="star" class="w-4 h-4 object-contain star-icon cursor-pointer" data-val="4">
                             <i class="bx bx-star text-gray-300 text-base cursor-pointer star-icon" data-val="5"></i>
                         </div>
                     </div>
