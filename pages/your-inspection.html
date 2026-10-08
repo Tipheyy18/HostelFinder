@@ -40,7 +40,7 @@
         <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
         <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-            <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+            <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
         </div>
 
         <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -49,7 +49,7 @@
             <div>
                 <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                     <a href="/">
-                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                        <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
                     </a>
                     <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
                         <i class="bx bx-x"></i>
@@ -57,135 +57,131 @@
                 </div>
 
                 <nav class="flex flex-col gap-4 mt-6">
-                    <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                    <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] underline">Browse Hostel</a>
-                    <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
-                    <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Login</a>
+                    <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                    <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse Properties</a>
+                    <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
                 </nav>
             </div>
 
             <a data-auth-signup href="/pages/signup.html" class="w-full">
                 <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
             </a>
-            <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
         </aside>
     </header>
     </div>
 
-    <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-        <section class="mt-4 bg-[#F8F5FE] p-6 md:p-12 shadow-sm">
-            <div class="max-w-xl mx-auto">
+    <main class="container mx-auto w-full px-4 pb-12 sm:px-6 md:px-10 md:pb-16">
+        <section class="mt-2 p-0 shadow-sm sm:mt-4 sm:p-3 md:p-6 lg:p-10">
+            <a href="/pages/book-inspection.html"
+                class="mb-4 flex items-center gap-2 py-3 text-[#202b3c] transition hover:text-[#3157D5] sm:mb-6 sm:gap-3">
+                <i class="bx bx-arrow-left-stroke text-xl sm:text-2xl"></i>
+                <span class="text-base font-medium sm:text-lg">Back</span>
+            </a>
+            <div class="mx-auto w-full max-w-3xl">
+                <div class="w-full">
 
-                <!-- Title Header with Back Arrow -->
-                <div class="mb-6 relative flex items-center justify-center">
-                    <a href="/pages/book-inspection.html" onclick="if (document.referrer) { history.back(); return false; }" class="absolute left-0 text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center p-1" aria-label="Go back to previous page">
-                        <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
-                    </a>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight text-center">Your Inspection</h1>
+
+                    <div class="mx-auto w-full overflow-hidden rounded-2xl bg-[#FFFFFF] shadow-[0_4px_24px_rgba(121,86,200,0.12)]">
+
+
+                        <div class="w-full p-2 sm:p-3">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                                alt="Greenfields Court" class="h-52 w-full rounded-xl object-cover sm:h-64 md:h-72 lg:h-80">
+                        </div>
+
+                        <div class="flex flex-col gap-3 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5">
+
+
+                            <div>
+                                <span class="bg-green-500 text-[#FFFFFF] text-[9px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block">Available</span>
+                                <h2 class="break-words text-lg font-extrabold text-gray-900 sm:text-xl">Greenfields Court</h2>
+                            </div>
+
+                            <!-- Inspection confirmation row -->
+                            <div class="flex items-center justify-between gap-3 rounded-xl border border-[#e8f0ff] px-3 py-2.5 sm:px-4">
+                                <div class="flex min-w-0 items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-[#e8f0ff] flex items-center justify-center flex-shrink-0">
+                                        <i class="bx bx-check-shield text-[#3157D5] text-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 sm:text-sm">Inspection confirmation</span>
+                                </div>
+                                <!-- Toggle switch -->
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="confirmation-toggle" class="sr-only peer">
+                                    <div class="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4 after:shadow"></div>
+                                </label>
+                            </div>
+
+                            <!-- Date and time -->
+                            <div class="rounded-xl border border-[#ede8f8] px-3 py-2.5 sm:px-4">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-6 h-6 rounded-full bg-[#e8f0ff] flex items-center justify-center flex-shrink-0">
+                                        <i class="bx bx-calendar text-[#3157D5] text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] text-[#3157D5] leading-none mb-0.5">Date and time</p>
+                                        <p class="break-words text-xs font-semibold text-gray-700 sm:text-sm">Sat, 27 Sep – 3:30PM</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property type -->
+                            <div class="rounded-xl border border-[#e8f0ff] px-3 py-2.5 sm:px-4">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-6 h-6 rounded-full bg-[#e8f0ff] flex items-center justify-center flex-shrink-0">
+                                        <i class="bx bx-home text-[#3157D5] text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] text-[#3157D5] leading-none mb-0.5">Property</p>
+                                        <p class="text-xs font-semibold text-gray-700 sm:text-sm">2-Bedroom Flat</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="rounded-xl border border-[#e8f0ff] px-3 py-2.5 sm:px-4">
+                                <div class="flex items-start gap-2.5">
+                                    <div class="w-6 h-6 rounded-full bg-[#e8f0ff] flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="bx bx-map text-[#3157d5] text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] text-[#3157d5] leading-none mb-0.5">Location</p>
+                                        <p class="break-words text-xs font-semibold text-gray-700 sm:text-sm">14 Maple Court, off Accord</p>
+                                        <p class="mt-0.5 break-words text-[10px] text-[#3157d5] sm:text-xs">2.9km from your hostel · direction below</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Reminder notice -->
+                            <div class="rounded-xl border border-[#e8f0ff] px-3 py-2.5 sm:px-4">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-6 h-6 rounded-full bg-[#e8f0ff] flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="bx bx-bell text-[#3157d5] text-sm"></i>
+                                    </div>
+                                    <p class="text-[10px] leading-relaxed text-gray-500 sm:text-xs">
+                                        You'll get a reminder 1day and 1hour before this inspection
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Action buttons — below card -->
+                    <div class="mx-auto mt-5 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:mt-6 sm:flex-row sm:items-center sm:gap-4">
+                        <button id="main-action-btn" class="h-12 w-full rounded-xl bg-[#3157d5] px-6 text-sm font-semibold text-white shadow-md transition hover:bg-[#2646b5] cursor-pointer sm:flex-1">
+                            Confirm Inspection
+                        </button>
+                        <a href="/pages/book-inspection.html" class="flex w-full sm:flex-1">
+                            <button class="h-12 w-full rounded-xl border-2 border-[#3157d5] bg-white px-6 text-sm font-semibold text-[#3157d5] transition hover:bg-[#e8f0ff] cursor-pointer">
+                                Reschedule
+                            </button>
+                        </a>
+                    </div>
+
                 </div>
 
-
-
-        <div class="bg-[#F7F3FD]  p-12 md:p-6">
-
-           
-            <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-sm mx-auto overflow-hidden">
-
-              
-                <div class="w-full p-2">
-                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                         alt="Greenfields Court" class="w-full h-48 object-cover rounded-xl">
-                </div>
-
-                <div class="px-5 py-4 flex flex-col gap-3">
-
-                    
-                    <div>
-                        <span class="bg-green-500 text-[#FFFFFF] text-[9px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block">Available</span>
-                        <h2 class="text-lg font-extrabold text-gray-900">Greenfields Court</h2>
-                    </div>
-
-                    <!-- Inspection confirmation row -->
-                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
-                                <i class="bx bx-check-shield text-[#7956C8] text-sm"></i>
-                            </div>
-                            <span class="text-xs text-gray-500">Inspection confirmation</span>
-                        </div>
-                        <!-- Toggle switch -->
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" id="confirmation-toggle" class="sr-only peer">
-                            <div class="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4 after:shadow"></div>
-                        </label>
-                    </div>
-
-                    <!-- Date and time -->
-                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
-                                <i class="bx bx-calendar text-[#7956C8] text-sm"></i>
-                            </div>
-                            <div>
-                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Date and time</p>
-                                <p class="text-xs font-semibold text-gray-700">Sat, 27 Sep – 3:30PM</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Property type -->
-                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
-                        <div class="flex items-center gap-2">
-                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0">
-                                <i class="bx bx-home text-[#7956C8] text-sm"></i>
-                            </div>
-                            <div>
-                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Property</p>
-                                <p class="text-xs font-semibold text-gray-700">2-Bedroom Flat</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Location -->
-                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
-                        <div class="flex items-start gap-2">
-                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="bx bx-map text-[#7956C8] text-sm"></i>
-                            </div>
-                            <div>
-                                <p class="text-[9px] text-[#7956C8] leading-none mb-0.5">Location</p>
-                                <p class="text-xs font-semibold text-gray-700">14 Maple Court, off Accord</p>
-                                <p class="text-[10px] text-[#7956C8] mt-0.5">2.9km from your hostel · direction below</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Reminder notice -->
-                    <div class="border border-[#ede8f8] rounded-xl px-4 py-2.5">
-                        <div class="flex items-start gap-2">
-                            <div class="w-6 h-6 rounded-full bg-[#ede8f8] flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="bx bx-bell text-[#7956C8] text-sm"></i>
-                            </div>
-                            <p class="text-[10px] text-gray-500 leading-relaxed">
-                                You'll get a reminder 1day and 1hour before this inspection
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Action buttons — below card -->
-            <div class="flex items-center justify-center gap-4 mt-6">
-                <button id="main-action-btn" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white font-semibold text-sm px-6 py-3 rounded-xl transition cursor-pointer shadow-md">
-                    Confirm Inspection
-                </button>
-                <a href="/pages/book-inspection.html">
-                    <button class="bg-white border-2 border-[#7956C8] text-[#7956C8] hover:bg-[#ede8f8] font-semibold text-sm px-6 py-3 rounded-xl transition cursor-pointer">
-                        Reschedule
-                    </button>
-                </a>
-            </div>
 
             </div>
         </section>
