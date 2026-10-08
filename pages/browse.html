@@ -19,23 +19,23 @@
             .range-purple::-webkit-slider-thumb {
                 -webkit-appearance: none;
                 appearance: none;
-                width: 16px;
-                height: 16px;
+                width: 12px;
+                height: 12px;
                 border-radius: 50%;
-                background: #7956C8;
+                background: #3157D5;
                 cursor: pointer;
                 box-shadow: 0 0 0 3px #ede8f8;
             }
             .range-purple::-webkit-slider-runnable-track {
                 background: #e5e7eb;
                 border-radius: 9999px;
-                height: 4px;
+                height: 2px;
             }
             .range-purple {
                 -webkit-appearance: none;
                 appearance: none;
                 width: 100%;
-                height: 4px;
+                height: 2px;
                 background: #e5e7eb;
                 border-radius: 9999px;
                 outline: none;
@@ -66,7 +66,7 @@
             <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -75,7 +75,7 @@
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                         <a href="/">
-                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
                         </a>
                         <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
                             <i class="bx bx-x"></i>
@@ -83,23 +83,22 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] underline">Browse Hostel</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Login</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse Properties</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
                     <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
     </div>
 
     <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-        <section class="mt-4 bg-[#F9FAFB] p-6 md:p-12 shadow-sm">
+        <section class="mt-4 bg-[#F9FAFB] py-6 md:p-12 shadow-sm">
             <section class="text-center pt-10 pb-6 px-4">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
                     Find Your <span class="text-[#3157D5]">Dream</span><br>
@@ -112,8 +111,8 @@
             <!-- SEARCH + FILTER PILLS -->
             <div class="max-w-6xl mx-auto px-4 mb-5 flex flex-col md:flex-row items-stretch md:items-center gap-3">
                 <div class="flex items-center gap-2 bg-[#FFFFFF] border border-gray-200 rounded-xl px-3 py-2 shadow-sm w-full md:w-72 flex-shrink-0">
-                    <i class="bx bx-search text-[#7956C8] text-lg flex-shrink-0"></i>
-                    <input id="search-input" type="text" placeholder="Search by location or hostel name..." class="bg-transparent outline-none text-xs text-gray-700 w-full placeholder-[#7956C8]">
+                    <i class="bx bx-search text-[#3157D5] text-lg flex-shrink-0"></i>
+                    <input id="search-input" type="text" placeholder="Search by location or hostel name..." class="bg-transparent outline-none text-xs text-gray-700 w-full placeholder-[#3157D5]">
                 </div>
 
                 <!-- HORIZONTAL PILLS ROW (Scrollable on small screens, matches mobile design sample) -->
@@ -127,7 +126,7 @@
                             <line x1="4" y1="17" x2="20" y2="17"></line>
                             <circle cx="16" cy="17" r="2" fill="currentColor"></circle>
                         </svg>
-                        <span id="active-filters-badge" class="hidden ml-1 bg-white text-[#7956C8] text-[10px] font-bold px-1.5 py-0.2 rounded-full leading-tight">0</span>
+                        <span id="active-filters-badge" class="hidden ml-1 bg-white text-[#3157D5] text-[10px] font-bold px-1.5 py-0.2 rounded-full leading-tight">0</span>
                     </button>
 
                     <!-- "All" pill (clears all filters when clicked) -->
@@ -138,11 +137,11 @@
                     <!-- Container for active filter chips or category shortcuts -->
                     <div id="applied-filters-container" class="flex items-center gap-2 flex-shrink-0">
                         <button data-category="verified" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Verified</button>
-                        <button data-category="location" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Location</button>
-                        <button data-category="propertyType" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Property Type</button>
-                        <button data-category="distance" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Distance</button>
-                        <button data-category="price" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Price</button>
-                        <button data-category="amenities" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition cursor-pointer flex-shrink-0">Amenities</button>
+                        <button data-category="location" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Location</button>
+                        <button data-category="propertyType" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Property Type</button>
+                        <button data-category="distance" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Distance</button>
+                        <button data-category="price" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Price</button>
+                        <button data-category="amenities" type="button" class="border border-gray-300 bg-white text-gray-600 text-xs px-3 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition cursor-pointer flex-shrink-0">Amenities</button>
                     </div>
                 </div>
             </div>
@@ -173,10 +172,10 @@
                             <div class="flex items-center justify-between">
                                 <span class="text-sm font-medium text-gray-800">Availability</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-xs text-[#7956C8]">Available Only</span>
+                                    <span class="text-xs text-[#3157D5]">Available Only</span>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input id="filter-availability" type="checkbox" class="sr-only peer">
-                                        <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow peer-checked:after:translate-x-4"></div>
+                                        <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow peer-checked:after:translate-x-4"></div>
                                     </label>
                                 </div>
                             </div>
@@ -185,10 +184,10 @@
                             <div class="flex items-center justify-between">
                                 <span class="text-sm font-medium text-gray-800">Verification</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-xs text-[#7956C8]">Verified</span>
+                                    <span class="text-xs text-[#3157D5]">Verified</span>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input id="filter-verified" type="checkbox" class="sr-only peer">
-                                        <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#7956C8] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow peer-checked:after:translate-x-4"></div>
+                                        <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#FFFFFF] after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow peer-checked:after:translate-x-4"></div>
                                     </label>
                                 </div>
                             </div>
@@ -196,23 +195,23 @@
                             <!-- Location (Frontend-only: pending backend support) -->
                             <div>
                                 <p class="text-sm font-semibold text-gray-800 mb-2">Location</p>
-                                <input id="sidebar-search-input" type="text" placeholder="Search by location or hostel name" class="w-full bg-gray-100 rounded-xl px-4 py-2.5 text-xs text-gray-500 outline-none focus:ring-2 focus:ring-[#7956C8] placeholder-[#7956C8] transition">
+                                <input id="sidebar-search-input" type="text" placeholder="Search by location or hostel name" class="w-full bg-gray-100 rounded-xl px-4 py-2.5 text-xs text-gray-500 outline-none focus:ring-2 focus:ring-[#3157D5] placeholder-[#3157D5] transition">
                             </div>
 
                             <!-- Property Type -->
                             <div>
                                 <p class="text-sm font-semibold text-gray-800 mb-2">Property Type</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <button data-filter-type="self_contain" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8]  cursor-pointer">
+                                    <button data-filter-type="self_contain" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#3157D5]  cursor-pointer">
                                         Self Contain
                                     </button>
-                                    <button data-filter-type="single_room" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8]  cursor-pointer">
+                                    <button data-filter-type="single_room" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#3157D5]  cursor-pointer">
                                         Single Room
                                     </button>
-                                    <button data-filter-type="1_bedroom" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8]  cursor-pointer">
+                                    <button data-filter-type="1_bedroom" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#3157D5]  cursor-pointer">
                                         1-Bedroom
                                     </button>
-                                    <button data-filter-type="2_bedroom" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#7956C8]  cursor-pointer">
+                                    <button data-filter-type="2_bedroom" type="button" class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full hover:border-[#3157D5]  cursor-pointer">
                                         2-Bedroom
                                     </button>
                                 </div>
@@ -222,20 +221,20 @@
                             <div>
                                 <div class="flex justify-between items-center mb-2">
                                     <p class="text-sm font-semibold text-gray-800">Distance from School</p>
-                                    <span id="filter-distance-val" class="text-xs font-semibold text-[#7956C8]">250km</span>
+                                    <span id="filter-distance-val" class="text-xs font-semibold text-[#3157D5]">250km</span>
                                 </div>
                                 <input id="filter-distance" type="range" min="1" max="250" value="250" step="1" class="range-purple">
-                                <div class="flex justify-between text-[11px] text-[#7956C8] mt-1.5"><span>1km</span><span>250km</span></div>
+                                <div class="flex justify-between text-[11px] text-[#3157D5] mt-1.5"><span>1km</span><span>250km</span></div>
                             </div>
 
                             <!-- Price Range -->
                             <div>
                                 <div class="flex justify-between items-center mb-2">
                                     <p class="text-sm font-semibold text-gray-800">Price range</p>
-                                    <span id="filter-price-val" class="text-xs font-semibold text-[#7956C8]">₦1,000k</span>
+                                    <span id="filter-price-val" class="text-xs font-semibold text-[#3157D5]">₦1,000k</span>
                                 </div>
                                 <input id="filter-price" type="range" min="50000" max="1000000" value="1000000" step="10000" class="range-purple">
-                                <div class="flex justify-between text-[11px] text-[#7956C8] mt-1.5"><span>₦50k</span><span>₦1,000k</span></div>
+                                <div class="flex justify-between text-[11px] text-[#3157D5] mt-1.5"><span>₦50k</span><span>₦1,000k</span></div>
                             </div>
 
                             <!-- Amenities -->
@@ -243,22 +242,22 @@
                                 <p class="text-sm font-semibold text-gray-800 mb-3">Amenities</p>
                                 <div class="grid grid-cols-2 gap-y-3 gap-x-2">
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="water" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Water
+                                        <input data-filter-amenity="water" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Water
                                     </label>
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="security" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Security
+                                        <input data-filter-amenity="security" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Security
                                     </label>
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="wifi" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Wifi
+                                        <input data-filter-amenity="wifi" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Wifi
                                     </label>
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="generator" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Power/Generator
+                                        <input data-filter-amenity="generator" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Power/Generator
                                     </label>
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="laundry" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Laundry service
+                                        <input data-filter-amenity="laundry" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Laundry service
                                     </label>
                                     <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                                        <input data-filter-amenity="light" type="checkbox" class="w-5 h-5 rounded accent-[#7956C8] flex-shrink-0 cursor-pointer"> Light
+                                        <input data-filter-amenity="light" type="checkbox" class="w-5 h-5 rounded accent-[#3157D5] flex-shrink-0 cursor-pointer"> Light
                                     </label>
                                 </div>
                             </div>
@@ -266,7 +265,7 @@
                             <!-- Sort -->
                             <div>
                                 <p class="text-sm font-semibold text-gray-800 mb-2">Sort by</p>
-                                <select id="filter-sort" class="w-full bg-gray-100 rounded-xl px-4 py-2.5 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-[#7956C8] cursor-pointer">
+                                <select id="filter-sort" class="w-full bg-gray-100 rounded-xl px-4 py-2.5 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-[#3157D5] cursor-pointer">
                                     <option value="price_asc" selected>Price: Low to High</option>
                                     <option value="price_desc">Price: High to Low</option>
                                 </select>
@@ -275,7 +274,7 @@
                             <!-- Buttons -->
                             <div class="flex gap-3 pt-1">
                                 <button id="reset-filters-btn" type="button" class="flex-1 border-2 border-gray-300 text-gray-700 text-sm font-semibold py-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer">Reset</button>
-                                <button id="apply-filters-btn" type="button" class="flex-1 bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] text-sm font-semibold py-2.5 rounded-xl transition cursor-pointer">Apply filters</button>
+                                <button id="apply-filters-btn" type="button" class="flex-1 bg-[#3157D5] hover:bg-[#2646b5] text-[#FFFFFF] text-sm font-semibold py-2.5 rounded-xl transition cursor-pointer">Apply filters</button>
                             </div>
 
                         </div>

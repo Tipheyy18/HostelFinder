@@ -41,7 +41,7 @@
         }
     </style>
 </head>
-<body class="bg-[#E6D8FC] font-[Manrope]">
+<body class="bg-[#F5F6F8] font-[Manrope]">
 
     <!-- HEADER -->
     <div class="container w-full md:px-10 px-4 mx-auto">
@@ -62,7 +62,7 @@
             <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -71,7 +71,7 @@
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                         <a href="/">
-                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
                         </a>
                         <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
                             <i class="bx bx-x"></i>
@@ -79,128 +79,124 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] underline">Browse Hostel</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Login</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse Properties</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
                     <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
     </div>
 
     <!-- ===== MAIN ===== -->
      
-    <main class="max-w-6xl w-full px-3 sm:px-4 md:px-10 pb-16 mx-auto">
-        <section class="mt-4 bg-[#F8F5FE] p-3 sm:p-6 md:p-12 shadow-sm">
-            <div class="max-w-xl mx-auto px-2 sm:px-4 py-6 sm:py-8 pb-12 sm:pb-16">
-
+    <main class="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-10">
+        <section class="bg-[#F5F6F8] mt-4 p-6 md:p-12 shadow-sm">
+            <div class="mx-auto">
+                <a href="/pages/property-detail.html"
+                   class="flex items-center gap-3 pt-6 text-[#202b3c] transition hover:text-[#3157D5]">
+                   <i class="bx bx-arrow-left-stroke text-xl " ></i>
+                   <span class="text-lg font-normal">Back</span>
+               </a>
+               <div class="mb-6 flex items-start gap-3">
+                   <div>
+                       <p class="max-w-lg text-sm leading-5 text-gray-600">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
+                   </div>
+               </div>
+                
         <!-- Page Title Header with Back Arrow -->
-        <div class="mb-6 relative flex items-center justify-center">
-            <a href="/pages/property-detail.html" onclick="if (document.referrer) { history.back(); return false; }" class="absolute left-0 text-[#2D2340] hover:text-[#7956C8] transition flex items-center justify-center p-1" aria-label="Go back to previous page">
-                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
-            </a>
-            <div class="text-center px-8 sm:px-10">
-                <h1 class="text-2xl font-extrabold text-gray-900 mb-1">Book Inspection</h1>
-                <p class="text-xs text-[#7956C8]">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
+
+        <div class="mb-8 grid overflow-hidden rounded-xl bg-white shadow-sm md:grid-cols-2">
+            <div class="h-56 bg-[#e8edfc] md:h-[230px]">
+                <img id="booking-property-photo"
+                    src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                    alt="Property" class="h-full w-full object-cover">
             </div>
-        </div>
-
-        <!-- Property summary card -->
-        <div class="bg-[#FFFFFF]
- rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.15)] p-4 mb-4">
-            <div class="flex gap-3 items-start mb-3">
-                <img id="booking-property-photo" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                     alt="Property" class="w-20 h-16 object-cover rounded-xl flex-shrink-0">
-                <div class="flex-1 min-w-0">
-                    <div class="flex flex-wrap items-center justify-between gap-y-1 mb-1">
-                        <h2 id="booking-property-title" class="text-sm font-extrabold text-gray-900">Loading property...</h2>
-                        <span id="booking-property-verified" class="hidden bg-[#FFFFFF]
- border border-[#7956C8] text-[#7956C8] text-[10px] px-2 py-0.5 rounded-full font-semibold flex items-center gap-1 ml-2 flex-shrink-0">
-                            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Verified
-                        </span>
-                    </div>
-                                        <div class="flex items-center gap-1 text-[11px] text-[#7956C8]">
-                        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
-                            <circle cx="12" cy="10" r="2.5" />
-                        </svg>
-                                                <span id="booking-property-address">Loading address...</span>
-                                        </div>
-                                        <p id="booking-property-proximity" class="ml-4 mt-0.5 text-xs font-medium text-[#7956C8]"></p>
-
-                                        <p id="booking-property-rating" class="mb-0.5 flex items-center gap-1 text-[11px] text-[#7956C8] hidden">
-                        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3-4.6-4.5 6.3-.9L12 2.8Z" />
-                        </svg>
-                                                <span></span>
-                    </p>
-                    <p id="booking-property-type" class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide"></p>
+            <div class="flex min-w-0 flex-col p-4 sm:p-5">
+                <div class="mb-2 flex items-center justify-between gap-3">
+                    <span id="booking-property-verified"
+                        class="hidden items-center gap-1.5 rounded bg-[#e8edfc] px-3 py-1.5 text-xs font-semibold text-[#3157D5]">
+                        <i class="bx bxs-badge-check text-base" aria-hidden="true"></i> Verified
+                    </span>
+                    <span id="booking-property-availability"
+                        class="hidden rounded bg-green-100 px-3 py-1.5 text-[11px] font-medium text-green-800">
+                    </span>
                 </div>
+                <h2 id="booking-property-title" class="mb-2 text-xl font-extrabold text-[#202b3c] sm:text-2xl">Loading property...</h2>
+                <p class="flex items-center gap-1.5 text-sm text-gray-600">
+                    <i class="bx bx-map text-lg text-[#3157D5]" aria-hidden="true"></i>
+                    <span id="booking-property-address">Loading address...</span>
+                </p>
+                <p id="booking-property-proximity" class="mb-3 pl-6 text-sm text-gray-600"></p>
+                <div class="mb-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#202b3c]">
+                    <p id="booking-property-rating" class="hidden items-center gap-1.5">
+                        <i class="bx bx-star text-xl text-amber-400" aria-hidden="true"></i>
+                        <span></span>
+                    </p>
+                    <p class="flex items-center gap-1.5 font-medium">
+                        <i class="bx bx-bed text-lg text-[#3157D5]" aria-hidden="true"></i>
+                        <span id="booking-property-type"></span>
+                    </p>
+                </div>
+                <p id="booking-property-price" class="mb-3 text-base font-bold text-[#202b3c]">₦ --</p>
+                <div id="booking-property-amenities"
+                    class="mt-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded bg-[#e8edfc] px-3 py-2.5 text-[#3157D5] sm:justify-around">
+                </div>
+                <!-- <a id="booking-property-details-link" href="/pages/property-detail.html"
+                    class="mt-2 self-start text-xs font-semibold text-[#3157D5] hover:underline">View property details →</a> -->
+                <p id="booking-property-error" class="hidden text-sm text-red-700" role="alert"></p>
             </div>
-            <!-- Available badge -->
-            <div id="booking-property-availability" class="hidden inline-block bg-green-500 text-[#FFFFFF]
- text-[10px] px-3 py-0.5 rounded-full font-semibold mb-3">
-            </div>
-               <div id="booking-property-amenities" class="bg-[#7956C8] rounded-full flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-3 py-2.5 sm:justify-around sm:px-4">
-            </div>
-            <!-- Price + View Details row -->
-            <div class="mt-3 flex items-center justify-between pt-2 border-t border-purple-50">
-                <span id="booking-property-price" class="text-lg font-extrabold text-[#7956C8]">₦ --</span>
-                <a id="booking-property-details-link" href="/pages/property-detail.html" class="bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] flex items-center  gap-1
- text-xs px-3 py-1.5 rounded-lg transition font-medium">
-                    View details →
-                </a>
-            </div>
-            <p id="booking-property-error" class="hidden mb-4 text-sm text-red-700" role="alert"></p>
         </div>
 
         
- <div class="border border-purple-100 rounded-2xl p-5 shadow-sm bg-white text-center mb-4">
+ <div class="mb-5">
   <!-- Card Header -->
-    <div class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#7956C8] mb-2">
-    <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    <div class="mb-2 flex items-center gap-3">
+    <div class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
+    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    </div>
+    <div>
+    <h4 class="font-bold text-[#202b3c] text-lg">Select Date</h4>
+    <p class="text-sm text-gray-500">Available dates from landlord</p>
+    </div>
   </div>
-  <h4 class="font-semibold text-gray-800 text-sm">Select Date</h4>
-  <p class="text-xs text-gray-400 mb-4  gap-2">Available dates from landlord</p>
 
   <!-- Date Pills Container (5 Equal Grid Columns) -->
-  <div class="grid grid-cols-5 gap-2 max-w-md mx-auto" id="date-picker">
+  <div class="grid grid-cols-5 gap-1.5 sm:gap-2" id="date-picker">
     
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition">
-      <span class="text-[11px] font-medium text-gray-400">Mon</span>
-      <span class="font-bold text-gray-800 mt-0.5">21 Sep</span>
+    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+      <span class="text-[11px] font-medium">Mon</span>
+      <span class="mt-0.5 font-bold">19 Oct</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
     </button>
 
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition">
-      <span class="text-[11px] font-medium text-gray-400">Tue</span>
-      <span class="font-bold text-gray-800 mt-0.5">22 Sep</span>
+    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+      <span class="text-[11px] font-medium">Tue</span>
+      <span class="mt-0.5 font-bold">20 Oct</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
     </button>
 
     <!-- Active Selected Date State -->
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition selected">
-      <span class="text-[11px] text-purple-200">Wed</span>
-      <span class="font-bold mt-0.5">23 Sep</span>
+    <button type="button" aria-pressed="true" onclick="selectDate(this)" class="date-btn selected flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+      <span class="text-[11px] font-medium">Wed</span>
+      <span class="mt-0.5 font-bold">21 Oct</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
     </button>
 
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition">
-      <span class="text-[11px] font-medium text-gray-400">Thur</span>
-      <span class="font-bold text-gray-800 mt-0.5">24 Sep</span>
+    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+      <span class="text-[11px] font-medium">Thurs</span>
+      <span class="mt-0.5 font-bold">22 Oct</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
     </button>
 
-    <button onclick="selectDate(this)" class="date-btn flex flex-col items-center py-2 px-1 rounded-xl bg-purple-50 text-xs text-gray-500 hover:bg-purple-100 transition">
-      <span class="text-[11px] font-medium text-gray-400">Fri</span>
-      <span class="font-bold text-gray-800 mt-0.5">25 Sep</span>
+    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+      <span class="text-[11px] font-medium">Fri</span>
+      <span class="mt-0.5 font-bold">23 Oct</span>
       <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
     </button>
 
@@ -208,40 +204,38 @@
 </div>
 
         <!-- Select Time Card -->
-        <div class="bg-[#FFFFFF]
- rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] p-4 mb-6">
+        <div class="mb-6">
             <div class="flex items-center gap-2 mb-1">
-                <div class="w-7 h-7 bg-[#7956C8] rounded-lg flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <div>
-                    <p class="text-xs font-bold text-gray-800">Select Time</p>
-                    <p class="text-[10px] text-[#7956C8]
+                    <p class="text-lg font-bold text-[#202b3c]">Select Time</p>
+                    <p class="text-sm text-gray-500
 
 ">Available time slot from landlord</p>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 mt-3" id="time-picker">
-                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+            <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2" id="time-picker">
+                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
                     2:00 PM – 3:00 PM
                 </button>
-                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
                     4:00 PM – 5:00 PM
                 </button>
-                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center">
+                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
                     5:00 PM – 6:00 PM
                 </button>
-                <button onclick="selectTime(this)" class="time-btn border border-gray-200 text-xs text-gray-500 py-2 px-3 rounded-xl transition text-center flex items-center justify-center gap-1 selected">
+                <button type="button" aria-pressed="true" onclick="selectTime(this)" class="time-btn selected flex min-h-12 items-center justify-center gap-1 rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
                     6:00 PM – 7:00 PM
                 </button>
             </div>
         </div>
 
         <!-- Confirm button — goes to Your Inspection -->
-        <a href="/pages/your-inspection.html">
-            <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] font-bold text-base py-4 rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.35)] transition cursor-pointer">
-                Confirm Inspection
-            </button>
+        <a href="/pages/your-inspection.html"
+            class="mx-auto flex w-full max-w-xs items-center justify-center rounded-lg bg-[#3157D5] px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#2646b5]">
+            Confirm Inspection
         </a>
 
             </div>
@@ -255,22 +249,23 @@
                 btn.style.backgroundColor = '';
                 btn.style.color = '';
                 btn.style.borderColor = '';
+                btn.setAttribute('aria-pressed', 'false');
                 btn.classList.remove('selected');
-                btn.classList.add('bg-purple-50', 'text-gray-500');
-                btn.children[0].className = 'text-[11px] font-medium text-gray-400';
-                btn.children[1].className = 'font-bold text-gray-800 mt-0.5';
+                btn.children[0].className = 'text-[11px] font-medium';
+                btn.children[1].className = 'mt-0.5 font-bold';
                 btn.children[2].className = 'dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1';
                 btn.children[2].style.backgroundColor = '';
             });
 
-            el.classList.remove('bg-purple-50', 'text-gray-500');
             el.classList.add('selected');
-            el.style.backgroundColor = '#7956C8';
+            el.setAttribute('aria-pressed', 'true');
+            el.style.backgroundColor = '#3157D5';
             el.style.color = '#FFFFFF';
-            el.style.borderColor = '#7956C8';
-            el.children[0].className = 'text-[11px] text-purple-200';
+            el.style.borderColor = '#3157D5';
+            el.children[0].className = 'text-[11px]';
             el.children[1].className = 'font-bold mt-0.5';
             el.children[2].className = 'dot w-1.5 h-1.5 rounded-full bg-white mt-1';
+            el.children[2].style.backgroundColor = '#FFFFFF';
         }
 
         // ── TIME PICKER ──────────────────────────────────────────
@@ -278,17 +273,21 @@
             // Reset all time buttons
             document.querySelectorAll('.time-btn').forEach(btn => {
                 btn.style.backgroundColor = '';
-                btn.style.color = '#6b7280';
-                btn.style.borderColor = '#e5e7eb';
+                btn.style.color = '#3157D5';
+                btn.style.borderColor = '#b8c8f8';
+                btn.setAttribute('aria-pressed', 'false');
+                btn.classList.remove('selected');
                 // remove checkmark if present
                 const chk = btn.querySelector('.chk-icon');
                 if (chk) chk.remove();
             });
 
             // Activate clicked button
-            el.style.backgroundColor = '#7956C8';
+            el.classList.add('selected');
+            el.setAttribute('aria-pressed', 'true');
+            el.style.backgroundColor = '#3157D5';
             el.style.color = '#FFFFFF';
-            el.style.borderColor = '#7956C8';
+            el.style.borderColor = '#3157D5';
 
             // Add checkmark if not already there
             if (!el.querySelector('.chk-icon')) {
@@ -303,22 +302,10 @@
 
         // Set initial state on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Pre-select Wed date
-            const wedBtn = document.querySelector('.date-btn.selected');
-            if (wedBtn) {
-                wedBtn.style.backgroundColor = '#7956C8';
-                wedBtn.style.color = '#FFFFFF';
-                wedBtn.style.borderColor = '#7956C8';
-                const dot = wedBtn.querySelector('.dot');
-                if (dot) dot.style.backgroundColor = '#FFFFFF';
-            }
-            // Pre-select 6:00 PM time
-            const timeBtn = document.querySelector('.time-btn.selected');
-            if (timeBtn) {
-                timeBtn.style.backgroundColor = '#7956C8';
-                timeBtn.style.color = '#FFFFFF';
-                timeBtn.style.borderColor = '#7956C8';
-            }
+            const selectedDate = document.querySelector('.date-btn.selected');
+            if (selectedDate) selectDate(selectedDate);
+            const selectedTime = document.querySelector('.time-btn.selected');
+            if (selectedTime) selectTime(selectedTime);
         });
     </script>
 

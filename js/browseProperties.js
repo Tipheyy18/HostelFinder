@@ -82,21 +82,21 @@
             .map(
                 () => `
             <div class="rounded-lg relative flex h-full flex-col overflow-hidden bg-white animate-pulse">
-                <div class="relative h-60 w-full flex-shrink-0 rounded-tr-lg rounded-tl-lg bg-purple-100">
-                    <div class="absolute top-6 right-6 flex h-10 w-32 items-center gap-3 rounded-md bg-purple-200 px-5"></div>
+                <div class="relative h-60 w-full flex-shrink-0 rounded-tr-lg rounded-tl-lg bg-[#e8edfc]">
+                    <div class="absolute top-6 right-6 flex h-10 w-32 items-center gap-3 rounded-md bg-[#e8edfc] px-5"></div>
                 </div>
                 <div class="flex flex-1 flex-col bg-white p-4">
-                    <div class="mb-2 h-[84px] w-3/4 rounded bg-purple-100"></div>
-                    <div class="mb-2 h-12 w-full rounded bg-purple-50"></div>
+                    <div class="mb-2 h-[84px] w-3/4 rounded bg-[#e8edfc]"></div>
+                    <div class="mb-2 h-12 w-full rounded bg-[#e8edfc]"></div>
                     <div class="my-2 flex min-h-6 items-center gap-2">
-                        <div class="h-5 w-1/3 rounded bg-purple-100"></div>
-                        <div class="h-5 w-1/2 rounded bg-purple-50"></div>
+                        <div class="h-5 w-1/3 rounded bg-[#e8edfc]"></div>
+                        <div class="h-5 w-1/2 rounded bg-[#e8edfc]"></div>
                     </div>
                     <div class="mt-auto flex min-h-[42px] items-center justify-between">
-                        <div class="h-8 w-1/2 rounded bg-purple-100"></div>
-                        <div class="h-8 w-1/3 rounded bg-purple-50"></div>
+                        <div class="h-8 w-1/2 rounded bg-[#e8edfc]"></div>
+                        <div class="h-8 w-1/3 rounded bg-[#e8edfc]"></div>
                     </div>
-                    <div class="mt-4 h-10 w-full rounded-md bg-purple-200"></div>
+                    <div class="mt-4 h-10 w-full rounded-md bg-[#e8edfc]"></div>
                 </div>
             </div>
         `,
@@ -160,7 +160,7 @@
                         href="/pages/property-detail.html?id=${encodeURIComponent(propId)}${prop.schoolId ? `&schoolId=${encodeURIComponent(prop.schoolId)}` : ""}" 
                         data-action="view-details" 
                         data-id="${escapeHtml(propId)}"
-                        class="mt-4 flex h-10 w-full flex-shrink-0 items-center justify-center gap-2 rounded-md bg-[#3157D5] text-white"
+                        class="mt-4 flex h-10 w-full flex-shrink-0 items-center justify-center gap-2 rounded-md bg-[#3157D5] hover:bg-[#2646b5] text-white"
                     >
                         View details
                         <i class="bx bx-arrow-up-right-stroke text-[18px]"></i>
@@ -724,12 +724,12 @@
                     document
                         .querySelectorAll("[data-filter-type]")
                         .forEach((b) => {
-                            b.classList.remove("bg-[#7956C8]", "text-white");
+                            b.classList.remove("bg-[#3157D5]", "text-white");
                             b.classList.add("border-gray-300", "text-gray-600");
                         });
                     selectedPropertyType = type;
                     btn.classList.add(
-                        "bg-[#7956C8]",
+                        "bg-[#3157D5]",
                         "text-white",
                     );
                     btn.classList.remove("border-gray-300", "text-gray-600");

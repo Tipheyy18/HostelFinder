@@ -131,7 +131,7 @@
                 thumbsGrid.innerHTML = subPhotos
                     .map(
                         (url, index) => `
-                    <div class="rounded-2xl overflow-hidden cursor-pointer group bg-purple-50 border border-gray-100 h-44">
+                    <div class="h-40 overflow-hidden rounded-xl cursor-pointer group bg-[#e8edfc] sm:h-full">
                         <img 
                             src="${url}" 
                             alt="Property photo ${index + 2}" 
@@ -164,8 +164,10 @@
         if (availBadge) {
             availBadge.textContent = isAvailable ? "Available" : "Unavailable";
             availBadge.className = `${
-                isAvailable ? "bg-green-500" : "bg-gray-400"
-            } text-[#FFFFFF] text-[10px] font-semibold px-3 py-0.5 rounded-full`;
+                isAvailable
+                    ? "bg-green-100 text-green-800"
+                    : "bg-gray-100 text-gray-600"
+            } rounded px-3 py-2 text-[11px] font-medium`;
         }
 
         const isVerified =
@@ -185,7 +187,7 @@
         const addressEl = document.getElementById("prop-address");
         if (addressEl) {
             addressEl.innerHTML = `
-                <i class="bx bx-map text-[13px] text-[#7956C8] shrink-0"></i>
+                <i class="bx bx-map text-lg text-[#3157D5] shrink-0"></i>
                 <span>${escapeHtml(prop.address || "Campus area")}</span>
             `;
         }
@@ -212,6 +214,25 @@
         // 5. Property Type
         const typeEl = document.getElementById("prop-type");
         if (typeEl) typeEl.textContent = formatPropertyType(prop.propertyType);
+
+        const rating =
+            typeof prop.rating === "number"
+                ? prop.rating
+                : typeof prop.averageRating === "number"
+                  ? prop.averageRating
+                  : null;
+        const reviewCount =
+            typeof prop.reviewCount === "number" ? prop.reviewCount : null;
+        const ratingContainer = document.getElementById("prop-rating");
+        const ratingValue = document.getElementById("prop-rating-value");
+        if (ratingContainer && ratingValue) {
+            ratingContainer.classList.toggle("hidden", rating === null);
+            ratingContainer.classList.toggle("flex", rating !== null);
+            ratingValue.textContent =
+                rating === null
+                    ? ""
+                    : `${rating.toFixed(1)}${reviewCount === null ? "" : ` · ${reviewCount} Reviews`}`;
+        }
 
         // 6. Description
         const descEl = document.getElementById("prop-description");
@@ -254,7 +275,7 @@
                     .map(
                         (c) => `
                     <div class="flex items-center gap-4">
-                        <span class="text-xs text-[#7956C8] w-28 flex-shrink-0">${escapeHtml(c.name || "Fee")}</span>
+                        <span class="text-xs text-[#3157d5] w-28 flex-shrink-0">${escapeHtml(c.name || "Fee")}</span>
                         <span class="text-xs font-semibold text-gray-700">₦ ${Number(c.amount || 0).toLocaleString()}</span>
                     </div>
                 `,
@@ -279,7 +300,7 @@
                     label: key.charAt(0).toUpperCase() + key.slice(1),
                 };
                 return `
-                    <span class="text-[#FFFFFF] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
+                    <span class="text-[#3157D5] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
                         <i class="bx ${config.icon} text-sm"></i> ${escapeHtml(config.label)}
                     </span>
                 `;
@@ -287,7 +308,7 @@
 
             // Join with translucent vertical bars as per design
             amenitiesEl.innerHTML = itemsMarkup.join(
-                `<span class="text-[#FFFFFF] opacity-40 text-sm">|</span>`,
+                `<span class="text-[#3157D5] opacity-40 text-sm">|</span>`,
             );
         }
 

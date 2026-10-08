@@ -71,7 +71,8 @@
         values.forEach((amenity, index) => {
             if (index > 0) {
                 const divider = document.createElement("span");
-                divider.className = "hidden sm:inline text-white opacity-40 text-sm";
+                divider.className =
+                    "hidden text-sm text-[#3157D5]/40 sm:inline";
                 divider.textContent = "|";
                 container.appendChild(divider);
             }
@@ -87,7 +88,7 @@
                 .join(" ");
             const item = document.createElement("span");
             item.className =
-                "text-white text-[11px] font-medium flex items-center gap-1.5";
+                "flex items-center gap-1.5 text-[11px] font-medium text-[#3157D5]";
 
             const icon = document.createElement("i");
             icon.className = `bx ${AMENITY_ICONS[value.toLowerCase()] || "bx-check-circle"} text-sm`;
@@ -151,8 +152,10 @@
         if (availability) {
             availability.textContent = isAvailable ? "Available" : "Unavailable";
             availability.classList.remove("hidden");
-            availability.classList.toggle("bg-green-500", isAvailable);
+            availability.classList.toggle("bg-green-100", isAvailable);
             availability.classList.toggle("bg-gray-400", !isAvailable);
+            availability.classList.toggle("text-green-800", isAvailable);
+            availability.classList.toggle("text-white", !isAvailable);
         }
 
         const isVerified =
@@ -174,6 +177,7 @@
         const ratingElement = document.getElementById("booking-property-rating");
         if (ratingElement) {
             ratingElement.classList.toggle("hidden", rating === null);
+            ratingElement.classList.toggle("flex", rating !== null);
             const ratingText = ratingElement.querySelector("span");
             if (ratingText) {
                 ratingText.textContent =

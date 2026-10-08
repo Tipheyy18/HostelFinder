@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,40 +10,53 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
     <title>property-detail| HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC] font-[Manrope]">
+
+<body class="bg-[#F5F6F8] font-[Manrope]">
 
     <!-- HEADER -->
     <div class="container w-full md:px-10 px-4 mx-auto">
-    <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
+                <a href="/"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html"
+                    class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
+                <a data-auth-login href="/pages/login.html"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+                <button
+                    class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                    account</button>
             </a>
-            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+            <button data-auth-logout type="button" hidden
+                class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+            <div id="mobile-overlay"
+                class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
 
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <aside id="mobile-menu"
+                class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                         <a href="/">
-                            <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
                         </a>
                         <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
                             <i class="bx bx-x"></i>
@@ -50,192 +64,218 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#7956C8] underline">Browse Hostel</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a>
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Login</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse
+                            Properties</a>
+                        <a data-auth-login href="/pages/login.html"
+                            class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+                    <button
+                        class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                        account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden
+                    class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
     </div>
 
-    
-    <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-        <section class="mt-4 bg-[#F8F5FE] p-6 md:p-12 shadow-sm">
-            <div class="max-w-xl mx-auto">
 
-        <!-- Back Navigation Button -->
-        
-
-        <div id="property-skeleton" class="animate-pulse">
-          
-            <div class="rounded-2xl overflow-hidden mb-2 bg-purple-100 h-64 sm:h-72 w-full"></div>
-            <div class="grid grid-cols-2 gap-2 mb-6">
-                <div class="rounded-2xl bg-purple-100 h-44"></div>
-                <div class="rounded-2xl bg-purple-100 h-44"></div>
-            </div>
-
-            <!-- Info Card  -->
-            <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] p-5 mb-5 space-y-4">
-                <div class="flex justify-between">
-                    <div class="h-4 bg-purple-100 rounded-full w-20"></div>
-                    <div class="h-4 bg-purple-100 rounded-full w-16"></div>
-                </div>
-                <div class="h-6 bg-purple-200 rounded w-3/4"></div>
-                <div class="space-y-1.5">
-                    <div class="h-3 bg-purple-50 rounded w-1/2"></div>
-                    <div class="h-3 bg-purple-50 rounded w-1/3"></div>
-                </div>
-                <div class="flex justify-between items-center pt-2">
-                    <div class="h-4 bg-purple-100 rounded w-24"></div>
-                    <div class="h-6 bg-purple-200 rounded w-28"></div>
-                </div>
-                <div class="h-3 bg-purple-100 rounded w-20"></div>
-                <div class="h-12 bg-purple-50 rounded"></div>
-            </div>
-
-            <!-- Button Skeleton -->
-            <div class="h-14 bg-purple-200 rounded-2xl"></div>
-        </div>
-
-        <!-- ERROR STATE -->
-        <div id="property-error" class="hidden bg-white rounded-2xl p-8 text-center shadow-[0_4px_24px_rgba(121,86,200,0.12)] mb-5">
-            <i class="bx bx-error-circle text-5xl text-red-500 mb-3"></i>
-            <h2 class="text-lg font-bold text-gray-800">Unable to load hostel</h2>
-            <p id="error-message" class="text-xs text-gray-500 mt-1 mb-5">Please check your connection or choose another property.</p>
-            <a href="/pages/browse.html" class="inline-block bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-5 py-2.5 rounded-xl transition">
-                ← Back to Browse
-            </a>
-        </div>
-
-        <!-- DYNAMIC PROPERTY CONTENT -->
-        <div id="property-content" class="hidden">
-
-            <!--  PHOTO GALLERY -->
-            <!-- Large main image — fully visible inside border, no cropping -->
-            <div class="rounded-2xl overflow-hidden mb-2 bg-[#F7F3FD] border border-gray-100 h-64 sm:h-72">
-                <img id="main-photo" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                     alt="Hostel exterior" class="w-full h-full object-cover">
-            </div>
-
-            <!-- Two smaller images side-by-side -->
-            <div id="sub-photos-grid" class="grid grid-cols-2 gap-2 mb-6">
-                <div class="rounded-2xl overflow-hidden h-44 bg-purple-50">
-                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/20c7d02924ad19121bcb3b92b2a5cbb1deaf3a28.png"
-                         alt="Hostel side view" class="w-full h-full object-cover">
-                </div>
-                <div class="rounded-2xl overflow-hidden h-44 bg-purple-50">
-                    <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/f5bf926c8d41265ccf2aea4a3b9cc41fc2e0c2f1.png"
-                         alt="Hostel interior" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <!-- ===== PROPERTY INFO CARD ===== -->
-            <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] p-5 mb-5">
-
-                <!-- Available + Verified row -->
-                <div class="flex items-center justify-between mb-3">
-                    <span id="badge-availability" class="bg-green-500 text-[#FFFFFF] text-[10px] font-semibold px-3 py-0.5 rounded-full">Available</span>
-                    <span id="badge-verified" class="bg-[#ede8f8] text-[#7956C8] text-[9px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
-                        <svg class="w-3 h-3 text-[#7956C8]" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
-                        Verified
-                    </span>
-                </div>
-
-                <!-- Property name -->
-                <h1 id="prop-title" class="text-xl font-extrabold text-gray-900 mb-1">Greenfields Court</h1>
-
-                <!-- Address lines -->
-                <p id="prop-address" class="text-xs text-gray-500 mb-0.5 flex items-center gap-1">
-                    <i class="bx bx-map text-[13px] text-[#7956C8]"></i>
-                    Choba, Under G Road.
-                </p>
-                <p id="prop-proximity" class="text-xs text-gray-500 mb-1.5">5 mins away from LASU</p>
-
-                <!-- Rating row + price on same line -->
-                <div class="flex items-center justify-between mb-1">
-                    <p class="text-xs text-[#7956C8] flex items-center gap-1 font-medium">
-                        <i class="bx bxs-star text-[13px] text-[#7956C8]"></i>
-                        4.8 · Verified Hostel
-                    </p>
-                    <span id="prop-price" class="text-[#7956C8] font-extrabold text-lg">₦ 250k/year</span>
-                </div>
-
-                <!-- Property type -->
-                <p id="prop-type" class="text-[10px] font-bold text-[#7956C8] uppercase tracking-widest mb-4">Shared Apartment</p>
-
-                <!-- Divider -->
-                <hr class="border-gray-100 mb-4">
-
-                <!-- Short Description -->
-                <h2 class="text-sm font-extrabold text-gray-900 mb-2">Short Description</h2>
-                <p id="prop-description" class="text-xs text-gray-500 leading-relaxed mb-4">
-                    Bright 2-bedroom flat, five-minutes walk from the main gate. Quiet street, water and power included.
-                </p>
-
-                <!-- Details grid — label left, value right -->
-                <div class="space-y-2 mb-4">
-                    <div class="flex items-center gap-4">
-                        <span class="text-xs text-[#7956C8] w-28 flex-shrink-0">Availability</span>
-                        <span id="detail-availability" class="text-xs font-semibold text-gray-700">From 1 October</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-xs text-[#7956C8] w-28 flex-shrink-0">Nearest school</span>
-                        <span id="detail-school" class="text-xs font-semibold text-[#7956C8]">Covenant University</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-xs text-[#7956C8] w-28 flex-shrink-0">Driving time</span>
-                        <span id="detail-time" class="text-xs font-semibold text-[#7956C8]">~6 minutes</span>
-                    </div>
-                </div>
-
-                <!-- Additional Charges Breakdown (if any) -->
-                <div id="additional-charges-grid" class="space-y-2 mb-4 hidden border-t border-gray-50 pt-3">
-                </div>
-
-                <!-- Divider -->
-                <hr class="border-gray-100 mb-4">
-
-                <!-- Amenities -->
-                <h2 class="text-sm font-extrabold text-gray-900 mb-3">Amenities</h2>
-
-                <!-- Single purple pill bar with separators -->
-                <div id="prop-amenities" class="bg-[#7956C8] rounded-full flex items-center justify-around px-4 py-2.5 flex-wrap gap-y-2">
-                    <span class="text-[#FFFFFF] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
-                        <i class="bx bx-droplet text-sm"></i> Water
-                    </span>
-                    <span class="text-[#FFFFFF] opacity-40 text-sm">|</span>
-                    <span class="text-[#FFFFFF] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
-                        <i class="bx bx-bulb text-sm"></i> Light
-                    </span>
-                    <span class="text-[#FFFFFF] opacity-40 text-sm">|</span>
-                    <span class="text-[#FFFFFF] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
-                        <i class="bx bx-wifi text-sm"></i> Wifi
-                    </span>
-                    <span class="text-[#FFFFFF] opacity-40 text-sm">|</span>
-                    <span class="text-[#FFFFFF] text-[11px] font-medium flex items-center gap-1.5 whitespace-nowrap">
-                        <i class="bx bx-shield text-sm"></i> Security
-                    </span>
-                </div>
-
-            </div>
-
-            <!-- ===== BOOK INSPECTION BUTTON ===== -->
-            <a id="book-inspection-link" href="/pages/book-inspection.html">
-                <button class="w-full bg-[#7956C8] hover:bg-[#4a2f82] text-[#FFFFFF] font-bold text-base py-4 rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.35)] transition cursor-pointer">
-                    Book Inspection
-                </button>
+    <main class="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-10">
+        <section class="bg-[#F5F6F8] mt-4 px-6 pb-6 pt-2 md:px-12 md:pb-12 md:pt-4 shadow-sm">
+            <a href="/pages/browse.html"
+                class="flex items-center gap-3 pt-6 mb-6 text-[#202b3c] transition hover:text-[#3157D5]">
+                <i class="bx bx-arrow-left-stroke text-xl" ></i>
+                <span class="text-lg font-normal">Back</span>
             </a>
 
-        </div>
+            <div class="mx-auto">
+
+
+
+                <div id="property-skeleton" class="grid animate-pulse gap-5 md:grid-cols-2">
+
+                    <div class="grid h-[420px] grid-cols-2 gap-2">
+                        <div class="row-span-2 rounded-xl bg-[#e8edfc]"></div>
+                        <div class="rounded-xl bg-[#e8edfc]"></div>
+                        <div class="rounded-xl bg-[#e8edfc]"></div>
+                    </div>
+
+                    <!-- Info Card  -->
+                    <div class="space-y-4 rounded-xl bg-white p-6">
+                        <div class="flex justify-between">
+                            <div class="h-4 bg-[#e8edfc] rounded-full w-20"></div>
+                            <div class="h-4 bg-[#e8edfc] rounded-full w-16"></div>
+                        </div>
+                        <div class="h-6 bg-[#e8edfc] rounded w-3/4"></div>
+                        <div class="space-y-1.5">
+                            <div class="h-3 bg-[#e8edfc] rounded w-1/2"></div>
+                            <div class="h-3 bg-[#e8edfc] rounded w-1/3"></div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <div class="h-4 bg-[#e8edfc] rounded w-24"></div>
+                            <div class="h-6 bg-[#e8edfc] rounded w-28"></div>
+                        </div>
+                        <div class="h-3 bg-[#e8edfc] rounded w-20"></div>
+                        <div class="h-12 bg-[#e8edfc] rounded"></div>
+                    </div>
+
+                    <!-- Button Skeleton -->
+                    <div class="h-14 bg-[#e8edfc] rounded-2xl md:col-start-2"></div>
+                </div>
+
+                <!-- ERROR STATE -->
+                <div id="property-error"
+                    class="hidden rounded-2xl bg-white p-8 text-center shadow-sm">
+                    <i class="bx bx-error-circle text-5xl text-red-500 mb-3"></i>
+                    <h2 class="text-lg font-bold text-gray-800">Unable to load hostel</h2>
+                    <p id="error-message" class="text-xs text-gray-500 mt-1 mb-5">Please check your connection or choose
+                        another property.</p>
+                    <a href="/pages/browse.html"
+                        class="inline-block rounded-xl bg-[#3157D5] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2646b5]">
+                        Back to Browse
+                    </a>
+                </div>
+
+                <!-- DYNAMIC PROPERTY CONTENT -->
+                <div id="property-content" class="hidden grid grid-cols-1 gap-5 md:grid-cols-[1.2fr_1fr]">
+
+                    <!--  PHOTO GALLERY -->
+                    <!-- Large main image — fully visible inside border, no cropping -->
+                    <div class="grid h-auto grid-cols-1 gap-2 sm:grid-cols-[1.15fr_1fr]">
+                    <div class="h-72 overflow-hidden rounded-xl bg-[#e8edfc] sm:h-[440px]">
+                        <img id="main-photo"
+                            src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                            alt="Hostel exterior" class="h-full w-full object-cover">
+                    </div>
+
+                    <div id="sub-photos-grid" class="grid h-auto grid-cols-2 gap-2 sm:h-[440px] sm:grid-cols-1 sm:grid-rows-2">
+                        <div class="h-40 overflow-hidden rounded-xl bg-[#e8edfc] sm:h-full">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/20c7d02924ad19121bcb3b92b2a5cbb1deaf3a28.png"
+                                alt="Hostel side view" class="h-full w-full object-cover">
+                        </div>
+                        <div class="h-40 overflow-hidden rounded-xl bg-[#e8edfc] sm:h-full">
+                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790675023/f5bf926c8d41265ccf2aea4a3b9cc41fc2e0c2f1.png"
+                                alt="Hostel interior" class="h-full w-full object-cover">
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- ===== PROPERTY INFO CARD ===== -->
+                    <div>
+                    <section class="rounded-xl bg-white p-5 shadow-sm sm:p-6">
+
+                        <!-- Available + Verified row -->
+                        <div class="mb-3 flex flex-row-reverse items-center justify-between">
+                            <span id="badge-availability"
+                                class="rounded bg-green-100 px-3 py-2 text-[11px] font-medium text-green-800">Available</span>
+                            <span id="badge-verified"
+                                class="flex items-center gap-1.5 rounded bg-[#e8edfc] px-3 py-2 text-xs font-semibold text-[#3157D5]">
+                                <svg class="w-3 h-3 text-[#3157D5]" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+
+                        <!-- Property name -->
+                        <h1 id="prop-title" class="mb-2 text-2xl font-extrabold text-[#202b3c] sm:text-[28px]">Greenfields Court</h1>
+
+                        <!-- Address lines -->
+                        <p id="prop-address" class="mb-1 flex items-center gap-1.5 text-sm text-gray-600">
+                            <i class="bx bx-map text-lg text-[#3157D5]"></i>
+                            <span>Choba, Under G Road.</span>
+                        </p>
+                        <p id="prop-proximity" class="mb-3 pl-6 text-sm text-gray-600">5 mins away from LASU</p>
+
+                        <!-- Rating row + price on same line -->
+                        <div class="mb-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#202b3c]">
+                            <p id="prop-rating" class="hidden items-center gap-1.5">
+                                <i class="bx bx-star text-xl text-amber-400" aria-hidden="true"></i>
+                                <span id="prop-rating-value"></span>
+                            </p>
+                            <p class="flex items-center gap-1.5 font-medium">
+                                <i class="bx bx-bed text-lg text-[#3157D5]" aria-hidden="true"></i>
+                                <span id="prop-type">Shared Apartment</span>
+                            </p>
+                        </div>
+                        <p id="prop-price" class="mb-5 text-base font-bold text-[#202b3c]">₦ 250k/year</p>
+
+                        <!-- Divider -->
+                        <hr class="border-gray-100 mb-4">
+
+                        <!-- Short Description -->
+                        <h2 class="mb-1.5 text-base font-extrabold text-[#202b3c]">Short description</h2>
+                        <p id="prop-description" class="mb-5 text-sm leading-6 text-gray-600">
+                            Bright 2-bedroom flat, five-minutes walk from the main gate. Quiet street, water and power
+                            included.
+                        </p>
+
+                        <!-- Details grid — label left, value right -->
+                        <div class="mb-5 space-y-1.5 text-sm">
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-gray-600">Availability</span>
+                                <span id="detail-availability" class="text-right font-semibold text-[#202b3c]">Available Immediately</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-gray-600">Nearest school</span>
+                                <span id="detail-school" class="text-right font-semibold text-[#202b3c]">Campus Area</span>
+                            </div>
+                            <div class="flex items-center justify-between gap-4">
+                                <span class="text-gray-600">Driving time</span>
+                                <span id="detail-time" class="text-right font-semibold text-[#202b3c]">Near campus</span>
+                            </div>
+                        </div>
+
+                        <!-- Additional Charges Breakdown (if any) -->
+                        <div id="additional-charges-grid" class="space-y-2 mb-4 hidden border-t border-gray-50 pt-3">
+                        </div>
+
+                        <!-- Divider -->
+                        <hr class="border-gray-100 mb-4">
+
+                        <!-- Amenities -->
+                        <h2 class="mb-2 text-base font-extrabold text-[#202b3c]">Amenities</h2>
+
+                        <!-- Single purple pill bar with separators -->
+                        <div id="prop-amenities"
+                            class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded bg-[#e8edfc] px-3 py-2.5 text-[#3157D5] sm:justify-around">
+                            <span
+                                class="flex items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-[#3157D5]">
+                                <i class="bx bx-droplet text-sm"></i> Water
+                            </span>
+                            <span class="text-sm text-[#3157D5]/40">|</span>
+                            <span
+                                class="flex items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-[#3157D5]">
+                                <i class="bx bx-bulb text-sm"></i> Light
+                            </span>
+                            <span class="text-sm text-[#3157D5]/40">|</span>
+                            <span
+                                class="flex items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-[#3157D5]">
+                                <i class="bx bx-wifi text-sm"></i> Wifi
+                            </span>
+                            <span class="text-sm text-[#3157D5]/40">|</span>
+                            <span
+                                class="flex items-center gap-1.5 whitespace-nowrap text-[11px] font-medium text-[#3157D5]">
+                                <i class="bx bx-shield text-sm"></i> Security
+                            </span>
+                        </div>
+
+                    </section>
+
+                    <!-- ===== BOOK INSPECTION BUTTON ===== -->
+                    <a id="book-inspection-link" href="/pages/book-inspection.html"
+                        class="mt-4 flex w-full items-center justify-center rounded-xl bg-[#3157D5] px-5 py-3.5 text-center text-base font-bold text-white shadow-sm transition hover:bg-[#2646b5]">
+                        Book inspection
+                    </a>
+                    </div>
+
+                </div>
 
             </div>
         </section>
@@ -244,4 +284,5 @@
     <script src="../script.js"></script>
     <script src="../js/propertyDetail.js"></script>
 </body>
+
 </html>
