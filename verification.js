@@ -185,15 +185,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(
                     "Signup details were not found. Please sign up again.",
                 );
-            await postJson(OTP_ENDPOINTS.verify, { ...signupUser, code:otp });
+            const verificationResult = await postJson(
+                OTP_ENDPOINTS.verify,
+                { ...signupUser, code: otp },
+            );
+            const role = [
+                verificationResult.user?.role,
+                verificationResult.role,
+                signupUser.role,
+            ].find(
+                (value) => typeof value === "string" && value.trim(),
+            )?.trim().toLowerCase();
             window.clearInterval(timerId);
             sessionStorage.removeItem("hostelFinderOtpUser");
-            if (signupUser.role === "landlord") {
-                document.getElementById("success-title").textContent =
-                    "Landlord Account Verified";
-                document.getElementById("success-message").textContent =
-                    "Your landlord account is verified. You can now log in and manage your properties.";
-            }
+            const successContent = {
+                student: {
+                    title: "Student Account Verified",
+                    message:
+                        "You can now view landlord contact and book inspection",
+                },
+                landlord: {
+                    title: "Landlord Account Verified",
+                    message:
+                        "Your landlord account is verified. You can now log in and manage your properties.",
+                },
+                provider: {
+                    title: "Landlord Account Verified",
+                    message:
+                        "Your landlord account is verified. You can now log in and manage your properties.",
+                },
+            };
+            const content = successContent[role] || {
+                title: "Account Verified",
+                message: "Your account is verified. You can now log in.",
+            };
+            document.getElementById("success-title").textContent =
+                content.title;
+            document.getElementById("success-message").textContent =
+                content.message;
             showState("success");
             window.setTimeout(() => {
                 window.location.href = "/pages/login.html";
