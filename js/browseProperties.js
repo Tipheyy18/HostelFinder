@@ -191,10 +191,10 @@
         if (list.length === 0) {
             grid.innerHTML = `
                 <div class="col-span-full py-16 bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
-                    <i class="bx bx-building-house text-5xl text-[#7956C8] mb-3"></i>
-                    <h3 class="text-base font-bold text-gray-800">No hostels found</h3>
+                    <i class="bx bx-building-house text-5xl text-[#3157D5] mb-3"></i>
+                    <h3 class="text-base font-bold text-[#3157D5]">No hostels found</h3>
                     <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto">The property matching your filters was not found or may not exist. Try adjusting or resetting your filters.</p>
-                    <button id="empty-reset-btn" class="mt-4 bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#4a2f82] transition cursor-pointer">
+                    <button id="empty-reset-btn" class="mt-4 bg-[#3157D5] text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#2646b5] transition cursor-pointer">
                         Reset Filters
                     </button>
                 </div>
@@ -356,7 +356,7 @@
                     "border border-[#3157D5] bg-transparent text-[#1F2937] text-xs px-3.5 py-1.5 rounded-md font-semibold transition flex-shrink-0 cursor-pointer";
             } else {
                 pillAll.className =
-                    "border border-gray-300 bg-white text-gray-500 text-xs px-3.5 py-1.5 rounded-xl hover:border-[#7956C8] hover:text-[#7956C8] transition flex-shrink-0 cursor-pointer font-normal";
+                    "border border-gray-300 bg-white text-gray-500 text-xs px-3.5 py-1.5 rounded-xl hover:border-[#3157D5] hover:text-[#3157D5] transition flex-shrink-0 cursor-pointer font-normal";
             }
         }
 
@@ -396,7 +396,7 @@
                         (item) => `
                     <button 
                         type="button" 
-                        class="applied-filter-chip flex items-center gap-1.5 bg-[#ede8f8] border border-[#7956C8] text-[#7956C8] text-xs px-3 py-1.5 rounded-xl font-medium hover:bg-[#e2d8f7] transition cursor-pointer flex-shrink-0"
+                        class="applied-filter-chip flex items-center gap-1.5 bg-[#E8F0FF] border border-[#3157D5] text-[#3157D5] text-xs px-3 py-1.5 rounded-xl font-medium hover:bg-[#dce7ff] transition cursor-pointer flex-shrink-0"
                         data-remove-type="${item.type}"
                         data-remove-value="${escapeHtml(item.value)}"
                         title="Remove filter"
@@ -438,7 +438,7 @@
         if (type === "propertyType") {
             selectedPropertyType = "";
             document.querySelectorAll("[data-filter-type]").forEach((btn) => {
-                btn.classList.remove("bg-[#7956C8]", "text-white");
+                btn.classList.remove("bg-[#3157D5]", "text-white");
                 btn.classList.add("border-gray-300", "text-gray-600");
             });
         } else if (type === "amenity") {
@@ -581,7 +581,7 @@
         }
 
         document.querySelectorAll("[data-filter-type]").forEach((btn) => {
-            btn.classList.remove("bg-[#7956C8]", "text-white");
+            btn.classList.remove("bg-[#3157D5]", "text-white");
             btn.classList.add("border-gray-300", "text-gray-600");
         });
 
@@ -718,7 +718,7 @@
                 const type = btn.dataset.filterType;
                 if (selectedPropertyType === type) {
                     selectedPropertyType = "";
-                    btn.classList.remove("bg-[#7956C8]", "text-white");
+                    btn.classList.remove("bg-[#3157D5]", "text-white");
                     btn.classList.add("border-gray-300", "text-gray-600");
                 } else {
                     document
