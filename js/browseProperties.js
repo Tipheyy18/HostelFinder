@@ -240,7 +240,7 @@
                 <i class="bx bx-error-circle text-5xl text-red-500 mb-3"></i>
                 <h3 class="text-base font-bold text-gray-800">Unable to load properties</h3>
                 <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto mb-4">${escapeHtml(message || "Please check your network connection and try again.")}</p>
-                <button id="retry-fetch-btn" class="bg-[#7956C8] hover:bg-[#4a2f82] text-white text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                <button id="retry-fetch-btn" class="bg-[#3157D5] hover:bg-[#2646b5] text-white text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
                     Retry
                 </button>
             </div>
