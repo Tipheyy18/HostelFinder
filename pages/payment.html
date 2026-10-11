@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+    <title>property-detail| HostelFinder</title>
+</head>
+
+<body class="bg-[#F5F6F8] font-[Manrope]">
+
+    <!-- HEADER -->
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#f5f6f8] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html"
+                    class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
+                <a data-auth-login href="/pages/login.html"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
+            </nav>
+
+            <a data-auth-signup href="/pages/signup.html">
+                <button
+                    class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                    account</button>
+            </a>
+            <button data-auth-logout type="button" hidden
+                class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay"
+                class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu"
+                class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse
+                            Properties</a>
+                        <a data-auth-login href="/pages/login.html"
+                            class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
+                    </nav>
+                </div>
+
+                <a data-auth-signup href="/pages/signup.html" class="w-full">
+                    <button
+                        class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                        account</button>
+                </a>
+                <button data-auth-logout type="button" hidden
+                    class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+            </aside>
+        </header>
+    </div>
+
+    <main class="container mx-auto px-4 md:px-10 px-4 pb-16">
+        <section class="mt-4 bg-[#F9FAFB] shadow-sm sm:mt-4 sm:p-3 md:p-6 lg:p-10">
+            <a href="/pages/inspection-completed.html"
+                class="mb-4 flex items-center gap-2 py-3 text-[#202b3c] transition hover:text-[#3157D5] sm:mb-6 sm:gap-3">
+                <i class="bx bx-arrow-left-stroke text-xl sm:text-2xl"></i>
+                <span class="text-base font-medium sm:text-lg">Back</span>
+            </a>
+            <div class="mx-auto max-w-6xl rounded-sm bg-white px-4 py-6 shadow-sm sm:px-8 sm:py-8 md:px-12">
+                <div class="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 md:grid-cols-3">
+                    <a href="/pages/inspection-completed.html" aria-label="Back to inspection"
+                        class="justify-self-start text-3xl text-[#1f2937] hover:text-[#3157D5]">
+                        <i class="bx bx-arrow-back"></i>
+                    </a>
+                    <h1 class="text-left text-2xl font-bold text-[#1f2937] sm:text-[28px] md:whitespace-nowrap md:text-center">Payment Details</h1>
+                    <div class="hidden md:block" aria-hidden="true"></div>
+                </div>
+
+                <form id="payment-form" class="mt-5 grid grid-cols-1 gap-x-4 md:grid-cols-2 md:gap-x-6">
+                    <div class="min-w-0">
+                        <div class="w-full flex flex-col mb-2">
+                            <label for="fullName" class="font-semibold text-sm mb-2 text-[#0f172a]">Full Name</label>
+                            <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Chinedu Okafor" required
+                                class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                        </div>
+                        <div class="w-full flex flex-col mb-2">
+                            <label for="email" class="font-semibold text-sm mb-2 text-[#0f172a]">Email Address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@gmail.com" required
+                                class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                        </div>
+                        <div class="w-full flex flex-col mb-2">
+                            <label for="phone" class="font-semibold text-sm mb-2 text-[#0f172a]">Phone Number</label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+2348162772324" required
+                                class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                        </div>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="w-full flex flex-col mb-2">
+                            <label for="billingAddress" class="font-semibold text-sm mb-2 text-[#0f172a]">Billing Address</label>
+                            <input id="billingAddress" name="billingAddress" type="text" autocomplete="street-address" placeholder="12 Palm Street, Lagos Nigeria" required
+                                class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                        </div>
+                        <div class="w-full flex flex-col mb-2">
+                            <label for="cardNumber" class="font-semibold text-sm mb-2 text-[#0f172a]">Card Number</label>
+                            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" pattern="[0-9\s\-]{13,23}" title="Enter a valid card number." required
+                                class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                        </div>
+                        <div class="grid min-w-0 grid-cols-2 gap-3 lg:grid-cols-[minmax(0,90px)_minmax(0,70px)_minmax(0,1fr)]">
+                            <div class="w-full min-w-0 flex flex-col mb-2">
+                                <label for="expiryDate" class="font-semibold text-sm mb-2 text-[#0f172a]">Expiry Date</label>
+                                <input id="expiryDate" name="expiryDate" type="text" autocomplete="cc-exp" placeholder="10/30" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Use MM/YY format." required
+                                    class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                            </div>
+                            <div class="w-full min-w-0 flex flex-col mb-2">
+                                <label for="cvv" class="font-semibold text-sm mb-2 text-[#0f172a]">CVV</label>
+                                <input id="cvv" name="cvv" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="•••" pattern="[0-9]{3,4}" title="Enter a 3- or 4-digit security code." required
+                                    class="w-full min-w-0 p-4 bg-white rounded-[14px] border border-[#d1d5db] outline-none placeholder:text-[#94A3B8] focus:outline-none focus:ring-[#3157D5] focus:ring-1">
+                            </div>
+                            <div class="col-span-2 mt-1 flex h-[58px] min-w-0 items-center justify-center gap-3 rounded-[14px] border border-slate-200 lg:col-span-1 lg:mt-8">
+                                <span class="text-2xl font-extrabold italic text-[#1a1f71]">VISA</span>
+                                <span class="flex items-center" aria-label="Mastercard">
+                                    <span class="-mr-2 h-6 w-6 rounded-full bg-[#eb001b]"></span>
+                                    <span class="h-6 w-6 rounded-full bg-[#f79e1b] opacity-90"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 sm:col-span-2">
+                        <div class="mx-auto max-w-md border-y border-gray-300 py-2">
+                            <h2 class="mb-2 text-lg font-bold text-[#1f2937]">Order Summary</h2>
+                            <div class="flex items-center justify-between border-t border-gray-300 py-2 text-sm text-[#1f2937]">
+                                <span>Property Fee</span>
+                                <span id="property-fee" class="font-semibold">₦500,000.00</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-1 text-lg font-bold text-[#3157D5]">
+                                <span>TOTAL</span>
+                                <span id="payment-total">₦500,000.00</span>
+                            </div>
+                        </div>
+                        <button id="pay-now-button" type="submit"
+                            class="mx-auto mt-12 block w-full max-w-md cursor-pointer rounded-xl bg-[#3157D5] px-6 py-4 text-sm font-semibold text-white transition hover:bg-[#2646b5] disabled:cursor-not-allowed disabled:opacity-60">
+                            Pay Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden min-h-full items-start justify-center overflow-y-auto bg-slate-950/50 p-4 sm:items-center" role="dialog" aria-modal="true" aria-label="Payment status">
+        <section class="my-auto w-full max-w-sm rounded-2xl bg-white px-6 py-8 text-center shadow-2xl sm:px-10 sm:py-10">
+            <div id="payment-verifying" class="flex flex-col items-center" role="status" aria-live="polite">
+                <div class="mb-8 h-16 w-16 animate-spin rounded-full border-4 border-[#3157D5] border-t-transparent" role="status" aria-label="Verifying payment"></div>
+                <h2 id="payment-modal-title" class="text-2xl font-bold text-[#1f2937]">Verifying your payment...</h2>
+                <p id="payment-modal-message" class="mt-4 text-sm font-semibold text-[#1f2937]">Please wait while we confirm your payment.</p>
+            </div>
+
+            <div id="payment-failed" class="hidden">
+                <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-3xl font-bold text-red-600" aria-hidden="true">!</div>
+                <h2 class="text-2xl font-bold text-[#1f2937]">Payment not confirmed</h2>
+                <p id="payment-error-message" class="mt-3 text-sm leading-relaxed text-slate-600" role="alert"></p>
+                <div class="mt-7 flex flex-col gap-3">
+                    <button id="payment-retry-button" type="button" class="w-full rounded-xl bg-[#3157D5] px-5 py-3 font-semibold text-white transition hover:bg-[#2646b5]">Try Again</button>
+                    <button id="payment-return-button" type="button" class="w-full rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-50">Return to payment form</button>
+                </div>
+            </div>
+
+            <div id="payment-success" class="hidden">
+                <img src="/images/Vector.png" alt="" class="mx-auto mb-4 h-24 w-24 object-contain">
+                <h2 class="text-2xl font-bold text-[#1f2937]">Payment Successful</h2>
+                <p class="mt-2 text-sm text-slate-600">Your payment for <span id="confirmed-property-name"></span> has been confirmed.</p>
+                <dl class="mt-6 border-y border-slate-300 py-2 text-left">
+                    <div class="flex items-center justify-between gap-4 py-2 text-sm font-semibold text-[#1f2937]">
+                        <dt>Transaction ID</dt>
+                        <dd id="confirmed-transaction-id" class="break-all text-right"></dd>
+                    </div>
+                    <div class="flex items-center justify-between gap-4 border-t border-slate-300 pt-2 text-sm">
+                        <dt>Amount</dt>
+                        <dd id="confirmed-amount" class="font-semibold text-[#1f2937]"></dd>
+                    </div>
+                </dl>
+                <div class="mt-6 flex flex-col gap-3">
+                    <button id="download-receipt-button" type="button" class="flex w-full items-center justify-center gap-2 rounded-xl border border-[#3157D5] px-5 py-3 font-semibold text-[#3157D5] transition hover:bg-blue-50">
+                        <i class="bx bx-download text-xl" aria-hidden="true"></i>
+                        Download Receipt
+                    </button>
+                    <a href="/pages/browse.html" class="w-full rounded-xl bg-[#3157D5] px-5 py-3 font-semibold text-white shadow-md transition hover:bg-[#2646b5]">Back to Home</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const PAYMENT_VERIFICATION_ENDPOINT = window.HOSTELFINDER_PAYMENT_VERIFICATION_ENDPOINT || "";
+        const paymentForm = document.getElementById("payment-form");
+        const payNowButton = document.getElementById("pay-now-button");
+        const paymentModal = document.getElementById("payment-modal");
+        const verifyingPanel = document.getElementById("payment-verifying");
+        const failurePanel = document.getElementById("payment-failed");
+        const successPanel = document.getElementById("payment-success");
+        const paymentErrorMessage = document.getElementById("payment-error-message");
+        const cardNumberInput = document.getElementById("cardNumber");
+        const expiryDateInput = document.getElementById("expiryDate");
+        // Configure the endpoint and PCI-compliant tokenize(form) gateway adapter here; card details must never be posted to the backend.
+        let selectedProperty = null;
+        let confirmedPayment = null;
+        let paymentSubmissionInProgress = false;
+        let propertyName = "Greenfields Court";
+        let paymentAmountNaira = 500000;
+
+        try {
+            selectedProperty = JSON.parse(sessionStorage.getItem("selectedProperty") || "null");
+        } catch (error) {
+            console.error("Unable to read selected property for payment:", error);
+        }
+
+        if (selectedProperty && typeof selectedProperty === "object") {
+            if (typeof selectedProperty.title === "string" && selectedProperty.title.trim()) {
+                propertyName = selectedProperty.title.trim();
+            }
+            if (typeof selectedProperty.price === "number" && Number.isFinite(selectedProperty.price) && selectedProperty.price > 0) {
+                paymentAmountNaira = selectedProperty.price;
+            }
+        }
+
+        const nairaFormatter = new Intl.NumberFormat("en-NG", {
+            style: "currency",
+            currency: "NGN",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+        document.getElementById("property-fee").textContent = nairaFormatter.format(paymentAmountNaira);
+        document.getElementById("payment-total").textContent = nairaFormatter.format(paymentAmountNaira);
+
+        function showPaymentState(state) {
+            paymentModal.classList.remove("hidden");
+            paymentModal.classList.add("flex");
+            verifyingPanel.classList.toggle("hidden", state !== "verifying");
+            failurePanel.classList.toggle("hidden", state !== "failed");
+            successPanel.classList.toggle("hidden", state !== "success");
+        }
+
+        async function verifyPayment() {
+            const gateway = window.HostelFinderPaymentGateway;
+            if (!gateway || typeof gateway.tokenize !== "function" || !PAYMENT_VERIFICATION_ENDPOINT) {
+                throw new Error("Payment verification is not configured. Connect a PCI-compliant payment gateway for card tokenization and set the secure backend verification endpoint before accepting payments. No charge has been made.");
+            }
+
+            const paymentMethodToken = await gateway.tokenize(paymentForm);
+            if (typeof paymentMethodToken !== "string" || !paymentMethodToken) {
+                throw new Error("The payment provider could not securely tokenize these card details. Please check them and try again.");
+            }
+
+            const response = await fetch(PAYMENT_VERIFICATION_ENDPOINT, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    paymentMethodToken,
+                    propertyId: selectedProperty?._id || null,
+                    amountNaira: paymentAmountNaira,
+                }),
+            });
+            let result;
+            try {
+                result = await response.json();
+            } catch (error) {
+                console.error("Payment verifier returned an unreadable response:", error);
+                throw new Error("The payment verification service returned an unreadable response. No payment was confirmed.");
+            }
+
+            if (!result || typeof result !== "object") {
+                throw new Error("The payment verification service returned an invalid response. No payment was confirmed.");
+            }
+            if (!response.ok || result.success !== true || result.verified !== true) {
+                throw new Error(result.message || "The payment provider did not confirm this payment.");
+            }
+            if (typeof result.transactionId !== "string" || !result.transactionId.trim()) {
+                throw new Error("The payment provider did not return a confirmed transaction ID.");
+            }
+            if (typeof result.amountNaira !== "number" || result.amountNaira !== paymentAmountNaira) {
+                throw new Error("The confirmed payment amount does not match the order total.");
+            }
+
+            return {
+                transactionId: result.transactionId.trim(),
+                amountNaira: result.amountNaira,
+                confirmedAt: typeof result.confirmedAt === "string" ? result.confirmedAt : "",
+            };
+        }
+
+        paymentForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (paymentSubmissionInProgress) return;
+            if (!paymentForm.reportValidity()) return;
+
+            paymentSubmissionInProgress = true;
+            payNowButton.disabled = true;
+            showPaymentState("verifying");
+
+            try {
+                confirmedPayment = await verifyPayment();
+                document.getElementById("confirmed-property-name").textContent = propertyName;
+                document.getElementById("confirmed-transaction-id").textContent = confirmedPayment.transactionId;
+                document.getElementById("confirmed-amount").textContent = nairaFormatter.format(confirmedPayment.amountNaira);
+                showPaymentState("success");
+            } catch (error) {
+                console.error("Payment verification failed:", error);
+                paymentErrorMessage.textContent = error instanceof Error
+                    ? error.message
+                    : "An unexpected error prevented payment verification. Please retry or return to the payment form.";
+                paymentSubmissionInProgress = false;
+                payNowButton.disabled = false;
+                showPaymentState("failed");
+            }
+        });
+
+        cardNumberInput.addEventListener("input", () => {
+            const digits = cardNumberInput.value.replace(/\D/g, "");
+            cardNumberInput.setCustomValidity(
+                /^[0-9 -]+$/.test(cardNumberInput.value) && digits.length >= 13 && digits.length <= 19
+                    ? ""
+                    : "Enter a valid card number containing 13 to 19 digits.",
+            );
+        });
+
+        expiryDateInput.addEventListener("input", () => {
+            const match = /^(0[1-9]|1[0-2])\/([0-9]{2})$/.exec(expiryDateInput.value);
+            if (!match) {
+                expiryDateInput.setCustomValidity("");
+                return;
+            }
+
+            const expiryMonth = Number(match[1]);
+            const expiryYear = 2000 + Number(match[2]);
+            const today = new Date();
+            const expired = expiryYear < today.getFullYear()
+                || (expiryYear === today.getFullYear() && expiryMonth < today.getMonth() + 1);
+            expiryDateInput.setCustomValidity(expired ? "This card has expired." : "");
+        });
+
+        document.getElementById("payment-retry-button").addEventListener("click", () => {
+            paymentForm.requestSubmit();
+        });
+
+        document.getElementById("payment-return-button").addEventListener("click", () => {
+            paymentModal.classList.add("hidden");
+            paymentModal.classList.remove("flex");
+            payNowButton.focus();
+        });
+
+        document.getElementById("download-receipt-button").addEventListener("click", () => {
+            if (!confirmedPayment) return;
+
+            const receipt = [
+                "HostelFinder Payment Receipt",
+                `Property: ${propertyName}`,
+                `Transaction ID: ${confirmedPayment.transactionId}`,
+                `Amount paid: ${nairaFormatter.format(confirmedPayment.amountNaira)}`,
+                "Status: Confirmed",
+                confirmedPayment.confirmedAt ? `Confirmed at: ${confirmedPayment.confirmedAt}` : "",
+            ].filter(Boolean).join("\n");
+            const receiptUrl = URL.createObjectURL(new Blob([receipt], { type: "text/plain;charset=utf-8" }));
+            const downloadLink = document.createElement("a");
+            downloadLink.href = receiptUrl;
+            const safeTransactionId = confirmedPayment.transactionId.replace(/[^a-zA-Z0-9_-]/g, "_");
+            downloadLink.download = `hostelfinder-receipt-${safeTransactionId}.txt`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            window.setTimeout(() => URL.revokeObjectURL(receiptUrl), 1000);
+        });
+    </script>
+</body>
+</html>
