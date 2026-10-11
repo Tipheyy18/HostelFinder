@@ -18,19 +18,19 @@
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#7956C8] cursor-pointer underline">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Browse Hostel</a>
-                <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">List your property</a> -->
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline cursor-pointer">Login</a>
+                <a href="/" class="text-base font-medium text-[#3157D5]  cursor-pointer underline">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Browse Hostel</a>
+                <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">List your property</a> -->
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
             </a>
-            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#7956C8] text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5]  text-3xl border border-[#7956C8] rounded-md"></i>
             </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -47,17 +47,17 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Hostel</a>
-                        <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#7956C8]">List your property</a> -->
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#7956C8] underline">Login</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Browse Hostel</a>
+                        <!-- <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">List your property</a> -->
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#3157D5]  underline">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
             </aside>
         </header>
 
@@ -69,7 +69,7 @@
 					<h1 id="otp-title" class="text-[24px] font-bold leading-tight sm:text-[26px]">Enter Verification Code</h1>
 					<p id="otp-recipient" class="text-sm">Preparing your verification code...</p>
 					<form id="otp-form" class="mt-8" novalidate>
-						<p id="countdown" class="mb-3 flex items-center justify-center gap-2 text-base font-bold text-[#7956C8]" aria-live="off"><i class="bx bx-history text-xl" aria-hidden="true"></i><span>01:00</span></p>
+						<p id="countdown" class="mb-3 flex items-center justify-center gap-2 text-base font-bold text-[#3157D5] " aria-live="off"><i class="bx bx-history text-xl" aria-hidden="true"></i><span>01:00</span></p>
 						<div class="flex justify-center gap-2 sm:gap-3" role="group" aria-label="6-digit verification code">
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#7956C8] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#7956C8]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="Digit 1" required>
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#7956C8] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#7956C8]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 2" required>
@@ -79,11 +79,11 @@
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#7956C8] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#7956C8]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 6" required>
 						</div>
 						<p id="otp-error" class="mt-3 hidden text-center text-sm text-red-700" role="alert">Invalid code - please try again</p>
-						<button type="submit" class="mt-8 w-full rounded-xl bg-[#7956C8] px-4 py-3 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#4a2f82] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7956C8]">Verify</button>
+						<button type="submit" class="mt-8 w-full rounded-xl bg-[#3157D5] px-4 py-3 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#4a2f82] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7956C8]">Verify</button>
 					</form>
 					<div class="mt-5 text-center text-sm">
 						<p>Didn't receive the code?</p>
-						<button id="resend-code" type="button" disabled class="mt-1 font-bold text-[#7956C8] hover:underline disabled:cursor-not-allowed disabled:opacity-50">Resend Code</button>
+						<button id="resend-code" type="button" disabled class="mt-1 font-bold text-[#3157D5]  hover:underline disabled:cursor-not-allowed disabled:opacity-50">Resend Code</button>
 					</div>
 					<p id="attempts-remaining" class="mt-7 hidden text-center text-sm text-red-700"></p>
 					<p id="code-validity" class="mt-6 text-center text-[11px] text-[#51485d]">Code is valid for 1 minute</p>
@@ -102,7 +102,7 @@
 						<div class="flex h-28 w-28 rotate-[-8deg] items-center justify-center bg-[#389D12] [clip-path:polygon(50%_0%,62%_8%,76%_3%,81%_17%,96%_22%,91%_38%,100%_50%,91%_62%,96%_78%,81%_83%,76%_97%,62%_92%,50%_100%,38%_92%,24%_97%,19%_83%,4%_78%,9%_62%,0%_50%,9%_38%,4%_22%,19%_17%,24%_3%,38%_8%)]"><i class="bx bx-check text-[76px] font-bold text-white" aria-hidden="true"></i></div>
 					</div>
 					<h1 id="success-title" class="text-[28px] font-bold leading-tight sm:text-[32px]">Landlord Account Verified</h1>
-					<a href="/pages/login.html" class="mt-5 flex w-full items-center justify-center rounded-xl bg-[#7956C8] px-4 py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#4a2f82]">Continue to Log In</a>
+					<a href="/pages/login.html" class="mt-5 flex w-full items-center justify-center rounded-xl bg-[#3157D5] px-4 py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#4a2f82]">Continue to Log In</a>
 					<p id="success-message" class="mx-auto mt-6 max-w-[290px] text-sm leading-5">Your landlord account is verified. You can now log in and manage your properties.</p>
 				</section>
 			</div>
