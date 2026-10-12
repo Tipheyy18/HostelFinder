@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,10 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>Book  Inspection | HostelFinder</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+    <title>Book Inspection | HostelFinder</title>
     <style type="text/tailwindcss">
         @layer utilities {
             .range-purple::-webkit-slider-thumb {
@@ -41,33 +44,43 @@
         }
     </style>
 </head>
+
 <body class="bg-[#F5F6F8] font-[Manrope]">
 
     <!-- HEADER -->
     <div class="container w-full md:px-10 px-4 mx-auto">
-    <header class="w-full flex items-center justify-between p-4 bg-[#f5f6f8] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#f5f6f8] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
+                <a href="/"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html"
+                    class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
+                <a data-auth-login href="/pages/login.html"
+                    class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+                <button
+                    class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                    account</button>
             </a>
-            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+            <button data-auth-logout type="button" hidden
+                class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
                 <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+            <div id="mobile-overlay"
+                class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
 
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+            <aside id="mobile-menu"
+                class="fixed top-0 left-0 h-full w-64 bg-[#FFFFFF] z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                         <a href="/">
@@ -80,159 +93,181 @@
 
                     <nav class="flex flex-col gap-4 mt-6">
                         <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse Properties</a>
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5">Login</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] underline">Browse
+                            Properties</a>
+                        <a data-auth-login href="/pages/login.html"
+                            class="text-base font-medium text-[#2D2340] hover:text-[#3157D5">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+                    <button
+                        class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create
+                        account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden
+                    class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
     </div>
 
     <!-- ===== MAIN ===== -->
-     
-    <main class=" w-full container mx-auto px-4 pb-16 sm:px-6 lg:px-10">
-        <section class="mt-2 p-0 shadow-sm sm:mt-4 sm:p-3 md:p-6 lg:p-10">
+
+    <main class="w-full container mx-auto px-3 pb-12 sm:px-6 md:px-10 lg:pb-16">
+        <section class="shadow-sm sm:mt-4 p-4 md:p-10">
             <a href="/pages/property-detail.html"
-               class="flex w-fit items-center gap-2 pt-6 pb-3 text-[#202b3c] transition hover:text-[#3157D5]">
-               <i class="bx bx-arrow-left-stroke block text-xl leading-none"></i>
-               <span class="text-lg font-normal leading-none">Back</span>
-           </a>
-           <p class="mb-6 max-w-lg text-sm leading-5 text-gray-600">Choose a date and time that works for you. Slots are based on the landlord's availability.</p>
-        
-        <div class=" max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 md:p-6 shadow-sm">
-        <!-- Page Title Header with Back Arrow -->
+                class="flex w-fit items-center gap-2 px-3 py-3 sm:px-0 sm:py-0 text-[#202b3c] transition hover:text-[#3157D5]">
+                <i class="bx bx-arrow-left-stroke block text-xl sm:text-2xl leading-none"></i>
+                <span class="text-lg font-normal leading-none">Back</span>
+            </a>
+            <p class="mb-3 max-w-lg text-sm leading-5 text-gray-600 px-3 py-0 sm:px-0">Choose a date and time
+                that works for you.</p>
 
-        <div class="mb-8 grid overflow-hidden rounded-xl bg-white md:grid-cols-2">
-            <div class="h-56 bg-[#e8edfc] md:h-[230px]">
-                <img id="booking-property-photo"
-                    src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                    alt="Property" class="h-full w-full object-cover">
-            </div>
-            <div class="flex min-w-0 flex-col p-4 sm:p-5">
-                <div class="mb-2 flex items-center justify-between gap-3">
-                    <span id="booking-property-verified"
-                        class="hidden items-center gap-1.5 rounded bg-[#e8edfc] px-3 py-1.5 text-xs font-semibold text-[#3157D5]">
-                        <i class="bx bxs-badge-check text-base" aria-hidden="true"></i> Verified
-                    </span>
-                    <span id="booking-property-availability"
-                        class="hidden rounded bg-green-100 px-3 py-1.5 text-[11px] font-medium text-green-800">
-                    </span>
-                </div>
-                <h2 id="booking-property-title" class="mb-2 text-xl font-extrabold text-[#202b3c] sm:text-2xl">Loading property...</h2>
-                <p class="flex items-center gap-1.5 text-sm text-gray-600">
-                    <i class="bx bx-map text-lg text-[#3157D5]" aria-hidden="true"></i>
-                    <span id="booking-property-address">Loading address...</span>
-                </p>
-                <p id="booking-property-proximity" class="mb-3 pl-6 text-sm text-gray-600"></p>
-                <div class="mb-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#202b3c]">
-                    <p id="booking-property-rating" class="hidden items-center gap-1.5">
-                        <i class="bx bx-star text-xl text-amber-400" aria-hidden="true"></i>
-                        <span></span>
-                    </p>
-                    <p class="flex items-center gap-1.5 font-medium">
-                        <i class="bx bx-bed text-lg text-[#3157D5]" aria-hidden="true"></i>
-                        <span id="booking-property-type"></span>
-                    </p>
-                </div>
-                <p id="booking-property-price" class="mb-3 text-base font-bold text-[#202b3c]">₦ --</p>
-                <div id="booking-property-amenities"
-                    class="mt-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded bg-[#e8edfc] px-3 py-2.5 text-[#3157D5] sm:justify-around">
-                </div>
-                <!-- <a id="booking-property-details-link" href="/pages/property-detail.html"
+            <div class="w-full max-w-4xl mx-auto p-3 sm:p-6 lg:p-8 shadow-sm">
+                <!-- Page Title Header with Back Arrow -->
+
+                <div class="mb-8 grid overflow-hidden rounded-xl bg-white md:grid-cols-2">
+                    <div class="h-56 bg-[#e8edfc] md:h-[230px]">
+                        <img id="booking-property-photo"
+                            src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                            alt="Property" class="h-full w-full object-cover">
+                    </div>
+                    <div class="flex min-w-0 flex-col p-4 sm:p-5">
+                        <div class="mb-2 flex items-center justify-between gap-3">
+                            <span id="booking-property-verified"
+                                class="hidden items-center gap-1.5 rounded bg-[#e8edfc] px-3 py-1.5 text-xs font-semibold text-[#3157D5]">
+                                <i class="bx bxs-badge-check text-base" aria-hidden="true"></i> Verified
+                            </span>
+                            <span id="booking-property-availability"
+                                class="hidden rounded bg-green-100 px-3 py-1.5 text-[11px] font-medium text-green-800">
+                            </span>
+                        </div>
+                        <h2 id="booking-property-title" class="mb-2 text-xl font-extrabold text-[#202b3c] sm:text-2xl">
+                            Loading property...</h2>
+                        <p class="flex items-center gap-1.5 text-sm text-gray-600">
+                            <i class="bx bx-map text-lg text-[#3157D5]" aria-hidden="true"></i>
+                            <span id="booking-property-address">Loading address...</span>
+                        </p>
+                        <p id="booking-property-proximity" class="mb-3 pl-6 text-sm text-gray-600"></p>
+                        <div class="mb-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#202b3c]">
+                            <p id="booking-property-rating" class="hidden items-center gap-1.5">
+                                <i class="bx bx-star text-xl text-amber-400" aria-hidden="true"></i>
+                                <span></span>
+                            </p>
+                            <p class="flex items-center gap-1.5 font-medium">
+                                <i class="bx bx-bed text-lg text-[#3157D5]" aria-hidden="true"></i>
+                                <span id="booking-property-type"></span>
+                            </p>
+                        </div>
+                        <p id="booking-property-price" class="mb-3 text-base font-bold text-[#202b3c]">₦ --</p>
+                        <div id="booking-property-amenities"
+                            class="mt-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded bg-[#e8edfc] px-3 py-2.5 text-[#3157D5] sm:justify-around">
+                        </div>
+                        <!-- <a id="booking-property-details-link" href="/pages/property-detail.html"
                     class="mt-2 self-start text-xs font-semibold text-[#3157D5] hover:underline">View property details →</a> -->
-                <p id="booking-property-error" class="hidden text-sm text-red-700" role="alert"></p>
-            </div>
-        </div>
-
-        
- <div class="mb-5">
-  <!-- Card Header -->
-    <div class="mb-2 flex items-center gap-3">
-    <div class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
-    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-    </div>
-    <div>
-    <h4 class="font-bold text-[#202b3c] text-lg">Select Date</h4>
-    <p class="text-sm text-gray-500">Available dates from landlord</p>
-    </div>
-  </div>
-
-  <!-- Date Pills Container (5 Equal Grid Columns) -->
-  <div class="grid grid-cols-5 gap-1.5 sm:gap-2" id="date-picker">
-    
-    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-      <span class="text-[11px] font-medium">Mon</span>
-      <span class="mt-0.5 font-bold">19 Oct</span>
-      <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-    </button>
-
-    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-      <span class="text-[11px] font-medium">Tue</span>
-      <span class="mt-0.5 font-bold">20 Oct</span>
-      <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-    </button>
-
-    <!-- Active Selected Date State -->
-    <button type="button" aria-pressed="true" onclick="selectDate(this)" class="date-btn selected flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-      <span class="text-[11px] font-medium">Wed</span>
-      <span class="mt-0.5 font-bold">21 Oct</span>
-      <span class="dot w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
-    </button>
-
-    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-      <span class="text-[11px] font-medium">Thurs</span>
-      <span class="mt-0.5 font-bold">22 Oct</span>
-      <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-    </button>
-
-    <button type="button" aria-pressed="false" onclick="selectDate(this)" class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-      <span class="text-[11px] font-medium">Fri</span>
-      <span class="mt-0.5 font-bold">23 Oct</span>
-      <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-    </button>
-
-  </div>
-</div>
-
-        <!-- Select Time Card -->
-        <div class="mb-6">
-            <div class="flex items-center gap-2 mb-1">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
-                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p id="booking-property-error" class="hidden text-sm text-red-700" role="alert"></p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-lg font-bold text-[#202b3c]">Select Time</p>
-                    <p class="text-sm text-gray-500
+
+
+                <div class="mb-5">
+                    <!-- Card Header -->
+                    <div class="mb-2 flex items-center gap-3">
+                        <div class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#202b3c] text-lg">Select Date</h4>
+                            <p class="text-sm text-gray-500">Available dates from landlord</p>
+                        </div>
+                    </div>
+
+                    <!-- Date Pills Container (5 Equal Grid Columns) -->
+                    <div class="grid grid-cols-5 gap-1.5 sm:gap-2" id="date-picker">
+
+                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
+                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+                            <span class="text-[11px] font-medium">Mon</span>
+                            <span class="mt-0.5 font-bold">19 Oct</span>
+                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
+                        </button>
+
+                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
+                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+                            <span class="text-[11px] font-medium">Tue</span>
+                            <span class="mt-0.5 font-bold">20 Oct</span>
+                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
+                        </button>
+
+                        <!-- Active Selected Date State -->
+                        <button type="button" aria-pressed="true" onclick="selectDate(this)"
+                            class="date-btn selected flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+                            <span class="text-[11px] font-medium">Wed</span>
+                            <span class="mt-0.5 font-bold">21 Oct</span>
+                            <span class="dot w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
+                        </button>
+
+                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
+                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+                            <span class="text-[11px] font-medium">Thurs</span>
+                            <span class="mt-0.5 font-bold">22 Oct</span>
+                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
+                        </button>
+
+                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
+                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
+                            <span class="text-[11px] font-medium">Fri</span>
+                            <span class="mt-0.5 font-bold">23 Oct</span>
+                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Select Time Card -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-2 mb-1">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold text-[#202b3c]">Select Time</p>
+                            <p class="text-sm text-gray-500
 
 ">Available time slot from landlord</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2" id="time-picker">
+                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
+                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
+                            2:00 PM – 3:00 PM
+                        </button>
+                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
+                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
+                            4:00 PM – 5:00 PM
+                        </button>
+                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
+                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
+                            5:00 PM – 6:00 PM
+                        </button>
+                        <button type="button" aria-pressed="true" onclick="selectTime(this)"
+                            class="time-btn selected flex min-h-12 items-center justify-center gap-1 rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
+                            6:00 PM – 7:00 PM
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2" id="time-picker">
-                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                    2:00 PM – 3:00 PM
-                </button>
-                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                    4:00 PM – 5:00 PM
-                </button>
-                <button type="button" aria-pressed="false" onclick="selectTime(this)" class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                    5:00 PM – 6:00 PM
-                </button>
-                <button type="button" aria-pressed="true" onclick="selectTime(this)" class="time-btn selected flex min-h-12 items-center justify-center gap-1 rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                    6:00 PM – 7:00 PM
-                </button>
-            </div>
-        </div>
 
-        <!-- Confirm button — goes to Your Inspection -->
-        <a href="/pages/your-inspection.html"
-            class="mx-auto flex w-full max-w-xs items-center justify-center rounded-lg bg-[#3157D5] px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#2646b5]">
-            Confirm Inspection
-        </a>
+                <!-- Confirm button — goes to Your Inspection -->
+                <a href="/pages/your-inspection.html"
+                    class="mx-auto flex w-full max-w-xs items-center justify-center rounded-lg bg-[#3157D5] px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#2646b5]">
+                    Confirm Inspection
+                </a>
 
             </div>
         </section>

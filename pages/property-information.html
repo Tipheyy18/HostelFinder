@@ -22,22 +22,22 @@
 
             <!-- Desktop Nav -->
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline transition">Home</a>
-                <a href="/pages/browse.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] hover:underline transition">Browse Properties</a>
-                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#7956C8] underline">List Your Property</a>
+                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline transition">Home</a>
+                <a href="/pages/browse.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline transition">Browse Properties</a>
+                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#3157D5]  underline">List Your Property</a>
             </nav>
 
             <!-- Desktop CTA -->
             <div class="hidden xl:flex items-center gap-4">
-                <a href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#7956C8] transition">Log In</a>
+                <a href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  transition">Log In</a>
                 <a href="/pages/signup.html">
-                    <button class="capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+                    <button class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
                 </a>
             </div>
 
             <!-- Mobile Hamburger -->
             <button id="menu-btn" type="button"
-                class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#7956C8] xl:hidden"
+                class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#3157D5]  xl:hidden"
                 aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                 <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
             </button>
@@ -58,12 +58,12 @@
                     </button>
                 </div>
                 <nav class="mt-6 flex flex-col gap-5">
-                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Home</a>
-                    <a href="/pages/browse.html" class="font-medium text-[#2D2340] hover:text-[#7956C8]">Browse Properties</a>
-                    <a href="/pages/listProperty.html" class="font-semibold text-[#7956C8] underline">List Your Property</a>
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
+                    <a href="/pages/browse.html" class="font-medium text-[#2D2340] hover:text-[#3157D5] ">Browse Properties</a>
+                    <a href="/pages/listProperty.html" class="font-semibold text-[#3157D5]  underline">List Your Property</a>
                 </nav>
             </div>
-            <a href="/pages/signup.html" class="rounded-md bg-[#7956C8] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
+            <a href="/pages/signup.html" class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
         </aside>
     </header>
 
@@ -75,7 +75,7 @@
         <!-- Page title row -->
         <div class="mb-8 flex items-center gap-3">
             <a href="/pages/listProperty.html"
-                class="text-[#2D2340] hover:text-[#7956C8] transition flex items-center flex-shrink-0"
+                class="text-[#2D2340] hover:text-[#3157D5]  transition flex items-center flex-shrink-0"
                 aria-label="Go back">
                 <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
             </a>
@@ -89,12 +89,10 @@
         <div class="bg-[#F8F5FE] rounded-3xl p-5 sm:p-8 shadow-sm border border-[#E9DFFA]">
             <form id="property-info-form" novalidate>
 
-                <!-- Two-column grid (stacks on mobile) -->
+              
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                    <!-- ══════════════════════════
-                         LEFT — Basic details
-                    ══════════════════════════ -->
+                    <
                     <div class="space-y-5">
 
                         <div>
@@ -148,9 +146,7 @@
 
                     </div>
 
-                    <!-- ══════════════════════════
-                         RIGHT — Availability, Amenities & Media
-                    ══════════════════════════ -->
+                    
                     <div class="space-y-5">
 
                         <!-- Availability toggle -->
@@ -158,7 +154,7 @@
                             <span class="text-xs sm:text-sm font-semibold text-[#2D2340]">Availability</span>
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="availability" name="availability" class="sr-only peer" checked>
-                                <div class="w-11 h-6 bg-[#D8CEE6] rounded-full peer peer-checked:bg-[#7956C8]
+                                <div class="w-11 h-6 bg-[#3157D5] rounded-full peer peer-checked:bg-[#7956C8]
                                     after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                     after:bg-white after:border after:border-gray-300 after:rounded-full
                                     after:h-5 after:w-5 after:transition-all
@@ -203,10 +199,10 @@
                                 <div id="drop-ownership"
                                     class="border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#EFE5FD] transition rounded-xl py-3.5 px-4 flex items-center gap-3 cursor-pointer">
                                     <input type="file" id="ownership-input" accept="image/*,.pdf" class="hidden">
-                                    <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#7956C8] flex items-center justify-center flex-shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#3157D5]  flex items-center justify-center flex-shrink-0">
                                         <i class="bx bx-home-alt text-base"></i>
                                     </div>
-                                    <span id="ownership-label" class="text-xs font-medium text-[#7956C8]">
+                                    <span id="ownership-label" class="text-xs font-medium text-[#3157D5] ">
                                         Drag &amp; Drop file here, or <span class="underline font-semibold">upload</span>
                                     </span>
                                 </div>
@@ -218,10 +214,10 @@
                                 <div id="drop-zone"
                                     class="border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#EFE5FD] transition rounded-xl py-3.5 px-4 flex items-center gap-3 cursor-pointer">
                                     <input type="file" id="media-input" multiple accept="image/*" class="hidden">
-                                    <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#7956C8] flex items-center justify-center flex-shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#3157D5]  flex items-center justify-center flex-shrink-0">
                                         <i class="bx bx-camera text-base"></i>
                                     </div>
-                                    <span class="text-xs font-medium text-[#7956C8]">
+                                    <span class="text-xs font-medium text-[#3157D5] ">
                                         Drag &amp; Drop file here, or <span class="underline font-semibold">upload</span>
                                     </span>
                                 </div>
@@ -263,8 +259,8 @@
                                 <div id="add-more-btn"
                                     class="relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] flex items-center justify-center cursor-pointer hover:bg-[#EFE5FD] transition">
                                     <div class="text-center">
-                                        <i class="bx bx-plus text-xl text-[#7956C8]"></i>
-                                        <p class="text-[10px] text-[#7956C8] font-medium mt-0.5">Add more</p>
+                                        <i class="bx bx-plus text-xl text-[#3157D5] "></i>
+                                        <p class="text-[10px] text-[#3157D5]  font-medium mt-0.5">Add more</p>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +275,7 @@
                 <!-- Submit -->
                 <div class="mt-10 flex justify-center">
                     <button type="submit"
-                        class="w-full max-w-xs bg-[#7956C8] hover:bg-[#633DB3] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
+                        class="w-full max-w-xs bg-[#3157D5] hover:bg-[#633DB3] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
                         Submit for Verification
                     </button>
                 </div>
