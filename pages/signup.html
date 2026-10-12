@@ -17,18 +17,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>SignUp | HostelFinder</title>
 </head>
-<body class="bg-[#F9FAFB] font-[manrope]">
-    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
-        <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
+
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Browse Properties</a>
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">List your property</a>
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Login</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Browse Properties</a>
+                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">List your property</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
@@ -57,16 +59,19 @@
                         <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
                         <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Browse Properties</a>
                         <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">List your property</a>
-                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#3157D5] underline">Login</a>
+                        <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
                     </nav>
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#2646b5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
                 <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
+    </div>
+
+    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
         <section class=" pt-6 pb-30 px-4 mt-4 p-6 md:p-12 shadow-sm">
             <div class="lg:w-160 w-full pt-8 lg:px-8 px-4 pb-20 mx-auto">
                 <h3 class="font-manrope capitalize text-center font-bold text-[28px]">create your account</h3>

@@ -12,69 +12,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Inspection Availability | HostelFinder</title>
 </head>
-<main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-       
-        <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen text-[#2D2340]">
+
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
-            <a href="/">
-                
+
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline transition">Home</a>
-                <a href="/pages/browse.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline transition">Browse Properties</a>
-                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#3157D5]  underline">List Your Property</a>
+                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Home</a>
+                <a href="/pages/browse.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Browse Properties</a>
+                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#3157D5] underline">List Your Property</a>
             </nav>
 
-            <!-- Desktop CTA -->
             <div class="hidden xl:flex items-center gap-4">
-                <a href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5]  transition">Log In</a>
-                <a href="/pages/signup.html">
-                    <button class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer transition">Create Account</button>
+                <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] transition">Log In</a>
+                <a data-auth-signup href="/pages/signup.html">
+                    <button class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">Create Account</button>
                 </a>
+                <button data-auth-logout type="button" hidden
+                    class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">
+                    Logout
+                </button>
             </div>
 
-            <!-- Mobile Hamburger -->
             <button id="menu-btn" type="button"
-                class="rounded-md border border-[#7956C8] px-2 py-1 text-2xl text-[#3157D5]  xl:hidden"
+                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
                 aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                 <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
             </button>
         </div>
 
-        <!-- Mobile Overlay -->
         <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
 
-        <!-- Mobile Drawer -->
         <aside id="mobile-menu"
             class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden"
             aria-label="Mobile navigation">
             <div>
                 <div class="flex items-center justify-between border-b border-gray-100 pb-5">
-                    <a href="/"><img class="w-36" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="HostelFinder logo"></a>
+                    <a href="/"><img class="w-36" src="/images/hostel-finder-logo.png" alt="HostelFinder logo"></a>
                     <button id="close-menu-btn" type="button" class="text-3xl text-gray-500 hover:text-gray-800">
                         <i class="bx bx-x"></i>
                     </button>
                 </div>
                 <nav class="mt-6 flex flex-col gap-5">
-                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
-                    <a href="/pages/browse.html" class="font-medium text-[#2D2340] hover:text-[#3157D5] ">Browse Properties</a>
-                    <a href="/pages/listProperty.html" class="font-semibold text-[#3157D5]  underline">List Your Property</a>
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                    <a href="/pages/browse.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Browse Properties</a>
+                    <a href="/pages/listProperty.html" class="font-semibold text-[#3157D5] underline">List Your Property</a>
+                    <a data-auth-login href="/pages/login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Log In</a>
                 </nav>
             </div>
-            <a href="/pages/signup.html" class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#4a2f82]">Create Account</a>
+            <div class="flex flex-col gap-3">
+                <a data-auth-signup href="/pages/signup.html"
+                    class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#2646b5]">Create Account</a>
+                <button data-auth-logout type="button" hidden
+                    class="w-full rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5] cursor-pointer">
+                    Logout
+                </button>
+            </div>
         </aside>
     </header>
+    </div>
 
-    <!-- ═══════════════════════════════════════════
-         MAIN
-    ════════════════════════════════════════════ -->
     <main class="container mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
 
-        <!-- Back + Page title (centred) -->
+        <!-- Centred title with back arrow -->
         <div class="relative mb-2 flex items-center justify-center">
             <a href="/pages/manage-inspection.html"
-                class="absolute left-0 text-[#2D2340] hover:text-[#3157D5]  transition"
+                class="absolute left-0 text-[#2D2340] hover:text-[#3157D5] transition"
                 aria-label="Go back">
                 <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
             </a>
@@ -86,167 +93,152 @@
             </div>
         </div>
 
-        <!-- ── Availability form card ── -->
-        <div class="mt-8 bg-[#F8F5FE] rounded-3xl p-5 sm:p-8 shadow-sm border border-[#E9DFFA]">
+        <!-- Form card -->
+        <div class="mt-8 bg-white rounded-3xl p-5 sm:p-8 shadow-sm border border-gray-100">
             <form id="availability-form" novalidate>
 
-                <!-- 2-column day grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="days-grid">
+                <!-- 2-col day grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                    <!-- ── Monday ── -->
+                    <!-- Monday -->
                     <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4" data-day="monday">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-sm font-bold text-[#2D2340]">Monday</span>
                             <label class="flex items-center gap-1.5 cursor-pointer">
-                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5] ">Available</span>
+                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5]">Available</span>
                                 <div class="relative inline-flex items-center">
                                     <input type="checkbox" class="day-toggle sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                    <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                         after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                         after:bg-white after:border after:border-gray-300 after:rounded-full
-                                        after:h-4 after:w-4 after:transition-all
-                                        peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                        after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                 </div>
                             </label>
                         </div>
                         <div class="time-fields grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                <input type="time" value="10:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                <input type="time" value="18:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                         </div>
                     </div>
 
-                    <!-- ── Tuesday ── -->
+                    <!-- Tuesday -->
                     <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4" data-day="tuesday">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-sm font-bold text-[#2D2340]">Tuesday</span>
                             <label class="flex items-center gap-1.5 cursor-pointer">
-                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5] ">Available</span>
+                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5]">Available</span>
                                 <div class="relative inline-flex items-center">
                                     <input type="checkbox" class="day-toggle sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                    <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                         after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                         after:bg-white after:border after:border-gray-300 after:rounded-full
-                                        after:h-4 after:w-4 after:transition-all
-                                        peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                        after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                 </div>
                             </label>
                         </div>
                         <div class="time-fields grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                <input type="time" value="10:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                <input type="time" value="18:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                         </div>
                     </div>
 
-                    <!-- ── Wednesday ── -->
+                    <!-- Wednesday -->
                     <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4" data-day="wednesday">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-sm font-bold text-[#2D2340]">Wednesday</span>
                             <label class="flex items-center gap-1.5 cursor-pointer">
-                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5] ">Available</span>
+                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5]">Available</span>
                                 <div class="relative inline-flex items-center">
                                     <input type="checkbox" class="day-toggle sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                    <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                         after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                         after:bg-white after:border after:border-gray-300 after:rounded-full
-                                        after:h-4 after:w-4 after:transition-all
-                                        peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                        after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                 </div>
                             </label>
                         </div>
                         <div class="time-fields grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                <input type="time" value="10:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                <input type="time" value="18:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                         </div>
                     </div>
 
-                    <!-- ── Thursday ── -->
+                    <!-- Thursday -->
                     <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4" data-day="thursday">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-sm font-bold text-[#2D2340]">Thursday</span>
                             <label class="flex items-center gap-1.5 cursor-pointer">
-                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5] ">Available</span>
+                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5]">Available</span>
                                 <div class="relative inline-flex items-center">
                                     <input type="checkbox" class="day-toggle sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                    <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                         after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                         after:bg-white after:border after:border-gray-300 after:rounded-full
-                                        after:h-4 after:w-4 after:transition-all
-                                        peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                        after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                 </div>
                             </label>
                         </div>
                         <div class="time-fields grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                <input type="time" value="10:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                <input type="time" value="18:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                         </div>
                     </div>
 
-                    <!-- ── Friday ── (left column, taller — spans visually next to Sat+Sun stacked) -->
+                    <!-- Friday -->
                     <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4" data-day="friday">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-sm font-bold text-[#2D2340]">Friday</span>
                             <label class="flex items-center gap-1.5 cursor-pointer">
-                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5] ">Available</span>
+                                <span class="day-status-label text-[11px] font-semibold text-[#3157D5]">Available</span>
                                 <div class="relative inline-flex items-center">
                                     <input type="checkbox" class="day-toggle sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                    <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                         after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                         after:bg-white after:border after:border-gray-300 after:rounded-full
-                                        after:h-4 after:w-4 after:transition-all
-                                        peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                        after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                 </div>
                             </label>
                         </div>
                         <div class="time-fields grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                <input type="time" value="10:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                <input type="time" value="18:00"
-                                    class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                             </div>
                         </div>
                     </div>
 
-                    <!-- ── Saturday + Sunday stacked in right col ── -->
+                    <!-- Saturday + Sunday stacked -->
                     <div class="flex flex-col gap-4">
 
-                        <!-- Saturday — unavailable -->
+                        <!-- Saturday — off by default -->
                         <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4 opacity-60" data-day="saturday">
                             <div class="flex items-center justify-between">
                                 <span class="text-sm font-bold text-[#2D2340]">Saturday</span>
@@ -254,29 +246,26 @@
                                     <span class="day-status-label text-[11px] font-semibold text-[#A098AE]">Unavailable</span>
                                     <div class="relative inline-flex items-center">
                                         <input type="checkbox" class="day-toggle sr-only peer">
-                                        <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                        <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                             after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                             after:bg-white after:border after:border-gray-300 after:rounded-full
-                                            after:h-4 after:w-4 after:transition-all
-                                            peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                            after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                     </div>
                                 </label>
                             </div>
                             <div class="time-fields hidden mt-3 grid grid-cols-2 gap-3">
                                 <div>
                                     <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                    <input type="time" value="10:00"
-                                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                    <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                                 </div>
                                 <div>
                                     <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                    <input type="time" value="18:00"
-                                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                    <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Sunday — unavailable -->
+                        <!-- Sunday — off by default -->
                         <div class="day-card bg-white border border-[#E2DBF0] rounded-2xl p-4 opacity-60" data-day="sunday">
                             <div class="flex items-center justify-between">
                                 <span class="text-sm font-bold text-[#2D2340]">Sunday</span>
@@ -284,105 +273,75 @@
                                     <span class="day-status-label text-[11px] font-semibold text-[#A098AE]">Unavailable</span>
                                     <div class="relative inline-flex items-center">
                                         <input type="checkbox" class="day-toggle sr-only peer">
-                                        <div class="w-10 h-5 bg-[#3157D5] rounded-full peer peer-checked:bg-[#3157D5] 
+                                        <div class="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-[#3157D5] 
                                             after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                                             after:bg-white after:border after:border-gray-300 after:rounded-full
-                                            after:h-4 after:w-4 after:transition-all
-                                            peer-checked:after:translate-x-5 peer-checked:after:border-white"></div>
+                                            after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                                     </div>
                                 </label>
                             </div>
                             <div class="time-fields hidden mt-3 grid grid-cols-2 gap-3">
                                 <div>
                                     <label class="block text-[11px] text-[#A098AE] font-medium mb-1">From:</label>
-                                    <input type="time" value="10:00"
-                                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                    <input type="time" value="10:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                                 </div>
                                 <div>
                                     <label class="block text-[11px] text-[#A098AE] font-medium mb-1">To:</label>
-                                    <input type="time" value="18:00"
-                                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition">
+                                    <input type="time" value="18:00" class="w-full bg-white border border-[#E2DBF0] rounded-xl px-3 py-2.5 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <!-- end Sat+Sun wrapper -->
 
                 </div>
-                <!-- end days grid -->
+                <!-- end day grid -->
 
-                <!-- ── How Inspection Booking Works ── -->
-                <div class="mt-10 bg-white border border-[#E2DBF0] rounded-2xl p-6">
-
-                    <!-- Section heading -->
+                <!-- How Booking Works -->
+                <div class="mt-10 bg-white border border-gray-200 rounded-2xl p-6">
                     <div class="flex items-center gap-3 mb-8">
-                        <div class="w-9 h-9 rounded-xl bg-[#EDE5FB] text-[#3157D5]  flex items-center justify-center flex-shrink-0">
+                        <div class="w-9 h-9 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center flex-shrink-0">
                             <i class="bx bx-calendar-check text-lg"></i>
                         </div>
                         <h2 class="text-base sm:text-lg font-bold text-[#2D2340]">How inspection Booking works</h2>
                     </div>
-
-                    <!-- Step tracker — horizontal on md+, vertical on mobile -->
                     <div class="relative">
-
-                        <!-- Connecting line (desktop only) -->
-                        <div class="hidden sm:block absolute top-4 left-[calc(12.5%-0px)] right-[calc(12.5%-0px)] h-0.5 bg-[#3157D5] /30 z-0"></div>
-
+                        <div class="hidden sm:block absolute top-4 left-[12.5%] right-[12.5%] h-0.5 bg-[#3157D5]/25 z-0"></div>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4 relative z-10">
-
-                            <!-- Step 1 -->
                             <div class="flex flex-col items-center text-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0 ring-4 ring-[#E6D8FC]">
-                                    1
-                                </div>
+                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center ring-4 ring-[#E8EDFC]">1</div>
                                 <p class="text-xs text-[#2D2340] font-medium leading-relaxed">You set your<br>availability</p>
                             </div>
-
-                            <!-- Step 2 -->
                             <div class="flex flex-col items-center text-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0 ring-4 ring-[#E6D8FC]">
-                                    2
-                                </div>
+                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center ring-4 ring-[#E8EDFC]">2</div>
                                 <p class="text-xs text-[#2D2340] font-medium leading-relaxed">We create<br>inspection slots</p>
                             </div>
-
-                            <!-- Step 3 -->
                             <div class="flex flex-col items-center text-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0 ring-4 ring-[#E6D8FC]">
-                                    3
-                                </div>
+                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center ring-4 ring-[#E8EDFC]">3</div>
                                 <p class="text-xs text-[#2D2340] font-medium leading-relaxed">Students<br>choose a slot</p>
                             </div>
-
-                            <!-- Step 4 -->
                             <div class="flex flex-col items-center text-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0 ring-4 ring-[#E6D8FC]">
-                                    4
-                                </div>
+                                <div class="w-8 h-8 rounded-full bg-[#3157D5] text-white text-sm font-bold flex items-center justify-center ring-4 ring-[#E8EDFC]">4</div>
                                 <p class="text-xs text-[#2D2340] font-medium leading-relaxed">Booking is<br>automatically<br>confirmed</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <!-- end how it works -->
 
                 <!-- Save button -->
                 <div class="mt-8 flex justify-center">
                     <button type="submit"
-                        class="w-full max-w-xs bg-[#3157D5] hover:bg-[#633DB3] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
+                        class="w-full max-w-xs bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
                         Save Availability
                     </button>
                 </div>
 
             </form>
         </div>
-        <!-- end form card -->
 
     </main>
 
-    <!-- Success toast -->
+    <!-- Toast -->
     <div id="success-toast"
         class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#219653] text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300 z-50">
         <i class="bx bx-check-circle text-lg"></i>
@@ -393,48 +352,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            /* ── Toggle logic: show/hide time fields & update label ──── */
             document.querySelectorAll('.day-card').forEach(card => {
                 const toggle = card.querySelector('.day-toggle');
                 const label  = card.querySelector('.day-status-label');
                 const fields = card.querySelector('.time-fields');
-
                 if (!toggle) return;
 
                 function applyState() {
                     const on = toggle.checked;
-                    // Label
                     label.textContent = on ? 'Available' : 'Unavailable';
-                    label.classList.toggle('text-[#3157D5] ', on);
+                    label.classList.toggle('text-[#3157D5]', on);
                     label.classList.toggle('text-[#A098AE]', !on);
-                    // Card opacity
                     card.classList.toggle('opacity-60', !on);
-                    // Time fields: show when available
-                    if (fields) {
-                        if (on) {
-                            fields.classList.remove('hidden');
-                        } else {
-                            fields.classList.add('hidden');
-                        }
-                    }
-                    // Disable inputs when unavailable
-                    card.querySelectorAll('input[type="time"]').forEach(inp => {
-                        inp.disabled = !on;
-                    });
+                    if (fields) fields.classList.toggle('hidden', !on);
+                    card.querySelectorAll('input[type="time"]').forEach(i => i.disabled = !on);
                 }
 
                 toggle.addEventListener('change', applyState);
-                // Run on load to sync initial state
                 applyState();
             });
 
-            /* ── Form submit ──────────────────────────────────────────── */
             const form  = document.getElementById('availability-form');
             const toast = document.getElementById('success-toast');
-
             form.addEventListener('submit', e => {
                 e.preventDefault();
-                // Show toast
                 toast.classList.remove('opacity-0', 'pointer-events-none');
                 toast.classList.add('opacity-100');
                 setTimeout(() => {

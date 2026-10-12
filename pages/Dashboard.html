@@ -11,55 +11,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Admin Dashboard | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <!-- ===== HEADER ===== -->
-    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-        <a href="/">
-            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-        </a>
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+            </a>
 
-        <nav class="xl:flex gap-8 hidden items-center">
-            <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5]  underline cursor-pointer">Dashboard</a>
-            <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Properties</a>
-            <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Inspections</a>
-            <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Reviews</a>
-        </nav>
+            <nav class="xl:flex gap-8 hidden items-center">
+                <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline cursor-pointer">Dashboard</a>
+                <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Properties</a>
+                <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
+                <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Reviews</a>
+            </nav>
 
-        <a data-auth-signup href="/pages/login.html">
-            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
-        </a>
+            <a data-auth-signup href="/pages/login.html">
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+            </a>
 
-        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-            <i id="menu-icon" class="bx bx-menu text-[#3157D5]  text-3xl border border-[#7956C8] rounded-md"></i>
-        </div>
-
-        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
-
-        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                    <a href="/">
-                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-                    </a>
-                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
-                        <i class="bx bx-x"></i>
-                    </button>
-                </div>
-
-                <nav class="flex flex-col gap-4 mt-6">
-                    <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5]  underline">Dashboard</a>
-                    <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Properties</a>
-                    <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Inspections</a>
-                    <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Reviews</a>
-                </nav>
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
-            <a href="/pages/login.html" class="w-full">
-                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
-            </a>
-        </aside>
-    </header>
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline">Dashboard</a>
+                        <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
+                        <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
+                        <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Reviews</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/login.html" class="w-full">
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+                </a>
+            </aside>
+        </header>
+    </div>
 
     <!-- ===== MAIN CONTENT ===== -->
      <main   class ="mx-auto  max-w-[1440px]">  
@@ -71,7 +73,7 @@
                     <h1 class="text-2xl sm:text-3xl  w-full  p-top mx-auto font-extrabold text-[#2D2340] tracking-tight">Good Morning, Admin</h1>
                     <p class="text-xs sm:text-sm text-gray-500 mt-1">Here's what's happening with your platform today.</p>
                 </div>
-                <div class="text-xs font-semibold text-gray-500 bg-white/70 px-3 py-1.5 rounded-lg border border-purple-100">
+                <div class="text-xs font-semibold text-gray-500 bg-white/70 px-3 py-1.5 rounded-lg border border-gray-200">
                     <i class="bx bx-calendar text-[#3157D5] "></i> Tues, 10 Jun 2025
                 </div>
             </div>
@@ -127,44 +129,44 @@
             <div class="mb-8">
                 <h2 class="text-base font-bold text-gray-900 mb-3">Quick Actions</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#7956C8] transition group cursor-pointer">
+                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#3157D5]  flex items-center justify-center text-lg">
+                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
                                 <i class="bx bx-check-shield"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5]  transition">Verify Properties</span>
+                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">Verify Properties</span>
                         </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5]  transition text-xl"></i>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
                     </a>
 
-                    <a href="/pages/Inspections.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#7956C8] transition group cursor-pointer">
+                    <a href="/pages/Inspections.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#3157D5]  flex items-center justify-center text-lg">
+                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
                                 <i class="bx bx-calendar-event"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5]  transition">View Inspections</span>
+                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">View Inspections</span>
                         </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5]  transition text-xl"></i>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
                     </a>
 
-                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#7956C8] transition group cursor-pointer">
+                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#3157D5]  flex items-center justify-center text-lg">
+                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
                                 <i class="bx bx-user-voice"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5]  transition">Manage Landlords</span>
+                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">Manage Landlords</span>
                         </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5]  transition text-xl"></i>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
                     </a>
 
-                    <a href="/pages/Review.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#7956C8] transition group cursor-pointer">
+                    <a href="/pages/Review.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#3157D5]  flex items-center justify-center text-lg">
+                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
                                 <i class="bx bx-star"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5]  transition">View Student Reviews</span>
+                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">View Student Reviews</span>
                         </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5]  transition text-xl"></i>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
                     </a>
                 </div>
             </div>
@@ -282,7 +284,7 @@
             listContainer.innerHTML = allReviews.map(r => {
                 const starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
                 return `
-                    <div class="border border-purple-100 rounded-xl p-3 bg-purple-50/40 hover:bg-purple-50 transition">
+                    <div class="border border-gray-100 rounded-xl p-3 bg-[#E8EDFC]/40 hover:bg-[#E8EDFC] transition">
                         <div class="flex items-center justify-between mb-1">
                             <span class="text-xs font-bold text-gray-900">${escapeHtml(r.studentName)}</span>
                             <span class="text-xs text-[#3157D5]  font-bold">${starsHtml}</span>

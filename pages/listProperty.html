@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <!-- DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,27 +14,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>Login | HostelFinder</title>
+    <title>List Your Property | HostelFinder</title>
 </head>
-<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen"></body>
-<main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-        <!-- Header / Navbar -->
-        <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
+
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Home</a>
-               <a href="/pages/listProperty.html" class="text-base font-medium text-[#3157D5]  cursor-pointer underline">List your property</a> 
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Login</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/listProperty.html" class="text-base font-medium text-[#3157D5] cursor-pointer underline">List your property</a> 
+                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
             </a>
 
             <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#3157D5]  text-3xl border border-[#7956C8] rounded-md"></i>
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
@@ -51,33 +52,30 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
-            
-                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">List your property</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#3157D5]  underline">Login</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#3157D5] underline">List your property</a>
+                        <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Login</a>
                     </nav>
                 </div>
 
                 <a href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
             </aside>
         </header>
+    </div>
 
     <!-- MAIN FORM CONTAINER -->
-     
     <main class="container mx-auto px-4 md:px-10 pb-16 pt-4">
         
-        <div class="bg-[#F8F5FE] p-4 sm:p-8 md:p-12 shadow-sm">
+        <div class="bg-white p-4 sm:p-8 md:p-12 shadow-sm rounded-2xl border border-gray-100">
 
-            
-            <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
-            
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
             
             <div class="mb-6">
                 <div class="flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3">
-                        <a href="/" class="text-[#2D2340] hover:text-[#3157D5]  transition flex items-center justify-center" aria-label="Go back">
+                        <a href="/" class="text-[#2D2340] hover:text-[#3157D5] transition flex items-center justify-center" aria-label="Go back">
                             <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
                         </a>
                         <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">List Your Property</h1>
@@ -93,49 +91,49 @@
                 <div>
                     <label for="propertyName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property/Hostel Name</label>
                     <input type="text" id="propertyName" name="propertyName" placeholder="Royal Haven Lodge" value="Royal Haven Lodge" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Location -->
                 <div>
                     <label for="location" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Location</label>
                     <input type="text" id="location" name="location" placeholder="Surulere" value="Surulere" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- School/College nearby -->
                 <div>
                     <label for="nearbySchool" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">School/College nearby</label>
                     <input type="text" id="nearbySchool" name="nearbySchool" placeholder="Lagos State University" value="Lagos State University" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Distance from school -->
                 <div>
                     <label for="distance" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Distance from school</label>
                     <input type="text" id="distance" name="distance" placeholder="1.2km" value="1.2km" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Estimated driving time -->
                 <div>
                     <label for="drivingTime" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Estimated driving time</label>
                     <input type="text" id="drivingTime" name="drivingTime" placeholder="7 mins" value="7 mins" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Monthly rent ₦ -->
                 <div>
                     <label for="monthlyRent" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Monthly rent ₦</label>
                     <input type="text" id="monthlyRent" name="monthlyRent" placeholder="70,000" value="70,000" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Property Description -->
                 <div>
                     <label for="description" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property Description</label>
                     <input type="text" id="description" name="description" placeholder="3-storey hostel located near LASU" value="3-storey hostel located near LASU" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition shadow-xs">
                 </div>
 
                 <!-- Availability Toggle -->
@@ -143,7 +141,7 @@
                     <span class="text-xs sm:text-sm font-semibold text-[#2D2340]">Availability</span>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="availability" name="availability" class="sr-only peer" checked>
-                        <div class="w-12 h-6 bg.gray-300 bg-[#3157D5] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#7956C8]"></div>
+                        <div class="w-12 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#3157D5]"></div>
                     </label>
                 </div>
 
@@ -154,34 +152,34 @@
 
                     <div class="grid grid-cols-2 gap-y-3.5 gap-x-6">
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="Water" checked class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="Water" checked class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             Water
                         </label>
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="Security" checked class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="Security" checked class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             Security
                         </label>
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="WiFi" checked class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="WiFi" checked class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             WiFi
                         </label>
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="Kitchen/Gas cooker" class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="Kitchen/Gas cooker" class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             Kitchen/Gas cooker
                         </label>
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="Laundry service" class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="Laundry service" class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             Laundry service
                         </label>
                         <label class="flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm text-[#2D2340] font-medium">
-                            <input type="checkbox" name="amenities" value="CCTV" class="w-4 h-4 rounded border-[#7956C8] text-[#3157D5]  focus:ring-[#7956C8] accent-[#7956C8] cursor-pointer">
+                            <input type="checkbox" name="amenities" value="CCTV" class="w-4 h-4 rounded border-[#3157D5] text-[#3157D5] focus:ring-[#3157D5] accent-[#3157D5] cursor-pointer">
                             CCTV
                         </label>
                     </div>
                 </div>
 
                 <!-- Property Media -->
-                <div class="pt-4 border-t border-[#E8E2F2]">
+                <div class="pt-4 border-t border-gray-100">
                     <label class="block text-xs sm:text-sm font-semibold text-[#2D2340]">Property media</label>
                     <p class="text-[11px] sm:text-xs text-[#8E869B] mb-3.5">(Upload clear high quality photos)</p>
 
@@ -211,12 +209,12 @@
                     </div>
 
                     <!-- Drag and Drop Upload Zone -->
-                    <div id="drop-zone" class="border-2 border-dashed border-[#B89CF5] bg-[#F5EEFF] hover:bg-[#EFE5FD] transition rounded-2xl py-6 px-4 flex flex-col items-center justify-center cursor-pointer text-center group">
+                    <div id="drop-zone" class="border-2 border-dashed border-[#B8C8F8] bg-[#F4F7FE] hover:bg-[#E8EDFC] transition rounded-2xl py-6 px-4 flex flex-col items-center justify-center cursor-pointer text-center group">
                         <input type="file" id="media-input" multiple accept="image/*" class="hidden">
-                        <div class="w-8 h-8 rounded-full bg-[#E5D7FD] text-[#3157D5]  flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <div class="w-8 h-8 rounded-full bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                             <i class="bx bx-upload text-lg"></i>
                         </div>
-                        <p class="text-xs sm:text-sm font-medium text-[#3157D5] ">
+                        <p class="text-xs sm:text-sm font-medium text-[#3157D5]">
                             Drag & drop file here, or <span class="underline font-semibold">upload</span>
                         </p>
                     </div>
@@ -224,13 +222,14 @@
 
                 <!-- Submit Button -->
                 <div class="pt-4">
-                    <button type="submit" id="submit-btn" class="w-full bg-[#3157D5] hover:bg-[#633DB3] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.99]">
+                    <button type="submit" id="submit-btn" class="w-full bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.99]">
                         Continue 
                     </button>
                 </div>
             </form>
 
-        </section>
+            </div>
+        </div>
     </main>
 
     <!-- Script for mobile navbar and interactive image uploads -->
@@ -246,16 +245,16 @@
 
                 dropZone.addEventListener('dragover', (e) => {
                     e.preventDefault();
-                    dropZone.classList.add('bg-[#EFE5FD]', 'border-[#7956C8]');
+                    dropZone.classList.add('bg-[#E8EDFC]', 'border-[#3157D5]');
                 });
 
                 dropZone.addEventListener('dragleave', () => {
-                    dropZone.classList.remove('bg-[#EFE5FD]', 'border-[#7956C8]');
+                    dropZone.classList.remove('bg-[#E8EDFC]', 'border-[#3157D5]');
                 });
 
                 dropZone.addEventListener('drop', (e) => {
                     e.preventDefault();
-                    dropZone.classList.remove('bg-[#EFE5FD]', 'border-[#7956C8]');
+                    dropZone.classList.remove('bg-[#E8EDFC]', 'border-[#3157D5]');
                     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
                         handleFiles(e.dataTransfer.files);
                     }
@@ -297,5 +296,5 @@
             }
         });
     </script>
-
+</body>
 </html>
