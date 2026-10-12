@@ -21,18 +21,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Your Inspection | HostelFinder</title>
 </head>
-<body class="bg-[#F9FAFB] font-[manrope]">
-    <div class="container w-full md:px-10 px-4 mx-auto">
-    <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-        <a href="/">
-            <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
-        </a>
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-        <nav class="xl:flex gap-8 hidden">
-            <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Home</a>
-            <a href="/pages/browse.html" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Browse Properties</a>
-            <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
-        </nav>
+    <!-- ===== HEADER ===== -->
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+            </a>
+
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#3157D5] cursor-pointer underline">Browse Properties</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Login</a>
+            </nav>
 
         <a data-auth-signup href="/pages/signup.html">
             <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>

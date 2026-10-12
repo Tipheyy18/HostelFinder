@@ -11,12 +11,30 @@
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 	<title>Student Verification | HostelFinder</title>
 </head>
-<body class=" container mx-auto min-h-screen bg-[#F9FAFB] font-[Manrope] text-[#2D2340]">
-	<header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen text-[#2D2340]">
+
+    <!-- ===== HEADER ===== -->
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
+            <nav class="xl:flex gap-8 hidden">
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Browse Properties</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Login</a>
+            </nav>
+
+            <a data-auth-signup href="/pages/signup.html">
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
+            </a>
+            <button data-auth-logout type="button" hidden class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
+            </div>
 
             <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
 
@@ -39,11 +57,12 @@
                 </div>
 
                 <a data-auth-signup href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Create account</button>
                 </a>
-                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
+                <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
+    </div>
 
 	<main class="mx-auto max-w-[1440px] px-4 py-7 sm:px-8 sm:py-10 lg:px-10">
 		<section class="flex min-h-[min(690px,calc(100svh-130px))] items-center justify-center px-4 py-8 sm:px-8 sm:py-12" aria-label="Student status verification">
@@ -60,10 +79,10 @@
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#3157D5] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#3157D5]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 3" required>
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#3157D5] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#3157D5]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 4" required>
 							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#3157D5] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#3157D5]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 5" required>
-							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#3157D5] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#7956C8]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 6" required>
+							<input class="otp-digit h-[54px] min-w-0 w-10 rounded-2xl border border-[#3157D5] bg-white text-center text-xl font-bold outline-none focus:ring-2 focus:ring-[#3157D5]/25 sm:h-[58px] sm:w-[48px]" inputmode="numeric" maxlength="1" aria-label="Digit 6" required>
 						</div>
 						<p id="otp-error" class="mt-3 hidden text-center text-sm text-red-700" role="alert">Invalid code - please try again</p>
-						<button type="submit" class="mt-8 w-full rounded-xl bg-[#3157D5] px-4 py-3 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#2646b5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3157D5]">Verify</button>
+						<button type="submit" class="mt-8 w-full rounded-xl bg-[#3157D5] px-4 py-3 text-sm font-bold text-white shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition hover:bg-[#2646b5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3157D5]">Verify</button>
 					</form>
 					<div class="mt-5 text-center text-sm">
 						<p>Didn't receive the code?</p>
@@ -86,7 +105,7 @@
 						<div class="flex h-28 w-28 rotate-[-8deg] items-center justify-center bg-[#389D12] [clip-path:polygon(50%_0%,62%_8%,76%_3%,81%_17%,96%_22%,91%_38%,100%_50%,91%_62%,96%_78%,81%_83%,76%_97%,62%_92%,50%_100%,38%_92%,24%_97%,19%_83%,4%_78%,9%_62%,0%_50%,9%_38%,4%_22%,19%_17%,24%_3%,38%_8%)]"><i class="bx bx-check text-[76px] font-bold text-white" aria-hidden="true"></i></div>
 					</div>
 					<h1 id="success-title" class="text-[28px] font-bold leading-tight sm:text-[32px]">Account Verified</h1>
-					<a href="/pages/login.html" class="mt-5 flex w-full items-center justify-center rounded-xl bg-[#3157D5] px-4 py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(121,86,200,0.25)] transition hover:bg-[#2646b5]">Continue to Log In</a>
+					<a href="/pages/login.html" class="mt-5 flex w-full items-center justify-center rounded-xl bg-[#3157D5] px-4 py-3.5 text-sm font-bold text-white shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition hover:bg-[#2646b5]">Continue to Log In</a>
 					<p id="success-message" class="mx-auto mt-6 max-w-[290px] text-sm leading-5">You can now view landlord contact and book inspection</p>
 				</section>
 			</div>

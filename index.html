@@ -14,18 +14,19 @@
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
-        <!-- Header / Navbar -->
-        <header class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+    <!-- ===== HEADER ===== -->
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
                 <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
             <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2646b5] cursor-pointer underline">Home</a>
-                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Browse Properties</a>
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">List your property</a>
-                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#2646b5] hover:underline cursor-pointer">Login</a>
+                <a href="/" class="text-base font-medium text-[#3157D5] cursor-pointer underline">Home</a>
+                <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Browse Properties</a>
+                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">List your property</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Login</a>
             </nav>
 
             <a data-auth-signup href="/pages/signup.html">
@@ -51,8 +52,8 @@
                     </div>
 
                     <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
-                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Browse Properties</a>
+                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                        <a href="/pages/browse.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Browse Hostel</a>
                         <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">List your property</a>
                         <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#3157D5] underline">Login</a>
                     </nav>
@@ -64,6 +65,9 @@
                 <button data-auth-logout type="button" hidden class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
             </aside>
         </header>
+    </div>
+
+    <main class="container w-full md:px-10 px-4 pb-16 mx-auto">
         
        
         <section class="mt-4 p-6 md:p-12 shadow-sm">

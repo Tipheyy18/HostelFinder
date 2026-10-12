@@ -4,285 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32*32" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <!-- DM Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <!-- Manrope -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>LandLord  details| HostelFinder</title>
+    <link rel="stylesheet" href="../style.css">
+    <title>Landlord Details | HostelFinder</title>
 </head>
-<body class="bg-[#E6D8FC] font-[manrope]">
-    <main class="container w-full md:px-10 px-4 pb-28 mx-auto">
-        <header class="w-full flex items-center justify-between p-4 shadow-[0_4px_4px_rgba(37,99,235,0.149)] relative">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
+
+    <!-- ===== HEADER ===== -->
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
             <a href="/">
-                <img class="w-48" src="https://res.cloudinary.com/ospauzp7/image/upload/v1790628256/HostelFinderLogo.png" alt="Hostel finder logo">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
-            <nav class="xl:flex gap-8 hidden">
-                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Home</a>
-               <a href="/pages/listProperty.html" class="text-base font-medium text-[#3157D5]  cursor-pointer underline">List your property</a> 
-                <a href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Login</a>
+            <nav class="xl:flex gap-8 hidden items-center">
+                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Home</a>
+                <a href="/pages/browse.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Browse Properties</a>
+                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#3157D5] underline">List Your Property</a>
             </nav>
 
-            <a href="/pages/signup.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-2 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
-            </a>
-
-            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#3157D5]  text-3xl border border-[#7956C8] rounded-md"></i>
+            <div class="hidden xl:flex items-center gap-4">
+                <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] transition">Log In</a>
+                <a data-auth-signup href="/pages/signup.html">
+                    <button class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">Create Account</button>
+                </a>
+                <button data-auth-logout type="button" hidden
+                    class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">
+                    Logout
+                </button>
             </div>
 
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+            <button id="menu-btn" type="button"
+                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
+                aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i id="menu-icon" class="bx bx-menu" aria-hidden="true"></i>
+            </button>
+        </div>
 
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                        <a href="/">
-                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-                        </a>
-                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+
+        <aside id="mobile-menu"
+            class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden"
+            aria-label="Mobile navigation">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <a href="/"><img class="w-36" src="/images/hostel-finder-logo.png" alt="HostelFinder logo"></a>
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-500 hover:text-gray-800">
                         <i class="bx bx-x"></i>
-                        </button>
-                    </div>
-
-                    <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Home</a>
-            
-                        <a href="/pages/listProperty.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">List your property</a>
-                        <a href="/pages/login.html" class="text-base font-medium text-[#3157D5]  underline">Login</a>
-                    </nav>
+                    </button>
                 </div>
-
-                <a href="/pages/signup.html" class="w-full">
-                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Create account</button>
-                </a>
-            </aside>
-        </header>
-
-    <!-- MAIN FORM CONTAINER -->
-    <main class="container mx-auto px-4 md:px-10 pb-16 pt-4">
-        
-        <div class="bg-[#F8F5FE] p-4 sm:p-8 md:p-12 shadow-sm">
-
-            
-            <div class="bg-white rounded-2xl shadow-[0_4px_24px_rgba(121,86,200,0.12)] max-w-md mx-auto overflow-hidden p-6 sm:p-8 relative">
-            
-            
-            <!-- Header with Back Button -->
-            <div class="mb-8 flex items-center justify-center relative">
-                <a href="/pages/listProperty.html" class="absolute left-0 text-[#2D2340] hover:text-[#3157D5]  transition flex items-center justify-center p-1" aria-label="Go back to property details">
-                    <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
-                </a>
-                <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight text-center">Landlord Details</h1>
+                <nav class="mt-6 flex flex-col gap-5">
+                    <a href="/" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Home</a>
+                    <a href="/pages/browse.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Browse Properties</a>
+                    <a href="/pages/listProperty.html" class="font-semibold text-[#3157D5] underline">List Your Property</a>
+                    <a data-auth-login href="/pages/login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Log In</a>
+                </nav>
             </div>
+            <div class="flex flex-col gap-3">
+                <a data-auth-signup href="/pages/signup.html"
+                    class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#2646b5]">Create Account</a>
+                <button data-auth-logout type="button" hidden
+                    class="w-full rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5] cursor-pointer">
+                    Logout
+                </button>
+            </div>
+        </aside>
+    </header>
+    </div>
 
-           
-            <form id="landlord-form" class="space-y-5">
-                
-                
-                <div>
-                    <label for="propertyName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Property/Hostel Name</label>
-                    <input type="text" id="propertyName" name="propertyName" placeholder="Royal Haven Lodge" value="Royal Haven Lodge" readonly
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
-                </div>
+    <!-- ══════════════════════════════════════════
+         MAIN
+    ══════════════════════════════════════════ -->
+    <main class="container mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
 
-                
+        <!-- Centred title with back arrow -->
+        <div class="relative mb-8 flex items-center justify-center max-w-xl mx-auto">
+            <a href="/pages/listProperty.html"
+                class="absolute left-0 text-[#2D2340] hover:text-[#3157D5] transition"
+                aria-label="Go back">
+                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+            </a>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">Landlord Details</h1>
+        </div>
+
+        <!-- Form card -->
+        <div class="bg-white rounded-3xl p-5 sm:p-8 shadow-sm border border-gray-100 max-w-xl mx-auto">
+            <form id="landlord-form" class="space-y-5" novalidate>
+
                 <div>
                     <label for="fullName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Full Name*</label>
                     <input type="text" id="fullName" name="fullName" placeholder="Chinedu Okafor" value="Chinedu Okafor" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
-                <!-- Email Address* -->
                 <div>
                     <label for="email" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Email Address*</label>
                     <input type="email" id="email" name="email" placeholder="name@gmail.com" value="name@gmail.com" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
-                
                 <div>
                     <label for="phone" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Phone Number*</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+2348162772314" value="+2348162772314" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                    <input type="tel" id="phone" name="phone" placeholder="+2348162772324" value="+2348162772324" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
                 <div>
                     <label for="idType" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Means of Identification*</label>
                     <div class="relative">
                         <select id="idType" name="idType" required
-                            class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs appearance-none cursor-pointer">
-                            <option value="" disabled selected class="text-gray-400">Select Document Type</option>
+                            class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition appearance-none cursor-pointer">
+                            <option value="" disabled selected>e.g. National ID</option>
                             <option value="NIN">National Identity Card (NIN)</option>
                             <option value="Passport">International Passport</option>
                             <option value="DriversLicense">Driver's License</option>
                             <option value="VotersCard">Voter's Card</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#3157D5] ">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#3157D5]">
                             <i class="bx bx-chevron-down text-xl"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- ID Number* -->
                 <div>
                     <label for="idNumber" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">ID Number*</label>
                     <input type="text" id="idNumber" name="idNumber" placeholder="12345678901" value="12345678901" required
-                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#7956C8] focus:ring-2 focus:ring-[#7956C8]/20 transition shadow-xs">
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
-                <!-- Required Documents Section -->
-                <div class="pt-6 border-t border-[#E8E2F2] space-y-4">
-                    <h2 class="text-base sm:text-lg font-bold text-[#2D2340]">Required Documents</h2>
+                <div>
+                    <label for="accountNumber" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Account Number*</label>
+                    <input type="text" id="accountNumber" name="accountNumber" placeholder="0123456789" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
+                </div>
 
-                    <!-- Card 1: Government ID -->
-                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#3157D5]  flex items-center justify-center text-2xl flex-shrink-0">
+                <div>
+                    <label for="bankName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Bank Name*</label>
+                    <input type="text" id="bankName" name="bankName" placeholder="First Bank" required
+                        class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
+                </div>
+
+                <!-- Required Documents -->
+                <div class="pt-4 border-t border-gray-100">
+                    <h2 class="text-base font-bold text-[#2D2340] mb-4">Required Documents</h2>
+
+                    <!-- Government ID -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-xl flex-shrink-0">
                                 <i class="bx bx-id-card"></i>
                             </div>
-                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Government ID</span>
+                            <span class="font-bold text-[#2D2340] text-sm">Government ID</span>
                         </div>
-                        <div id="drop-govid" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
+                        <div id="drop-govid"
+                            class="border-2 border-dashed border-[#B8C8F8] bg-[#F4F7FE] hover:bg-[#E8EDFC] rounded-xl px-4 py-2.5 flex items-center gap-2 cursor-pointer transition">
                             <input type="file" id="govid-file" class="hidden" accept="image/*,.pdf">
-                            <i class="bx bx-upload text-[#3157D5]  text-base group-hover:scale-110 transition-transform"></i>
-                            <span id="govid-label" class="text-xs font-medium text-[#3157D5] ">
-                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Proof of Ownership -->
-                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#3157D5]  flex items-center justify-center text-2xl flex-shrink-0">
-                                <i class="bx bx-home-alt"></i>
-                            </div>
-                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Proof of Ownership</span>
-                        </div>
-                        <div id="drop-ownership" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
-                            <input type="file" id="ownership-file" class="hidden" accept="image/*,.pdf">
-                            <i class="bx bx-upload text-[#3157D5]  text-base group-hover:scale-110 transition-transform"></i>
-                            <span id="ownership-label" class="text-xs font-medium text-[#3157D5] ">
-                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Property Photo -->
-                    <div class="bg-white border border-[#EBE3F8] shadow-xs rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                            <div class="w-12 h-12 rounded-2xl bg-[#F4EEFE] text-[#3157D5]  flex items-center justify-center text-2xl flex-shrink-0">
-                                <i class="bx bx-camera"></i>
-                            </div>
-                            <span class="font-bold text-[#2D2340] text-sm sm:text-base">Property Photo</span>
-                        </div>
-                        <div id="drop-photo" class="doc-dropzone border-2 border-dashed border-[#CBB6F8] bg-[#F7F2FE] hover:bg-[#F2EA8F]/20 rounded-xl px-5 py-3 text-center cursor-pointer transition flex items-center justify-center gap-2 group">
-                            <input type="file" id="photo-file" class="hidden" accept="image/*">
-                            <i class="bx bx-upload text-[#3157D5]  text-base group-hover:scale-110 transition-transform"></i>
-                            <span id="photo-label" class="text-xs font-medium text-[#3157D5] ">
-                                Drag & drop file here, or <span class="underline font-semibold">upload</span>
+                            <i class="bx bx-upload text-[#3157D5] text-sm"></i>
+                            <span id="govid-label" class="text-xs font-medium text-[#3157D5]">
+                                Drag &amp; Drop file here, or <span class="underline font-semibold">upload</span>
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Submit Button -->
-                <div class="pt-6">
-                    <button type="submit" id="submit-verification-btn" class="w-full bg-[#3157D5] hover:bg-[#633DB3] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.99]">
-                        Submit 
+                <!-- Next button -->
+                <div class="pt-2">
+                    <button type="submit"
+                        class="w-full bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.99]">
+                        Next
                     </button>
                 </div>
-            </form>
 
-        </section>
+            </form>
+        </div>
+
     </main>
 
-    <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-4 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
-            <div class="w-16 h-16 bg-[#F4EEFE] text-[#3157D5]  rounded-full flex items-center justify-center mx-auto text-3xl">
-                <i class="bx bx-check-circle"></i>
-            </div>
-            <h3 class="text-xl font-bold text-[#2D2340]">Verification Submitted!</h3>
-            <p class="text-xs sm:text-sm text-[#7D7589]">Your landlord verification documents have been submitted successfully. Our team will review your details shortly.</p>
-            <div class="flex flex-col gap-2.5 pt-2">
-                <a href="/pages/property-management.html" class="inline-block w-full bg-[#3157D5] hover:bg-[#633DB3] text-white font-bold py-3 px-6 rounded-xl transition text-sm">
-                    Go to Property Management
-                </a>
-                <a href="/pages/your-inspection.html" class="inline-block w-full border border-[#7956C8] text-[#3157D5]  hover:bg-[#F4EEFE] font-bold py-3 px-6 rounded-xl transition text-sm">
-                    Go to Manage Inspections
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script -->
     <script src="../script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Document dropzones setup
-            const setupDropzone = (zoneId, inputId, labelId) => {
-                const zone = document.getElementById(zoneId);
-                const input = document.getElementById(inputId);
-                const label = document.getElementById(labelId);
-
-                if (!zone || !input || !label) return;
-
-                zone.addEventListener('click', () => input.click());
-
-                zone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    zone.classList.add('bg-[#EFE5FD]');
+            // Government ID dropzone
+            const dropGovid = document.getElementById('drop-govid');
+            const govidFile = document.getElementById('govid-file');
+            const govidLabel = document.getElementById('govid-label');
+            if (dropGovid) {
+                dropGovid.addEventListener('click', () => govidFile.click());
+                govidFile.addEventListener('change', () => {
+                    if (govidFile.files && govidFile.files[0])
+                        govidLabel.innerHTML = `<span class="font-semibold text-green-700"><i class="bx bx-check-circle align-middle mr-1 text-sm"></i>${govidFile.files[0].name}</span>`;
                 });
+            }
 
-                zone.addEventListener('dragleave', () => {
-                    zone.classList.remove('bg-[#EFE5FD]');
-                });
-
-                zone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    zone.classList.remove('bg-[#EFE5FD]');
-                    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                        input.files = e.dataTransfer.files;
-                        updateLabel(e.dataTransfer.files[0].name);
-                    }
-                });
-
-                input.addEventListener('change', () => {
-                    if (input.files && input.files[0]) {
-                        updateLabel(input.files[0].name);
-                    }
-                });
-
-                function updateLabel(fileName) {
-                    label.innerHTML = `<span class="font-semibold text-green-700"><i class="bx bx-check-circle align-middle mr-1 text-sm"></i> ${fileName}</span>`;
-                }
-            };
-
-            setupDropzone('drop-govid', 'govid-file', 'govid-label');
-            setupDropzone('drop-ownership', 'ownership-file', 'ownership-label');
-            setupDropzone('drop-photo', 'photo-file', 'photo-label');
-
-            // Form Submit Modal
+            // Form submit -> goes to property-information.html
             const form = document.getElementById('landlord-form');
-            const modal = document.getElementById('success-modal');
-            const modalContent = document.getElementById('modal-content');
-
-            if (form && modal) {
-                form.addEventListener('submit', (e) => {
+            if (form) {
+                form.addEventListener('submit', e => {
                     e.preventDefault();
-                    modal.classList.remove('hidden');
-                    setTimeout(() => {
-                        modal.classList.remove('opacity-0');
-                        modalContent.classList.remove('scale-95');
-                        modalContent.classList.add('scale-100');
-                    }, 10);
+                    window.location.href = '/pages/property-information.html';
                 });
             }
         });

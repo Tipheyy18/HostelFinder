@@ -11,55 +11,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>Property Listings & Approval | HostelFinder Admin</title>
 </head>
-<body class="bg-[#E6D8FC] font-[Manrope] min-h-screen">
+<body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
     <!-- ===== HEADER ===== -->
-    <header class="container mx-auto w-full flex items-center justify-between p-4 bg-[#E6D8FC] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-        <a href="/">
-            <img class="w-48" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-        </a>
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+            </a>
 
-        <nav class="xl:flex gap-8 hidden items-center">
-            <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Dashboard</a>
-            <a href="/pages/Approval.html" class="text-base font-semibold text-[#3157D5]  underline cursor-pointer">Properties</a>
-            <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Inspections</a>
-            <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]  hover:underline cursor-pointer">Reviews</a>
-        </nav>
+            <nav class="xl:flex gap-8 hidden items-center">
+                <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Dashboard</a>
+                <a href="/pages/Approval.html" class="text-base font-semibold text-[#3157D5] underline cursor-pointer">Properties</a>
+                <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
+                <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Reviews</a>
+            </nav>
 
-        <a href="/pages/Admin-login.html">
-            <button class="xl:block hidden capitalize bg-[#7956C8] text-white text-sm px-4 py-2 rounded-md hover:bg-[#4a2f82] cursor-pointer">Admin Logout</button>
-        </a>
+            <a href="/pages/Admin-login.html">
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Admin Logout</button>
+            </a>
 
-        <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-            <i id="menu-icon" class="bx bx-menu text-[#3157D5]  text-3xl border border-[#7956C8] rounded-md"></i>
-        </div>
-
-        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
-
-        <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                    <a href="/">
-                        <img class="w-36" src="/images/HostelFinderLogo.png" alt="Hostel finder logo">
-                    </a>
-                    <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
-                        <i class="bx bx-x"></i>
-                    </button>
-                </div>
-
-                <nav class="flex flex-col gap-4 mt-6">
-                    <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Dashboard</a>
-                    <a href="/pages/Approval.html" class="text-base font-semibold text-[#3157D5]  underline">Properties</a>
-                    <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Inspections</a>
-                    <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] ">Reviews</a>
-                </nav>
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
 
-            <a href="/pages/Admin-login.html" class="w-full">
-                <button class="w-full capitalize bg-[#7956C8] text-white text-sm py-2.5 rounded-md hover:bg-[#4a2f82] cursor-pointer">Logout</button>
-            </a>
-        </aside>
-    </header>
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Dashboard</a>
+                        <a href="/pages/Approval.html" class="text-base font-semibold text-[#3157D5] underline">Properties</a>
+                        <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
+                        <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Reviews</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/Admin-login.html" class="w-full">
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+                </a>
+            </aside>
+        </header>
+    </div>
 
     <!-- ===== MAIN CONTENT ===== -->
     <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
@@ -73,19 +76,19 @@
 
             <!-- Stats Bar -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-4xl mx-auto">
-                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
                     <p class="text-xs font-semibold text-gray-500">Total Properties</p>
                     <h4 class="text-xl font-extrabold text-gray-900 mt-1">124</h4>
                 </div>
-                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
                     <p class="text-xs font-semibold text-gray-500">Pending Approval</p>
                     <h4 class="text-xl font-extrabold text-amber-500 mt-1" id="pending-count">18</h4>
                 </div>
-                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
                     <p class="text-xs font-semibold text-gray-500">Approved Properties</p>
                     <h4 class="text-xl font-extrabold text-green-600 mt-1" id="approved-count">78</h4>
                 </div>
-                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-purple-50">
+                <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
                     <p class="text-xs font-semibold text-gray-500">Active Landlords</p>
                     <h4 class="text-xl font-extrabold text-[#3157D5]  mt-1">78</h4>
                 </div>
@@ -95,7 +98,7 @@
             <div class="max-w-5xl mx-auto mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
                 <!-- Filter Pills -->
                 <div class="flex items-center gap-2 flex-wrap">
-                    <button class="filter-pill active bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition" data-filter="all">All (124)</button>
+                    <button class="filter-pill active bg-[#3157D5]  text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition" data-filter="all">All (124)</button>
                     <button class="filter-pill bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="pending">Pending (18)</button>
                     <button class="filter-pill bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="approved">Approved (78)</button>
                     <button class="filter-pill bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition" data-filter="rejected">Rejected (8)</button>
@@ -192,7 +195,7 @@
                 }
 
                 return `
-                    <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(121,86,200,0.10)] overflow-hidden border border-gray-100 flex flex-col justify-between">
+                    <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(49,87,213,0.10)] overflow-hidden border border-gray-100 flex flex-col justify-between">
                         <div>
                             <div class="relative h-44 bg-gray-100">
                                 <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
@@ -248,7 +251,7 @@
                 document.querySelectorAll('.filter-pill').forEach(b => {
                     b.className = 'filter-pill bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 cursor-pointer transition';
                 });
-                this.className = 'filter-pill active bg-[#7956C8] text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition';
+                this.className = 'filter-pill active bg-[#3157D5]  text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer transition';
                 currentFilter = this.getAttribute('data-filter');
                 renderProperties();
             });
