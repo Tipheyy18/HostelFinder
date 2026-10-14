@@ -105,7 +105,7 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                    <!-- ── LEFT: Basic Details ── -->
+                  
                     <div class="space-y-5">
 
                         <div>
@@ -116,7 +116,7 @@
 
                         <div>
                             <label for="location" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Location</label>
-                            <input type="text" id="location" name="location" placeholder="Surulere" value="Surulere" required
+                            <input type="text" id="location" name="location" placeholder="Solukira" value="Solukira" required
                                 class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                         </div>
 
@@ -134,7 +134,7 @@
 
                         <div>
                             <label for="drivingTime" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Estimated driving time</label>
-                            <input type="text" id="drivingTime" name="drivingTime" placeholder="7 mins" value="7 mins" required
+                            <input type="text" id="drivingTime" name="drivingTime" placeholder="2 mins" value="2 mins" required
                                 class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                         </div>
 
@@ -152,10 +152,10 @@
 
                     </div>
 
-                    <!-- ── RIGHT: Availability, Amenities, Media ── -->
+                
                     <div class="space-y-5">
 
-                        <!-- Availability toggle -->
+                     
                         <div class="bg-white border border-[#E2DBF0] rounded-xl px-4 py-3.5 flex items-center justify-between">
                             <span class="text-xs sm:text-sm font-semibold text-[#2D2340]">Availability</span>
                             <label class="relative inline-flex items-center cursor-pointer">
@@ -232,21 +232,21 @@
                             <!-- Previews -->
                             <div id="media-preview-container" class="grid grid-cols-3 gap-2 mt-3">
                                 <div class="relative aspect-[4/3] rounded-xl overflow-hidden border border-[#E2DBF0] bg-gray-100">
-                                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80" alt="Room" class="w-full h-full object-cover">
+                                    <img src="/images/image 30.png" alt="Room" class="w-full h-full object-cover">
                                     <button type="button" onclick="this.parentElement.remove()"
                                         class="absolute top-1.5 right-1.5 bg-black/60 hover:bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-xs cursor-pointer transition" aria-label="Remove">
                                         <i class="bx bx-x"></i>
                                     </button>
                                 </div>
                                 <div class="relative aspect-[4/3] rounded-xl overflow-hidden border border-[#E2DBF0] bg-gray-100">
-                                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=500&q=80" alt="Exterior" class="w-full h-full object-cover">
+                                    <img src="/images/Frame 2147224195 (1).png" alt="Exterior" class="w-full h-full object-cover">
                                     <button type="button" onclick="this.parentElement.remove()"
                                         class="absolute top-1.5 right-1.5 bg-black/60 hover:bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-xs cursor-pointer transition" aria-label="Remove">
                                         <i class="bx bx-x"></i>
                                     </button>
                                 </div>
                                 <div class="relative aspect-[4/3] rounded-xl overflow-hidden border border-[#E2DBF0] bg-gray-100">
-                                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="Bedroom" class="w-full h-full object-cover">
+                                    <img src="/images/Frame 2147224196.png" alt="Bedroom" class="w-full h-full object-cover">
                                     <button type="button" onclick="this.parentElement.remove()"
                                         class="absolute top-1.5 right-1.5 bg-black/60 hover:bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-xs cursor-pointer transition" aria-label="Remove">
                                         <i class="bx bx-x"></i>
@@ -265,11 +265,11 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+             
                 <div class="mt-10 flex justify-center">
                     <button type="submit"
                         class="w-full max-w-xs bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
-                        Submit for Verification
+                      Next
                     </button>
                 </div>
             </form>
@@ -346,17 +346,23 @@
             }
 
             const form = document.getElementById('property-info-form');
-            const modal = document.getElementById('success-modal');
-            const modalContent = document.getElementById('modal-content');
-            if (form && modal) {
+            if (form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault();
-                    modal.classList.remove('hidden');
-                    setTimeout(() => {
-                        modal.classList.remove('opacity-0');
-                        modalContent.classList.remove('scale-95');
-                        modalContent.classList.add('scale-100');
-                    }, 10);
+                    const amenities = Array.from(document.querySelectorAll('input[name="amenities"]:checked')).map(el => el.value);
+                    const propertyData = {
+                        name: document.getElementById('propertyName')?.value.trim() || 'Royal Haven Lodge',
+                        location: document.getElementById('location')?.value.trim() || 'Solukira',
+                        school: document.getElementById('nearbySchool')?.value.trim() || 'Lagos State University',
+                        distance: document.getElementById('distance')?.value.trim() || '1.2km',
+                        drivingTime: document.getElementById('drivingTime')?.value.trim() || '2 mins',
+                        rent: document.getElementById('monthlyRent')?.value.trim() || '500,800',
+                        description: document.getElementById('description')?.value.trim() || '3-storey hostel located near LASU',
+                        amenities: amenities,
+                        availability: document.getElementById('availability')?.checked ?? true
+                    };
+                    localStorage.setItem('hostelfinder_property_details', JSON.stringify(propertyData));
+                    window.location.href = '/pages/inspection-availability.html';
                 });
             }
         });

@@ -80,7 +80,7 @@
 
         <!-- Centred title with back arrow -->
         <div class="relative mb-2 flex items-center justify-center">
-            <a href="/pages/manage-inspection.html"
+            <a href="/pages/property-information.html"
                 class="absolute left-0 text-[#2D2340] hover:text-[#3157D5] transition"
                 aria-label="Go back">
                 <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
@@ -328,11 +328,11 @@
                     </div>
                 </div>
 
-                <!-- Save button -->
+                <!-- Submit button -->
                 <div class="mt-8 flex justify-center">
                     <button type="submit"
                         class="w-full max-w-xs bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.98]">
-                        Save Availability
+                        Submit for Verification
                     </button>
                 </div>
 
@@ -341,11 +341,62 @@
 
     </main>
 
-    <!-- Toast -->
-    <div id="success-toast"
-        class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#219653] text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300 z-50">
-        <i class="bx bx-check-circle text-lg"></i>
-        Availability saved successfully!
+    <!-- Verification Submitted Modal -->
+    <div id="verification-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="modal-card" class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-5 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-[#E8EDFC] text-[#3157D5] rounded-full flex items-center justify-center mx-auto text-3xl shadow-xs">
+                <i class="bx bx-check-shield"></i>
+            </div>
+            <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-[#2D2340]">Submitted for Verification!</h3>
+                <p class="text-xs sm:text-sm text-[#7D7589] mt-1.5 leading-relaxed">
+                    Your landlord information, property listing, and inspection schedule have been submitted for admin approval.
+                </p>
+            </div>
+
+            <!-- Steps Progress Box -->
+            <div class="bg-[#F8F5FE] border border-[#E2DBF0] rounded-2xl p-4 text-left space-y-2.5 text-xs">
+                <div class="flex items-center justify-between">
+                    <span class="flex items-center gap-2 font-medium text-gray-700">
+                        <i class="bx bx-check-circle text-green-600 text-base"></i> Landlord Details
+                    </span>
+                    <span class="text-green-600 font-bold text-[11px] bg-green-50 px-2 py-0.5 rounded-md">Completed</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="flex items-center gap-2 font-medium text-gray-700">
+                        <i class="bx bx-check-circle text-green-600 text-base"></i> Property Details
+                    </span>
+                    <span class="text-green-600 font-bold text-[11px] bg-green-50 px-2 py-0.5 rounded-md">Completed</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="flex items-center gap-2 font-medium text-gray-700">
+                        <i class="bx bx-check-circle text-green-600 text-base"></i> Inspection Schedule
+                    </span>
+                    <span class="text-green-600 font-bold text-[11px] bg-green-50 px-2 py-0.5 rounded-md">Completed</span>
+                </div>
+                <div class="flex items-center justify-between pt-1 border-t border-gray-200">
+                    <span class="flex items-center gap-2 font-bold text-[#3157D5]">
+                        <i class="bx bx-time text-[#3157D5] text-base animate-pulse"></i> Admin Approval
+                    </span>
+                    <span class="text-amber-700 font-bold text-[11px] bg-amber-100 px-2.5 py-0.5 rounded-md">Pending Review</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-[#7D7589]">
+                Once an admin reviews and approves your account, your property will go live and you can access your <strong>Inspection Management</strong> dashboard.
+            </p>
+
+            <div class="flex flex-col gap-2.5 pt-2">
+                <a href="/pages/manage-inspection.html"
+                    class="w-full bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3 px-6 rounded-xl transition text-sm flex items-center justify-center gap-2 shadow-sm">
+                    Go to Manage Inspections
+                </a>
+                <a href="/pages/users.html"
+                    class="w-full border border-[#3157D5] text-[#3157D5] hover:bg-blue-50 font-bold py-2.5 px-6 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+                    <i class="bx bx-shield-quarter text-sm"></i> Switch to Admin Approval Portal
+                </a>
+            </div>
+        </div>
     </div>
 
     <script src="../script.js"></script>
@@ -373,16 +424,62 @@
             });
 
             const form  = document.getElementById('availability-form');
-            const toast = document.getElementById('success-toast');
+            const modal = document.getElementById('verification-modal');
+            const modalCard = document.getElementById('modal-card');
+
             form.addEventListener('submit', e => {
                 e.preventDefault();
-                toast.classList.remove('opacity-0', 'pointer-events-none');
-                toast.classList.add('opacity-100');
-                setTimeout(() => {
-                    toast.classList.remove('opacity-100');
-                    toast.classList.add('opacity-0', 'pointer-events-none');
-                    window.location.href = '/pages/manage-inspection.html';
-                }, 1800);
+
+                // 1. Mark current landlord status as pending approval
+                localStorage.setItem('hostelfinder_landlord_approval_status', 'pending');
+
+                // 2. Retrieve landlord and property details if stored
+                const landlordData = JSON.parse(localStorage.getItem('hostelfinder_landlord_details') || '{}');
+                const propertyData = JSON.parse(localStorage.getItem('hostelfinder_property_details') || '{}');
+
+                const landlordName = landlordData.fullName || 'Chinedu Okafor';
+                const landlordEmail = landlordData.email || 'name@gmail.com';
+                const landlordPhone = landlordData.phone || '+234 8140772324';
+                const propertyName = propertyData.name || 'Royal Haven Lodge';
+                const location = propertyData.location || 'Solukira';
+                const rent = propertyData.rent || '500,800';
+
+                // 3. Register or update this landlord in the admin list
+                let adminLandlords = JSON.parse(localStorage.getItem('hostelfinder_admin_landlords') || 'null');
+                const newLandlord = {
+                    id: 'landlord_current',
+                    name: landlordName,
+                    email: landlordEmail,
+                    phone: landlordPhone,
+                    property: propertyName,
+                    location: location,
+                    rent: rent,
+                    avatar: '/images/male1.png',
+                    status: 'pending',
+                    idType: landlordData.idType || 'National ID',
+                    idNumber: landlordData.idNumber || '12345678901',
+                    accountNumber: landlordData.accountNumber || '0123456789',
+                    bankName: landlordData.bankName || 'First Bank',
+                    submittedAt: new Date().toLocaleDateString()
+                };
+
+                if (Array.isArray(adminLandlords)) {
+                    const idx = adminLandlords.findIndex(l => l.id === 'landlord_current' || l.email === landlordEmail);
+                    if (idx >= 0) {
+                        adminLandlords[idx] = newLandlord;
+                    } else {
+                        adminLandlords.unshift(newLandlord);
+                    }
+                    localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(adminLandlords));
+                }
+
+                // 4. Show the submission confirmation modal
+                modal.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                });
             });
 
         });
