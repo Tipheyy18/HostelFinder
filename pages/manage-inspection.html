@@ -78,15 +78,138 @@
 
     <main class="container mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
 
-        <!-- Page title -->
-        <div class="mb-6 flex items-center gap-3">
-            <a href="/pages/property-information.html"
-                class="text-[#2D2340] hover:text-[#3157D5] transition flex items-center flex-shrink-0"
-                aria-label="Go back">
-                <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
-            </a>
-            <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">Inspection Management</h1>
+        <!-- Page title with back arrow -->
+        <div class="mb-6 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-3">
+                <a href="/pages/inspection-availability.html"
+                    class="text-[#2D2340] hover:text-[#3157D5] transition flex items-center flex-shrink-0"
+                    aria-label="Go back">
+                    <i class="bx bx-arrow-back text-2xl sm:text-3xl"></i>
+                </a>
+                <h1 class="text-2xl sm:text-3xl font-bold text-[#2D2340] tracking-tight">Inspection Management</h1>
+            </div>
+
+            <!-- Dynamic Status Badge in Top Bar -->
+            <div id="top-status-indicator">
+                <!-- Injected dynamically -->
+            </div>
         </div>
+
+        <!-- ════════════════════════════════════════════════════════════
+             STATE 1: PENDING ADMIN APPROVAL VIEW
+             (Shown when landlord submitted details but admin hasn't approved yet)
+        ════════════════════════════════════════════════════════════ -->
+        <div id="pending-approval-view" class="hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-100 max-w-2xl mx-auto text-center space-y-6">
+                <!-- Status icon with pulse ring -->
+                <div class="relative w-20 h-20 mx-auto">
+                    <div class="absolute inset-0 rounded-full bg-amber-400 opacity-20 animate-ping"></div>
+                    <div class="relative w-20 h-20 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center text-4xl border border-amber-200 shadow-xs">
+                        <i class="bx bx-time-five"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> Verification In Review
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-[#2D2340] mt-1">Awaiting Admin Approval</h2>
+                    <p class="text-xs sm:text-sm text-[#7D7589] mt-2 max-w-lg mx-auto leading-relaxed">
+                        Your landlord details, property listing, and inspection schedule are under review.
+                        The <strong>Inspection Management</strong> dashboard will unlock automatically as soon as an administrator approves your verification.
+                    </p>
+                </div>
+
+                <!-- Submission Details Card -->
+                <div class="bg-[#F8F5FE] border border-[#E2DBF0] rounded-2xl p-5 text-left space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-[#E2DBF0]">
+                        <span class="text-xs font-bold text-[#3157D5] uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="bx bx-file text-sm"></i> Submitted Property & Schedule
+                        </span>
+                        <span class="text-[11px] bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-md">Pending Approval</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <span class="text-gray-400 block text-[11px]">Landlord Name</span>
+                            <span id="pending-landlord-name" class="font-bold text-gray-800">Chinedu Okafor</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-400 block text-[11px]">Property / Hostel</span>
+                            <span id="pending-property-name" class="font-bold text-gray-800">Royal Haven Lodge</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-400 block text-[11px]">Location</span>
+                            <span id="pending-property-loc" class="font-bold text-gray-800">Solukira</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-400 block text-[11px]">Availability Slots</span>
+                            <span class="font-bold text-gray-800">Mon - Fri, 10:00 - 18:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification Step Progress -->
+                <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs text-gray-600 flex items-center justify-between">
+                    <span class="flex items-center gap-2">
+                        <i class="bx bx-check-circle text-green-600 text-base"></i> Details Submitted
+                    </span>
+                    <i class="bx bx-right-arrow-alt text-gray-400 text-base"></i>
+                    <span class="flex items-center gap-2 font-bold text-[#3157D5]">
+                        <i class="bx bx-shield-quarter text-base animate-pulse"></i> Admin Review
+                    </span>
+                    <i class="bx bx-right-arrow-alt text-gray-400 text-base"></i>
+                    <span class="flex items-center gap-2 text-gray-400">
+                        <i class="bx bx-lock-alt text-base"></i> Inspection Mgt Live
+                    </span>
+                </div>
+
+                <!-- Interactive Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <a href="/pages/users.html"
+                        class="w-full sm:w-auto bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3 px-6 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="bx bx-shield-quarter text-base"></i> Open Admin Approval Portal
+                    </a>
+                    <button id="btn-simulate-approval" type="button"
+                        class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="bx bx-check-circle text-base"></i> Simulate Admin Approval
+                    </button>
+                </div>
+
+                <p class="text-[11px] text-gray-400">
+                    Once the admin clicks <span class="font-semibold text-gray-600">Approve</span> on the Users Approval page, this screen unlocks immediately.
+                </p>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════
+             STATE 2: ACTIVE INSPECTION MANAGEMENT DASHBOARD
+             (Shown when admin has approved the landlord)
+        ════════════════════════════════════════════════════════════ -->
+        <div id="active-inspection-view" class="hidden">
+
+            <!-- Approved Success Banner -->
+            <div class="mb-6 bg-green-50 border border-green-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 text-green-700 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="bx bx-check-circle"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-green-800">Approved by Admin — Inspection Management Active</h4>
+                        <p class="text-xs text-green-700">Your landlord profile and property are verified and live. You can manage student inspections below.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <a href="/pages/users.html" class="text-xs font-semibold text-[#3157D5] hover:underline px-2 py-1 flex items-center gap-1">
+                        <i class="bx bx-shield-quarter"></i> Admin Portal
+                    </a>
+                    <button id="btn-reset-approval" type="button"
+                        class="text-xs font-semibold text-gray-500 hover:text-red-600 border border-gray-200 rounded-lg px-2.5 py-1 bg-white hover:bg-red-50 transition cursor-pointer"
+                        title="Reset to pending to test the unapproved state again">
+                        Reset Status
+                    </button>
+                </div>
+            </div>
 
         <!-- Search -->
         <div class="mb-4 relative max-w-md">
@@ -261,25 +384,122 @@
             </div>
 
         </div>
+        <!-- End #active-inspection-view -->
 
     </main>
 
     <script src="../script.js"></script>
     <script>
-        document.querySelectorAll('.filter-pill').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-pill').forEach(b => {
-                    b.classList.remove('bg-[#3157D5]', 'text-white');
-                    b.classList.add('bg-white', 'border', 'border-[#E2DBF0]', 'text-[#2D2340]');
-                });
-                btn.classList.remove('bg-white', 'border', 'border-[#E2DBF0]', 'text-[#2D2340]');
-                btn.classList.add('bg-[#3157D5]', 'text-white');
+        document.addEventListener('DOMContentLoaded', () => {
 
-                const filter = btn.dataset.filter;
-                document.querySelectorAll('.inspection-card').forEach(card => {
-                    card.style.display = (filter === 'all' || card.dataset.status === filter) ? '' : 'none';
+            function renderState() {
+                const status = localStorage.getItem('hostelfinder_landlord_approval_status');
+                const isApproved = status === 'approved';
+
+                const pendingView = document.getElementById('pending-approval-view');
+                const activeView = document.getElementById('active-inspection-view');
+                const topIndicator = document.getElementById('top-status-indicator');
+
+                if (isApproved) {
+                    pendingView.classList.add('hidden');
+                    activeView.classList.remove('hidden');
+
+                    if (topIndicator) {
+                        topIndicator.innerHTML = `
+                            <span class="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-xl">
+                                <i class="bx bx-check-circle"></i> Approved Landlord
+                            </span>
+                        `;
+                    }
+                } else {
+                    activeView.classList.add('hidden');
+                    pendingView.classList.remove('hidden');
+
+                    if (topIndicator) {
+                        topIndicator.innerHTML = `
+                            <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-xl">
+                                <i class="bx bx-time-five animate-pulse"></i> Approval Pending
+                            </span>
+                        `;
+                    }
+
+                    // Populate submitted data from localStorage if available
+                    const landlordData = JSON.parse(localStorage.getItem('hostelfinder_landlord_details') || '{}');
+                    const propertyData = JSON.parse(localStorage.getItem('hostelfinder_property_details') || '{}');
+
+                    if (document.getElementById('pending-landlord-name')) {
+                        document.getElementById('pending-landlord-name').textContent = landlordData.fullName || 'Chinedu Okafor';
+                    }
+                    if (document.getElementById('pending-property-name')) {
+                        document.getElementById('pending-property-name').textContent = propertyData.name || 'Royal Haven Lodge';
+                    }
+                    if (document.getElementById('pending-property-loc')) {
+                        document.getElementById('pending-property-loc').textContent = propertyData.location || 'Solukira';
+                    }
+                }
+            }
+
+            // Simulate admin approval button
+            document.getElementById('btn-simulate-approval')?.addEventListener('click', () => {
+                localStorage.setItem('hostelfinder_landlord_approval_status', 'approved');
+
+                // Also mark current landlord in admin list as approved
+                let adminLandlords = JSON.parse(localStorage.getItem('hostelfinder_admin_landlords') || '[]');
+                if (Array.isArray(adminLandlords)) {
+                    adminLandlords.forEach(l => {
+                        if (l.id === 'landlord_current' || l.name === 'Chinedu Okafor') {
+                            l.status = 'approved';
+                        }
+                    });
+                    localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(adminLandlords));
+                }
+
+                renderState();
+            });
+
+            // Reset approval button (to re-test pending state)
+            document.getElementById('btn-reset-approval')?.addEventListener('click', () => {
+                localStorage.setItem('hostelfinder_landlord_approval_status', 'pending');
+                renderState();
+            });
+
+            // Storage event listener to sync across browser tabs in real-time
+            window.addEventListener('storage', e => {
+                if (e.key === 'hostelfinder_landlord_approval_status') {
+                    renderState();
+                }
+            });
+
+            // Filter pills logic
+            document.querySelectorAll('.filter-pill').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-pill').forEach(b => {
+                        b.classList.remove('bg-[#3157D5]', 'text-white');
+                        b.classList.add('bg-white', 'border', 'border-[#E2DBF0]', 'text-[#2D2340]');
+                    });
+                    btn.classList.remove('bg-white', 'border', 'border-[#E2DBF0]', 'text-[#2D2340]');
+                    btn.classList.add('bg-[#3157D5]', 'text-white');
+
+                    const filter = btn.dataset.filter;
+                    document.querySelectorAll('.inspection-card').forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.status === filter) ? '' : 'none';
+                    });
                 });
             });
+
+            // Search filtering
+            const searchInput = document.querySelector('input[type="search"]');
+            if (searchInput) {
+                searchInput.addEventListener('input', e => {
+                    const q = e.target.value.toLowerCase();
+                    document.querySelectorAll('.inspection-card').forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        card.style.display = text.includes(q) ? '' : 'none';
+                    });
+                });
+            }
+
+            renderState();
         });
     </script>
 </body>

@@ -13,65 +13,62 @@
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <div class="container w-full md:px-10 px-4 mx-auto">
-        <header
-            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-            <a href="/">
-                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+    <!-- ══════════════════════════════════════════
+         ADMIN HEADER
+    ══════════════════════════════════════════ -->
+    <header class="w-full bg-white shadow-[0_2px_8px_rgba(49,87,213,0.10)] sticky top-0 z-30">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 gap-4">
+            <a href="/pages/Dashboard.html">
+                <img class="w-40" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
             </a>
-
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Dashboard</a>
-                <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Properties</a>
-                <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
-                <a href="/pages/Review.html" class="text-base font-semibold text-[#3157D5] underline cursor-pointer">Reviews</a>
+                <a href="/pages/Dashboard.html" class="text-sm font-semibold text-[#3157D5] underline">Dashboard</a>
+                <a href="/pages/Approval.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Properties</a>
+                <a href="/pages/Inspections.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Inspections</a>
+                <a href="/pages/Admin-login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Settings</a>
             </nav>
-
-            <a href="/pages/Admin-login.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Admin Logout</button>
-            </a>
-
-            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
-            </div>
-
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
-
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                        <a href="/">
-                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
-                        </a>
-                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
-                            <i class="bx bx-x"></i>
-                        </button>
-                    </div>
-
-                    <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/pages/Dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Dashboard</a>
-                        <a href="/pages/Approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
-                        <a href="/pages/Inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
-                        <a href="/pages/Review.html" class="text-base font-semibold text-[#3157D5] underline">Reviews</a>
-                    </nav>
+            <button id="menu-btn" type="button"
+                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
+                aria-label="Open menu">
+                <i id="menu-icon" class="bx bx-menu"></i>
+            </button>
+        </div>
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+        <aside id="mobile-menu"
+            class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <img class="w-32" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-400 hover:text-gray-700">
+                        <i class="bx bx-x"></i>
+                    </button>
                 </div>
-
-                <a href="/pages/Admin-login.html" class="w-full">
-                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
-                </a>
-            </aside>
-        </header>
-    </div>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
-        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-10 shadow-sm">
-
-            <!-- Title Header -->
-            <div class="mb-6">
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340]">Reviews, Reports & Moderation</h1>
-                <p class="text-xs sm:text-sm text-gray-500 mt-1">Manage user reviews, reported content and platform issues submitted by students.</p>
+                <nav class="mt-6 flex flex-col gap-5 text-sm">
+                    <a href="/pages/Dashboard.html" class="font-semibold text-[#3157D5] underline">Dashboard</a>
+                    <a href="/pages/Approval.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
+                    <a href="/pages/Inspections.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
+                    <a href="/pages/Admin-login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Settings</a>
+                </nav>
             </div>
+            <a href="/pages/Admin-login.html"
+                class="block text-center rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5]">Logout</a>
+        </aside>
+    </header>
+
+    <!-- ══════════════════════════════════════════
+         MAIN
+    ══════════════════════════════════════════ -->
+    <main class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
+        <!-- Title Header -->
+        <div class="flex items-center gap-3 mb-6">
+            <a href="/pages/Dashboard.html" class="text-[#2D2340] hover:text-[#3157D5] transition">
+                <i class="bx bx-arrow-back text-2xl"></i>
+            </a>
+            <div>
+                <h1 class="text-2xl font-extrabold text-[#2D2340]">Reviews, Reports &amp; Moderation</h1>
+                <p class="text-xs text-gray-500 mt-0.5">Manage user reviews, reported content and platform issues submitted by students.</p>
+            </div>
+        </div>
 
             <!-- Tab Pills (Reviews, Reports, Moderation) -->
             <div class="flex items-center gap-2 mb-6">
@@ -154,7 +151,6 @@
                 </div>
             </div>
 
-        </div>
     </main>
 
     <script src="../script.js"></script>

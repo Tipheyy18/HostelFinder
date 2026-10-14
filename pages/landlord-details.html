@@ -106,7 +106,7 @@
 
                 <div>
                     <label for="phone" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Phone Number*</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+2348162772324" value="+2348162772324" required
+                    <input type="tel" id="phone" name="phone" placeholder="+234 8140772324" value="+234 8140772324" required
                         class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
@@ -201,6 +201,16 @@
             if (form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault();
+                    const landlordData = {
+                        fullName: document.getElementById('fullName')?.value.trim() || 'Chinedu Okafor',
+                        email: document.getElementById('email')?.value.trim() || 'name@gmail.com',
+                        phone: document.getElementById('phone')?.value.trim() || '+234 8140772324',
+                        idType: document.getElementById('idType')?.value || 'National ID',
+                        idNumber: document.getElementById('idNumber')?.value.trim() || '12345678901',
+                        accountNumber: document.getElementById('accountNumber')?.value.trim() || '0123456789',
+                        bankName: document.getElementById('bankName')?.value.trim() || 'First Bank',
+                    };
+                    localStorage.setItem('hostelfinder_landlord_details', JSON.stringify(landlordData));
                     window.location.href = '/pages/property-information.html';
                 });
             }

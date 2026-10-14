@@ -9,300 +9,257 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <title>Admin Dashboard | HostelFinder</title>
+    <style>
+        .admin-nav-active { color: #3157D5; text-decoration: underline; font-weight: 700; }
+    </style>
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <div class="container w-full md:px-10 px-4 mx-auto">
-        <header
-            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
-            <a href="/">
-                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+    <!-- ══════════════════════════════════════════
+         ADMIN HEADER
+    ══════════════════════════════════════════ -->
+    <header class="w-full bg-white shadow-[0_2px_8px_rgba(49,87,213,0.10)] sticky top-0 z-30">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 gap-4">
+
+            <a href="/pages/Dashboard.html">
+                <img class="w-40" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
             </a>
 
+            <!-- Desktop Nav -->
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline cursor-pointer">Dashboard</a>
-                <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Properties</a>
-                <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
-                <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Reviews</a>
+                <a href="/pages/Dashboard.html" class="text-sm font-semibold text-[#3157D5] underline">Dashboard</a>
+                <a href="/pages/Approval.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Properties</a>
+                <a href="/pages/Inspections.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Inspections</a>
+                <a href="/pages/Admin-login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Settings</a>
             </nav>
 
-            <a data-auth-signup href="/pages/login.html">
-                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
-            </a>
-
-            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
-                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
-            </div>
-
-            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
-
-            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
-                        <a href="/">
-                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
-                        </a>
-                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
-                            <i class="bx bx-x"></i>
-                        </button>
-                    </div>
-
-                    <nav class="flex flex-col gap-4 mt-6">
-                        <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline">Dashboard</a>
-                        <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
-                        <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
-                        <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Reviews</a>
-                    </nav>
-                </div>
-
-                <a href="/pages/login.html" class="w-full">
-                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
-                </a>
-            </aside>
-        </header>
-    </div>
-
-    <!-- ===== MAIN CONTENT ===== -->
-     <main   class ="mx-auto  max-w-[1440px]">  
-    
-         
-
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-8 ">
-                <div>
-                    <h1 class="text-2xl sm:text-3xl  w-full  p-top mx-auto font-extrabold text-[#2D2340] tracking-tight">Good Morning, Admin</h1>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Here's what's happening with your platform today.</p>
-                </div>
-                <div class="text-xs font-semibold text-gray-500 bg-white/70 px-3 py-1.5 rounded-lg border border-gray-200">
-                    <i class="bx bx-calendar text-[#3157D5] "></i> Tues, 10 Jun 2025
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-                <!-- Total Students -->
-                <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">Total Students</p>
-                    <h3 class="text-2xl font-extrabold text-gray-900" id="stat-students">156</h3>
-                    <p class="text-[11px] font-semibold text-green-600 mt-2 flex items-center gap-1">
-                        <i class="bx bx-up-arrow-alt"></i> ↑ 14%
-                    </p>
-                </div>
-
-                <!-- Active Landlords -->
-                <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">Active Landlords</p>
-                    <h3 class="text-2xl font-extrabold text-gray-900" id="stat-landlords">78</h3>
-                    <p class="text-[11px] font-semibold text-green-600 mt-2 flex items-center gap-1">
-                        <i class="bx bx-up-arrow-alt"></i> ↑ 8%
-                    </p>
-                </div>
-
-                <!-- Total Properties -->
-                <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">Total Properties</p>
-                    <h3 class="text-2xl font-extrabold text-gray-900" id="stat-properties">124</h3>
-                    <p class="text-[11px] font-semibold text-green-600 mt-2 flex items-center gap-1">
-                        <i class="bx bx-up-arrow-alt"></i> ↑ 12%
-                    </p>
-                </div>
-
-                <!-- Pending Verification -->
-                <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">Pending Verification</p>
-                    <h3 class="text-2xl font-extrabold text-gray-900" id="stat-pending">18</h3>
-                    <p class="text-[11px] font-semibold text-red-500 mt-2 flex items-center gap-1">
-                        <i class="bx bx-down-arrow-alt"></i> ↓ 6%
-                    </p>
-                </div>
-
-                <!-- Total Inspections -->
-                <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
-                    <p class="text-xs font-semibold text-gray-500 mb-1">Total Inspections</p>
-                    <h3 class="text-2xl font-extrabold text-gray-900" id="stat-inspections">86</h3>
-                    <p class="text-[11px] font-semibold text-green-600 mt-2 flex items-center gap-1">
-                        <i class="bx bx-up-arrow-alt"></i> ↑ 22%
-                    </p>
-                </div>
-            </div>
-
-            <!-- Quick Actions Section -->
-            <div class="mb-8">
-                <h2 class="text-base font-bold text-gray-900 mb-3">Quick Actions</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
-                                <i class="bx bx-check-shield"></i>
-                            </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">Verify Properties</span>
-                        </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
-                    </a>
-
-                    <a href="/pages/Inspections.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
-                                <i class="bx bx-calendar-event"></i>
-                            </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">View Inspections</span>
-                        </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
-                    </a>
-
-                    <a href="/pages/Approval.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
-                                <i class="bx bx-user-voice"></i>
-                            </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">Manage Landlords</span>
-                        </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
-                    </a>
-
-                    <a href="/pages/Review.html" class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center justify-between hover:border-[#3157D5] transition group cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-lg">
-                                <i class="bx bx-star"></i>
-                            </div>
-                            <span class="text-xs font-bold text-gray-800 group-hover:text-[#3157D5] transition">View Student Reviews</span>
-                        </div>
-                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] transition text-xl"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Recent Activity Table & Live Student Reviews Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- Recent Activity Table -->
-                <div class="bg-white rounded-2xl p-6 shadow-xs border border-gray-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-base font-bold text-gray-900">Recent Activity</h2>
-                        <a href="/pages/Approval.html" class="text-xs font-semibold text-[#3157D5]  hover:underline flex items-center gap-1">
-                            see all <i class="bx bx-chevron-right"></i>
-                        </a>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-[#ede8f8]/60 text-gray-700 text-xs font-bold">
-                                    <th class="p-3 rounded-l-xl">Activity</th>
-                                    <th class="p-3">Details</th>
-                                    <th class="p-3 rounded-r-xl">Time</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-xs text-gray-700 divide-y divide-gray-100">
-                                <tr>
-                                    <td class="p-3 font-medium">New Property Submitted</td>
-                                    <td class="p-3 text-gray-500">Greenview Hostel</td>
-                                    <td class="p-3 text-gray-400">2h ago</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-medium">Inspection booked</td>
-                                    <td class="p-3 text-gray-500">Maple Court Hostel</td>
-                                    <td class="p-3 text-gray-400">3h ago</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-medium">Landlord verified</td>
-                                    <td class="p-3 text-gray-500">Mr Tunde Adeyemi</td>
-                                    <td class="p-3 text-gray-400">5h ago</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-medium">New user registration</td>
-                                    <td class="p-3 text-gray-500">Student Hostel</td>
-                                    <td class="p-3 text-gray-400">8h ago</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Live Student Reviews Feed (From mark-as-complete.html) -->
-                <div class="bg-white rounded-2xl p-6 shadow-xs border border-gray-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <h2 class="text-base font-bold text-gray-900">Live Student Reviews</h2>
-                            <p class="text-[11px] text-gray-400">Real-time reviews sent by students from mark-as-complete</p>
-                        </div>
-                        <a href="/pages/Review.html" class="text-xs font-semibold text-[#3157D5]  hover:underline flex items-center gap-1">
-                            View All <i class="bx bx-chevron-right"></i>
-                        </a>
-                    </div>
-
-                    <div id="dashboard-reviews-list" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
-
-            </div>
-        </main>
+            <!-- Mobile hamburger -->
+            <button id="menu-btn" type="button"
+                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
+                aria-label="Open menu">
+                <i id="menu-icon" class="bx bx-menu"></i>
+            </button>
         </div>
+
+        <!-- Mobile overlay & drawer -->
+        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
+        <aside id="mobile-menu"
+            class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden">
+            <div>
+                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
+                    <img class="w-32" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
+                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-400 hover:text-gray-700">
+                        <i class="bx bx-x"></i>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col gap-5 text-sm">
+                    <a href="/pages/Dashboard.html" class="font-semibold text-[#3157D5] underline">Dashboard</a>
+                    <a href="/pages/Approval.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
+                    <a href="/pages/Inspections.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
+                    <a href="/pages/Admin-login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Settings</a>
+                </nav>
+            </div>
+            <a href="/pages/Admin-login.html"
+                class="block text-center rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5]">Logout</a>
+        </aside>
+    </header>
+
+    <!-- ══════════════════════════════════════════
+         MAIN
+    ══════════════════════════════════════════ -->
+    <main class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
+
+        <!-- Greeting row -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340]">Good Morning, Admin</h1>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1">Here's what's happening with your platform today.</p>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 bg-white px-3 py-2 rounded-xl border border-gray-200 shadow-xs">
+                <i class="bx bx-calendar-event text-[#3157D5] text-base"></i>
+                Sat, 3 Oct, 2026
+                <i class="bx bx-globe text-[#3157D5] text-base ml-1"></i>
+            </div>
+        </div>
+
+        <!-- Stat cards — 6 across -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Verified<br>Landlords</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">78</h3>
+                <p class="text-[11px] font-semibold text-green-600 mt-1.5 flex items-center gap-0.5">
+                    <i class="bx bx-up-arrow-alt text-sm"></i> 8%
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Total<br>Students</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">543</h3>
+                <p class="text-[11px] font-semibold text-green-600 mt-1.5 flex items-center gap-0.5">
+                    <i class="bx bx-up-arrow-alt text-sm"></i> 12%
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Total<br>Inspections</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">86</h3>
+                <p class="text-[11px] font-semibold text-green-600 mt-1.5 flex items-center gap-0.5">
+                    <i class="bx bx-up-arrow-alt text-sm"></i> 22%
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Overdue<br>Payments</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">4.2M</h3>
+                <p class="text-[11px] font-semibold text-orange-500 mt-1.5">4% from last month</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Pending<br>Inspections</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">5</h3>
+                <p class="text-[11px] font-semibold text-red-500 mt-1.5">3 due this week</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Pending<br>Verification</p>
+                <h3 class="text-2xl font-extrabold text-gray-900 mt-1">18</h3>
+                <p class="text-[11px] font-semibold text-red-500 mt-1.5 flex items-center gap-0.5">
+                    <i class="bx bx-down-arrow-alt text-sm"></i> 6%
+                </p>
+            </div>
+        </div>
+
+        <!-- Quick Actions + Recent Activities side-by-side -->
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 mb-8">
+
+            <!-- Quick Actions -->
+            <div>
+                <h2 class="text-base font-bold text-gray-900 mb-4">Quick Actions</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a href="/pages/Approval.html"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-check-shield text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Landlord Approvals</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                    <a href="/pages/Approval.html"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-building-house text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Property Management</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                    <a href="/pages/Review.html"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-show text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">View Reviews</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                    <a href="#"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-money text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Finance &amp; Remittance</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                    <a href="/pages/Inspections.html"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-show text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Inspection Management</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                    <a href="/pages/Admin-login.html"
+                        class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <i class="bx bx-user-circle text-[#3157D5] text-xl"></i>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Admin Profile</span>
+                        </div>
+                        <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100">
+                <h2 class="text-base font-bold text-gray-900 mb-4">Recent Activities</h2>
+                <ul class="space-y-3" id="recent-activities-list">
+                    <!-- populated by JS -->
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Occupancy Rate chart -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-gray-100">
+            <h2 class="text-base font-bold text-gray-900 mb-5">Occupancy Rate</h2>
+            <canvas id="occupancyChart" height="100"></canvas>
+            <!-- Legend -->
+            <div class="flex flex-wrap items-center gap-4 mt-4 text-xs font-semibold text-gray-600">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#3157D5] inline-block"></span>100%</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#6EC6CA] inline-block"></span>90%</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#F4A261] inline-block"></span>80%</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#E76F51] inline-block"></span>70%</span>
+            </div>
+        </div>
+
     </main>
 
     <script src="../script.js"></script>
     <script>
-        function loadDashboardReviews() {
-            const listContainer = document.getElementById('dashboard-reviews-list');
-            if (!listContainer) return;
+        /* ── Recent Activities ──────────────────── */
+        const activities = [
+            { text: 'Chidi Okoro booked inspection for Sunrise Hostel', time: '3 mins ago' },
+            { text: 'Chidi Okoro booked inspection for Sunrise Hostel', time: '3 mins ago' },
+            { text: 'Chidi Okoro booked inspection for Sunrise Hostel', time: '3 mins ago' },
+            { text: 'Chidi Okoro booked inspection for Sunrise Hostel', time: '3 mins ago' },
+            { text: 'Chidi Okoro booked inspection for Sunrise Hostel', time: '3 mins ago' },
+            { text: 'Mrs. Adebisi listed new property Green Heights', time: '46 mins ago' },
+            { text: 'New Landlord registration', time: '1 hour ago' },
+        ];
 
-            const reviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
-            
-            // Seed default reviews if none exist
-            const defaultReviews = [
-                {
-                    id: 'rev_default_1',
-                    studentName: 'Chidi Okafor',
-                    propertyTitle: 'Greenfields Court',
-                    rating: 5,
-                    comment: 'Great hostel, very clean and water is constant. Really quiet environment for reading.',
-                    date: '01 Sept, 2025 • 12:45 PM',
-                    status: 'Approved'
-                },
-                {
-                    id: 'rev_default_2',
-                    studentName: 'Amina Bello',
-                    propertyTitle: 'Royal Haven Lodge',
-                    rating: 4,
-                    comment: 'Landlord was super responsive during inspection. Electricity supply is good.',
-                    date: '31 Aug, 2025 • 04:20 PM',
-                    status: 'Approved'
-                },
-                {
-                    id: 'rev_default_3',
-                    studentName: 'Emeka John',
-                    propertyTitle: 'Oasis Villa',
-                    rating: 4,
-                    comment: 'Close to gate, safe neighborhood with 24/7 security guard.',
-                    date: '28 Aug, 2025 • 10:15 AM',
-                    status: 'Approved'
-                }
-            ];
-
-            const allReviews = reviews.length > 0 ? reviews : defaultReviews;
-
-            listContainer.innerHTML = allReviews.map(r => {
-                const starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
-                return `
-                    <div class="border border-gray-100 rounded-xl p-3 bg-[#E8EDFC]/40 hover:bg-[#E8EDFC] transition">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-xs font-bold text-gray-900">${escapeHtml(r.studentName)}</span>
-                            <span class="text-xs text-[#3157D5]  font-bold">${starsHtml}</span>
-                        </div>
-                        <p class="text-[11px] font-semibold text-[#3157D5]  mb-1">${escapeHtml(r.propertyTitle)}</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-2">"${escapeHtml(r.comment)}"</p>
-                        <p class="text-[10px] text-gray-400 text-right">${escapeHtml(r.date)}</p>
+        const list = document.getElementById('recent-activities-list');
+        if (list) {
+            list.innerHTML = activities.map(a => `
+                <li class="flex items-start gap-2 text-xs text-gray-700">
+                    <span class="mt-1 w-2 h-2 rounded-full bg-[#3157D5] flex-shrink-0"></span>
+                    <div>
+                        <p class="font-medium leading-snug">${a.text}</p>
+                        <p class="text-gray-400 mt-0.5 flex items-center gap-1">
+                            <i class="bx bx-time-five text-xs"></i> ${a.time}
+                        </p>
                     </div>
-                `;
-            }).join('');
+                </li>
+            `).join('');
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-        }
-
-        document.addEventListener('DOMContentLoaded', loadDashboardReviews);
+        /* ── Occupancy Chart ────────────────────── */
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+        const ctx = document.getElementById('occupancyChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: '100%', data: [60,55,70,100,90,65,80,100,70], backgroundColor: '#3157D5', borderRadius: 4 },
+                    { label: '90%',  data: [40,65,50,80,75,50,60,85,55],  backgroundColor: '#6EC6CA', borderRadius: 4 },
+                    { label: '80%',  data: [50,45,60,70,55,40,70,75,60],  backgroundColor: '#F4A261', borderRadius: 4 },
+                    { label: '70%',  data: [30,35,40,50,45,30,55,60,45],  backgroundColor: '#E76F51', borderRadius: 4 },
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, max: 110, ticks: { stepSize: 25, font: { size: 11 } }, grid: { color: '#f3f4f6' } },
+                    x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+                }
+            }
+        });
     </script>
 </body>
 </html>
