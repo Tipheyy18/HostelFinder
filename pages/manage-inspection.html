@@ -93,10 +93,7 @@
             </div>
         </div>
 
-        <!-- ════════════════════════════════════════════════════════════
-             STATE 1: PENDING ADMIN APPROVAL VIEW
-             (Shown when landlord submitted details but admin hasn't approved yet)
-        ════════════════════════════════════════════════════════════ -->
+       
         <div id="pending-approval-view" class="hidden">
             <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-100 max-w-2xl mx-auto text-center space-y-6">
                 <!-- Status icon with pulse ring -->
@@ -152,38 +149,11 @@
                     <span class="flex items-center gap-2">
                         <i class="bx bx-check-circle text-green-600 text-base"></i> Details Submitted
                     </span>
-                    <i class="bx bx-right-arrow-alt text-gray-400 text-base"></i>
-                    <span class="flex items-center gap-2 font-bold text-[#3157D5]">
-                        <i class="bx bx-shield-quarter text-base animate-pulse"></i> Admin Review
+                    
                     </span>
-                    <i class="bx bx-right-arrow-alt text-gray-400 text-base"></i>
-                    <span class="flex items-center gap-2 text-gray-400">
-                        <i class="bx bx-lock-alt text-base"></i> Inspection Mgt Live
-                    </span>
-                </div>
+                   
 
-                <!-- Interactive Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                    <a href="/pages/users.html"
-                        class="w-full sm:w-auto bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3 px-6 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="bx bx-shield-quarter text-base"></i> Open Admin Approval Portal
-                    </a>
-                    <button id="btn-simulate-approval" type="button"
-                        class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="bx bx-check-circle text-base"></i> Simulate Admin Approval
-                    </button>
-                </div>
-
-                <p class="text-[11px] text-gray-400">
-                    Once the admin clicks <span class="font-semibold text-gray-600">Approve</span> on the Users Approval page, this screen unlocks immediately.
-                </p>
-            </div>
-        </div>
-
-        <!-- ════════════════════════════════════════════════════════════
-             STATE 2: ACTIVE INSPECTION MANAGEMENT DASHBOARD
-             (Shown when admin has approved the landlord)
-        ════════════════════════════════════════════════════════════ -->
+                
         <div id="active-inspection-view" class="hidden">
 
             <!-- Approved Success Banner -->
@@ -374,7 +344,9 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-100 flex gap-2">
                         <a href="/pages/inspection-availability.html"
-                            class="flex-1 text-center bg-[#3157D5] hover:bg-[#2646b5] text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition cursor-pointer">View Inspection</a>
+                            class="flex-1 text-center bg-[#3157D5] hover:bg-[#2646b5] text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition cursor-pointer">View Inspe
+                            
+                            ction</a>
                         <a href="/pages/inspection-availability.html"
                             class="flex-1 text-center border border-[#3157D5] text-[#3157D5] hover:bg-blue-50 text-xs font-semibold py-2.5 px-3 rounded-xl transition cursor-pointer">Reschedule</a>
                     </div>
@@ -382,8 +354,7 @@
             </div>
 
         </div>
-        <!-- End #active-inspection-view -->
-
+       
     </main>
 
     <script src="../script.js"></script>
@@ -421,7 +392,7 @@
                         `;
                     }
 
-                    // Populate submitted data from localStorage if available
+                    
                     const landlordData = JSON.parse(localStorage.getItem('hostelfinder_landlord_details') || '{}');
                     const propertyData = JSON.parse(localStorage.getItem('hostelfinder_property_details') || '{}');
 
@@ -437,29 +408,8 @@
                 }
             }
 
-            // Simulate admin approval button
-            document.getElementById('btn-simulate-approval')?.addEventListener('click', () => {
-                localStorage.setItem('hostelfinder_landlord_approval_status', 'approved');
-
-                // Also mark current landlord in admin list as approved
-                let adminLandlords = JSON.parse(localStorage.getItem('hostelfinder_admin_landlords') || '[]');
-                if (Array.isArray(adminLandlords)) {
-                    adminLandlords.forEach(l => {
-                        if (l.id === 'landlord_current' || l.name === 'Chinedu Okafor') {
-                            l.status = 'approved';
-                        }
-                    });
-                    localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(adminLandlords));
-                }
-
-                renderState();
-            });
-
-            // Reset approval button (to re-test pending state)
-            document.getElementById('btn-reset-approval')?.addEventListener('click', () => {
-                localStorage.setItem('hostelfinder_landlord_approval_status', 'pending');
-                renderState();
-            });
+           
+    
 
             // Storage event listener to sync across browser tabs in real-time
             window.addEventListener('storage', e => {
@@ -468,7 +418,7 @@
                 }
             });
 
-            // Filter pills logic
+            
             document.querySelectorAll('.filter-pill').forEach(btn => {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.filter-pill').forEach(b => {
