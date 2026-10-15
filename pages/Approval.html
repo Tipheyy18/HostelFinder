@@ -13,9 +13,9 @@
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <!-- ══════════════════════════════════════════
+    <!--
          ADMIN HEADER
-    ══════════════════════════════════════════ -->
+   -->
     <header class="w-full bg-white shadow-[0_2px_8px_rgba(49,87,213,0.10)] sticky top-0 z-30">
         <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 gap-4">
             <a href="/pages/Dashboard.html">
@@ -55,337 +55,476 @@
         </aside>
     </header>
 
-    <!-- ══════════════════════════════════════════
-         MAIN
-    ══════════════════════════════════════════ -->
-    <main class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
+     <main class="container mx-auto px-4 md:px-10 py-6 pb-20">
 
-        <!-- Back + Title -->
-        <div class="flex items-center gap-3 mb-6">
-            <a href="/pages/Dashboard.html" class="text-[#2D2340] hover:text-[#3157D5] transition">
-                <i class="bx bx-arrow-back text-2xl"></i>
+     
+        <div class="flex items-center gap-2 mb-4">
+            <a href="/pages/Dashboard.html" class="text-gray-800 hover:text-[#3157D5] transition flex items-center" aria-label="Go back to Dashboard">
+                <i class="bx bx-arrow-back text-xl font-bold"></i>
             </a>
-            <h1 class="text-2xl font-extrabold text-[#2D2340]">Users</h1>
+            <h1 class="text-xl font-bold text-[#2D2340]">Users</h1>
         </div>
 
-        <!-- Tabs — Landlords Approval | Students Reviews -->
-        <div class="flex items-center gap-6 border-b border-gray-200 mb-6">
-            <button id="tab-landlords-btn"
-                class="tab-btn pb-3 text-sm font-semibold text-[#3157D5] border-b-2 border-[#3157D5] -mb-px transition cursor-pointer">
+        <!-- Sub Tabs (Landlords Approval / Students Review) -->
+        <div class="flex items-center gap-8 border-b border-gray-200 mb-6 text-sm">
+            <button class="text-[#3157D5] font-bold border-b-2 border-[#3157D5] pb-2 cursor-pointer transition">
                 Landlords Approval
             </button>
-            <button id="tab-reviews-btn"
-                class="tab-btn pb-3 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-[#3157D5] -mb-px transition cursor-pointer">
-                Students Reviews
+            <a href="/pages/Review.html" class="text-gray-500 hover:text-[#3157D5] font-medium pb-2 transition cursor-pointer">
+                Students Review
+            </a>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
+                <p class="text-xs text-gray-500 font-medium">Pending Approval</p>
+                <h4 class="text-xl font-extrabold text-gray-900 mt-1" id="stat-pending">3</h4>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
+                <p class="text-xs text-gray-500 font-medium">Approved</p>
+                <h4 class="text-xl font-extrabold text-gray-900 mt-1" id="stat-approved">10</h4>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
+                <p class="text-xs text-gray-500 font-medium">Rejected</p>
+                <h4 class="text-xl font-extrabold text-gray-900 mt-1" id="stat-rejected">5</h4>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-xs text-center border border-gray-100">
+                <p class="text-xs text-gray-500 font-medium">Reported</p>
+                <h4 class="text-xl font-extrabold text-gray-900 mt-1" id="stat-reported">1</h4>
+            </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 mb-5 no-scrollbar">
+            <button data-filter="all" class="filter-pill active bg-[#3157D5] text-white text-xs font-semibold px-4 py-2 rounded-lg cursor-pointer transition flex items-center gap-1.5">
+                <i class="bx bx-check"></i> All
+            </button>
+            <button data-filter="pending" class="filter-pill bg-white text-gray-600 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-lg hover:border-[#3157D5] cursor-pointer transition">
+                Pending
+            </button>
+            <button data-filter="approved" class="filter-pill bg-white text-gray-600 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-lg hover:border-[#3157D5] cursor-pointer transition">
+                Approved
+            </button>
+            <button data-filter="rejected" class="filter-pill bg-white text-gray-600 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-lg hover:border-[#3157D5] cursor-pointer transition">
+                Rejected
+            </button>
+            <button data-filter="reported" class="filter-pill bg-white text-gray-600 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-lg hover:border-[#3157D5] cursor-pointer transition">
+                Reported
             </button>
         </div>
 
-        <!-- ══════════════════════════════════════
-             TAB 1 — Landlords Approval
-        ══════════════════════════════════════ -->
-        <div id="tab-landlords" class="tab-content">
-
-            <!-- Stat cards -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Pending Approval</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">3</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Approved</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">80</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Rejected</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">5</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Reported</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">1</h4>
-                </div>
+        <!-- Search Bar -->
+        <div class="mb-6">
+            <div class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-2.5 flex items-center gap-2 shadow-xs">
+                <i class="bx bx-search text-gray-400 text-lg"></i>
+                <input type="text" id="landlord-search" placeholder="Search by landlord"
+                    class="bg-transparent text-xs text-gray-800 outline-none w-full placeholder-gray-400">
             </div>
-
-            <!-- Filter pills -->
-            <div class="flex items-center gap-2 flex-wrap mb-4">
-                <button data-lfilter="all"
-                    class="landlord-filter flex-shrink-0 bg-[#3157D5] text-white text-xs font-semibold px-5 py-2 rounded-xl cursor-pointer transition">All</button>
-                <button data-lfilter="pending"
-                    class="landlord-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Pending</button>
-                <button data-lfilter="approved"
-                    class="landlord-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Approved</button>
-                <button data-lfilter="rejected"
-                    class="landlord-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Rejected</button>
-                <button data-lfilter="reported"
-                    class="landlord-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Reported</button>
-            </div>
-
-            <!-- Search -->
-            <div class="relative mb-6 max-w-xl">
-                <i class="bx bx-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
-                <input type="search" id="landlord-search" placeholder="Search by landlord"
-                    class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-700 outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/15 transition">
-            </div>
-
-            <!-- Landlord cards -->
-            <div class="space-y-4" id="landlord-cards">
-                <!-- Populated by JS -->
-            </div>
-
         </div>
 
-        <!-- ══════════════════════════════════════
-             TAB 2 — Students Reviews
-        ══════════════════════════════════════ -->
-        <div id="tab-reviews" class="tab-content hidden">
-
-            <!-- Stat cards -->
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Pending Reports</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">9</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Total Reviews</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">83</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">High Rating (4–5 stars)</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">46</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Low Rating (1–2 stars)</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">14</h4>
-                </div>
-                <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
-                    <p class="text-[11px] font-semibold text-gray-500">Flagged</p>
-                    <h4 class="text-xl font-extrabold text-gray-900 mt-1">13</h4>
-                </div>
-            </div>
-
-            <!-- Filter pills -->
-            <div class="flex items-center gap-2 flex-wrap mb-4">
-                <button data-rfilter="all"
-                    class="review-filter flex-shrink-0 bg-[#3157D5] text-white text-xs font-semibold px-5 py-2 rounded-xl cursor-pointer transition">All</button>
-                <button data-rfilter="pending"
-                    class="review-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Pending</button>
-                <button data-rfilter="approved"
-                    class="review-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Approved</button>
-                <button data-rfilter="rejected"
-                    class="review-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Rejected</button>
-                <button data-rfilter="reported"
-                    class="review-filter flex-shrink-0 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-5 py-2 rounded-xl hover:border-[#3157D5] cursor-pointer transition">Reported</button>
-            </div>
-
-            <!-- Search -->
-            <div class="relative mb-6 max-w-xl">
-                <i class="bx bx-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
-                <input type="search" id="review-search" placeholder="Search by student, property, or report reason"
-                    class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-700 outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/15 transition">
-            </div>
-
-            <!-- Review cards -->
-            <div class="space-y-4" id="review-cards">
-                <!-- Populated by JS -->
-            </div>
-
+        <!-- Landlord Cards List -->
+        <div class="space-y-4" id="landlords-list">
+            <!-- Populated dynamically -->
         </div>
 
     </main>
 
-    <script src="../script.js"></script>
-    <script>
-        /* ══════════════════════════════════════
-           TAB SWITCHING
-        ══════════════════════════════════════ */
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        function activateTab(id) {
-            tabBtns.forEach(b => {
-                const active = b.id === 'tab-' + id + '-btn';
-                b.classList.toggle('text-[#3157D5]', active);
-                b.classList.toggle('border-[#3157D5]', active);
-                b.classList.toggle('font-semibold', active);
-                b.classList.toggle('text-gray-500', !active);
-                b.classList.toggle('border-transparent', !active);
-                b.classList.toggle('font-medium', !active);
-            });
-            tabContents.forEach(c => c.classList.toggle('hidden', c.id !== 'tab-' + id));
-        }
-
-        document.getElementById('tab-landlords-btn').addEventListener('click', () => activateTab('landlords'));
-        document.getElementById('tab-reviews-btn').addEventListener('click', () => activateTab('reviews'));
-
-        /* ══════════════════════════════════════
-           LANDLORD DATA
-        ══════════════════════════════════════ */
-        const landlords = [
-            { id: 'l1', name: 'Olu Adeniire', email: 'adeniiroolu@gmail.com', avatar: 'https://i.pravatar.cc/80?img=12', status: 'pending' },
-            { id: 'l2', name: 'Rachel Badiinra', email: 'Avortelnp@gmail.com', avatar: 'https://i.pravatar.cc/80?img=25', status: 'pending' },
-            { id: 'l3', name: 'Smith Wilson', email: 'sthsoxsmith4b@gmail.com', avatar: 'https://i.pravatar.cc/80?img=33', status: 'pending' },
-            { id: 'l4', name: 'Maryann Phillips', email: 'phillipsmaryann21@gmail.com', avatar: 'https://i.pravatar.cc/80?img=47', status: 'pending' },
-        ];
-
-        let lFilter = 'all';
-
-        function renderLandlords() {
-            const container = document.getElementById('landlord-cards');
-            const search = document.getElementById('landlord-search').value.toLowerCase();
-            const filtered = landlords.filter(l => {
-                const matchFilter = lFilter === 'all' || l.status === lFilter;
-                const matchSearch = l.name.toLowerCase().includes(search) || l.email.toLowerCase().includes(search);
-                return matchFilter && matchSearch;
-            });
-
-            container.innerHTML = filtered.map(l => `
-                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                        <img src="${l.avatar}" alt="${l.name}" class="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-100">
-                        <div>
-                            <p class="text-sm font-bold text-[#2D2340]">${l.name}</p>
-                            <p class="text-xs text-gray-500 mt-0.5">${l.email}</p>
-                            <div class="flex items-center gap-2 mt-2">
-                                <button class="text-[11px] font-semibold border border-[#3157D5] text-[#3157D5] px-3 py-1 rounded-lg hover:bg-[#e8edfc] transition cursor-pointer">View Info</button>
-                                <button class="text-[11px] font-semibold border border-[#3157D5] text-[#3157D5] px-3 py-1 rounded-lg hover:bg-[#e8edfc] transition cursor-pointer">View Gov ID</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 sm:ml-auto">
-                        <button onclick="approveLandlord('${l.id}')"
-                            class="bg-[#3157D5] hover:bg-[#2646b5] text-white text-xs font-bold px-6 py-2.5 rounded-xl transition cursor-pointer">
-                            Approve
-                        </button>
-                        <button onclick="rejectLandlord('${l.id}')"
-                            class="border border-red-400 text-red-500 hover:bg-red-50 text-xs font-bold px-6 py-2.5 rounded-xl transition cursor-pointer">
-                            Reject
-                        </button>
+    <!-- Modal: View Landlord Info -->
+    <div id="info-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="info-modal-card" class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-4 shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <img id="modal-info-avatar" src="/images/male1.png" alt="Avatar" class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <h3 id="modal-info-name" class="font-bold text-base text-[#2D2340]">Landlord Details</h3>
+                        <p id="modal-info-email" class="text-xs text-gray-500">email@example.com</p>
                     </div>
                 </div>
-            `).join('') || '<p class="text-sm text-gray-400 text-center py-8">No landlords found.</p>';
+                <button type="button" onclick="closeInfoModal()" class="text-gray-400 hover:text-gray-700 text-2xl cursor-pointer">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">Phone Number</span>
+                    <span id="modal-info-phone" class="font-semibold text-gray-800">+234 8140772324</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">Property</span>
+                    <span id="modal-info-property" class="font-semibold text-[#3157D5]">Royal Haven Lodge</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">Location</span>
+                    <span id="modal-info-location" class="font-semibold text-gray-800">Solukira, near LASU</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">Monthly Rent</span>
+                    <span id="modal-info-rent" class="font-semibold text-green-700">₦ 500,800</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">ID Means & Number</span>
+                    <span id="modal-info-id" class="font-semibold text-gray-800">National ID • 12345678901</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <span class="text-gray-400 block text-[10px] uppercase font-bold">Bank Details</span>
+                    <span id="modal-info-bank" class="font-semibold text-gray-800">First Bank • 0123456789</span>
+                </div>
+            </div>
+
+            <div class="pt-2 flex justify-end gap-2">
+                <button type="button" onclick="closeInfoModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: View Government ID -->
+    <div id="govid-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="govid-modal-card" class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-4 shadow-2xl transform scale-95 transition-transform duration-300 text-center">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+                <h3 class="font-bold text-base text-[#2D2340]">Government Issued ID Card</h3>
+                <button type="button" onclick="closeGovIdModal()" class="text-gray-400 hover:text-gray-700 text-2xl cursor-pointer">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
+
+            <!-- Simulated Gov ID Card Preview -->
+            <div class="bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] text-white p-5 rounded-2xl shadow-md text-left relative overflow-hidden">
+                <div class="flex items-center justify-between mb-3 border-b border-white/20 pb-2">
+                    <div class="flex items-center gap-2">
+                        <i class="bx bxs-shield-alt-2 text-2xl text-yellow-300"></i>
+                        <div>
+                            <p class="text-[9px] uppercase tracking-wider text-blue-100 font-semibold">Federal Republic</p>
+                            <p class="text-[11px] font-bold">National Identity Card</p>
+                        </div>
+                    </div>
+                    <span class="text-[9px] bg-white/20 px-2 py-0.5 rounded-full font-mono font-bold">VERIFIED</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <img id="govid-avatar" src="/images/male1.png" alt="ID Photo" class="w-16 h-16 rounded-xl border-2 border-white object-cover">
+                    <div class="text-xs space-y-1">
+                        <p class="text-[10px] text-blue-200 uppercase">Cardholder Name</p>
+                        <p id="govid-name" class="font-bold text-sm">Ola Adenire</p>
+                        <p class="text-[10px] text-blue-200 uppercase mt-1">National NIN</p>
+                        <p id="govid-number" class="font-mono text-xs font-bold tracking-wider">1234 5678 9012</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-500">Document cryptographically verified against official National Identity Database.</p>
+
+            <button type="button" onclick="closeGovIdModal()" class="w-full bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-2.5 rounded-xl text-xs transition cursor-pointer">
+                Close Verification Preview
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="admin-toast" class="fixed bottom-6 right-6 bg-[#219653] text-white text-xs font-bold px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50">
+        <i class="bx bx-check-circle text-base"></i>
+        <span id="toast-message">Landlord status updated</span>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+       
+        const defaultLandlords = [
+            {
+                id: 'landlord_1',
+                name: 'Ola Adenire',
+                email: 'olaadenire33@gmail.com',
+                phone: '+234 803 234 5678',
+                property: 'Royal Haven Lodge',
+                location: 'Solukira, LASU Area',
+                rent: '500,800',
+                avatar: '/images/male1.png',
+                idType: 'National ID',
+                idNumber: '12345678901',
+                bankName: 'First Bank',
+                accountNumber: '0123456789',
+                status: 'pending'
+            },
+            {
+                id: 'landlord_2',
+                name: 'Rachel Redinma',
+                email: 'florencelep@gmail.com',
+                phone: '+234 812 345 6789',
+                property: 'Golden Heaven Hostel',
+                location: 'Ikeja, Lagos',
+                rent: '450,000',
+                avatar: '/images/female.png',
+                idType: 'International Passport',
+                idNumber: 'A09876543',
+                bankName: 'GTBank',
+                accountNumber: '0234567891',
+                status: 'pending'
+            },
+            {
+                id: 'landlord_3',
+                name: 'Smith Wilson',
+                email: 'wilsonsmith48@gmail.com',
+                phone: '+234 705 678 1234',
+                property: 'Greenfields Court',
+                location: 'Choba, Under G',
+                rent: '300,000',
+                avatar: '/images/male1.png',
+                idType: 'Driver License',
+                idNumber: 'DL-98765432',
+                bankName: 'Zenith Bank',
+                accountNumber: '0345678912',
+                status: 'pending'
+            },
+            {
+                id: 'landlord_4',
+                name: 'Maryann Phillips',
+                email: 'phillipsmaryann33@gmail.com',
+                phone: '+234 809 876 5432',
+                property: 'Oasis Villa',
+                location: 'Popo Ajaso Street, Ojo',
+                rent: '380,000',
+                avatar: '/images/female.png',
+                idType: 'National ID',
+                idNumber: '87654321098',
+                bankName: 'Access Bank',
+                accountNumber: '0456789123',
+                status: 'pending'
+            }
+        ];
+
+        let landlords = JSON.parse(localStorage.getItem('hostelfinder_admin_landlords') || 'null');
+        if (!landlords || landlords.length === 0) {
+            landlords = defaultLandlords;
+            localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(landlords));
         }
 
-        function approveLandlord(id) {
-            const l = landlords.find(x => x.id === id);
-            if (l) { l.status = 'approved'; renderLandlords(); }
-        }
-        function rejectLandlord(id) {
-            const l = landlords.find(x => x.id === id);
-            if (l) { l.status = 'rejected'; renderLandlords(); }
+        let currentFilter = 'all';
+
+        function renderLandlords() {
+            const container = document.getElementById('landlords-list');
+            const searchVal = (document.getElementById('landlord-search')?.value || '').toLowerCase();
+            if (!container) return;
+
+            const filtered = landlords.filter(l => {
+                const matchesFilter = currentFilter === 'all' || l.status === currentFilter;
+                const matchesSearch = l.name.toLowerCase().includes(searchVal) || l.email.toLowerCase().includes(searchVal);
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-2xl p-10 text-center border border-gray-100">
+                        <i class="bx bx-user-x text-4xl text-gray-300 mb-2"></i>
+                        <p class="text-sm font-semibold text-gray-500">No landlords match the selected filter.</p>
+                    </div>
+                `;
+                updateCounts();
+                return;
+            }
+
+            container.innerHTML = filtered.map(l => {
+                const isApproved = l.status === 'approved';
+                const isRejected = l.status === 'rejected';
+
+                let actionHtml = '';
+                if (isApproved) {
+                    actionHtml = `
+                        <div class="flex items-center gap-2">
+                            <span class="bg-green-100 text-green-700 font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1">
+                                <i class="bx bx-check-circle"></i> Approved
+                            </span>
+                            <a href="/pages/manage-inspection.html"
+                                class="bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1">
+                                <span>Inspection Mgt</span> <i class="bx bx-right-arrow-alt"></i>
+                            </a>
+                            <button onclick="updateLandlordStatus('${l.id}', 'rejected')"
+                                class="text-gray-400 hover:text-red-500 text-xs px-2 py-1 transition cursor-pointer" title="Revoke Approval">
+                                Revoke
+                            </button>
+                        </div>
+                    `;
+                } else if (isRejected) {
+                    actionHtml = `
+                        <div class="flex items-center gap-2">
+                            <span class="bg-red-100 text-red-600 font-bold text-xs px-3.5 py-2 rounded-xl">
+                                Rejected
+                            </span>
+                            <button onclick="updateLandlordStatus('${l.id}', 'approved')"
+                                class="bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold text-xs px-4 py-2 rounded-xl transition cursor-pointer">
+                                Re-approve
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    // Pending state
+                    actionHtml = `
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateLandlordStatus('${l.id}', 'approved')"
+                                class="bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold text-xs px-6 py-2.5 rounded-xl shadow-xs transition cursor-pointer active:scale-95">
+                                Approve
+                            </button>
+                            <button onclick="updateLandlordStatus('${l.id}', 'rejected')"
+                                class="border border-red-300 text-red-500 hover:bg-red-50 font-bold text-xs px-6 py-2.5 rounded-xl transition cursor-pointer active:scale-95">
+                                Reject
+                            </button>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-sm transition">
+                        <!-- Left: Avatar + Info -->
+                        <div class="flex items-center gap-3.5">
+                            <img src="${l.avatar}" alt="${l.name}" class="w-12 h-12 rounded-full object-cover border border-gray-100 flex-shrink-0" onerror="this.src='/images/male1.png'">
+                            <div>
+                                <h3 class="text-sm font-bold text-[#2D2340] leading-tight">${l.name}</h3>
+                                <p class="text-xs text-gray-500 mb-2">${l.email}</p>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <button onclick="openInfoModal('${l.id}')"
+                                        class="bg-white border border-[#E2DBF0] text-gray-700 hover:border-[#3157D5] hover:text-[#3157D5] text-[11px] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1">
+                                        View Info
+                                    </button>
+                                    <button onclick="openGovIdModal('${l.id}')"
+                                        class="bg-white border border-[#E2DBF0] text-gray-700 hover:border-[#3157D5] hover:text-[#3157D5] text-[11px] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1">
+                                        View Gov. ID <i class="bx bx-id-card text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Actions -->
+                        <div class="flex-shrink-0">
+                            ${actionHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updateCounts();
         }
 
-        document.querySelectorAll('.landlord-filter').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.landlord-filter').forEach(b => {
-                    b.classList.remove('bg-[#3157D5]', 'text-white');
-                    b.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-600');
+        function updateLandlordStatus(id, newStatus) {
+            const landlord = landlords.find(l => l.id === id);
+            if (!landlord) return;
+
+            landlord.status = newStatus;
+            localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(landlords));
+
+            // Also synchronize global approval status if this is current landlord or first pending approval
+            if (newStatus === 'approved') {
+                localStorage.setItem('hostelfinder_landlord_approval_status', 'approved');
+                showToast(`✓ ${landlord.name} Approved! Landlord can now access the Inspection Management page.`);
+            } else if (newStatus === 'rejected') {
+                showToast(`Landlord ${landlord.name} rejected.`);
+            }
+
+            renderLandlords();
+        }
+
+        function updateCounts() {
+            const pending = landlords.filter(l => l.status === 'pending').length;
+            const approved = landlords.filter(l => l.status === 'approved').length;
+            const rejected = landlords.filter(l => l.status === 'rejected').length;
+
+            document.getElementById('stat-pending').textContent = pending;
+            document.getElementById('stat-approved').textContent = approved;
+            document.getElementById('stat-rejected').textContent = rejected;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('admin-toast');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+
+            msgEl.textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Modals
+        function openInfoModal(id) {
+            const l = landlords.find(item => item.id === id);
+            if (!l) return;
+
+            document.getElementById('modal-info-avatar').src = l.avatar;
+            document.getElementById('modal-info-name').textContent = l.name;
+            document.getElementById('modal-info-email').textContent = l.email;
+            document.getElementById('modal-info-phone').textContent = l.phone || '+234 8140772324';
+            document.getElementById('modal-info-property').textContent = l.property || 'Royal Haven Lodge';
+            document.getElementById('modal-info-location').textContent = l.location || 'Solukira';
+            document.getElementById('modal-info-rent').textContent = `₦ ${l.rent || '500,800'}`;
+            document.getElementById('modal-info-id').textContent = `${l.idType || 'National ID'} • ${l.idNumber || '12345678901'}`;
+            document.getElementById('modal-info-bank').textContent = `${l.bankName || 'First Bank'} • ${l.accountNumber || '0123456789'}`;
+
+            const modal = document.getElementById('info-modal');
+            const card = document.getElementById('info-modal-card');
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            });
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('info-modal');
+            const card = document.getElementById('info-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 200);
+        }
+
+        function openGovIdModal(id) {
+            const l = landlords.find(item => item.id === id);
+            if (!l) return;
+
+            document.getElementById('govid-avatar').src = l.avatar;
+            document.getElementById('govid-name').textContent = l.name;
+            document.getElementById('govid-number').textContent = l.idNumber || '1234 5678 9012';
+
+            const modal = document.getElementById('govid-modal');
+            const card = document.getElementById('govid-modal-card');
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            });
+        }
+
+        function closeGovIdModal() {
+            const modal = document.getElementById('govid-modal');
+            const card = document.getElementById('govid-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 200);
+        }
+
+        // Filter Pills
+        document.querySelectorAll('.filter-pill').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-pill').forEach(b => {
+                    b.className = 'filter-pill bg-white text-gray-600 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-lg hover:border-[#3157D5] cursor-pointer transition';
                 });
-                btn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
-                btn.classList.add('bg-[#3157D5]', 'text-white');
-                lFilter = btn.dataset.lfilter;
+                this.className = 'filter-pill active bg-[#3157D5] text-white text-xs font-semibold px-4 py-2 rounded-lg cursor-pointer transition flex items-center gap-1.5';
+                currentFilter = this.getAttribute('data-filter');
                 renderLandlords();
             });
         });
 
-        document.getElementById('landlord-search').addEventListener('input', renderLandlords);
+        // Search Input
+        document.getElementById('landlord-search')?.addEventListener('input', renderLandlords);
 
-        /* ══════════════════════════════════════
-           REVIEW DATA
-        ══════════════════════════════════════ */
-        const reviews = [
-            {
-                id: 'r1', property: 'Sunrise Lodge', location: 'Adebayo ogunleye · Ikeja, Lagos.',
-                reviewer: 'Chinonso Olufor', time: '4 hrs ago', rating: 3,
-                comment: 'The apartment is clean, self-furnished and in a good location. The Landlord is supercalive and very respectful. No issues so far.', status: 'none'
-            },
-            {
-                id: 'r2', property: 'The Green Homes', location: 'Adebayo ogunleye · Ikeja, Lagos.',
-                reviewer: 'Prosper Ashesi', time: '5 hrs ago', rating: 0,
-                comment: 'Wrong description. The description on the property says self-contain but it was actually a shared apartment.', status: 'flagged'
-            },
-            {
-                id: 'r3', property: 'Oasis Hostel', location: 'Abagbo, Lagos.',
-                reviewer: 'Femi Thomas', time: '1 day ago', rating: 2,
-                comment: 'The environment is peaceful and the landlord is friendly. Just a little far from the main road, but it\'s worth it.', status: 'review'
-            },
-            {
-                id: 'r4', property: 'The Green Homes', location: 'Adebayo ogunleye · Ikeja, Lagos.',
-                reviewer: 'Prosper Ashesi', time: '2 days ago', rating: 0,
-                comment: 'Wrong description. The description on the property says self-contain but it was actually a shared apartment.', status: 'flagged'
-            },
-            {
-                id: 'r5', property: 'Oasis Hostel', location: 'Abagbo, Lagos.',
-                reviewer: 'Femi Thomas', time: '1 day ago', rating: 4,
-                comment: 'The environment is peaceful and the landlord is friendly. Just a little far from the main road, but it\'s worth it.', status: 'review'
-            },
-        ];
-
-        let rFilter = 'all';
-
-        function stars(n) {
-            return Array.from({ length: 5 }, (_, i) =>
-                `<i class="bx bx-star text-sm ${i < n ? 'text-amber-400' : 'text-gray-300'}"></i>`
-            ).join('');
-        }
-
-        function renderReviews() {
-            const container = document.getElementById('review-cards');
-            const search = document.getElementById('review-search').value.toLowerCase();
-            const filtered = reviews.filter(r => {
-                const mf = rFilter === 'all' || r.status === rFilter ||
-                    (rFilter === 'flagged' && r.status === 'flagged') ||
-                    (rFilter === 'pending' && r.status === 'none');
-                const ms = r.property.toLowerCase().includes(search) || r.reviewer.toLowerCase().includes(search);
-                return mf && ms;
-            });
-
-            container.innerHTML = filtered.map(r => {
-                const badge = r.status === 'flagged'
-                    ? `<span class="text-[10px] font-bold bg-red-100 text-red-600 px-3 py-1 rounded-full">Flagged</span>`
-                    : r.status === 'review'
-                    ? `<span class="text-[10px] font-bold bg-[#3157D5] text-white px-3 py-1 rounded-full">Review</span>`
-                    : '';
-
-                return `
-                    <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-xs">
-                        <div class="flex items-start justify-between gap-3 mb-2">
-                            <div>
-                                <p class="text-sm font-bold text-[#2D2340]">${r.property}</p>
-                                <p class="text-xs text-gray-500 mt-0.5">${r.location}</p>
-                            </div>
-                            <div class="flex items-center gap-2 flex-shrink-0">
-                                <div class="flex">${stars(r.rating)}</div>
-                                ${badge}
-                            </div>
-                        </div>
-                        <p class="text-xs text-[#2D2340] font-semibold flex items-center gap-1">
-                            ${r.reviewer} <span class="text-gray-400 font-normal">· ${r.time}</span>
-                        </p>
-                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">${r.comment}</p>
-                    </div>
-                `;
-            }).join('') || '<p class="text-sm text-gray-400 text-center py-8">No reviews found.</p>';
-        }
-
-        document.querySelectorAll('.review-filter').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.review-filter').forEach(b => {
-                    b.classList.remove('bg-[#3157D5]', 'text-white');
-                    b.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-600');
-                });
-                btn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
-                btn.classList.add('bg-[#3157D5]', 'text-white');
-                rFilter = btn.dataset.rfilter;
-                renderReviews();
-            });
-        });
-
-        document.getElementById('review-search').addEventListener('input', renderReviews);
-
-        /* Init */
-        document.addEventListener('DOMContentLoaded', () => {
-            renderLandlords();
-            renderReviews();
-        });
+        document.addEventListener('DOMContentLoaded', renderLandlords);
     </script>
 </body>
 </html>
