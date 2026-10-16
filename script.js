@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     document.querySelectorAll("[data-auth-list-property]").forEach((element) => {
         element.href = isLoggedIn
-            ? "/pages/landlord-details.html"
-            : "/pages/login.html";
+            ;"/pages/login.html";
     });
     document.querySelectorAll("[data-auth-logout]").forEach((element) => {
         element.hidden = !isLoggedIn;
@@ -123,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const redirectByRole = {
                     student: "/pages/browse.html",
-                    landlord: "/pages/landlord-details.html",
                     provider: "/pages/listProperty.html",
                     admin: "/pages/dashboard.html",
                 };
