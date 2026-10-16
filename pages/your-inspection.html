@@ -208,6 +208,7 @@
                 return;
             }
             if (!booking) return;
+            window.currentInspectionPropertyId = booking.propertyId;
 
             document.getElementById('inspection-property-title').textContent =
                 booking.propertyTitle || 'Property';
@@ -245,7 +246,10 @@
             if (toggle.checked) {
                 mainBtn.textContent = 'Mark As Complete';
                 mainBtn.onclick = function() {
-                    window.location.href = '/pages/inspection-completed.html';
+                    const propertyId = window.currentInspectionPropertyId;
+                    window.location.href = propertyId
+                        ? `/pages/inspection-completed.html?propertyId=${encodeURIComponent(propertyId)}`
+                        : '/pages/inspection-completed.html';
                 };
             } else {
                 mainBtn.textContent = 'Confirm Inspection';

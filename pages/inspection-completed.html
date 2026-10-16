@@ -103,17 +103,19 @@
                     <!-- Title & Subtitle -->
                     <div class="text-center mb-5">
                         <h2 class="text-xl font-extrabold text-gray-900 mb-1">Inspection Completed!</h2>
-                        <p class="text-xs text-gray-500">Your inspection for Greenfields court is done.</p>
+                        <p id="completed-property-summary" class="text-xs text-gray-500">Your inspection is complete.</p>
                     </div>
 
-                    <div class="  rounded-2xl overflow-hidden max-w mb-5 mx-auto  ">
-                        <img src="\images\image 21.png" alt="Hostel side view" class="w-full h-52 sm:h-64 md:h-72 lg:h-80 object-cover">
+                    <div class="rounded-2xl mb-5 mx-auto max-w overflow-hidden">
+                        <img id="completed-property-photo"
+                            src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                            alt="Property" class="w-full h-52 sm:h-64 md:h-72 lg:h-80 object-cover">
                     </div>
 
                     <!-- Status pill & toggle switch row -->
                     <div class="mb-5 flex flex-wrap items-center justify-between gap-2">
-                        <span class="min-w-0 flex-1 break-words px-2 py-1.5 text-[11px] font-semibold tracking-tight text-[#042297] sm:px-4">
-                            Completed • 30 Sept, 2026 • 12:45 PM
+                        <span id="completed-appointment-time" class="min-w-0 flex-1 break-words px-2 py-1.5 text-[11px] font-semibold tracking-tight text-[#042297] sm:px-4">
+                            Inspection appointment details unavailable
                         </span>
                         <!-- Green toggle switch -->
                         <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
@@ -122,6 +124,18 @@
                                 class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-4 after:shadow-sm">
                             </div>
                         </label>
+                    </div>
+
+                    <div class="mb-5 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-xl border border-[#e8f0ff] px-4 py-3">
+                            <p class="text-[10px] text-[#3157D5]">Property</p>
+                            <p id="completed-property-type" class="text-sm font-semibold text-gray-700">Property type unavailable</p>
+                        </div>
+                        <div class="rounded-xl border border-[#e8f0ff] px-4 py-3">
+                            <p class="text-[10px] text-[#3157D5]">Location</p>
+                            <p id="completed-property-address" class="break-words text-sm font-semibold text-gray-700">Address unavailable</p>
+                            <p id="completed-property-proximity" class="mt-0.5 text-xs text-[#3157D5]"></p>
+                        </div>
                     </div>
 
                     <!-- Action buttons -->
@@ -199,6 +213,48 @@
     <script src="../script.js"></script>
     <script>
         let selectedRating = 4;
+        let completedInspection = null;
+
+        function renderCompletedInspection() {
+            const params = new URLSearchParams(window.location.search);
+            const propertyId = params.get('propertyId');
+            const userId = localStorage.getItem('hostelFinderUserId') || 'current-user';
+            let storedBooking;
+            try {
+                storedBooking = propertyId
+                    ? localStorage.getItem(
+                        `hostelFinderInspectionDetails:${userId}:${propertyId}`
+                    )
+                    : sessionStorage.getItem('hostelFinderLastInspectionBooking');
+                completedInspection = JSON.parse(storedBooking || 'null');
+            } catch (error) {
+                console.error('Unable to read completed inspection details:', error);
+                return;
+            }
+            if (!completedInspection) return;
+
+            document.getElementById('completed-property-summary').textContent =
+                `Your inspection for ${completedInspection.propertyTitle || 'this property'} is complete.`;
+            document.getElementById('completed-appointment-time').textContent =
+                `Appointment • ${completedInspection.dateTime || 'Time unavailable'}`;
+            document.getElementById('completed-property-type').textContent =
+                completedInspection.propertyType || 'Property type unavailable';
+            document.getElementById('completed-property-address').textContent =
+                completedInspection.address || 'Address unavailable';
+            document.getElementById('completed-property-proximity').textContent =
+                completedInspection.proximity || '';
+
+            const photo = document.getElementById('completed-property-photo');
+            if (completedInspection.photo) {
+                photo.src = completedInspection.photo;
+                photo.alt = completedInspection.propertyTitle || 'Property';
+                photo.onerror = () => {
+                    photo.src = 'https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png';
+                };
+            }
+        }
+
+        renderCompletedInspection();
 
         // Star rating interaction
         const stars = document.querySelectorAll('.star-icon');
@@ -233,7 +289,7 @@
             const newReview = {
                 id: 'rev_' + Date.now(),
                 studentName: 'Student User',
-                propertyTitle: 'Greenfields Court',
+                propertyTitle: completedInspection?.propertyTitle || 'Property',
                 rating: selectedRating,
                 comment: reviewComment,
                 date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -280,7 +336,7 @@
                 existingReports.unshift({
                     id: 'rep_' + Date.now(),
                     type: 'Property Issue',
-                    details: 'Greenfields Court: ' + reason,
+                    details: `${completedInspection?.propertyTitle || 'Property'}: ${reason}`,
                     reportedBy: 'Student User',
                     date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
                     status: 'Pending'
