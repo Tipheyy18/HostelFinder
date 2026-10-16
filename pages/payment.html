@@ -323,6 +323,7 @@
                 document.getElementById("confirmed-transaction-id").textContent = confirmedPayment.transactionId;
                 document.getElementById("confirmed-amount").textContent = nairaFormatter.format(confirmedPayment.amountNaira);
                 showPaymentState("success");
+                window.showToast("Payment confirmed successfully.", "success");
             } catch (error) {
                 console.error("Payment verification failed:", error);
                 paymentErrorMessage.textContent = error instanceof Error
@@ -331,6 +332,7 @@
                 paymentSubmissionInProgress = false;
                 payNowButton.disabled = false;
                 showPaymentState("failed");
+                window.showToast(paymentErrorMessage.textContent, "error");
             }
         });
 
@@ -388,6 +390,7 @@
             downloadLink.click();
             downloadLink.remove();
             window.setTimeout(() => URL.revokeObjectURL(receiptUrl), 1000);
+            window.showToast("Receipt downloaded successfully.", "success");
         });
     </script>
 </body>

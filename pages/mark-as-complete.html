@@ -208,7 +208,7 @@
             });
         });
 
-        function submitReviewToAdmin() {
+        function submitReviewToAdmin(showNotification = true) {
             const textarea = document.getElementById('review-textarea');
             const commentText = textarea ? textarea.value.trim() : '';
             const msgEl = document.getElementById('review-feedback-msg');
@@ -233,6 +233,9 @@
                 msgEl.textContent = '✓ Review sent to Admin dashboard!';
                 msgEl.classList.remove('hidden');
             }
+            if (showNotification) {
+                window.showToast('Review sent to Admin dashboard!', 'success');
+            }
         }
 
         document.getElementById('send-review-btn')?.addEventListener('click', (e) => {
@@ -241,14 +244,18 @@
         });
 
         document.getElementById('proceed-btn')?.addEventListener('click', () => {
-            submitReviewToAdmin();
-            alert('Property accepted! Review sent to Admin.');
-            window.location.href = '/pages/browse.html';
+            submitReviewToAdmin(false);
+            window.showToast('Property accepted! Review sent to Admin.', 'success');
+            window.setTimeout(() => {
+                window.location.href = '/pages/browse.html';
+            }, 800);
         });
 
         document.getElementById('reject-btn')?.addEventListener('click', () => {
-            alert('Property rejected. Returning to browse.');
-            window.location.href = '/pages/browse.html';
+            window.showToast('Property rejected. Returning to browse.', 'info');
+            window.setTimeout(() => {
+                window.location.href = '/pages/browse.html';
+            }, 800);
         });
 
         document.getElementById('report-property-btn')?.addEventListener('click', () => {
@@ -264,7 +271,7 @@
                     status: 'Pending'
                 });
                 localStorage.setItem('hostelfinder_reports', JSON.stringify(existingReports));
-                alert('Report submitted to Admin moderation queue.');
+                window.showToast('Report submitted to Admin moderation queue.', 'success');
             }
         });
     </script>
