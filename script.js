@@ -1,4 +1,5 @@
 const base_url = "https://hostelfinderbe.onrender.com";
+window.hostelFinderApiBaseUrl = base_url;
 const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
@@ -51,8 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             element.hidden = isLoggedIn;
         });
     document.querySelectorAll("[data-auth-list-property]").forEach((element) => {
-        element.href = isLoggedIn
-            ;"/pages/login.html";
+        element.href = "/pages/login.html";
     });
     document.querySelectorAll("[data-auth-logout]").forEach((element) => {
         element.hidden = !isLoggedIn;

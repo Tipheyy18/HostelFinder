@@ -91,19 +91,19 @@
 
                 <div>
                     <label for="fullName" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Full Name*</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Chinedu Okafor" value="Chinedu Okafor" required
+                    <input type="text" id="fullName" name="fullName" placeholder="Chinedu Okafor" required
                         class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
                 <div>
                     <label for="email" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Email Address*</label>
-                    <input type="email" id="email" name="email" placeholder="name@gmail.com" value="name@gmail.com" required
+                    <input type="email" id="email" name="email" placeholder="name@gmail.com" required
                         class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
                 <div>
                     <label for="phone" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">Phone Number*</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+234 8140772324" value="+234 8140772324" required
+                    <input type="tel" id="phone" name="phone" placeholder="+234 8140772324" required
                         class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
@@ -113,10 +113,10 @@
                         <select id="idType" name="idType" required
                             class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition appearance-none cursor-pointer">
                             <option value="" disabled selected>e.g. National ID</option>
-                            <option value="NIN">National Identity Card (NIN)</option>
-                            <option value="Passport">International Passport</option>
-                            <option value="DriversLicense">Driver's License</option>
-                            <option value="VotersCard">Voter's Card</option>
+                            <option value="National ID">National Identity Card (NIN)</option>
+                            <option value="International Passport">International Passport</option>
+                            <option value="Driver's License">Driver's License</option>
+                            <option value="Voter's Card">Voter's Card</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#3157D5]">
                             <i class="bx bx-chevron-down text-xl"></i>
@@ -126,7 +126,7 @@
 
                 <div>
                     <label for="idNumber" class="block text-xs sm:text-sm font-semibold text-[#2D2340] mb-1.5">ID Number*</label>
-                    <input type="text" id="idNumber" name="idNumber" placeholder="12345678901" value="12345678901" required
+                    <input type="text" id="idNumber" name="idNumber" placeholder="12345678901" required
                         class="w-full bg-white border border-[#E2DBF0] rounded-xl px-4 py-3 text-sm text-[#2D2340] placeholder-[#A098AE] outline-none focus:border-[#3157D5] focus:ring-2 focus:ring-[#3157D5]/20 transition">
                 </div>
 
@@ -167,6 +167,7 @@
 
                 <!-- Next button -->
                 <div class="pt-2">
+                    <p id="landlord-form-message" class="mb-3 text-sm" role="status" aria-live="polite"></p>
                     <button type="submit"
                         class="w-full bg-[#3157D5] hover:bg-[#2646b5] text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition cursor-pointer text-sm sm:text-base active:scale-[0.99]">
                         Next
@@ -179,39 +180,6 @@
     </main>
 
     <script src="../script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Government ID dropzone
-            const dropGovid = document.getElementById('drop-govid');
-            const govidFile = document.getElementById('govid-file');
-            const govidLabel = document.getElementById('govid-label');
-            if (dropGovid) {
-                dropGovid.addEventListener('click', () => govidFile.click());
-                govidFile.addEventListener('change', () => {
-                    if (govidFile.files && govidFile.files[0])
-                        govidLabel.innerHTML = `<span class="font-semibold text-green-700"><i class="bx bx-check-circle align-middle mr-1 text-sm"></i>${govidFile.files[0].name}</span>`;
-                });
-            }
-
-          
-            const form = document.getElementById('landlord-form');
-            if (form) {
-                form.addEventListener('submit', e => {
-                    e.preventDefault();
-                    const landlordData = {
-                        fullName: document.getElementById('fullName')?.value.trim() || 'Chinedu Okafor',
-                        email: document.getElementById('email')?.value.trim() || 'name@gmail.com',
-                        phone: document.getElementById('phone')?.value.trim() || '+234 8140772324',
-                        idType: document.getElementById('idType')?.value || 'National ID',
-                        idNumber: document.getElementById('idNumber')?.value.trim() || '12345678901',
-                        accountNumber: document.getElementById('accountNumber')?.value.trim() || '0123456789',
-                        bankName: document.getElementById('bankName')?.value.trim() || 'First Bank',
-                    };
-                    localStorage.setItem('hostelfinder_landlord_details', JSON.stringify(landlordData));
-                    window.location.href = '/pages/property-information.html';
-                });
-            }
-        });
-    </script>
+    <script src="../js/landlordFlow.js" defer></script>
 </body>
 </html>

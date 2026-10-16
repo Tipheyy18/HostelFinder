@@ -333,6 +333,7 @@
                         Submit for Verification
                     </button>
                 </div>
+                <p id="availability-message" class="mt-3 text-center text-sm" role="status" aria-live="polite"></p>
 
             </form>
         </div>
@@ -348,7 +349,7 @@
             <div>
                 <h3 class="text-xl sm:text-2xl font-bold text-[#2D2340]">Submitted for Verification!</h3>
                 <p class="text-xs sm:text-sm text-[#7D7589] mt-1.5 leading-relaxed">
-                    Your landlord information, property listing, and inspection schedule have been submitted for admin approval.
+                    Your property listing and inspection schedule have been submitted for admin review.
                 </p>
             </div>
 
@@ -356,7 +357,7 @@
             <div class="bg-[#F8F5FE] border border-[#E2DBF0] rounded-2xl p-4 text-left space-y-2.5 text-xs">
                 <div class="flex items-center justify-between">
                     <span class="flex items-center gap-2 font-medium text-gray-700">
-                        <i class="bx bx-check-circle text-green-600 text-base"></i> Landlord Details
+                        <i class="bx bx-check-circle text-green-600 text-base"></i> Identity Document
                     </span>
                     <span class="text-green-600 font-bold text-[11px] bg-green-50 px-2 py-0.5 rounded-md">Completed</span>
                 </div>
@@ -397,89 +398,6 @@
             
 
     <script src="../script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            document.querySelectorAll('.day-card').forEach(card => {
-                const toggle = card.querySelector('.day-toggle');
-                const label  = card.querySelector('.day-status-label');
-                const fields = card.querySelector('.time-fields');
-                if (!toggle) return;
-
-                function applyState() {
-                    const on = toggle.checked;
-                    label.textContent = on ? 'Available' : 'Unavailable';
-                    label.classList.toggle('text-[#3157D5]', on);
-                    label.classList.toggle('text-[#A098AE]', !on);
-                    card.classList.toggle('opacity-60', !on);
-                    if (fields) fields.classList.toggle('hidden', !on);
-                    card.querySelectorAll('input[type="time"]').forEach(i => i.disabled = !on);
-                }
-
-                toggle.addEventListener('change', applyState);
-                applyState();
-            });
-
-            const form  = document.getElementById('availability-form');
-            const modal = document.getElementById('verification-modal');
-            const modalCard = document.getElementById('modal-card');
-
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-
-                // 1. Mark current landlord status as pending approval
-                localStorage.setItem('hostelfinder_landlord_approval_status', 'pending');
-
-                // 2. Retrieve landlord and property details if stored
-                const landlordData = JSON.parse(localStorage.getItem('hostelfinder_landlord_details') || '{}');
-                const propertyData = JSON.parse(localStorage.getItem('hostelfinder_property_details') || '{}');
-
-                const landlordName = landlordData.fullName || 'Chinedu Okafor';
-                const landlordEmail = landlordData.email || 'name@gmail.com';
-                const landlordPhone = landlordData.phone || '+234 8140772324';
-                const propertyName = propertyData.name || 'Royal Haven Lodge';
-                const location = propertyData.location || 'Solukira';
-                const rent = propertyData.rent || '500,800';
-
-                // 3. Register or update this landlord in the admin list
-                let adminLandlords = JSON.parse(localStorage.getItem('hostelfinder_admin_landlords') || 'null');
-                const newLandlord = {
-                    id: 'landlord_current',
-                    name: landlordName,
-                    email: landlordEmail,
-                    phone: landlordPhone,
-                    property: propertyName,
-                    location: location,
-                    rent: rent,
-                    avatar: '/images/male1.png',
-                    status: 'pending',
-                    idType: landlordData.idType || 'National ID',
-                    idNumber: landlordData.idNumber || '12345678901',
-                    accountNumber: landlordData.accountNumber || '0123456789',
-                    bankName: landlordData.bankName || 'First Bank',
-                    submittedAt: new Date().toLocaleDateString()
-                };
-
-                if (Array.isArray(adminLandlords)) {
-                    const idx = adminLandlords.findIndex(l => l.id === 'landlord_current' || l.email === landlordEmail);
-                    if (idx >= 0) {
-                        adminLandlords[idx] = newLandlord;
-                    } else {
-                        adminLandlords.unshift(newLandlord);
-                    }
-                    localStorage.setItem('hostelfinder_admin_landlords', JSON.stringify(adminLandlords));
-                }
-
-                // 4. Show the submission confirmation modal
-                modal.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    modal.classList.remove('opacity-0');
-                    modalCard.classList.remove('scale-95');
-                    modalCard.classList.add('scale-100');
-                });
-            });
-
-        });
-    </script>
+    <script src="../js/landlordFlow.js" defer></script>
 </body>
 </html>
