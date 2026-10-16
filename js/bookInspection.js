@@ -643,7 +643,7 @@
                 ratingText.textContent =
                     rating === null
                         ? ""
-                        : `${rating.toFixed(1)}${reviewCount === null ? "" : ` · ${reviewCount} Reviews`}`;
+                        : `${rating.toFixed(1)}${reviewCount === null ? "" : ` · ${reviewCount} reviews`}`;
             }
         }
 

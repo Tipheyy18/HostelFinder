@@ -6,72 +6,68 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="shortcut icon" href="/images/fav-logo.png" sizes="32x32" type="image/x-icon">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <title>Admin dashboard | HostelFinder</title>
-    <style>
-        .admin-nav-active { color: #3157D5; text-decoration: underline; font-weight: 700; }
-    </style>
+    <title>Inspection Bookings | HostelFinder Admin</title>
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <!-- 
-         ADMIN HEADER
-   -->
-    <header class="w-full bg-white shadow-[0_2px_8px_rgba(49,87,213,0.10)] sticky top-0 z-30">
-        <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 gap-4">
-
-            <a href="/pages/dashboard.html">
-                <img class="w-40" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
 
-            <!-- Desktop Nav -->
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/pages/dashboard.html" class="text-sm font-semibold text-[#3157D5] underline">dashboard</a>
-                <a href="/pages/Approval.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Properties</a>
-                <a href="/pages/inspections.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Inspections</a>
-                <a href="/pages/Admin-login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Settings</a>
+                <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline cursor-pointer">Dashboard</a>
+                <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Properties</a>
+                <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
+                <a href="/pages/Review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Reviews</a>
             </nav>
 
-            <!-- Mobile hamburger -->
-            <button id="menu-btn" type="button"
-                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
-                aria-label="Open menu">
-                <i id="menu-icon" class="bx bx-menu"></i>
-            </button>
-        </div>
+            <a href="/pages/login.html">
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer"> Logout</button>
+            </a>
 
-        <!-- Mobile overlay & drawer -->
-        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
-        <aside id="mobile-menu"
-            class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden">
-            <div>
-                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
-                    <img class="w-32" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
-                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-400 hover:text-gray-700">
-                        <i class="bx bx-x"></i>
-                    </button>
-                </div>
-                <nav class="mt-6 flex flex-col gap-5 text-sm">
-                    <a href="/pages/dashboard.html" class="font-semibold text-[#3157D5] underline">dashboard</a>
-                    <a href="/pages/Approval.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
-                    <a href="/pages/Inspections.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
-                    <a href="/pages/Admin-login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Settings</a>
-                </nav>
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
             </div>
-            <a href="/pages/Admin-login.html"
-                class="block text-center rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5]">Logout</a>
-        </aside>
-    </header>
 
-    <!--
-         MAIN
-   -->
-    <main class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
 
-        <!-- Greeting row -->
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/pages/dashboard.html" class="text-base font-semibold text-[#3157D5] underline">Dashboard</a>
+                        <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
+                        <Inspections href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]" >Inspections</a>
+                        <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Reviews</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/login.html" class="w-full">
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+                </a>
+            </aside>
+        </header>
+    </div>
+   
+        <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
+        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-10 shadow-sm">
+
+       
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
             <div>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-[#2D2340]">Good Morning, Admin</h1>
@@ -79,12 +75,11 @@
             </div>
             <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 bg-white px-3 py-2 rounded-xl border border-gray-200 shadow-xs">
                 <i class="bx bx-calendar-event text-[#3157D5] text-base"></i>
-                Sat, 3 Oct, 2026
+                Fri, 16 Oct, 2026
                 <i class="bx bx-globe text-[#3157D5] text-base ml-1"></i>
             </div>
-        </div>
-
-        <!-- Stat cards — 6 across -->
+             </div>
+        
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
                 <p class="text-[11px] font-semibold text-gray-500 leading-tight">Verified<br>Landlords</p>
@@ -101,7 +96,7 @@
                 </p>
             </div>
             <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
-                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Total<br>Inspections</p>
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Total<br>inspections</p>
                 <h3 class="text-2xl font-extrabold text-gray-900 mt-1">86</h3>
                 <p class="text-[11px] font-semibold text-green-600 mt-1.5 flex items-center gap-0.5">
                     <i class="bx bx-up-arrow-alt text-sm"></i> 22%
@@ -113,7 +108,7 @@
                 <p class="text-[11px] font-semibold text-orange-500 mt-1.5">4% from last month</p>
             </div>
             <div class="bg-white rounded-2xl p-4 shadow-xs border border-gray-100">
-                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Pending<br>Inspections</p>
+                <p class="text-[11px] font-semibold text-gray-500 leading-tight">Pending<br>inspections</p>
                 <h3 class="text-2xl font-extrabold text-gray-900 mt-1">5</h3>
                 <p class="text-[11px] font-semibold text-red-500 mt-1.5">3 due this week</p>
             </div>
@@ -133,15 +128,15 @@
             <div>
                 <h2 class="text-base font-bold text-gray-900 mb-4">Quick Actions</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <a href="/pages/Approval.html"
+                    <a href="/pages/approval.html"
                         class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
                         <div class="flex items-center gap-3">
                             <i class="bx bx-check-shield text-[#3157D5] text-xl"></i>
-                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Landlord Approvals</span>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">Landlord approvals</span>
                         </div>
                         <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
                     </a>
-                    <a href="/pages/Approval.html"
+                    <a href="/pages/approval.html"
                         class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
                         <div class="flex items-center gap-3">
                             <i class="bx bx-building-house text-[#3157D5] text-xl"></i>
@@ -153,7 +148,7 @@
                         class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
                         <div class="flex items-center gap-3">
                             <i class="bx bx-show text-[#3157D5] text-xl"></i>
-                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">View Reviews</span>
+                            <span class="text-sm font-semibold text-gray-800 group-hover:text-[#3157D5] transition">View reviews</span>
                         </div>
                         <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
                     </a>
@@ -165,7 +160,7 @@
                         </div>
                         <i class="bx bx-chevron-right text-gray-400 group-hover:text-[#3157D5] text-xl transition"></i>
                     </a>
-                    <a href="/pages/Inspections.html"
+                    <a href="/pages/inspections.html"
                         class="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-xs flex items-center justify-between hover:border-[#3157D5] group transition cursor-pointer">
                         <div class="flex items-center gap-3">
                             <i class="bx bx-show text-[#3157D5] text-xl"></i>

@@ -143,7 +143,7 @@
                     <div class="my-2 flex items-center gap-2">
                         <div class="flex shrink-0 items-center gap-2">
                             <i class="bx bx-star text-[18px]"></i>
-                            <p class="text-sm text-[#1F2937]">4.6 78 Reviews</p>
+                            <p class="text-sm text-[#1F2937]">4.6 78 reviews</p>
                         </div>
                         <div class="flex  items-center gap-2">
                             <i class="bx bx-bed shrink-0 text-[18px]"></i>

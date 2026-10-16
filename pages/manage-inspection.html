@@ -22,17 +22,17 @@
             </a>
 
             <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Home</a>
-                <a href="/pages/listProperty.html" class="text-sm font-semibold text-[#3157D5] underline">List Your Property</a>
+                <a href="/" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Home</a>
+                <a href="/pages/listProperty.html" class="text-base font-semibold text-[#3157D5] underline">List Your Property</a>
             </nav>
 
             <div class="hidden xl:flex items-center gap-4">
-                <a data-auth-login href="/pages/login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] transition">Log In</a>
+                <a data-auth-login href="/pages/login.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] transition">Log In</a>
                 <a data-auth-signup href="/pages/signup.html">
-                    <button class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">Create Account</button>
+                    <button class="capitalize bg-[#3157D5] text-white text-base px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">Create Account</button>
                 </a>
                 <button data-auth-logout type="button" hidden
-                    class="capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">
+                    class="capitalize bg-[#3157D5] text-white text-base px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer transition">
                     Logout
                 </button>
             </div>
@@ -64,9 +64,9 @@
             </div>
             <div class="flex flex-col gap-3">
                 <a data-auth-signup href="/pages/signup.html"
-                    class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-sm font-bold text-white hover:bg-[#2646b5]">Create Account</a>
+                    class="rounded-md bg-[#3157D5] px-4 py-3 text-center text-base font-bold text-white hover:bg-[#2646b5]">Create Account</a>
                 <button data-auth-logout type="button" hidden
-                    class="w-full rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5] cursor-pointer">
+                    class="w-full rounded-md bg-[#3157D5] px-4 py-3 text-base font-bold text-white hover:bg-[#2646b5] cursor-pointer">
                     Logout
                 </button>
             </div>
@@ -108,7 +108,7 @@
                     <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider mb-2">
                         <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> Verification In Review
                     </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-[#2D2340] mt-1">Awaiting Admin Approval</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-[#2D2340] mt-1">Awaiting Admin approval</h2>
                     <p class="text-xs sm:text-sm text-[#7D7589] mt-2 max-w-lg mx-auto leading-relaxed">
                         Your landlord details, property listing, and inspection schedule are under review.
                         The <strong>Inspection Management</strong> dashboard will unlock automatically as soon as an administrator approves your verification.
@@ -121,7 +121,7 @@
                         <span class="text-xs font-bold text-[#3157D5] uppercase tracking-wider flex items-center gap-1.5">
                             <i class="bx bx-file text-sm"></i> Submitted Property & Schedule
                         </span>
-                        <span class="text-[11px] bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-md">Pending Approval</span>
+                        <span class="text-[11px] bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-md">Pending approval</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -387,7 +387,7 @@
                     if (topIndicator) {
                         topIndicator.innerHTML = `
                             <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-xl">
-                                <i class="bx bx-time-five animate-pulse"></i> Approval Pending
+                                <i class="bx bx-time-five animate-pulse"></i> approval Pending
                             </span>
                         `;
                     }

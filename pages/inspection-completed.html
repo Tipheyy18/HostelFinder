@@ -240,9 +240,9 @@
                 status: 'Approved'
             };
 
-            const existingReviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
-            existingReviews.unshift(newReview);
-            localStorage.setItem('hostelfinder_reviews', JSON.stringify(existingReviews));
+            const existingreviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
+            existingreviews.unshift(newReview);
+            localStorage.setItem('hostelfinder_reviews', JSON.stringify(existingreviews));
 
             if (msgEl) {
                 msgEl.textContent = '✓ Review sent to Admin dashboard!';

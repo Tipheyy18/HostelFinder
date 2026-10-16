@@ -9,57 +9,65 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <title>Reviews, Reports & Moderation | HostelFinder Admin</title>
+    <title>Reviews  ,Reports  & Moderations</title>
 </head>
 <body class="bg-[#F9FAFB] font-[Manrope] min-h-screen">
 
-    <!--
-         ADMIN HEADER
-   -->
-    <header class="w-full bg-white shadow-[0_2px_8px_rgba(49,87,213,0.10)] sticky top-0 z-30">
-        <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 gap-4">
-            <a href="/pages/dashboard.html">
-                <img class="w-40" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
+    <div class="container w-full md:px-10 px-4 mx-auto">
+        <header
+            class="w-full flex items-center justify-between p-4 bg-[#F9FAFB] shadow-[0_4px_4px_rgba(37,99,235,0.15)]">
+            <a href="/">
+                <img class="w-48" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
             </a>
-            <nav class="xl:flex gap-8 hidden items-center">
-                <a href="/pages/dashboard.html" class="text-sm font-semibold text-[#3157D5] underline">dashboard</a>
-                <a href="/pages/Approval.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Properties</a>
-                <a href="/pages/Inspections.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Inspections</a>
-                <a href="/pages/Admin-login.html" class="text-sm font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline transition">Settings</a>
-            </nav>
-            <button id="menu-btn" type="button"
-                class="rounded-md border border-[#3157D5] px-2 py-1 text-2xl text-[#3157D5] xl:hidden"
-                aria-label="Open menu">
-                <i id="menu-icon" class="bx bx-menu"></i>
-            </button>
-        </div>
-        <div id="mobile-overlay" class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 xl:hidden"></div>
-        <aside id="mobile-menu"
-            class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col justify-between bg-white p-6 shadow-xl transition-transform duration-300 xl:hidden">
-            <div>
-                <div class="flex items-center justify-between border-b border-gray-100 pb-5">
-                    <img class="w-32" src="/images/hostel-finder-logo.png" alt="HostelFinder logo">
-                    <button id="close-menu-btn" type="button" class="text-3xl text-gray-400 hover:text-gray-700">
-                        <i class="bx bx-x"></i>
-                    </button>
-                </div>
-                <nav class="mt-6 flex flex-col gap-5 text-sm">
-                    <a href="/pages/dashboard.html" class="font-semibold text-[#3157D5] underline">dashboard</a>
-                    <a href="/pages/Approval.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
-                    <a href="/pages/Inspections.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Inspections</a>
-                    <a href="/pages/Admin-login.html" class="font-medium text-[#2D2340] hover:text-[#3157D5]">Settings</a>
-                </nav>
-            </div>
-            <a href="/pages/Admin-login.html"
-                class="block text-center rounded-md bg-[#3157D5] px-4 py-3 text-sm font-bold text-white hover:bg-[#2646b5]">Logout</a>
-        </aside>
-    </header>
 
-    <!--
-         MAIN
-   -->
-    <main class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-8 pb-16">
-        <!-- Title Header -->
+            <nav class="xl:flex gap-8 hidden items-center">
+                <a href="/pages/dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Dashboard</a>
+                <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Properties</a>
+                <a href="/pages/inspections.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5] hover:underline cursor-pointer">Inspections</a>
+                <a href="/pages/Review.html"class="text-base font-semibold text-[#3157D5] underline cursor-pointer" >Reviews</a>
+            </nav>
+
+            <a href="/pages/login.html">
+                <button class="xl:block hidden capitalize bg-[#3157D5] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646b5] cursor-pointer"> Logout</button>
+            </a>
+
+            <div id="menu-btn" class="block xl:hidden cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+                <i id="menu-icon" class="bx bx-menu text-[#3157D5] text-3xl border border-[#3157D5] rounded-md"></i>
+            </div>
+
+            <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0 xl:hidden"></div>
+
+            <aside id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+                        <a href="/">
+                            <img class="w-36" src="/images/hostel-finder-logo.png" alt="Hostel finder logo">
+                        </a>
+                        <button id="close-menu-btn" class="text-2xl text-gray-500 hover:text-gray-800 cursor-pointer">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+
+                    <nav class="flex flex-col gap-4 mt-6">
+                        <a href="/pages/dashboard.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Dashboard</a>
+                        <a href="/pages/approval.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Properties</a>
+                        <a href="/pages/inspections.html" class="text-base font-semibold text-[#3157D5] underline">Inspections</a>
+                        <a href="/pages/review.html" class="text-base font-medium text-[#2D2340] hover:text-[#3157D5]">Reviews</a>
+                    </nav>
+                </div>
+
+                <a href="/pages/login.html" class="w-full">
+                    <button class="w-full capitalize bg-[#3157D5] text-white text-sm py-2.5 rounded-md hover:bg-[#2646b5] cursor-pointer">Logout</button>
+                </a>
+            </aside>
+        </header>
+    </div>
+
+    
+   
+            <main class="container mx-auto px-4 md:px-10 pb-16 pt-6">
+        <div class="bg-[#F8F5FE] rounded-3xl p-4 sm:p-8 md:p-10 shadow-sm">
+     
         <div class="flex items-center gap-3 mb-6">
             <a href="/pages/dashboard.html" class="text-[#2D2340] hover:text-[#3157D5] transition">
                 <i class="bx bx-arrow-back text-2xl"></i>
@@ -70,14 +78,14 @@
             </div>
         </div>
 
-            <!-- Tab Pills (Reviews, Reports, Moderation) -->
+       
             <div class="flex items-center gap-2 mb-6">
-                <button id="tab-reviews-btn" class="bg-[#3157D5] text-white text-xs font-semibold px-5 py-2 rounded-full cursor-pointer transition">Reviews</button>
+                <button id="tab-reviews-btn" class="bg-[#3157D5] text-white text-xs font-semibold px-5 py-2 rounded-full cursor-pointer transition">reviews</button>
                 <button id="tab-reports-btn" class="bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-5 py-2 rounded-full border border-gray-200 cursor-pointer transition">Reports</button>
                 <button id="tab-moderation-btn" class="bg-white text-gray-600 hover:text-[#3157D5]  text-xs font-semibold px-5 py-2 rounded-full border border-gray-200 cursor-pointer transition">Moderation</button>
             </div>
 
-            <!-- Metric Cards Row -->
+         
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-2xl p-5 shadow-xs border border-gray-100 flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-[#E8EDFC] text-[#3157D5] flex items-center justify-center text-xl font-bold">
@@ -124,10 +132,10 @@
                 </div>
             </div>
 
-            <!-- Reviews Table Section -->
+            <!-- reviews Table Section -->
             <div class="bg-white rounded-2xl p-6 shadow-xs border border-gray-100">
                 <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-base font-bold text-gray-900">Submitted Student Reviews</h2>
+                    <h2 class="text-base font-bold text-gray-900">Submitted Student reviews</h2>
                     <span class="text-xs text-gray-500 bg-[#E8EDFC] px-3 py-1 rounded-full font-semibold">Live Feed</span>
                 </div>
 
@@ -155,7 +163,7 @@
 
     <script src="../script.js"></script>
     <script>
-        const defaultReviews = [
+        const defaultreviews = [
             {
                 id: 'rev_1',
                 studentName: 'Chidi Okafor',
@@ -194,19 +202,19 @@
             }
         ];
 
-        function loadReviews() {
+        function loadreviews() {
             const tableBody = document.getElementById('reviews-table-body');
             if (!tableBody) return;
 
-            let storedReviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
-            if (storedReviews.length === 0) {
-                storedReviews = defaultReviews;
-                localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedReviews));
+            let storedreviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
+            if (storedreviews.length === 0) {
+                storedreviews = defaultreviews;
+                localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedreviews));
             }
 
-            document.getElementById('stat-total-reviewers').textContent = storedReviews.length + 86;
+            document.getElementById('stat-total-reviewers').textContent = storedreviews.length + 86;
 
-            tableBody.innerHTML = storedReviews.map(r => {
+            tableBody.innerHTML = storedreviews.map(r => {
                 const starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
                 let badgeClass = 'bg-green-100 text-green-700';
                 if (r.status === 'Pending') badgeClass = 'bg-amber-100 text-amber-700';
@@ -226,7 +234,7 @@
                         </td>
                         <td class="p-3.5">
                             <div class="flex items-center gap-1">
-                                <button onclick="updateReviewStatus('${r.id}', 'Approved')" class="bg-green-600 hover:bg-green-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
+                                <button onclick="updatereviewstatus('${r.id}', 'Approved')" class="bg-green-600 hover:bg-green-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
                                     Approve
                                 </button>
                                 <button onclick="deleteReview('${r.id}')" class="bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
@@ -239,21 +247,21 @@
             }).join('');
         }
 
-        function updateReviewStatus(id, status) {
-            let storedReviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
-            const rev = storedReviews.find(r => r.id === id);
+        function updatereviewstatus(id, status) {
+            let storedreviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
+            const rev = storedreviews.find(r => r.id === id);
             if (rev) {
                 rev.status = status;
-                localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedReviews));
-                loadReviews();
+                localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedreviews));
+                loadreviews();
             }
         }
 
         function deleteReview(id) {
-            let storedReviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
-            storedReviews = storedReviews.filter(r => r.id !== id);
-            localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedReviews));
-            loadReviews();
+            let storedreviews = JSON.parse(localStorage.getItem('hostelfinder_reviews') || '[]');
+            storedreviews = storedreviews.filter(r => r.id !== id);
+            localStorage.setItem('hostelfinder_reviews', JSON.stringify(storedreviews));
+            loadreviews();
         }
 
         function escapeHtml(str) {
@@ -261,7 +269,7 @@
             return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
 
-        document.addEventListener('DOMContentLoaded', loadReviews);
+        document.addEventListener('DOMContentLoaded', loadreviews);
     </script>
 </body>
 </html>
