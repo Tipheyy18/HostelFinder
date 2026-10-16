@@ -1,3 +1,5 @@
+// const { jsx } = require("react/jsx-runtime");
+
 (() => {
     const API_BASE_URL =
         typeof base_url !== "undefined"
@@ -19,9 +21,56 @@
         wifi: "bx-wifi",
         security: "bx-shield",
         generator: "bx-bolt-circle",
-        cctv: "bx-video",
+        cctv: "bx-video", 
         laundry: "bx-closet",
     };
+    let currentPropertyId = null;
+    let currentProperty = null;
+    let bookingInProgress = false;
+    let isRescheduling = false;
+
+    function getBookingStorageKey(propertyId) {
+        const userId = localStorage.getItem("hostelFinderUserId") || "current-user";
+        return `hostelFinderInspectionBooked:${userId}:${propertyId}`;
+    }
+
+    function getInspectionDetailsStorageKey(propertyId) {
+        const userId = localStorage.getItem("hostelFinderUserId") || "current-user";
+        return `hostelFinderInspectionDetails:${userId}:${propertyId}`;
+    }
+
+    function hasBookedInspection(propertyId) {
+        return localStorage.getItem(getBookingStorageKey(propertyId)) === "true";
+    }
+
+    function setBookingFormVisible(visible) {
+        const dateSection = document.getElementById("inspection-date-section");
+        const timeSection = document.getElementById("inspection-time-section");
+        if (dateSection) dateSection.classList.toggle("hidden", !visible);
+        if (timeSection) timeSection.classList.toggle("hidden", !visible);
+        const confirmButton = document.getElementById("confirm-inspection");
+        if (confirmButton) confirmButton.classList.toggle("hidden", !visible);
+    }
+
+    function showPreviouslyBookedState() {
+        setBookingFormVisible(false);
+        showSlotStatus(
+            "You have already booked an inspection for this property. Choose reschedule to request another time.",
+        );
+        const rescheduleButton = document.getElementById("reschedule-inspection");
+        if (rescheduleButton) rescheduleButton.hidden = false;
+    }
+
+    function getAuthHeaders(includeJsonContentType = false) {
+        const headers = {};
+        if (includeJsonContentType) {
+            headers["Content-Type"] = "application/json";
+        }
+
+        const token = localStorage.getItem("hostelFinderToken");
+        if (token) headers.Authorization = `Bearer ${token}`;
+        return headers;
+    }
 
     function formatPropertyType(types) {
         if (!types) return "Hostel Space";
@@ -97,7 +146,418 @@
         });
     }
 
+    function getSlotsFromResponse(payload) {
+        const candidates = [
+            payload,
+            payload && payload.slots,
+            payload && payload.availableSlots,
+            payload && payload.data,
+            payload && payload.data && payload.data.slots,
+            payload && payload.data && payload.data.availableSlots,
+        ];
+        const slots = candidates.find(Array.isArray);
+        if (!slots) {
+            throw new Error("The slots response did not contain a list of slots.");
+        }
+        return slots;
+    }
+
+    function getSlotDate(slot) {
+        const value =
+            slot.date ||
+            slot.startDate ||
+            slot.startAt ||
+            slot.startsAt ||
+            slot.start ||
+            slot.startDateTime ||
+            slot.startTime ||
+            slot.datetime;
+        if (!value) return null;
+
+        if (typeof value === "string") {
+            const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (dateOnly) {
+                return new Date(
+                    Number(dateOnly[1]),
+                    Number(dateOnly[2]) - 1,
+                    Number(dateOnly[3]),
+                );
+            }
+        }
+
+        const date = new Date(value);
+        return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function formatSlotTime(value) {
+        if (value === undefined || value === null || value === "") return "";
+        if (typeof value === "string") {
+            const timeOnly = value.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+            if (timeOnly) {
+                const date = new Date();
+                date.setHours(Number(timeOnly[1]), Number(timeOnly[2]), 0, 0);
+                return date.toLocaleTimeString([], {
+                    hour: "numeric",
+                    minute: "2-digit",
+                });
+            }
+        }
+
+        const date = new Date(value);
+        if (!Number.isNaN(date.getTime())) {
+            return date.toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+            });
+        }
+        return String(value);
+    }
+
+    function getSlotLabel(slot) {
+        const start =
+            slot.startTime || slot.startAt || slot.startsAt || slot.startDateTime || slot.start;
+        const end =
+            slot.endTime || slot.endAt || slot.endsAt || slot.endDateTime || slot.end;
+        if (start && end) {
+            return `${formatSlotTime(start)} – ${formatSlotTime(end)}`;
+        }
+        return String(slot.time || slot.label || slot.timeRange || "Available");
+    }
+
+    function showSlotStatus(message, isError = false) {
+        const status = document.getElementById("booking-slot-status");
+        if (!status) return;
+        status.textContent = message;
+        status.classList.toggle("text-red-700", isError);
+        status.classList.toggle("text-gray-600", !isError);
+    }
+
+    function renderSlots(slots) {
+        const datePicker = document.getElementById("date-picker");
+        const timePicker = document.getElementById("time-picker");
+        const confirmButton = document.getElementById("confirm-inspection");
+        if (!datePicker || !timePicker || !confirmButton) return;
+
+        const groupedSlots = new Map();
+        slots.forEach((slot) => {
+            if (!slot || typeof slot !== "object") return;
+            if (
+                slot.available === false ||
+                slot.isAvailable === false ||
+                slot.isBooked === true ||
+                slot.booked === true
+            ) {
+                return;
+            }
+
+            const slotId = slot._id || slot.id || slot.slotId;
+            const date = getSlotDate(slot);
+            if (!slotId || !date) return;
+
+            const dateKey = [
+                date.getFullYear(),
+                String(date.getMonth() + 1).padStart(2, "0"),
+                String(date.getDate()).padStart(2, "0"),
+            ].join("-");
+            if (!groupedSlots.has(dateKey)) groupedSlots.set(dateKey, []);
+            groupedSlots.get(dateKey).push({
+                id: String(slotId),
+                label: getSlotLabel(slot),
+            });
+        });
+
+        datePicker.replaceChildren();
+        timePicker.replaceChildren();
+        confirmButton.disabled = true;
+
+        if (groupedSlots.size === 0) {
+            showSlotStatus("There are no available inspection slots for this property.");
+            return;
+        }
+
+        const dateKeys = Array.from(groupedSlots.keys()).sort();
+        dateKeys.forEach((dateKey) => {
+            const [year, month, day] = dateKey.split("-").map(Number);
+            const date = new Date(year, month - 1, day);
+            const dateButton = document.createElement("button");
+            dateButton.type = "button";
+            dateButton.setAttribute("aria-pressed", "false");
+            dateButton.className =
+                "date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]";
+
+            const weekday = document.createElement("span");
+            weekday.className = "text-[11px] font-medium";
+            weekday.textContent = date.toLocaleDateString([], { weekday: "short" });
+            const dateLabel = document.createElement("span");
+            dateLabel.className = "mt-0.5 font-bold";
+            dateLabel.textContent = date.toLocaleDateString([], {
+                day: "numeric",
+                month: "short",
+            });
+            const dot = document.createElement("span");
+            dot.className = "dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1";
+            dateButton.append(weekday, dateLabel, dot);
+            dateButton.addEventListener("click", () => {
+                window.selectDate(dateButton);
+                timePicker.replaceChildren();
+                groupedSlots.get(dateKey).forEach((slot) => {
+                    const timeButton = document.createElement("button");
+                    timeButton.type = "button";
+                    timeButton.dataset.slotId = slot.id;
+                    timeButton.dataset.slotDate = dateKey;
+                    timeButton.setAttribute("aria-pressed", "false");
+                    timeButton.className =
+                        "time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]";
+                    timeButton.textContent = slot.label;
+                    timeButton.addEventListener("click", () =>
+                        window.selectTime(timeButton),
+                    );
+                    timePicker.appendChild(timeButton);
+                });
+
+                const firstTimeButton = timePicker.querySelector(".time-btn");
+                if (firstTimeButton) window.selectTime(firstTimeButton);
+                confirmButton.disabled = !firstTimeButton;
+            });
+            datePicker.appendChild(dateButton);
+        });
+
+        showSlotStatus("Choose an available date and time to continue.");
+        datePicker.querySelector(".date-btn").click();
+    }
+
+    async function loadSlots(propertyId) {
+        const datePicker = document.getElementById("date-picker");
+        const timePicker = document.getElementById("time-picker");
+        const confirmButton = document.getElementById("confirm-inspection");
+        const rescheduleButton = document.getElementById("reschedule-inspection");
+        if (hasBookedInspection(propertyId) && !isRescheduling) {
+            showPreviouslyBookedState();
+            return;
+        }
+        setBookingFormVisible(true);
+        if (rescheduleButton) rescheduleButton.hidden = true;
+        if (datePicker) datePicker.replaceChildren();
+        if (timePicker) timePicker.replaceChildren();
+        if (confirmButton) confirmButton.disabled = true;
+        showSlotStatus(
+            isRescheduling
+                ? "Choose a new available date and time."
+                : "Loading available inspection slots...",
+        );
+
+        try {
+            const headers = getAuthHeaders();
+            if (!headers.Authorization) {
+                throw new Error(
+                    "Your login session is missing its authentication token. Please log in again.",
+                );
+            }
+            const response = await fetch(
+                `${API_BASE_URL}/slots/property/${encodeURIComponent(propertyId)}`,
+                { headers },
+            );
+            if (!response.ok) {
+                throw new Error(`Unable to load inspection slots (HTTP ${response.status}).`);
+            }
+            const slots = getSlotsFromResponse(await response.json());
+            renderSlots(slots);
+        } catch (error) {
+            console.error("Failed to load inspection slots:", error);
+            const message =
+                error.message || "Unable to load inspection slots. Please try again.";
+            showSlotStatus(message, true);
+            window.showToast(message, "error");
+        }
+    }
+
+    async function bookInspection() {
+        const confirmButton = document.getElementById("confirm-inspection");
+        const selectedTime = document.querySelector("#time-picker .time-btn.selected");
+        const slotId = selectedTime && selectedTime.dataset.slotId;
+        if (!currentPropertyId || !slotId || bookingInProgress) {
+            showSlotStatus("Choose an available inspection time before continuing.", true);
+            return;
+        }
+
+        bookingInProgress = true;
+        if (confirmButton) {
+            confirmButton.disabled = true;
+            confirmButton.textContent = isRescheduling
+                ? "Submitting Reschedule..."
+                : "Booking...";
+        }
+        showSlotStatus(
+            isRescheduling
+                ? "Submitting your reschedule request..."
+                : "Booking your inspection...",
+        );
+
+        try {
+            const headers = getAuthHeaders(true);
+            if (!headers.Authorization) {
+                throw new Error(
+                    "Your login session is missing its authentication token. Please log in again.",
+                );
+            }
+            const response = await fetch(`${API_BASE_URL}/inspections`, {
+                method: "POST",
+                headers,
+                body: JSON.stringify({ propertyId: currentPropertyId, slotId }),
+            });
+            if (!response.ok) {
+                const details = (await response.text()).trim();
+                let errorMessage = details;
+                try {
+                    const errorPayload = JSON.parse(details);
+                    if (
+                        typeof errorPayload.message === "string" &&
+                        errorPayload.message.trim()
+                    ) {
+                        errorMessage = errorPayload.message.trim();
+                    }
+                } catch {
+                    // The API may return a plain-text error instead of JSON.
+                }
+                throw new Error(
+                    errorMessage ||
+                        `Unable to book inspection (HTTP ${response.status}).`,
+                );
+            }
+            try {
+                saveInspectionDetails(currentPropertyId, slotId, selectedTime);
+            } catch (storageError) {
+                console.error(
+                    "Inspection booked, but appointment details could not be saved:",
+                    storageError,
+                );
+                showSlotStatus(
+                    "Your inspection was booked, but the appointment details could not be saved in this browser. Please do not submit another booking.",
+                    true,
+                );
+                window.showToast(
+                    "Inspection booked, but its details could not be saved.",
+                    "error",
+                );
+                return;
+            }
+            if (!isRescheduling) {
+                try {
+                    localStorage.setItem(
+                        getBookingStorageKey(currentPropertyId),
+                        "true",
+                    );
+                } catch (storageError) {
+                    console.error(
+                        "Inspection booked, but the booking restriction could not be saved:",
+                        storageError,
+                    );
+                    setBookingFormVisible(false);
+                    showSlotStatus(
+                        "Your inspection was booked, but this browser could not save the booking status. Please avoid submitting another request for this property.",
+                        true,
+                    );
+                    return;
+                }
+            }
+            window.showToast(
+                isRescheduling
+                    ? "Inspection request submitted successfully."
+                    : "Inspection booked successfully.",
+                "success",
+            );
+            await new Promise((resolve) => window.setTimeout(resolve, 1200));
+            window.location.href = `/pages/your-inspection.html?propertyId=${encodeURIComponent(currentPropertyId)}`;
+        } catch (error) {
+            console.error("Failed to book inspection:", error);
+            const message =
+                error.message || "Unable to book your inspection. Please try again.";
+            showSlotStatus(message, true);
+            window.showToast(message, "error");
+        } finally {
+            bookingInProgress = false;
+            if (confirmButton) {
+                confirmButton.disabled = !document.querySelector(
+                    "#time-picker .time-btn.selected",
+                );
+                confirmButton.textContent = isRescheduling
+                    ? "Submit Reschedule Request"
+                    : "Confirm Inspection";
+            }
+        }
+    }
+
+    function saveInspectionDetails(propertyId, slotId, selectedTime) {
+        let property = currentProperty;
+        if (!property || String(property._id) !== String(propertyId)) {
+            try {
+                property = JSON.parse(
+                    sessionStorage.getItem("selectedProperty") || "null",
+                );
+            } catch (error) {
+                console.error(
+                    "Unable to read selected property for inspection details:",
+                    error,
+                );
+            }
+        }
+        if (!property || String(property._id) !== String(propertyId)) {
+            throw new Error("The selected property details are unavailable.");
+        }
+
+        const photo =
+            Array.isArray(property.photos) && property.photos.length
+                ? typeof property.photos[0] === "string"
+                    ? property.photos[0]
+                    : property.photos[0].url
+                : property.coverPhoto || "";
+        const slotDate = selectedTime.dataset.slotDate;
+        let dateTime = selectedTime.textContent.trim();
+        if (slotDate) {
+            const [year, month, day] = slotDate.split("-").map(Number);
+            const date = new Date(year, month - 1, day);
+            const dateLabel = date.toLocaleDateString([], {
+                weekday: "short",
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+            });
+            dateTime = `${dateLabel} · ${dateTime}`;
+        }
+
+        const distance = property.distanceFromSchoolKm;
+        const drivingTime = property.drivingTimeMinutes;
+        const schoolName = KNOWN_SCHOOLS[property.schoolId] || "Campus Area";
+        const proximity =
+            drivingTime > 0
+                ? `~${drivingTime} mins from ${schoolName}`
+                : distance > 0
+                  ? `~${distance} km from ${schoolName}`
+                  : "";
+        const booking = {
+            propertyId: String(propertyId),
+            slotId,
+            propertyTitle: property.title || "Property",
+            propertyType: formatPropertyType(property.propertyType),
+            address: property.address || "",
+            proximity,
+            photo,
+            dateTime,
+            updatedAt: new Date().toISOString(),
+        };
+
+        localStorage.setItem(
+            getInspectionDetailsStorageKey(propertyId),
+            JSON.stringify(booking),
+        );
+        sessionStorage.setItem(
+            "hostelFinderLastInspectionBooking",
+            JSON.stringify(booking),
+        );
+    }
+
     function renderProperty(property, extraData = {}) {
+        currentProperty = property;
         const title = property.title || "Hostel Space";
         const titleElement = document.getElementById("booking-property-title");
         if (titleElement) titleElement.textContent = title;
@@ -224,6 +684,9 @@
             return;
         }
 
+        currentPropertyId = propertyId;
+        loadSlots(propertyId);
+
         if (cached && cached._id === propertyId) renderProperty(cached);
 
         try {
@@ -267,9 +730,21 @@
     function showError(message) {
         const errorElement = document.getElementById("booking-property-error");
         if (errorElement) {
-            errorElement.textContent = message;
+            errorElement.textContent = JSON.stringify(message);
             errorElement.classList.remove("hidden");
         }
+    }
+
+    const confirmButton = document.getElementById("confirm-inspection");
+    if (confirmButton) confirmButton.addEventListener("click", bookInspection);
+    const rescheduleButton = document.getElementById("reschedule-inspection");
+    if (rescheduleButton) {
+        rescheduleButton.addEventListener("click", () => {
+            isRescheduling = true;
+            rescheduleButton.hidden = true;
+            confirmButton.textContent = "Submit Reschedule Request";
+            loadSlots(currentPropertyId);
+        });
     }
 
     if (document.readyState === "loading") {

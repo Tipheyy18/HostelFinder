@@ -3,6 +3,46 @@ const SIGNUP_ENDPOINT = `${base_url}/auth/register`;
 const LOGIN_ENDPOINT = `${base_url}/auth/login`;
 const GET_ALL_HOSTEL = `${base_url}/properties`;
 
+window.showToast = (message, type = "success", duration = 3500) => {
+    if (!message) return;
+
+    let container = document.getElementById("site-toast-container");
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "site-toast-container";
+        container.className =
+            "fixed right-4 top-4 z-[100] flex w-[calc(100%-2rem)] max-w-sm flex-col gap-2";
+        container.setAttribute("aria-live", "polite");
+        container.setAttribute("aria-atomic", "true");
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement("div");
+    toast.setAttribute("role", type === "error" ? "alert" : "status");
+    toast.className =
+        "translate-x-2 rounded-xl px-4 py-3 text-sm font-semibold text-white opacity-0 shadow-lg transition-all duration-200";
+    toast.classList.add(
+        type === "error"
+            ? "bg-red-700"
+            : type === "info"
+              ? "bg-[#3157D5]"
+              : "bg-[#219653]",
+    );
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.classList.remove("translate-x-2", "opacity-0");
+        toast.classList.add("translate-x-0", "opacity-100");
+    });
+
+    window.setTimeout(() => {
+        toast.classList.remove("translate-x-0", "opacity-100");
+        toast.classList.add("translate-x-2", "opacity-0");
+        window.setTimeout(() => toast.remove(), 250);
+    }, duration);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     const isLoggedIn = localStorage.getItem("hostelFinderLoggedIn") === "true";
     document
@@ -18,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         element.hidden = !isLoggedIn;
         element.addEventListener("click", () => {
             localStorage.removeItem("hostelFinderLoggedIn");
+            localStorage.removeItem("hostelFinderToken");
+            localStorage.removeItem("hostelFinderUserId");
             window.location.href = "/";
         });
     });
@@ -136,12 +178,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.textContent =
                     result.message || "Logged in successfully.";
                 message.classList.add("text-green-700");
+                if (typeof result.token === "string" && result.token) {
+                    localStorage.setItem("hostelFinderToken", result.token);
+                } else {
+                    throw new Error(
+                        "Login response did not include an authentication token. Please try again.",
+                    );
+                }
+                const userId = result.user.id || result.user._id;
+                if (userId) {
+                    localStorage.setItem("hostelFinderUserId", String(userId));
+                }
                 localStorage.setItem("hostelFinderLoggedIn", "true");
+                window.showToast(message.textContent, "success");
+                await new Promise((resolve) => window.setTimeout(resolve, 800));
                 window.location.href = redirectPath;
             } catch (error) {
                 message.textContent =
                     error.message || "Unable to log in. Please try again.";
                 message.classList.add("text-red-700");
+                window.showToast(message.textContent, "error");
             } finally {
                 submitButton.disabled = false;
             }
@@ -224,6 +280,8 @@ document.addEventListener("DOMContentLoaded", () => {
             message.textContent =
                 result.message || "Account created successfully.";
             message.classList.add("text-green-700");
+            window.showToast(message.textContent, "success");
+            await new Promise((resolve) => window.setTimeout(resolve, 800));
             window.location.href = "/pages/verification.html"
                 // result.user.role === "landlord"
                 //     ? "/pages/landlord-verification.html"
@@ -232,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
             message.textContent =
                 error.message || "Unable to sign up. Please try again.";
             message.classList.add("text-red-700");
+            window.showToast(message.textContent, "error");
         } finally {
             submitButton.disabled = false;
         }

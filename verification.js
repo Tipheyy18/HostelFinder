@@ -122,12 +122,14 @@ document.addEventListener("DOMContentLoaded", () => {
             attemptsRemaining.classList.add("hidden");
             startCountdown();
             otpInputs[0].focus();
+            window.showToast("Verification code sent.", "success");
         } catch (error) {
             otpRecipient.textContent = "We couldn't send a verification code.";
             otpError.textContent = error.message || fallbackMessage;
             otpError.classList.remove("hidden");
             remainingSeconds = 0;
             renderCountdown();
+            window.showToast(otpError.textContent, "error");
         }
     }
 
@@ -224,6 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("success-message").textContent =
                 content.message;
             showState("success");
+            window.showToast("Your account was verified successfully.", "success");
             window.setTimeout(() => {
                 window.location.href = "/pages/login.html";
             }, 1500);
@@ -232,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
             otpError.textContent =
                 error.message || "Invalid code. Please try again.";
             otpError.classList.remove("hidden");
+            window.showToast(otpError.textContent, "error");
             clearOtpInputs();
             otpInputs.forEach((input) => input.classList.add("border-red-600"));
             otpInputs[0].focus();

@@ -168,7 +168,7 @@
                 </div>
 
 
-                <div class="mb-5">
+                <div id="inspection-date-section" class="mb-5">
                     <!-- Card Header -->
                     <div class="mb-2 flex items-center gap-3">
                         <div class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
@@ -183,50 +183,12 @@
                         </div>
                     </div>
 
-                    <!-- Date Pills Container (5 Equal Grid Columns) -->
-                    <div class="grid grid-cols-5 gap-1.5 sm:gap-2" id="date-picker">
-
-                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
-                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-                            <span class="text-[11px] font-medium">Mon</span>
-                            <span class="mt-0.5 font-bold">19 Oct</span>
-                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-                        </button>
-
-                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
-                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-                            <span class="text-[11px] font-medium">Tue</span>
-                            <span class="mt-0.5 font-bold">20 Oct</span>
-                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-                        </button>
-
-                        <!-- Active Selected Date State -->
-                        <button type="button" aria-pressed="true" onclick="selectDate(this)"
-                            class="date-btn selected flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-                            <span class="text-[11px] font-medium">Wed</span>
-                            <span class="mt-0.5 font-bold">21 Oct</span>
-                            <span class="dot w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
-                        </button>
-
-                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
-                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-                            <span class="text-[11px] font-medium">Thurs</span>
-                            <span class="mt-0.5 font-bold">22 Oct</span>
-                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-                        </button>
-
-                        <button type="button" aria-pressed="false" onclick="selectDate(this)"
-                            class="date-btn flex min-w-0 flex-col items-center rounded-lg bg-[#e8edfc] px-1 py-2 text-xs text-[#3157D5] transition hover:bg-[#dce5fb]">
-                            <span class="text-[11px] font-medium">Fri</span>
-                            <span class="mt-0.5 font-bold">23 Oct</span>
-                            <span class="dot w-1.5 h-1.5 rounded-full bg-gray-300 mt-1"></span>
-                        </button>
-
+                    <div class="grid grid-cols-3 gap-1.5 sm:grid-cols-5 sm:gap-2" id="date-picker">
                     </div>
                 </div>
 
                 <!-- Select Time Card -->
-                <div class="mb-6">
+                <div id="inspection-time-section" class="mb-6">
                     <div class="flex items-center gap-2 mb-1">
                         <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#3157D5]">
                             <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,30 +204,21 @@
                         </div>
                     </div>
                     <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2" id="time-picker">
-                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
-                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                            2:00 PM – 3:00 PM
-                        </button>
-                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
-                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                            4:00 PM – 5:00 PM
-                        </button>
-                        <button type="button" aria-pressed="false" onclick="selectTime(this)"
-                            class="time-btn flex min-h-12 items-center justify-center rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                            5:00 PM – 6:00 PM
-                        </button>
-                        <button type="button" aria-pressed="true" onclick="selectTime(this)"
-                            class="time-btn selected flex min-h-12 items-center justify-center gap-1 rounded-md border border-[#b8c8f8] bg-white px-3 py-2 text-sm text-[#3157D5] text-center transition hover:bg-[#f5f7ff]">
-                            6:00 PM – 7:00 PM
-                        </button>
                     </div>
                 </div>
+                <p id="booking-slot-status" class="mb-4 text-center text-sm text-gray-600" role="status"
+                    aria-live="polite">Loading available inspection slots...</p>
 
-                <!-- Confirm button — goes to Your Inspection -->
-                <a href="/pages/your-inspection.html"
+                    <!-- id="reschedule-inspection" to make reschedule btn functional later -->
+                <button  type="button" hidden
+                    class="mx-auto mb-3 flex w-full max-w-xs items-center justify-center rounded-lg border border-[#3157D5] px-5 py-3 text-center text-sm font-bold text-[#3157D5] transition hover:bg-[#e8edfc]">
+                    Reschedule Inspection
+                </button>
+
+                <button id="confirm-inspection" type="button" disabled
                     class="mx-auto flex w-full max-w-xs items-center justify-center rounded-lg bg-[#3157D5] px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#2646b5]">
                     Confirm Inspection
-                </a>
+                </button>
 
             </div>
         </section>

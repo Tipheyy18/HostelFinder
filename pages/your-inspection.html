@@ -88,8 +88,9 @@
 
 
                         <div class="w-full p-2 sm:p-3 ">
-                            <img src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
-                                alt="Greenfields Court" class="h-52 w-full rounded-xl object-cover sm:h-64 md:h-72 lg:h-80">
+                            <img id="inspection-property-photo"
+                                src="https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png"
+                                alt="Property" class="h-52 w-full rounded-xl object-cover sm:h-64 md:h-72 lg:h-80">
                         </div>
 
                         <div class="flex min-w-0 flex-col gap-3 px-3 py-4 sm:gap-4 sm:px-6 sm:py-5">
@@ -97,7 +98,7 @@
 
                             <div>
                                 <span class="bg-green-500 text-[#FFFFFF] text-[9px] font-semibold px-2.5 py-0.5 rounded-full mb-2 inline-block">Available</span>
-                                <h2 class="break-words text-lg font-extrabold text-gray-900 sm:text-xl">Greenfields Court</h2>
+                                <h2 id="inspection-property-title" class="break-words text-lg font-extrabold text-gray-900 sm:text-xl">Inspection details unavailable</h2>
                             </div>
 
                             <!-- Inspection confirmation row -->
@@ -123,7 +124,7 @@
                                     </div>
                                     <div>
                                         <p class="text-[9px] text-[#3157D5] leading-none mb-0.5">Date and time</p>
-                                        <p class="break-words text-xs font-semibold text-gray-700 sm:text-sm">Sat, 27 Sep – 3:30PM</p>
+                                        <p id="inspection-date-time" class="break-words text-xs font-semibold text-gray-700 sm:text-sm">Appointment details unavailable</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +137,7 @@
                                     </div>
                                     <div>
                                         <p class="text-[9px] text-[#3157D5] leading-none mb-0.5">Property</p>
-                                        <p class="text-xs font-semibold text-gray-700 sm:text-sm">2-Bedroom Flat</p>
+                                        <p id="inspection-property-type" class="text-xs font-semibold text-gray-700 sm:text-sm">Property type unavailable</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,8 +150,8 @@
                                     </div>
                                     <div>
                                         <p class="text-[9px] text-[#3157d5] leading-none mb-0.5">Location</p>
-                                        <p class="break-words text-xs font-semibold text-gray-700 sm:text-sm">14 Maple Court, off Accord</p>
-                                        <p class="mt-0.5 break-words text-[10px] text-[#3157d5] sm:text-xs">2.9km from your hostel · direction below</p>
+                                        <p id="inspection-property-address" class="break-words text-xs font-semibold text-gray-700 sm:text-sm">Address unavailable</p>
+                                        <p id="inspection-property-proximity" class="mt-0.5 break-words text-[10px] text-[#3157d5] sm:text-xs"></p>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +176,7 @@
                         <button id="main-action-btn" class="h-12 w-full rounded-xl bg-[#3157d5] px-6 text-sm font-semibold text-white shadow-md transition hover:bg-[#2646b5] cursor-pointer sm:flex-1">
                             Confirm Inspection
                         </button>
-                        <a href="/pages/book-inspection.html" class="flex w-full sm:flex-1">
+                        <a id="reschedule-link" href="/pages/book-inspection.html" class="flex w-full sm:flex-1">
                             <button class="h-12 w-full rounded-xl border-2 border-[#3157d5] bg-white px-6 text-sm font-semibold text-[#3157d5] transition hover:bg-[#e8f0ff] cursor-pointer">
                                 Reschedule
                             </button>
@@ -190,6 +191,53 @@
     </main>
 
     <script>
+        function renderInspectionDetails() {
+            let booking;
+            const params = new URLSearchParams(window.location.search);
+            const propertyId = params.get('propertyId');
+            const userId = localStorage.getItem('hostelFinderUserId') || 'current-user';
+            try {
+                const storedBooking = propertyId
+                    ? localStorage.getItem(
+                        `hostelFinderInspectionDetails:${userId}:${propertyId}`
+                    )
+                    : sessionStorage.getItem('hostelFinderLastInspectionBooking');
+                booking = JSON.parse(storedBooking || 'null');
+            } catch (error) {
+                console.error('Unable to read inspection details:', error);
+                return;
+            }
+            if (!booking) return;
+
+            document.getElementById('inspection-property-title').textContent =
+                booking.propertyTitle || 'Property';
+            document.getElementById('inspection-date-time').textContent =
+                booking.dateTime || 'Appointment time unavailable';
+            document.getElementById('inspection-property-type').textContent =
+                booking.propertyType || 'Property type unavailable';
+            document.getElementById('inspection-property-address').textContent =
+                booking.address || 'Address unavailable';
+            document.getElementById('inspection-property-proximity').textContent =
+                booking.proximity || '';
+
+            const rescheduleLink = document.getElementById('reschedule-link');
+            if (rescheduleLink && booking.propertyId) {
+                rescheduleLink.href =
+                    `/pages/book-inspection.html?id=${encodeURIComponent(booking.propertyId)}`;
+            }
+
+            const photo = document.getElementById('inspection-property-photo');
+            if (booking.photo) {
+                photo.src = booking.photo;
+                photo.alt = booking.propertyTitle || 'Property';
+                photo.onerror = () => {
+                    photo.src = 'https://res.cloudinary.com/ospauzp7/image/upload/v1790627411/22404c7a9e7cce6b24a8f09f9f0a8e6f5544e648.png';
+                };
+            }
+        }
+
+        renderInspectionDetails();
+
         const toggle = document.getElementById('confirmation-toggle');
         const mainBtn = document.getElementById('main-action-btn');
 
